@@ -122,7 +122,7 @@ export default function FeaturedVendors() {
           title="Featured Vendors" 
           description="Top-rated professionals for your special day"
         >
-          <Button variant="ghost" className="flex items-center gap-1 text-primary hover:text-primary hover:bg-primary/5">
+          <Button variant="link" className="hover:text-primary">
             View All <ChevronRight />
           </Button>
         </PageHeader>
