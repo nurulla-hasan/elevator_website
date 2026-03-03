@@ -1,6 +1,6 @@
+import Footer from "@/components/common/footer";
 import { Navbar } from "@/components/common/navbar/navbar";
 import type { ReactNode } from "react";
-import { Footer } from "react-day-picker";
 
 export default function MainRouteLayout({
   children,
@@ -10,7 +10,7 @@ export default function MainRouteLayout({
   return (
     <>
       <Navbar />
-      {children}
+       {children}
       <Footer />
     </>
   );

@@ -26,7 +26,8 @@ export default function PostRequirement() {
         {/* Action Button */}
         <div className="pt-4">
           <Button 
-            className="group bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 font-semibold flex items-center gap-2 transition-all duration-200 shadow-md hover:shadow-lg"
+            className="group transition-all duration-200"
+            size="lg"
           >
             Post Your Requirement
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
