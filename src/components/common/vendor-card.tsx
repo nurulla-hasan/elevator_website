@@ -66,7 +66,7 @@ export function VendorCard({ vendor, className, variant = "vertical" }: VendorCa
 
   return (
     <Card className={cn("pt-0 overflow-hidden group", className)}>
-      <div className="relative aspect-4/3 w-full overflow-hidden">
+      <div className="relative aspect-5/3 w-full overflow-hidden">
         <Image
           src={vendor.image}
           alt={vendor.name}

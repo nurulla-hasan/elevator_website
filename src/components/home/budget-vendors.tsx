@@ -181,7 +181,7 @@ export default function BudgetVendors() {
                 <CarouselContent className="-ml-4 p-1">
                   {vendorList.map((vendor) => (
                     <CarouselItem key={vendor.id} className="pl-4 sm:basis-1/2 lg:basis-1/4">
-                      <VendorCard vendor={vendor} className="group" />
+                      <VendorCard vendor={vendor} />
                     </CarouselItem>
                   ))}
                 </CarouselContent>
