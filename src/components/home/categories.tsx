@@ -70,7 +70,7 @@ export default function Categories() {
   }, [api])
 
   return (
-    <section className="w-full">
+    <section>
       <div className="mb-8">
         <PageHeader 
           title="Browse by Category" 

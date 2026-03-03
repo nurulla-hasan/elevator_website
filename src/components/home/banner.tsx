@@ -49,7 +49,7 @@ export default function Banner() {
   }, [api]);
 
   return (
-    <section className="w-full">
+    <section>
       <Carousel
         setApi={setApi}
         plugins={[plugin.current]}

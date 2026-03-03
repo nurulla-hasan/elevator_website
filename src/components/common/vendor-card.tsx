@@ -10,11 +10,62 @@ import { Vendor } from "@/types/vendor.type"
 interface VendorCardProps {
   vendor: Vendor
   className?: string
+  variant?: "vertical" | "horizontal"
 }
 
-export function VendorCard({ vendor, className }: VendorCardProps) {
+export function VendorCard({ vendor, className, variant = "vertical" }: VendorCardProps) {
+  if (variant === "horizontal") {
+    return (
+      <Card className={cn("overflow-hidden p-3", className)}>
+        <div className="flex gap-4 items-center">
+          {/* Image */}
+          <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-xl">
+            <Image
+              src={vendor.image}
+              alt={vendor.name}
+              fill
+              className="object-cover"
+            />
+          </div>
+
+          {/* Content */}
+          <div className="flex-1 min-w-0 flex flex-col justify-between h-full">
+            <div className="space-y-1">
+              <Badge variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/15 border-none text-[10px] h-5 px-2">
+                {vendor.category}
+              </Badge>
+              <h3 className="text-base font-bold text-primary truncate">
+                {vendor.name}
+              </h3>
+              <div className="flex items-center gap-1 text-muted-foreground">
+                <MapPin className="h-3 w-3" />
+                <span className="text-[11px]">{vendor.location}</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <StarRating rating={vendor.rating} totalStars={1} size={12} />
+                <span className="text-[11px] font-bold">{vendor.rating}</span>
+                <span className="text-[11px] text-muted-foreground">({vendor.reviews} reviews)</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Action & Price */}
+          <div className="flex flex-col items-end justify-between self-stretch">
+            <Button size="icon" variant="ghost" className="rounded-full text-muted-foreground hover:text-primary">
+              <Heart />
+            </Button>
+            <div className="text-right">
+              <span className="text-[10px] text-muted-foreground">Starting at</span>
+              <p className="text-lg font-bold text-primary">{vendor.price}</p>
+            </div>
+          </div>
+        </div>
+      </Card>
+    )
+  }
+
   return (
-    <Card className={cn("pt-0 overflow-hidden", className)}>
+    <Card className={cn("pt-0 overflow-hidden group", className)}>
       <div className="relative aspect-4/3 w-full overflow-hidden">
         <Image
           src={vendor.image}

@@ -131,7 +131,7 @@ export default function BudgetVendors() {
   }, [api, activeTab]) // Reset when tab changes
 
   return (
-    <section className="w-full">
+    <section>
       <div className="mb-8">
         <PageHeader 
           title="Find Vendors by Budget" 

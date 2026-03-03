@@ -116,7 +116,7 @@ export default function FeaturedVendors() {
   }, [api])
 
   return (
-    <section className="w-full">
+    <section>
       <div className="mb-8">
         <PageHeader 
           title="Featured Vendors" 

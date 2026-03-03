@@ -67,7 +67,7 @@ export default function EventTypes() {
   }, [api])
 
   return (
-    <section className="w-full">
+    <section>
       <div className="mb-8">
         <PageHeader 
           title="Find Vendors by Event Type" 

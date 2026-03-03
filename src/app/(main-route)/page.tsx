@@ -52,9 +52,7 @@ export default function HomePage() {
           <RecentlyAddedVendors />
         </PageLayout>
 
-        <PageLayout paddingSize="small">
           <VendorCTA />
-        </PageLayout>
       </main>
     </>
   );

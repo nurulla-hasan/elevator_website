@@ -15,10 +15,10 @@ const PageHeader = ({ title, description, length, children }: PageHeaderProps) =
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="grid gap-1">
                 <div className="flex items-center gap-4">
-                    <h1 className="text-2xl text-primary font-bold uppercase tracking-normal">{title}</h1>
+                    <h1 className="text-xl sm:text-2xl text-primary font-bold uppercase tracking-normal">{title}</h1>
                     {length && <Badge className="rounded-full">{length}</Badge>}
                 </div>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground text-sm sm:text-base">
                     {description}
                 </p>
             </div>

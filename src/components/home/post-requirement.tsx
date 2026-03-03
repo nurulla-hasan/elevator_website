@@ -4,7 +4,7 @@ import { TrendingUp, ArrowRight } from "lucide-react"
 
 export default function PostRequirement() {
   return (
-    <section className="w-full">
+    <section>
       <div className="bg-primary/5 rounded-[32px] p-12 md:p-20 flex flex-col items-center text-center space-y-6">
         {/* Icon */}
         <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-background shadow-lg shadow-primary/20">
