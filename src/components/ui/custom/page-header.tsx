@@ -1,54 +1,30 @@
-import React from 'react';
-import Link from 'next/link';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+"use client"
 
-type PageHeaderBreadcrumb = {
-  name: string;
-  href?: string;
-};
+import { Badge } from "@/components/ui/badge"
+import { ReactNode } from "react"
 
-type PageHeaderProps = {
-  title: string;
-  breadcrumbs: PageHeaderBreadcrumb[];
-};
+interface PageHeaderProps {
+    title: string;
+    description: string;
+    length?: number;
+    children?: ReactNode;
+}
 
-/**
- * A reusable page header component with a title and breadcrumbs.
- * @param {{ title: string, breadcrumbs: { name: string, href?: string }[] }} props
- */
-const PageHeader: React.FC<PageHeaderProps> = ({ title, breadcrumbs }) => {
-  return (
-    <section className="bg-secondary py-6 md:py-12">
-      <div className="container max-w-7xl mx-auto text-center">
-        <h1 className="text-2xl md:text-3xl font-semibold mb-4">{title}</h1>
-        <Breadcrumb>
-          <BreadcrumbList className="justify-center">
-            {breadcrumbs.map((crumb, index) => (
-              <React.Fragment key={index}>
-                <BreadcrumbItem>
-                  {crumb.href ? (
-                    <BreadcrumbLink asChild>
-                      <Link href={crumb.href}>{crumb.name}</Link>
-                    </BreadcrumbLink>
-                  ) : (
-                    <BreadcrumbPage className="">{crumb.name}</BreadcrumbPage>
-                  )}
-                </BreadcrumbItem>
-                {index < breadcrumbs.length - 1 && <BreadcrumbSeparator />}
-              </React.Fragment>
-            ))}
-          </BreadcrumbList>
-        </Breadcrumb>
-      </div>
-    </section>
-  );
-};
+const PageHeader = ({ title, description, length, children }: PageHeaderProps) => {
+    return (
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div className="grid gap-1">
+                <div className="flex items-center gap-4">
+                    <h1 className="text-2xl text-primary font-bold uppercase tracking-normal">{title}</h1>
+                    {length && <Badge className="rounded-full">{length}</Badge>}
+                </div>
+                <p className="text-muted-foreground">
+                    {description}
+                </p>
+            </div>
+            {children && <div className="flex items-center gap-2">{children}</div>}
+        </div>
+    )
+}
 
-export default PageHeader;
+export default PageHeader

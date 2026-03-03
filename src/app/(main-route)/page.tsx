@@ -1,4 +1,5 @@
 
+import Banner from "@/components/home/banner";
 import BudgetVendors from "@/components/home/budget-vendors";
 import Categories from "@/components/home/categories";
 import EventTypes from "@/components/home/event-types";
@@ -19,6 +20,8 @@ export default function HomePage() {
         <PageLayout paddingSize="small">
           <Categories />
         </PageLayout>
+
+          <Banner />
 
         <PageLayout paddingSize="small">
           <FeaturedVendors />
