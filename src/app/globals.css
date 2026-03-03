@@ -47,6 +47,16 @@
   --radius-4xl: calc(var(--radius) + 16px);
 }
 
+@layer utilities {
+  .pink-overlay {
+    @apply relative overflow-hidden;
+  }
+  .pink-overlay::after {
+    content: "";
+    @apply absolute inset-0 bg-linear-to-t from-primary/30 to-black/50 pointer-events-none z-1;
+  }
+}
+
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
