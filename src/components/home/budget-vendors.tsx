@@ -143,19 +143,19 @@ export default function BudgetVendors() {
         <TabsList className="h-auto flex justify-start gap-6 bg-transparent">
           <TabsTrigger 
             value="under200k" 
-            className="rounded-none data-[state=active]:border-b-2 border-t-0 border-x-0 data-[state=active]:border-primary"
+            className="rounded-none data-[state=active]:border-b-2 group-data-[variant=default]/tabs-list:data-[state=active]:shadow-none border-t-0 border-x-0 data-[state=active]:border-primary"
           >
             Under 200k
           </TabsTrigger>
           <TabsTrigger 
             value="200k-500k" 
-            className="rounded-none data-[state=active]:border-b-2 border-t-0 border-x-0 data-[state=active]:border-primary"
+            className="rounded-none data-[state=active]:border-b-2 group-data-[variant=default]/tabs-list:data-[state=active]:shadow-none border-t-0 border-x-0 data-[state=active]:border-primary"
           >
             200k-500k
           </TabsTrigger>
           <TabsTrigger 
             value="500k+" 
-            className="rounded-none data-[state=active]:border-b-2 border-t-0 border-x-0 data-[state=active]:border-primary"
+            className="rounded-none data-[state=active]:border-b-2 group-data-[variant=default]/tabs-list:data-[state=active]:shadow-none border-t-0 border-x-0 data-[state=active]:border-primary"
           >
             500k+
           </TabsTrigger>
