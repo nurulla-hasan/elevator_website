@@ -96,13 +96,13 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-primary-foreground/10 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-primary-foreground/50 text-xs tracking-wide">
+          <p className="text-xs tracking-wide">
             © 2026 WeddingHub. All rights reserved.
           </p>
           <div className="flex items-center gap-8 text-xs tracking-wide">
-            <Link href="#" className="text-primary-foreground/50 hover:text-primary-foreground transition-colors">Privacy Policy</Link>
-            <Link href="#" className="text-primary-foreground/50 hover:text-primary-foreground transition-colors">Terms of Service</Link>
-            <Link href="#" className="text-primary-foreground/50 hover:text-primary-foreground transition-colors">Cookie Policy</Link>
+            <Link href="#" className="text-primary-foreground">Privacy Policy</Link>
+            <Link href="#" className="text-primary-foreground">Terms of Service</Link>
+            <Link href="#" className="text-primary-foreground">Cookie Policy</Link>
           </div>
         </div>
       </div>
