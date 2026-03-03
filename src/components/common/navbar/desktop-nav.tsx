@@ -96,16 +96,20 @@ export function DesktopNav({
           </>
         ) : (
           <>
-            <Button
-              variant="ghost"
-              className="text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
-              onClick={() => setIsLoggedIn(true)}
-            >
-              Login
-            </Button>
-            <Button variant="secondary" asChild>
-              <Link href="/become-vendor">Become a Vendor</Link>
-            </Button>
+            <Link href="/auth/login">
+              <Button
+                variant="ghost"
+                className="text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                // onClick={() => setIsLoggedIn(true)}
+              >
+                Login
+              </Button>
+            </Link>
+            <Link href="/auth/become-vendor">
+              <Button variant="secondary" asChild>
+                <span>Become a Vendor</span>
+              </Button>
+            </Link>
           </>
         )}
       </div>

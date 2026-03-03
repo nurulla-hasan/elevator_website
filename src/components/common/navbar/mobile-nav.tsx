@@ -111,15 +111,22 @@ export function MobileNav({ navItems, pathname, isLoggedIn, setIsLoggedIn }: Mob
                   </Link>
                 </div>
               ) : (
-                <button
-                  onClick={() => {
-                    setIsLoggedIn(true)
-                    setIsOpen(false)
-                  }}
-                  className="flex items-center gap-4 rounded-lg px-4 py-3 text-base font-medium text-primary-foreground/90 transition-all hover:bg-primary-foreground/10 active:scale-95 text-left"
-                >
-                  <User className="size-5 text-primary-foreground/70" /> Login / Sign Up
-                </button>
+                <div className="flex flex-col space-y-1">
+                  <Link
+                    href="/auth/login"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center gap-4 rounded-lg px-4 py-3 text-base font-medium text-primary-foreground/90 transition-all hover:bg-primary-foreground/10 active:scale-95 text-left"
+                  >
+                    <User className="size-5 text-primary-foreground/70" /> Login
+                  </Link>
+                  <Link
+                    href="/auth/register"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center gap-4 rounded-lg px-4 py-3 text-base font-medium text-primary-foreground/90 transition-all hover:bg-primary-foreground/10 active:scale-95 text-left"
+                  >
+                    <User className="size-5 text-primary-foreground/70" /> Register
+                  </Link>
+                </div>
               )}
             </nav>
 
@@ -142,7 +149,7 @@ export function MobileNav({ navItems, pathname, isLoggedIn, setIsLoggedIn }: Mob
                   asChild
                   onClick={() => setIsOpen(false)}
                 >
-                  <Link href="/become-vendor">Become a Vendor</Link>
+                  <Link href="/auth/become-vendor">Become a Vendor</Link>
                 </Button>
               )}
             </div>
