@@ -194,7 +194,7 @@ export default function RegisterPage() {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4">
                 <FormField
                   control={form.control}
                   name="phone"
@@ -320,7 +320,7 @@ export default function RegisterPage() {
         <div className="text-center">
           <Link
             href="/auth/become-vendor"
-            className="group inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+            className="group inline-flex items-center text-sm font-medium text-muted-foreground transition-colors"
           >
             Are you a vendor?{" "}
             <span className="ml-1 font-bold text-primary group-hover:underline">
