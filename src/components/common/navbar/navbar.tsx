@@ -1,0 +1,40 @@
+"use client"
+
+import * as React from "react"
+import { usePathname } from "next/navigation"
+import { House, Store, MapPin, FileText } from "lucide-react"
+import { NavLogo } from "./nav-logo"
+import { DesktopNav } from "./desktop-nav"
+import { MobileNav } from "./mobile-nav"
+
+const navItems = [
+  { name: "Home", href: "/", icon: House },
+  { name: "Vendors", href: "/vendors", icon: Store },
+  { name: "Venue Finder", href: "/venue-finder", icon: MapPin },
+  { name: "Post Request", href: "/post-request", icon: FileText },
+]
+
+export function Navbar() {
+  const pathname = usePathname()
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false) // Mocked state for now
+
+  return (
+    <header className="sticky top-0 z-50 w-full bg-primary text-primary-foreground shadow-md">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4 md:h-20">
+        <NavLogo />
+        <DesktopNav 
+          navItems={navItems} 
+          pathname={pathname} 
+          isLoggedIn={isLoggedIn} 
+          setIsLoggedIn={setIsLoggedIn} 
+        />
+        <MobileNav 
+          navItems={navItems} 
+          pathname={pathname} 
+          isLoggedIn={isLoggedIn} 
+          setIsLoggedIn={setIsLoggedIn} 
+        />
+      </div>
+    </header>
+  )
+}

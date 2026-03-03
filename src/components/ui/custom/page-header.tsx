@@ -1,21 +1,54 @@
+import React from 'react';
+import Link from 'next/link';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
+type PageHeaderBreadcrumb = {
+  name: string;
+  href?: string;
+};
 
-const PageHeader = ({ title, description, length }: { title: string, description: string, length?: number }) => {
-    return (
-        <div className="flex flex-col gap-1.5">
-            <div className="flex items-center gap-3">
-                <h1 className="text-2xl font-bold tracking-tight text-foreground">{title}</h1>
-                {length && (
-                    <span className="inline-flex items-center justify-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary border border-primary/20">
-                        {length}
-                    </span>
-                )}
-            </div>
-            <p className="text-sm text-muted-foreground max-w-150 leading-relaxed">
-                {description}
-            </p>
-        </div>
-    )
-}
+type PageHeaderProps = {
+  title: string;
+  breadcrumbs: PageHeaderBreadcrumb[];
+};
 
-export default PageHeader
+/**
+ * A reusable page header component with a title and breadcrumbs.
+ * @param {{ title: string, breadcrumbs: { name: string, href?: string }[] }} props
+ */
+const PageHeader: React.FC<PageHeaderProps> = ({ title, breadcrumbs }) => {
+  return (
+    <section className="bg-secondary py-6 md:py-12">
+      <div className="container max-w-7xl mx-auto text-center">
+        <h1 className="text-2xl md:text-3xl font-semibold mb-4">{title}</h1>
+        <Breadcrumb>
+          <BreadcrumbList className="justify-center">
+            {breadcrumbs.map((crumb, index) => (
+              <React.Fragment key={index}>
+                <BreadcrumbItem>
+                  {crumb.href ? (
+                    <BreadcrumbLink asChild>
+                      <Link href={crumb.href}>{crumb.name}</Link>
+                    </BreadcrumbLink>
+                  ) : (
+                    <BreadcrumbPage className="">{crumb.name}</BreadcrumbPage>
+                  )}
+                </BreadcrumbItem>
+                {index < breadcrumbs.length - 1 && <BreadcrumbSeparator />}
+              </React.Fragment>
+            ))}
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div>
+    </section>
+  );
+};
+
+export default PageHeader;
