@@ -41,16 +41,16 @@ export default function Footer() {
             <h4 className="text-base font-semibold mb-7 uppercase tracking-wider">Quick Links</h4>
             <ul className="space-y-4">
               <li>
-                <Link href="#" className="text-sm text-primary-foreground/80 hover:text-primary-foreground hover:translate-x-1 transition-all inline-block">Find Vendors</Link>
+                <Link href="/vendors" className="text-sm text-primary-foreground/80 hover:text-primary-foreground hover:translate-x-1 transition-all inline-block">Find Vendors</Link>
               </li>
               <li>
-                <Link href="#" className="text-sm text-primary-foreground/80 hover:text-primary-foreground hover:translate-x-1 transition-all inline-block">Browse Venues</Link>
+                <Link href="/venues" className="text-sm text-primary-foreground/80 hover:text-primary-foreground hover:translate-x-1 transition-all inline-block">Browse Venues</Link>
               </li>
               <li>
-                <Link href="#" className="text-sm text-primary-foreground/80 hover:text-primary-foreground hover:translate-x-1 transition-all inline-block">Wedding Blog</Link>
+                <Link href="/blog" className="text-sm text-primary-foreground/80 hover:text-primary-foreground hover:translate-x-1 transition-all inline-block">Wedding Blog</Link>
               </li>
               <li>
-                <Link href="#" className="text-sm text-primary-foreground/80 hover:text-primary-foreground hover:translate-x-1 transition-all inline-block">About Us</Link>
+                <Link href="/about" className="text-sm text-primary-foreground/80 hover:text-primary-foreground hover:translate-x-1 transition-all inline-block">About Us</Link>
               </li>
             </ul>
           </div>
@@ -60,16 +60,16 @@ export default function Footer() {
             <h4 className="text-base font-semibold mb-7 uppercase tracking-wider">For Vendors</h4>
             <ul className="space-y-4">
               <li>
-                <Link href="#" className="text-sm text-primary-foreground/80 hover:text-primary-foreground hover:translate-x-1 transition-all inline-block">Join as Vendor</Link>
+                <Link href="/join-vendor" className="text-sm text-primary-foreground/80 hover:text-primary-foreground hover:translate-x-1 transition-all inline-block">Join as Vendor</Link>
               </li>
               <li>
-                <Link href="#" className="text-sm text-primary-foreground/80 hover:text-primary-foreground hover:translate-x-1 transition-all inline-block">Pricing Plans</Link>
+                <Link href="/pricing" className="text-sm text-primary-foreground/80 hover:text-primary-foreground hover:translate-x-1 transition-all inline-block">Pricing Plans</Link>
               </li>
               <li>
-                <Link href="#" className="text-sm text-primary-foreground/80 hover:text-primary-foreground hover:translate-x-1 transition-all inline-block">Success Stories</Link>
+                <Link href="/success-stories" className="text-sm text-primary-foreground/80 hover:text-primary-foreground hover:translate-x-1 transition-all inline-block">Success Stories</Link>
               </li>
               <li>
-                <Link href="#" className="text-sm text-primary-foreground/80 hover:text-primary-foreground hover:translate-x-1 transition-all inline-block">Resources</Link>
+                <Link href="/resources" className="text-sm text-primary-foreground/80 hover:text-primary-foreground hover:translate-x-1 transition-all inline-block">Resources</Link>
               </li>
             </ul>
           </div>
@@ -100,9 +100,9 @@ export default function Footer() {
             © 2026 WeddingHub. All rights reserved.
           </p>
           <div className="flex items-center gap-8 text-xs tracking-wide">
-            <Link href="#" className="text-primary-foreground">Privacy Policy</Link>
-            <Link href="#" className="text-primary-foreground">Terms of Service</Link>
-            <Link href="#" className="text-primary-foreground">Cookie Policy</Link>
+            <Link href="/privacy-policy" className="text-primary-foreground hover:underline">Privacy Policy</Link>
+            <Link href="/terms" className="text-primary-foreground hover:underline">Terms of Service</Link>
+            <Link href="/cookie-policy" className="text-primary-foreground hover:underline">Cookie Policy</Link>
           </div>
         </div>
       </div>

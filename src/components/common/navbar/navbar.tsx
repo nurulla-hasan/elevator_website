@@ -10,7 +10,7 @@ import { MobileNav } from "./mobile-nav"
 const navItems = [
   { name: "Home", href: "/", icon: House },
   { name: "Vendors", href: "/vendors", icon: Store },
-  { name: "Venue Finder", href: "/venue-finder", icon: MapPin },
+  { name: "Venue Finder", href: "/venues", icon: MapPin },
   { name: "Post Request", href: "/post-request", icon: FileText },
 ]
 

@@ -1,7 +1,7 @@
 "use client"
 import * as React from "react"
 import { 
-  ChevronRight
+  ArrowRight,
 } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -77,7 +77,7 @@ export default function Categories() {
           description="Find the best wedding professionals by category"
         >
           <Button variant="link" className="hover:text-primary">
-            View all categories <ChevronRight />
+            View all categories <ArrowRight />
           </Button>
         </PageHeader>
       </div>

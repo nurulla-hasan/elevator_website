@@ -1,5 +1,5 @@
 "use client"
-import { ChevronRight } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import PageHeader from "@/components/ui/custom/page-header"
 import { VendorCard } from "@/components/common/vendor-card"
@@ -123,7 +123,7 @@ export default function FeaturedVendors() {
           description="Top-rated professionals for your special day"
         >
           <Button variant="link" className="hover:text-primary">
-            View All <ChevronRight />
+            View All <ArrowRight />
           </Button>
         </PageHeader>
       </div>

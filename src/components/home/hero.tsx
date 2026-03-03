@@ -1,53 +1,75 @@
-import React from "react";
-import { Search, MapPin } from "lucide-react";
+
+import { Search, MapPin, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 
 export default function Hero() {
   return (
-    <section className="pink-overlay relative w-full h-[calc(100vh-64px)] lg:h-[calc(100vh-80px)]">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+    <section className="relative w-full h-[calc(100vh-64px)] lg:h-[calc(100vh-80px)] overflow-hidden">
+      {/* Background Image with Overlay */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 scale-105"
         style={{
-          backgroundImage: `url('/home/hero.png')`,
+          backgroundImage: `url('/home/hero.jpg')`,
         }}
       />
+      {/* Pinkish Gradient Overlay for Client Requirement */}
+      <div className="absolute inset-0 bg-primary/10 bg-linear-to-tr from-primary/10 via-black/40 to-primary/20 z-10" />
+      <div className="absolute inset-0 bg-black/30 z-10" />
       
+      {/* Subtle Pink Glows */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[150px] z-0 animate-pulse" />
+      <div className="absolute bottom-1/4 right-1/4 w-125 h-125 bg-primary/15 rounded-full blur-[180px] z-0 animate-pulse delay-1000" />
+
       {/* Content */}
       <div className="container mx-auto relative z-20 flex h-full flex-col items-center justify-center px-4 text-center text-white">
-        <h1 className="mb-3 text-3xl font-bold tracking-tight md:text-5xl lg:text-6xl leading-tight">
-          Find Your Perfect <br className="md:hidden" /> Wedding Vendors
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <Sparkles className="w-4 h-4 text-primary" />
+          <span className="text-sm font-medium tracking-wide uppercase">Start Your Journey Together</span>
+        </div>
+
+        <h1 className="mb-6 text-4xl font-extrabold tracking-tight md:text-6xl lg:text-7xl leading-[1.1] animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
+          Crafting Your Perfect <br /> 
+          <span className="text-primary italic font-serif drop-shadow-[0_2px_10px_rgba(var(--primary),0.3)]">Wedding Story</span>
         </h1>
-        <p className="mb-6 max-w-2xl text-base opacity-90 md:text-xl px-2">
-          Connect with the best wedding professionals and create your dream celebration
+        
+        <p className="mb-10 max-w-2xl text-lg font-medium text-white/95 md:text-xl px-2 leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500 drop-shadow-md">
+          Connect with the finest wedding vendors and venues. From intimate ceremonies 
+          to grand celebrations, we help you find the best professionals for your big day.
         </p>
 
         {/* Search Bar */}
-        <div className="flex w-full max-w-4xl flex-col gap-2 rounded-xl bg-white p-2 shadow-2xl md:flex-row md:items-center md:gap-0">
-          <div className="flex flex-1 items-center px-3 py-1 md:py-0 md:px-4">
-            <Search className="mr-2 h-4 w-4 md:h-5 md:w-5 text-muted-foreground shrink-0" />
-            <Input 
-              type="text" 
-              placeholder="Search venues, caterers, photo" 
-              className="h-9 md:h-12 border-none bg-transparent text-sm md:text-base text-black focus-visible:ring-0 placeholder:text-muted-foreground/70"
-            />
-          </div>
-          
-          <Separator orientation="vertical" className="hidden h-8 md:block" />
-
-          <div className="flex flex-1 items-center px-3 py-1 md:py-0 md:px-4 border-t border-border md:border-none">
-            <MapPin className="mr-2 h-4 w-4 md:h-5 md:w-5 text-muted-foreground shrink-0" />
-            <Input 
-              type="text" 
-              placeholder="Location" 
-              className="h-9 md:h-12 border-none bg-transparent text-sm md:text-base text-black focus-visible:ring-0 placeholder:text-muted-foreground/70"
-            />
+        <div className="flex w-full max-w-5xl flex-col gap-2 rounded-2xl bg-white/95 backdrop-blur-sm p-3 shadow-[0_20px_50px_rgba(0,0,0,0.3)] md:flex-row md:items-center md:gap-0 animate-in fade-in zoom-in-95 duration-1000 delay-700 border border-white/20">
+          <div className="flex flex-[1.2] items-center px-4 py-2 md:py-0">
+            <Search className="mr-3 h-5 w-5 text-primary shrink-0" />
+            <div className="flex flex-col items-start w-full">
+              <span className="text-[10px] uppercase font-bold text-muted-foreground/60 tracking-wider mb-0.5 ml-1">Looking for</span>
+              <Input
+                type="text"
+                placeholder="Venues, Photographers..."
+                className="h-8 border-none bg-transparent p-0 text-base text-black focus-visible:ring-0 placeholder:text-muted-foreground/50 font-medium"
+              />
+            </div>
           </div>
 
-          <Button className="h-10 md:h-12 w-full md:w-auto px-8 text-base md:text-lg font-semibold bg-primary hover:bg-primary/90 transition-colors">
-            Search
+          <Separator orientation="vertical" className="hidden h-10 md:block bg-slate-200" />
+
+          <div className="flex flex-1 items-center px-4 py-2 md:py-0 border-t border-slate-100 md:border-none">
+            <MapPin className="mr-3 h-5 w-5 text-primary shrink-0" />
+            <div className="flex flex-col items-start w-full">
+              <span className="text-[10px] uppercase font-bold text-muted-foreground/60 tracking-wider mb-0.5 ml-1">Location</span>
+              <Input
+                type="text"
+                placeholder="Where in the city?"
+                className="h-8 border-none bg-transparent p-0 text-base text-black focus-visible:ring-0 placeholder:text-muted-foreground/50 font-medium"
+              />
+            </div>
+          </div>
+
+          <Button className="h-14 w-full md:w-auto px-10 text-lg font-bold bg-primary hover:bg-primary/90 transition-all shadow-lg hover:shadow-primary/20 rounded-xl md:ml-2">
+            Explore Now
           </Button>
         </div>
       </div>

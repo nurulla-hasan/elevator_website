@@ -13,6 +13,7 @@ import Autoplay from "embla-carousel-autoplay"
 import { cn } from "@/lib/utils"
 import { VenueCard } from "@/components/common/venue-card"
 import { Venue } from "@/types/venue.type"
+import { ArrowRight } from "lucide-react"
 
 const venues: Venue[] = [
   {
@@ -113,7 +114,7 @@ export default function VenuePreview() {
           description="Discover the most beautiful spaces for your unforgettable moments"
         >
           <Button variant="link" className="hover:text-primary">
-            Explore All Venues
+            Explore All Venues <ArrowRight />
           </Button>
         </PageHeader>
       </div>
