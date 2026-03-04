@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import PageHeader from '@/components/ui/custom/page-header'
 import PageLayout from '@/components/ui/custom/page-layout'
 import VendorFilter from '@/components/main-route/vendor/vendor-filter'
@@ -90,7 +91,9 @@ export default function VendorsPage() {
         />
 
         <div className="sticky top-16 z-30 backdrop-blur-md pb-4 pt-8 rounded-xl -mx-4 px-4">
-          <VendorFilter />
+          <Suspense fallback={<div>Loading filters...</div>}>
+            <VendorFilter />
+          </Suspense>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
