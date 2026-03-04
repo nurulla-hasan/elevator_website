@@ -22,12 +22,12 @@ interface VendorDetailsProps {
   slug: string;
 }
 
-export const VendorDetails = ({ vendor, slug }: VendorDetailsProps) => {
+export const VendorDetails = ({ vendor }: VendorDetailsProps) => {
   return (
     <Card className="overflow-hidden p-0">
       <div className="grid grid-cols-1 md:grid-cols-12">
         {/* Image Section - 5 columns */}
-        <div className="md:col-span-5 relative aspect-square md:aspect-auto h-80 md:h-full">
+        <div className="md:col-span-5 relative aspect-4/3 md:aspect-auto w-full md:h-full">
           <Image
             src={vendor.image}
             alt={vendor.name}
@@ -128,24 +128,26 @@ export const VendorDetails = ({ vendor, slug }: VendorDetailsProps) => {
           </div>
 
           <div className="pt-8 flex flex-col sm:flex-row gap-4">
-            <Button size="lg" className="flex-1 font-bold h-12">
-              <Calendar className="mr-2" size={18} />
+            <Button size="lg">
+              <Calendar size={20} />
               Book Now
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="flex-1 font-bold h-12"
             >
-              <Phone className="mr-2" size={18} />
+              <Phone size={20} />
               Contact Vendor
             </Button>
-            <Link
-              href={`/vendor-profile/${slug}`}
-              className="flex items-center justify-center p-3 rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors"
+            <Button
+              size="lg"
+              variant="outline"
+              asChild
             >
-              <ExternalLink size={18} />
-            </Link>
+              <Link href={`/vendors/vendor-profile/1`}>
+                <ExternalLink size={18} /> View Profile
+              </Link>
+            </Button>
           </div>
         </div>
       </div>
