@@ -13,7 +13,7 @@ const PageLayout = ({ children, pagination, className, paddingSize = "default" }
     // compact: "px-5 pt-5 pb-12 lg:pb-18 min-h-[calc(100vh-248px)] relative",
     default: "px-5 py-12 lg:py-18",
     small: "px-5 pt-5 pb-12 lg:pb-18",
-    none: "",
+    none: "px-5 pb-12 lg:pb-18",
   };
 
   return (
