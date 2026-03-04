@@ -3,6 +3,7 @@ import PageLayout from '@/components/ui/custom/page-layout'
 import VendorFilter from '@/components/main-route/vendor/vendor-filter'
 import { VendorCard } from '@/components/common/vendor-card'
 import { Vendor } from '@/types/vendor.type'
+import CustomBreadcrumb from '@/components/ui/custom/custom-breadcrumb'
 
 // Mock data for vendors
 const mockVendors: Vendor[] = [
@@ -77,7 +78,13 @@ const mockVendors: Vendor[] = [
 export default function VendorsPage() {
   return (
     <PageLayout paddingSize='small' className='min-h-screen'>
-        <PageHeader
+      <CustomBreadcrumb 
+        links={[
+          { name: "Home", href: "/" },
+          { name: "Vendors", isCurrent: true }
+        ]} 
+      />
+      <PageHeader
           title="Find Your Perfect Vendors"
           description="Browse verified wedding professionals to make your big day special."
         />
