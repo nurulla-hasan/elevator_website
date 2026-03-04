@@ -9,7 +9,7 @@ import { VendorDetails } from "@/components/main-route/vendor/details/vendor-det
 const mockVendor: Vendor = {
   id: "1",
   name: "Royal Palace Events",
-  category: "Venues",
+  category: "Photographers",
   location: "Clifton, Karachi",
   rating: 4.9,
   reviews: 245,
