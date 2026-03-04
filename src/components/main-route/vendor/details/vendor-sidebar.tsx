@@ -5,7 +5,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { VendorContact } from "@/types/vendor.type";
 import { CalendarDays, Info, Mail, MessageSquare, Phone, Send } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface VendorSidebarProps {
   contact: VendorContact;
@@ -13,7 +13,12 @@ interface VendorSidebarProps {
 }
 
 export const VendorSidebar = ({ contact }: VendorSidebarProps) => {
-  const [date, setDate] = useState<Date | undefined>(new Date());
+  const [date, setDate] = useState<Date | undefined>(undefined);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setDate(new Date());
+  }, []);
 
   return (
     <div className="space-y-8 sticky top-24">

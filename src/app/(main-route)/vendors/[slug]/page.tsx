@@ -3,6 +3,8 @@ import PageLayout from "@/components/ui/custom/page-layout";
 import { VendorHero } from "@/components/main-route/vendor/details/vendor-hero";
 import { VendorServices } from "@/components/main-route/vendor/details/vendor-services";
 import { VendorPackages } from "@/components/main-route/vendor/details/vendor-packages";
+import { VendorPortfolioSection } from "@/components/main-route/vendor/details/vendor-portfolio";
+import { VendorReviews } from "@/components/main-route/vendor/details/vendor-reviews";
 import { VendorSidebar } from "@/components/main-route/vendor/details/vendor-sidebar";
 import { Vendor } from "@/types/vendor.type";
 
@@ -64,6 +66,53 @@ const mockVendorDetails: Vendor = {
       ],
     },
   ],
+  portfolio: {
+    videos: [
+      "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    ],
+    images: [
+      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80",
+    ]
+  },
+  reviewList: [
+    {
+      id: "rev-1",
+      userName: "Sarah & Michael",
+      rating: 5,
+      date: "2 weeks ago",
+      comment: "Absolutely amazing service! They exceeded all our expectations and made our wedding day truly special. Highly recommended!"
+    },
+    {
+      id: "rev-2",
+      userName: "Emily & David",
+      rating: 4.8,
+      date: "1 month ago",
+      comment: "The venue was beautiful and the staff was incredibly helpful throughout the planning process. Everything went smoothly on our big day."
+    },
+    {
+      id: "rev-3",
+      userName: "Jessica & Robert",
+      rating: 5,
+      date: "2 months ago",
+      comment: "Exceptional quality and professionalism. The attention to detail was remarkable. We couldn't have asked for a better experience."
+    }
+  ],
   contact: {
     phone: "+92 300 1234567",
     email: "info@royalpalace.com",
@@ -77,15 +126,26 @@ const mockVendorDetails: Vendor = {
 
 export default function VendorDetailsPage() {
   return (
-    <>
+    <div className="pt-20 md:pt-0">
       <VendorHero vendor={mockVendorDetails} />
       <PageLayout paddingSize="none" className="screen-height">
-        {/* Hero Section - Full Width */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        {/* Main Layout Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
           {/* Main Content */}
-          <div className="lg:col-span-2 space-y-12">
+          <div className="lg:col-span-2 space-y-8 md:space-y-12">
             <VendorServices services={mockVendorDetails.services || []} />
             <VendorPackages packages={mockVendorDetails.packages || []} />
+            
+            {mockVendorDetails.portfolio && (
+              <VendorPortfolioSection portfolio={mockVendorDetails.portfolio} />
+            )}
+
+            {mockVendorDetails.reviewList && (
+              <VendorReviews 
+                reviews={mockVendorDetails.reviewList} 
+                totalReviews={mockVendorDetails.reviews} 
+              />
+            )}
           </div>
 
           {/* Sidebar */}
@@ -97,6 +157,6 @@ export default function VendorDetailsPage() {
           </div>
         </div>
       </PageLayout>
-    </>
+    </div>
   );
 }

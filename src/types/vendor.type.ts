@@ -14,6 +14,21 @@ export interface Vendor {
   packages?: VendorPackage[]
   contact?: VendorContact
   availability?: Record<string, 'available' | 'booked'>
+  portfolio?: VendorPortfolio
+  reviewList?: VendorReview[]
+}
+
+export interface VendorPortfolio {
+  videos?: string[]
+  images: string[]
+}
+
+export interface VendorReview {
+  id: string
+  userName: string
+  rating: number
+  date: string
+  comment: string
 }
 
 export interface VendorPackage {
