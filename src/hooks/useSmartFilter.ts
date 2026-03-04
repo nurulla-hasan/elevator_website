@@ -43,26 +43,43 @@ export const useSmartFilter = () => {
   );
 
   const updateBatch = useCallback(
-    (updates: Record<string, string | number | null>) => {
-      const params = new URLSearchParams(searchParams.toString());
-      let hasFilterChanged = false;
-
-      Object.entries(updates).forEach(([key, value]) => {
-        if (value && value !== "") {
-          params.set(key, String(value));
-        } else {
-          params.delete(key);
-        }
-
-        if (key !== "page") {
-          hasFilterChanged = true;
-        }
-      });
-      if (hasFilterChanged) {
-        params.set("page", "1");
+    (updates: Record<string, string | number | null>, debounceTime: number = 0) => {
+      if (Object.keys(updates).some(key => timeoutRefs.current[key])) {
+        Object.keys(updates).forEach(key => {
+          if (timeoutRefs.current[key]) clearTimeout(timeoutRefs.current[key]);
+        });
       }
 
-      router.push(`${pathname}?${params.toString()}`, { scroll: false });
+      const executeUpdate = () => {
+        const params = new URLSearchParams(searchParams.toString());
+        let hasFilterChanged = false;
+
+        Object.entries(updates).forEach(([key, value]) => {
+          if (value && value !== "") {
+            params.set(key, String(value));
+          } else {
+            params.delete(key);
+          }
+
+          if (key !== "page") {
+            hasFilterChanged = true;
+          }
+        });
+        
+        if (hasFilterChanged) {
+          params.set("page", "1");
+        }
+
+        router.push(`${pathname}?${params.toString()}`, { scroll: false });
+        Object.keys(updates).forEach(key => delete timeoutRefs.current[key]);
+      };
+
+      if (debounceTime > 0) {
+        const firstKey = Object.keys(updates)[0];
+        timeoutRefs.current[firstKey] = setTimeout(executeUpdate, debounceTime);
+      } else {
+        executeUpdate();
+      }
     },
     [searchParams, pathname, router]
   );

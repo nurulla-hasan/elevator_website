@@ -11,7 +11,7 @@ export default function Hero() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 scale-105"
         style={{
-          backgroundImage: `url('/home/hero.jpg')`,
+          backgroundImage: `url('/home/hero2.jpg')`,
         }}
       />
       {/* Pinkish Gradient Overlay for Client Requirement */}
@@ -32,10 +32,10 @@ export default function Hero() {
 
         <h1 className="mb-6 text-4xl font-semibold tracking-widest md:text-6xl lg:text-7xl leading-[1.1] animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
           Crafting Your Perfect <br /> 
-          <span className="text-primary italic font-serif drop-shadow-[0_2px_10px_rgba(var(--primary),0.3)]">Wedding Story</span>
+          <span className="text-primary italic font-serif">Wedding Story</span>
         </h1>
         
-        <p className="mb-10 max-w-2xl text-lg font-medium text-white/95 md:text-xl px-2 leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500 drop-shadow-md">
+        <p className="mb-10 max-w-2xl text-sm font-medium text-white/95 md:text-lg px-2 leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500 drop-shadow-md">
           Connect with the finest wedding vendors and venues. From intimate ceremonies 
           to grand celebrations, we help you find the best professionals for your big day.
         </p>
@@ -68,7 +68,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <Button className="h-12 w-full md:w-auto transition-all shadow-lg hover:shadow-primary/20 md:ml-2 text-primary-foreground">
+          <Button className="h-12 px-6 w-full md:w-auto transition-all shadow-lg hover:shadow-primary/20 md:ml-2 text-primary-foreground">
             Explore Now
           </Button>
         </div>

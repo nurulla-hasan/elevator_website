@@ -7,4 +7,5 @@ export interface Vendor {
   location: string
   price: string
   image: string
+  verified?: boolean
 }

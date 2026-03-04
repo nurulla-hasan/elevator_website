@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { MapPin, Heart } from "lucide-react"
+import { MapPin, Heart, ShieldCheck } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -65,7 +65,7 @@ export function VendorCard({ vendor, className, variant = "vertical" }: VendorCa
   }
 
   return (
-    <Card className={cn("pt-0 overflow-hidden group", className)}>
+    <Card className={cn("pt-0 overflow-hidden group relative", className)}>
       <div className="relative aspect-5/3 w-full overflow-hidden">
         <Image
           src={vendor.image}
@@ -74,6 +74,14 @@ export function VendorCard({ vendor, className, variant = "vertical" }: VendorCa
           className="object-cover transition-transform duration-700 group-hover:scale-110"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
         />
+        {vendor.verified && (
+          <div className="absolute top-3 left-3 z-10">
+            <Badge variant="secondary" className="bg-green-500/90 backdrop-blur-sm text-white border-none flex items-center gap-1 py-1 px-2.5 shadow-lg">
+              <ShieldCheck className="h-3.5 w-3.5" />
+              <span className="text-[10px] font-bold uppercase tracking-wider">Verified</span>
+            </Badge>
+          </div>
+        )}
         <div className="absolute top-3 right-3">
           <Button size="icon" variant="secondary" className="rounded-full bg-secondary/80 backdrop-blur-sm hover:bg-secondary hover:text-destructive transition-colors">
             <Heart />
