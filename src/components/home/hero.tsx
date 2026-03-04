@@ -30,7 +30,7 @@ export default function Hero() {
           <span className="text-sm font-medium tracking-wide uppercase">Start Your Journey Together</span>
         </div>
 
-        <h1 className="mb-6 text-4xl font-extrabold tracking-tight md:text-6xl lg:text-7xl leading-[1.1] animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
+        <h1 className="mb-6 text-4xl font-semibold tracking-widest md:text-6xl lg:text-7xl leading-[1.1] animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
           Crafting Your Perfect <br /> 
           <span className="text-primary italic font-serif drop-shadow-[0_2px_10px_rgba(var(--primary),0.3)]">Wedding Story</span>
         </h1>
@@ -41,34 +41,34 @@ export default function Hero() {
         </p>
 
         {/* Search Bar */}
-        <div className="flex w-full max-w-5xl flex-col gap-2 rounded-2xl bg-white/95 backdrop-blur-sm p-3 shadow-[0_20px_50px_rgba(0,0,0,0.3)] md:flex-row md:items-center md:gap-0 animate-in fade-in zoom-in-95 duration-1000 delay-700 border border-white/20">
+        <div className="flex w-full max-w-5xl flex-col gap-2 rounded-2xl bg-card/95 backdrop-blur-sm p-3 shadow-2xl md:flex-row md:items-center md:gap-0 animate-in fade-in zoom-in-95 duration-1000 delay-700 border border-border/50">
           <div className="flex flex-[1.2] items-center px-4 py-2 md:py-0">
             <Search className="mr-3 h-5 w-5 text-primary shrink-0" />
             <div className="flex flex-col items-start w-full">
-              <span className="text-[10px] uppercase font-bold text-muted-foreground/60 tracking-wider mb-0.5 ml-1">Looking for</span>
+              <span className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider mb-1 ml-1">Looking for</span>
               <Input
                 type="text"
                 placeholder="Venues, Photographers..."
-                className="h-8 border-none bg-transparent p-0 text-base text-black focus-visible:ring-0 placeholder:text-muted-foreground/50 font-medium"
+                className="border-none h-8 shadow-none"
               />
             </div>
           </div>
 
-          <Separator orientation="vertical" className="hidden h-10 md:block bg-slate-200" />
+          <Separator orientation="vertical" className="hidden h-10 md:block bg-border" />
 
-          <div className="flex flex-1 items-center px-4 py-2 md:py-0 border-t border-slate-100 md:border-none">
+          <div className="flex flex-1 items-center px-4 py-2 md:py-0 border-t border-border md:border-none">
             <MapPin className="mr-3 h-5 w-5 text-primary shrink-0" />
             <div className="flex flex-col items-start w-full">
-              <span className="text-[10px] uppercase font-bold text-muted-foreground/60 tracking-wider mb-0.5 ml-1">Location</span>
+              <span className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider mb-1 ml-1">Location</span>
               <Input
                 type="text"
                 placeholder="Where in the city?"
-                className="h-8 border-none bg-transparent p-0 text-base text-black focus-visible:ring-0 placeholder:text-muted-foreground/50 font-medium"
+                className="border-none h-8 shadow-none"
               />
             </div>
           </div>
 
-          <Button className="h-14 w-full md:w-auto px-10 text-lg font-bold bg-primary hover:bg-primary/90 transition-all shadow-lg hover:shadow-primary/20 rounded-xl md:ml-2">
+          <Button className="h-12 w-full md:w-auto transition-all shadow-lg hover:shadow-primary/20 md:ml-2 text-primary-foreground">
             Explore Now
           </Button>
         </div>
