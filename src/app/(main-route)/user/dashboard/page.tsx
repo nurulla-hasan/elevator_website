@@ -13,6 +13,7 @@ import {
 import { BookingList } from "@/components/main-route/user/dashboard/booking/booking-list";
 import { RequestList } from "@/components/main-route/user/dashboard/request/request-list";
 import { PaymentList } from "@/components/main-route/user/dashboard/payment/payment-list";
+import { SavedVendorList } from "@/components/main-route/user/dashboard/saved/saved-vendor-list";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 export default function DashboardPage() {
@@ -61,6 +62,10 @@ export default function DashboardPage() {
             </TabsContent>
             <TabsContent value="payments" className="mt-0">
               <PaymentList />
+            </TabsContent>
+
+            <TabsContent value="saved" className="mt-0">
+              <SavedVendorList />
             </TabsContent>
             {/* Other contents will go here */}
           </div>

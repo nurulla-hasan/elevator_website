@@ -13,8 +13,8 @@ interface PaymentCardProps {
 
 export function PaymentCard({ payment }: PaymentCardProps) {
   return (
-    <Card className="overflow-hidden border-none shadow-sm bg-card/50">
-      <CardContent className="p-4">
+    <Card>
+      <CardContent>
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
           {/* Vendor Image */}
           <div className="relative w-full sm:w-32 h-24 rounded-lg overflow-hidden bg-muted flex items-center justify-center">
@@ -53,7 +53,7 @@ export function PaymentCard({ payment }: PaymentCardProps) {
               
               <div className="flex items-center gap-4">
                 <span className="text-xl font-bold text-primary">{payment.amount}</span>
-                <Button variant="outline" size="sm" className="h-9 px-4 rounded-lg">
+                <Button variant="outline" size="sm">
                   View Details
                 </Button>
               </div>

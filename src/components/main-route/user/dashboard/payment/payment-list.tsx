@@ -15,6 +15,7 @@ const mockPayments: IPayment[] = [
   {
     id: "pay-2",
     vendorName: "WePlan Associate",
+    vendorImage: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80",
     serviceName: "Bridal Makeup Package",
     date: "2/10/2026",
     amount: "$500",
