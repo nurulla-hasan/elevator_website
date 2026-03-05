@@ -1,5 +1,4 @@
-"use client"
-import React from "react"
+
 import { mockVenues } from "@/data/venues.data"
 import { VenueFilters } from "@/components/main-route/venues/venue-filters"
 import { VenueMap } from "@/components/main-route/venues/venue-map"
