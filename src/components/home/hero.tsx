@@ -41,7 +41,7 @@ export default function Hero() {
         </p>
 
         {/* Search Bar */}
-        <div className="flex w-full max-w-5xl flex-col gap-2 rounded-2xl bg-card/95 backdrop-blur-sm p-3 shadow-2xl md:flex-row md:items-center md:gap-0 animate-in fade-in zoom-in-95 duration-1000 delay-700 border border-border/50">
+        <div className="flex w-full max-w-5xl flex-col gap-2 rounded-2xl bg-card/95 backdrop-blur-sm p-3 shadow-2xl md:flex-row md:items-center md:gap-0 animate-in fade-in zoom-in-95 duration-1000 delay-700 border border-border/50 text-foreground">
           <div className="flex flex-[1.2] items-center px-4 py-2 md:py-0">
             <Search className="mr-3 h-5 w-5 text-primary shrink-0" />
             <div className="flex flex-col items-start w-full">
