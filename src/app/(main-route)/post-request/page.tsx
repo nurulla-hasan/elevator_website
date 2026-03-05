@@ -1,12 +1,24 @@
+import CustomBreadcrumb from "@/components/ui/custom/custom-breadcrumb";
 import PageHeader from "@/components/ui/custom/page-header";
+import PageLayout from "@/components/ui/custom/page-layout";
+import { PostRequestForm } from "@/components/main-route/post-request/post-request-form";
 
 export default function PostRequestPage() {
   return (
-    <div className="container mx-auto px-4 py-12 min-h-screen">
-      <PageHeader
-        title="Post a Request"
-        description="Submit a request for a wedding event on WE Plan."
+    <PageLayout paddingSize="small" className="screen-height">
+      <CustomBreadcrumb
+        links={[
+          { name: "Home", href: "/" },
+          { name: "Post Request", href: "/post-request", isCurrent: true },
+        ]}
       />
-    </div>
+      <div className="flex flex-col gap-8 pb-12">
+        <PageHeader
+          title="Post Your Wedding Requirement"
+          description="Submit your wedding requirements and get tailored proposals from top vendors."
+        />
+        <PostRequestForm />
+      </div>
+    </PageLayout>
   );
 }

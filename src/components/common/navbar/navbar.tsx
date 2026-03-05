@@ -2,16 +2,17 @@
 
 import { useState } from "react"
 import { usePathname } from "next/navigation"
-import { House, Store, MapPin, FileText } from "lucide-react"
+import { House, Store, MapPin, LayoutGrid, ClipboardList } from "lucide-react"
 import { NavLogo } from "./nav-logo"
 import { DesktopNav } from "./desktop-nav"
 import { MobileNav } from "./mobile-nav"
 
 const navItems = [
   { name: "Home", href: "/", icon: House },
+  { name: "Categories", href: "/category", icon: LayoutGrid },
   { name: "Vendors", href: "/vendors", icon: Store },
   { name: "Venue Finder", href: "/venues", icon: MapPin },
-  { name: "Post Request", href: "/post-request", icon: FileText },
+  { name: "Post Request", href: "/post-request", icon: ClipboardList },
 ]
 
 export function Navbar() {
