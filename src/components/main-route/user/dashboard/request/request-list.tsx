@@ -1,7 +1,6 @@
-"use client";
 
 import { RequestCard } from "./request-card";
-import { IRequest } from "@/types/booking";
+import { IRequest } from "@/types/request";
 import { Button } from "@/components/ui/button";
 
 const mockRequests: IRequest[] = [

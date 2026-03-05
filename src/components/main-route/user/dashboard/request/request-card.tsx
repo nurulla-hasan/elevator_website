@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
-import { IRequest } from "@/types/booking";
+import { IRequest } from "@/types/request";
 
 interface RequestCardProps {
   request: IRequest;
