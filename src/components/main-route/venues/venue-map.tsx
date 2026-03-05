@@ -2,6 +2,7 @@
 
 import React from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { Venue } from "@/types/venue.type"
 import { Map, Marker } from "pigeon-maps"
 
@@ -21,7 +22,8 @@ export function VenueMap({ venues }: VenueMapProps) {
         center={center} 
         zoom={zoom}
         minZoom={10}
-        maxZoom={18}
+        maxZoom={20}
+        metaWheelZoom={true}
         onBoundsChanged={({ center, zoom }) => {
           setCenter(center)
           setZoom(zoom)
@@ -41,8 +43,9 @@ export function VenueMap({ venues }: VenueMapProps) {
               anchor={[venue.lat, venue.lng]} 
               payload={venue}
             >
-              <div 
-                className="relative cursor-pointer hover:z-20 group pointer-events-auto transition-all duration-200"
+              <Link 
+                href={`/venues/${venue.id}`}
+                className="relative cursor-pointer hover:z-20 group pointer-events-auto transition-all duration-200 block"
                 style={{ 
                   transform: `translate(-50%, -100%) scale(${scale})`,
                   transformOrigin: 'bottom center'
@@ -60,7 +63,7 @@ export function VenueMap({ venues }: VenueMapProps) {
                   </div>
                   <div className="w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-t-12 border-t-card -mt-px drop-shadow-md"></div>
                 </div>
-              </div>
+              </Link>
             </Marker>
           )
         })}
