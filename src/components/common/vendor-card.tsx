@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { MapPin, Heart, ShieldCheck } from "lucide-react";
+import { MapPin, Heart, ShieldCheck, Flame } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -36,12 +36,23 @@ export function VendorCard({
           {/* Content */}
           <div className="flex-1 min-w-0 flex flex-col justify-between h-full">
             <div className="space-y-1">
-              <Badge
-                variant="secondary"
-                className="bg-primary/10 text-primary hover:bg-primary/15 border-none text-[10px] h-5 px-2"
-              >
-                {vendor.category}
-              </Badge>
+              <div className="flex items-center gap-2">
+                <Badge
+                  variant="secondary"
+                  className="bg-primary/10 text-primary hover:bg-primary/15 border-none text-[10px] h-5 px-2"
+                >
+                  {vendor.category}
+                </Badge>
+                {vendor.sponsored && (
+                  <Badge
+                    variant="secondary"
+                    className="bg-orange-500/10 text-orange-600 border-none text-[10px] h-5 px-2 flex items-center gap-1"
+                  >
+                    <Flame className="h-3 w-3 fill-current" />
+                    Sponsored
+                  </Badge>
+                )}
+              </div>
               <h3 className="text-base font-bold text-primary truncate">
                 {vendor.name}
               </h3>
@@ -90,19 +101,30 @@ export function VendorCard({
           className="object-cover transition-transform duration-700 group-hover:scale-110"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
         />
-        {vendor.verified && (
-          <div className="absolute top-3 left-3 z-10">
+        <div className="absolute top-3 left-3 z-10 flex flex-col gap-2">
+          {vendor.verified && (
             <Badge
               variant="secondary"
-              className="bg-green-500/90 backdrop-blur-sm text-white border-none flex items-center gap-1 py-1 px-2.5 shadow-lg"
+              className="bg-green-500/90 backdrop-blur-sm text-white border-none flex items-center gap-1 py-1 px-2.5 shadow-lg w-fit"
             >
               <ShieldCheck className="h-3.5 w-3.5" />
               <span className="text-[10px] font-bold uppercase tracking-wider">
                 Verified
               </span>
             </Badge>
-          </div>
-        )}
+          )}
+          {vendor.sponsored && (
+            <Badge
+              variant="secondary"
+              className="bg-orange-500/90 backdrop-blur-sm text-white border-none flex items-center gap-1 py-1 px-2.5 shadow-lg w-fit"
+            >
+              <Flame className="h-3.5 w-3.5 fill-current" />
+              <span className="text-[10px] font-bold uppercase tracking-wider">
+                Sponsored
+              </span>
+            </Badge>
+          )}
+        </div>
         <div className="absolute top-3 right-3">
           <Button
             size="icon"

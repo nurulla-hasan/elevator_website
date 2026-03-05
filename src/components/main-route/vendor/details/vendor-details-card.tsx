@@ -8,6 +8,7 @@ import {
   MapPin,
   Star,
   ShieldCheck,
+  Flame,
   Share2,
   Heart,
   Phone,
@@ -61,8 +62,11 @@ export const VendorDetails = ({ vendor }: VendorDetailsProps) => {
               </Badge>
             )}
             {vendor.sponsored && (
-              <Badge>
-                Featured
+              <Badge
+                className="bg-orange-500/90 hover:bg-orange-500 border-none flex items-center gap-1.5 py-1 px-3 shadow-md"
+              >
+                <Flame size={14} className="fill-current" />
+                Sponsored
               </Badge>
             )}
           </div>
@@ -128,9 +132,11 @@ export const VendorDetails = ({ vendor }: VendorDetailsProps) => {
           </div>
 
           <div className="pt-8 flex flex-col sm:flex-row gap-4">
-            <Button size="lg">
-              <Calendar size={20} />
-              Book Now
+            <Button size="lg" asChild>
+              <Link href="/booking-checkout/1">
+                <Calendar size={20} />
+                Book Now
+              </Link>
             </Button>
             <Button
               size="lg"

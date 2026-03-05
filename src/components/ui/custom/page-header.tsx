@@ -4,8 +4,8 @@ import { Badge } from "@/components/ui/badge"
 import { ReactNode } from "react"
 
 interface PageHeaderProps {
-    title: string;
-    description: string;
+    title: ReactNode;
+    description: ReactNode;
     length?: number;
     children?: ReactNode;
 }

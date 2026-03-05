@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { StarRating } from "@/components/ui/custom/star-rating";
 import { Vendor } from "@/types/vendor.type";
-import { MapPin, ShieldCheck, Sparkles } from "lucide-react";
+import { MapPin, ShieldCheck, Flame } from "lucide-react";
 import Image from "next/image";
 
 interface VendorHeroProps {
@@ -37,7 +37,7 @@ export const VendorHero = ({ vendor }: VendorHeroProps) => {
                 )}
                 {vendor.sponsored && (
                   <Badge variant="outline" className="bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20 shrink-0">
-                    <Sparkles size={14} className="mr-1" /> Sponsored
+                    <Flame size={14} className="mr-1 fill-current" /> Sponsored
                   </Badge>
                 )}
               </div>

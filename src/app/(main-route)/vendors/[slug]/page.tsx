@@ -16,7 +16,7 @@ const mockVendor: Vendor = {
   price: "$2,500",
   image:
     "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80",
-  verified: true,
+  verified: false,
   sponsored: true,
   description:
     "Royal Palace Events is Karachi's premier wedding venue, offering luxurious halls and impeccable service for your special day. Experience the grandeur and elegance of our venue, perfectly suited for grand celebrations and intimate gatherings alike.",

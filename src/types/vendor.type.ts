@@ -32,13 +32,21 @@ export interface VendorReview {
 }
 
 export interface VendorPackage {
-  id: string
-  name: string
-  price: string
-  duration?: string
-  description: string
-  isPopular?: boolean
-  features: string[]
+  id: string;
+  name: string;
+  price: string;
+  duration?: string;
+  description: string;
+  isPopular?: boolean;
+  features: string[];
+  // Adding fields to match VendorCard data
+  category?: string;
+  location?: string;
+  rating?: number;
+  reviews?: number;
+  image?: string;
+  verified?: boolean;
+  sponsored?: boolean;
 }
 
 export interface VendorContact {

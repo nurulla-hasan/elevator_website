@@ -1,6 +1,6 @@
 "use client"
 
-import * as React from "react"
+import { useState } from "react"
 import { usePathname } from "next/navigation"
 import { House, Store, MapPin, FileText } from "lucide-react"
 import { NavLogo } from "./nav-logo"
@@ -16,7 +16,7 @@ const navItems = [
 
 export function Navbar() {
   const pathname = usePathname()
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false) // Mocked state for now
+  const [isLoggedIn, setIsLoggedIn] = useState(true) // Mocked state for now
 
   return (
     <header className="sticky top-0 z-50 w-full bg-primary text-primary-foreground shadow-md">
