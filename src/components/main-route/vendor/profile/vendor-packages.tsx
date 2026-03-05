@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { VendorPackage } from "@/types/vendor.type";
 import { Check, Clock, Sparkles } from "lucide-react";
+import Link from "next/link";
 
 interface VendorPackagesProps {
   packages: VendorPackage[];
@@ -60,8 +61,10 @@ export const VendorPackages = ({ packages }: VendorPackagesProps) => {
             </div>
 
             <div className="flex flex-col justify-end">
-              <Button size="lg" className="w-full">
-                Book This Package
+              <Button size="lg" className="w-full" asChild>
+                <Link href={`/booking-checkout/${pkg.id}`}>
+                  Book This Package
+                </Link>
               </Button>
             </div>
           </div>
