@@ -8,4 +8,14 @@ export interface Venue {
   image: string
   lat?: number
   lng?: number
+  reviews?: number
+  verified?: boolean
+  sponsored?: boolean
+  description?: string
+  services?: string[]
+  contact?: {
+    phone: string
+    email: string
+    whatsapp: string
+  }
 }

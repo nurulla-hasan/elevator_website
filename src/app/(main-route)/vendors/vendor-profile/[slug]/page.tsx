@@ -1,4 +1,3 @@
-
 import PageLayout from "@/components/ui/custom/page-layout";
 import { VendorHero } from "@/components/main-route/vendor/profile/vendor-hero";
 import { VendorServices } from "@/components/main-route/vendor/profile/vendor-services";
@@ -20,24 +19,22 @@ export default function VendorProfilePage() {
           <div className="lg:col-span-2 space-y-8 md:space-y-12">
             <VendorServices services={mockVendorDetails.services || []} />
             <VendorPackages packages={mockVendorDetails.packages || []} />
-            
+
             {mockVendorDetails.portfolio && (
               <VendorPortfolioSection portfolio={mockVendorDetails.portfolio} />
             )}
 
             {mockVendorDetails.reviewList && (
-              <VendorReviews 
-                reviews={mockVendorDetails.reviewList} 
-                totalReviews={mockVendorDetails.reviews} 
+              <VendorReviews
+                reviews={mockVendorDetails.reviewList}
+                totalReviews={mockVendorDetails.reviews}
               />
             )}
           </div>
 
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <VendorSidebar
-              vendor={mockVendorDetails}
-            />
+            <VendorSidebar vendor={mockVendorDetails} />
           </div>
         </div>
 
