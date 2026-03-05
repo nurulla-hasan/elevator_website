@@ -1,20 +1,14 @@
 import Image from "next/image";
-import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import {
   MapPin,
   Star,
-  ShieldCheck,
-  Flame,
   Share2,
   Heart,
   Phone,
   CheckCircle2,
-  Calendar,
-  ExternalLink,
   Users,
 } from "lucide-react";
 import { Venue } from "@/types/venue.type";
@@ -34,7 +28,7 @@ export const VenueDetails = ({ venue }: VenueDetailsProps) => {
             src={venue.image}
             alt={venue.name}
             fill
-            className="object-cover"
+            className="object-cover rounded-r-xl"
             priority
           />
           <div className="absolute top-4 right-4 flex gap-2">
@@ -52,24 +46,6 @@ export const VenueDetails = ({ venue }: VenueDetailsProps) => {
             >
               <Heart size={18} />
             </Button>
-          </div>
-          <div className="absolute top-4 left-4 flex flex-col gap-2">
-            {venue.verified && (
-              <Badge
-                variant="success"
-              >
-                <ShieldCheck size={14} />
-                Verified
-              </Badge>
-            )}
-            {venue.sponsored && (
-              <Badge
-                className="bg-orange-500/90 hover:bg-orange-500 border-none flex items-center gap-1.5 py-1 px-3 shadow-md"
-              >
-                <Flame size={14} className="fill-current" />
-                Sponsored
-              </Badge>
-            )}
           </div>
         </div>
 
@@ -115,7 +91,7 @@ export const VenueDetails = ({ venue }: VenueDetailsProps) => {
             <div className="space-y-4">
               <div className="flex items-baseline gap-2">
                 <span className="text-sm text-muted-foreground">
-                  Booking starts from
+                  Starting from
                 </span>
                 <span className="text-3xl font-bold text-foreground">
                   {venue.price}
@@ -137,15 +113,9 @@ export const VenueDetails = ({ venue }: VenueDetailsProps) => {
           </div>
 
           <div className="pt-8 flex flex-col sm:flex-row gap-4">
-            <Button size="lg" asChild>
-              <Link href={`/booking-checkout/${venue.id}`}>
-                <Calendar size={20} />
-                Book Now
-              </Link>
-            </Button>
             <Button
               size="lg"
-              variant="outline"
+              className="w-full sm:w-auto"
             >
               <Phone size={20} />
               Contact Venue

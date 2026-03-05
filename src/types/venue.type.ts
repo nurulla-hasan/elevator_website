@@ -9,8 +9,6 @@ export interface Venue {
   lat?: number
   lng?: number
   reviews?: number
-  verified?: boolean
-  sponsored?: boolean
   description?: string
   services?: string[]
   contact?: {

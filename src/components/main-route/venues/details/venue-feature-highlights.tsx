@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { ShieldCheck, Utensils, Car } from "lucide-react";
+import { Sparkles, Utensils, Car } from "lucide-react";
 
 export const VenueFeatureHighlights = () => {
   return (
@@ -7,12 +7,12 @@ export const VenueFeatureHighlights = () => {
       <Card>
         <CardContent className="flex flex-col items-start gap-4">
           <div className="p-2 rounded-full bg-background border border-border">
-            <ShieldCheck className="text-emerald-600" size={20} />
+            <Sparkles className="text-amber-600" size={20} />
           </div>
           <div>
-            <h4 className="font-bold text-sm">Verified Venue</h4>
+            <h4 className="font-bold text-sm">Premium Amenities</h4>
             <p className="text-xs text-muted-foreground">
-              Directly verified by our expert team.
+              Top-notch facilities for your special events.
             </p>
           </div>
         </CardContent>

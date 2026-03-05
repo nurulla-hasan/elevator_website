@@ -11,12 +11,10 @@ const mockVenue: Venue = {
   name: "Grand Ballroom Palace",
   location: "DHA Phase 6, Karachi",
   capacity: "500-1000 guests",
-  price: "$5,000",
+  price: "5,000",
   rating: 4.8,
   reviews: 156,
   image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=2074&auto=format&fit=crop",
-  verified: true,
-  sponsored: true,
   description: "Grand Ballroom Palace is the pinnacle of luxury in Karachi. With state-of-the-art facilities, breathtaking architecture, and exceptional service, we provide the perfect backdrop for your wedding, corporate event, or grand celebration.",
   services: [
     "Full Air Conditioning",
