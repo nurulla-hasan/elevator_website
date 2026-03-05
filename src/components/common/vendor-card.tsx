@@ -31,6 +31,19 @@ export function VendorCard({
               fill
               className="object-cover"
             />
+            {vendor.sponsored && (
+              <div className="absolute top-1 left-1 z-10">
+                <Badge
+                  variant="secondary"
+                  className="bg-orange-500/90 backdrop-blur-sm text-white border-none flex items-center gap-1 py-0.5 px-1.5 shadow-lg w-fit text-[8px] h-4"
+                >
+                  <Flame className="h-2.5 w-2.5 fill-current" />
+                  <span className="font-bold uppercase tracking-wider">
+                    Sponsored
+                  </span>
+                </Badge>
+              </div>
+            )}
           </div>
 
           {/* Content */}
@@ -43,13 +56,13 @@ export function VendorCard({
                 >
                   {vendor.category}
                 </Badge>
-                {vendor.sponsored && (
+                {vendor.verified && (
                   <Badge
                     variant="secondary"
-                    className="bg-orange-500/10 text-orange-600 border-none text-[10px] h-5 px-2 flex items-center gap-1"
+                    className="bg-green-500/10 text-green-600 border-none text-[10px] h-5 px-2 flex items-center gap-1"
                   >
-                    <Flame className="h-3 w-3 fill-current" />
-                    Sponsored
+                    <ShieldCheck className="h-3 w-3" />
+                    Verified
                   </Badge>
                 )}
               </div>

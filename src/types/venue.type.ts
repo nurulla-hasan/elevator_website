@@ -6,4 +6,6 @@ export interface Venue {
   price: string
   rating: number
   image: string
+  lat?: number
+  lng?: number
 }

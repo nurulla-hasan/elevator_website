@@ -5,6 +5,7 @@ import { Heart, User, LogOut, Settings, LucideIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./theme-toggle";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -38,9 +39,9 @@ export function DesktopNav({
             key={item.href}
             href={item.href}
             className={cn(
-              "text-sm font-medium transition-colors hover:text-primary-foreground/80 md:text-base",
+              "text-sm uppercase tracking-wider transition-colors hover:text-primary-foreground/80",
               pathname === item.href
-                ? "text-primary-foreground underline underline-offset-8 decoration-2"
+                ? "text-white font-semibold"
                 : "text-primary-foreground/90",
             )}
           >
@@ -61,12 +62,21 @@ export function DesktopNav({
             </Link>
 
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="rounded-full">
-                  <User />
-                </Button>
+              <DropdownMenuTrigger>
+                <div className="flex items-center gap-2 cursor-pointer">
+                  <Avatar className="h-10 w-10 border-2">
+                    <AvatarImage
+                      src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=100&auto=format&fit=crop"
+                      alt="Nurulla Hasan"
+                    />
+                    <AvatarFallback>NH</AvatarFallback>
+                  </Avatar>
+                  <span className="text-sm font-medium">
+                    {"Nurulla Hasan"}
+                  </span>
+                </div>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
+              <DropdownMenuContent align="end" className="w-56">
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>

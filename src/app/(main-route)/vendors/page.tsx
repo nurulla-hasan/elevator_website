@@ -8,7 +8,7 @@ import CustomBreadcrumb from '@/components/ui/custom/custom-breadcrumb'
 
 export default function VendorsPage() {
   return (
-    <PageLayout paddingSize='small' className='min-h-screen'>
+    <PageLayout paddingSize='small' className='screen-height'>
       <CustomBreadcrumb 
         links={[
           { name: "Home", href: "/" },

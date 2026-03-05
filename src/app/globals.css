@@ -55,6 +55,13 @@
     content: "";
     @apply absolute inset-0 bg-linear-to-t from-primary/30 to-black/50 pointer-events-none z-1;
   }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
 :root {
