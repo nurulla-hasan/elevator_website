@@ -3,16 +3,17 @@
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { VendorContact } from "@/types/vendor.type";
-import { CalendarDays, Info, Mail, MessageSquare, Phone, Send } from "lucide-react";
+import { Vendor } from "@/types/vendor.type";
+import { CalendarDays, Info, Mail, MessageSquare, Phone } from "lucide-react";
 import { useEffect, useState } from "react";
+import { SendQuoteModal } from "./send-quote-modal";
 
 interface VendorSidebarProps {
-  contact: VendorContact;
-  availability: Record<string, 'available' | 'booked'>;
+  vendor: Vendor;
 }
 
-export const VendorSidebar = ({ contact }: VendorSidebarProps) => {
+export const VendorSidebar = ({ vendor }: VendorSidebarProps) => {
+  const contact = vendor.contact!;
   const [date, setDate] = useState<Date | undefined>(undefined);
 
   useEffect(() => {
@@ -86,10 +87,7 @@ export const VendorSidebar = ({ contact }: VendorSidebarProps) => {
             </Button>
           </div>
 
-          <Button variant="outline" size="lg" className="w-full flex items-center gap-3 group">
-            <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            Send Quote
-          </Button>
+          <SendQuoteModal vendor={vendor} />
 
           <div className="pt-6 space-y-4 border-t border-border">
             <div className="flex items-center gap-3.5 group cursor-pointer">

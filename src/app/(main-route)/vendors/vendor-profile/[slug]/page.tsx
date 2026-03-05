@@ -151,8 +151,7 @@ export default function VendorProfilePage() {
           {/* Sidebar */}
           <div className="lg:col-span-1">
             <VendorSidebar
-              contact={mockVendorDetails.contact!}
-              availability={mockVendorDetails.availability || {}}
+              vendor={mockVendorDetails}
             />
           </div>
         </div>
