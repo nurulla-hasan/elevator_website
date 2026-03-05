@@ -2,7 +2,7 @@
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import PageHeader from "@/components/ui/custom/page-header"
-import { VendorCard } from "@/components/common/vendor-card"
+import { VendorCard } from "@/components/main-route/vendor/vendor-card"
 import {
   Carousel,
   CarouselContent,

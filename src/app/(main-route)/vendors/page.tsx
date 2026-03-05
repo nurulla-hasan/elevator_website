@@ -2,7 +2,7 @@ import { Suspense } from 'react'
 import PageHeader from '@/components/ui/custom/page-header'
 import PageLayout from '@/components/ui/custom/page-layout'
 import VendorFilter from '@/components/main-route/vendor/vendor-filter'
-import { VendorCard } from '@/components/common/vendor-card'
+import { VendorCard } from '@/components/main-route/vendor/vendor-card'
 import { mockVendors } from '@/data/vendors.data'
 import CustomBreadcrumb from '@/components/ui/custom/custom-breadcrumb'
 

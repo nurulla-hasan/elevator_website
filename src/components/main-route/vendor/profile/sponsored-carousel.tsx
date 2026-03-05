@@ -4,7 +4,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { VendorCard } from "@/components/common/vendor-card";
+import { VendorCard } from "@/components/main-route/vendor/vendor-card";
 import { Vendor } from "@/types/vendor.type";
 import PageHeader from "@/components/ui/custom/page-header";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Heart, User, LogOut, Settings, LucideIcon } from "lucide-react";
+import { Heart, LogOut, Settings, LucideIcon, LayoutDashboard } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./theme-toggle";
@@ -81,9 +81,9 @@ export function DesktopNav({
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                   <DropdownMenuItem asChild>
-                    <Link href="/profile">
-                      <User className="mr-2" />
-                      <span>Profile</span>
+                    <Link href="/user/dashboard">
+                      <LayoutDashboard className="mr-2" />
+                      <span>Dashboard</span>
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>

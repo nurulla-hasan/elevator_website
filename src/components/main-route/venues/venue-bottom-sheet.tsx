@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { VenueCard } from "@/components/common/venue-card"
+import { VenueCard } from "@/components/main-route/venues/venue-card"
 import { Venue } from "@/types/venue.type"
 import { cn } from "@/lib/utils"
 

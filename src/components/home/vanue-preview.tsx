@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
 import { cn } from "@/lib/utils"
-import { VenueCard } from "@/components/common/venue-card"
+import { VenueCard } from "@/components/main-route/venues/venue-card"
 import { ArrowRight } from "lucide-react"
 import { mockVenues } from "@/data/venues.data"
 

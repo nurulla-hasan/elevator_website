@@ -2,7 +2,7 @@
 
 import React from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { VendorCard } from "@/components/common/vendor-card"
+import { VendorCard } from "@/components/main-route/vendor/vendor-card"
 import PageHeader from "@/components/ui/custom/page-header"
 import {
   Carousel,
@@ -26,10 +26,7 @@ export default function BudgetVendors() {
   const [count, setCount] = React.useState(0)
   const [activeTab, setActiveTab] = React.useState("under200k")
 
-  // Function to filter vendors by budget group
   const getVendorsByBudget = (group: string) => {
-    // Note: In a real app, you would parse the price string and filter.
-    // For now, we'll just distribute mockVendors among groups to demonstrate.
     if (group === "under200k") return mockVendors.slice(0, 3)
     if (group === "200k-500k") return mockVendors.slice(3, 6)
     return mockVendors.slice(6)
@@ -60,12 +57,12 @@ export default function BudgetVendors() {
         className="gap-4"
         onValueChange={setActiveTab}
       >
-        <TabsList className="h-auto flex justify-start gap-6 bg-transparent">
+        <TabsList variant="line">
           {Object.entries(budgetGroups).map(([key, label]) => (
             <TabsTrigger 
               key={key}
               value={key} 
-              className="rounded-none data-[state=active]:border-b-2 group-data-[variant=default]/tabs-list:data-[state=active]:shadow-none border-t-0 border-x-0 data-[state=active]:border-primary"
+              className="px-6 py-3"
             >
               {label}
             </TabsTrigger>
@@ -73,7 +70,7 @@ export default function BudgetVendors() {
         </TabsList>
         
         {Object.keys(budgetGroups).map((key) => (
-          <TabsContent key={key} value={key} className="mt-0">
+          <TabsContent key={key} value={key}>
             <div className="relative">
               <Carousel
                 setApi={setApi}

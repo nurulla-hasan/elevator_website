@@ -1,5 +1,5 @@
 import React from "react"
-import { VendorCard } from "@/components/common/vendor-card"
+import { VendorCard } from "@/components/main-route/vendor/vendor-card"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import PageHeader from "@/components/ui/custom/page-header"
