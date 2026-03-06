@@ -30,32 +30,32 @@ export function AboutHero() {
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary/15 rounded-full blur-[120px] z-10 animate-pulse delay-700" />
 
       {/* Content */}
-      <div className="container mx-auto relative z-20 text-center space-y-6 px-4 pb-20 md:pb-32">
+      <div className="container mx-auto relative z-20 text-center space-y-6 px-4 pt-10 pb-32 md:pt-0 md:pb-40">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-2 md:mb-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
           <Sparkles className="w-4 h-4 text-primary" />
-          <span className="text-xs font-semibold tracking-wider uppercase text-white/90">Our Journey</span>
+          <span className="text-[10px] md:text-xs font-semibold tracking-wider uppercase text-white/90">Our Journey</span>
         </div>
 
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-tight animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
+        <h1 className="text-3xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-tight animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
           About <span className="text-primary italic font-serif">WeddingHub</span>
         </h1>
         
-        <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto font-medium leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500 drop-shadow-md">
+        <p className="text-base md:text-xl text-white/90 max-w-2xl mx-auto font-medium leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500 drop-shadow-md">
           Connecting couples with the perfect wedding vendors since 2020. 
           We believe every love story deserves a perfect celebration.
         </p>
       </div>
 
       {/* Stats Bar */}
-      <div className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl z-30">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 p-6 md:p-8 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl animate-in fade-in zoom-in-95 duration-1000 delay-700">
+      <div className="absolute bottom-6 md:bottom-12 left-1/2 -translate-x-1/2 w-[92%] max-w-5xl z-30">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-6 md:gap-8 p-6 md:p-8 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl animate-in fade-in zoom-in-95 duration-1000 delay-700">
           {stats.map((stat, index) => (
-            <div key={index} className="text-center space-y-1 group border-r border-white/10 last:border-none">
-              <h3 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white transition-transform group-hover:scale-105 duration-300">
+            <div key={index} className="text-center space-y-1 group md:border-r border-white/10 last:border-none">
+              <h3 className="text-xl md:text-3xl lg:text-4xl font-extrabold text-white transition-transform group-hover:scale-105 duration-300">
                 {stat.value}
               </h3>
-              <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-white/60">
+              <p className="text-[9px] md:text-xs font-bold uppercase tracking-[0.2em] text-white/60">
                 {stat.label}
               </p>
             </div>
