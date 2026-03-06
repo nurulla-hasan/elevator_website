@@ -104,21 +104,23 @@ export default function Categories() {
                 key={category.name}
                 className="pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/6"
               >
-                <Card className="group cursor-pointer transition-all duration-300 border-none overflow-hidden">
-                  <CardContent className="flex flex-col items-center justify-center p-6 text-center">
-                    <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/5 group-hover:bg-primary/10 transition-colors duration-300">
-                      <span className="text-3xl">{category.emoji}</span>
-                    </div>
+                <Link href={`/vendors?category=${category.name.toLowerCase().replace(/\s+/g, "-")}`}>
+                  <Card className="group cursor-pointer transition-all duration-300 border-none overflow-hidden">
+                    <CardContent className="flex flex-col items-center justify-center text-center">
+                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/5 group-hover:bg-primary/10 transition-colors duration-300">
+                        <span className="text-3xl">{category.emoji}</span>
+                      </div>
 
-                    <h3 className="mb-1 text-sm font-bold group-hover:text-primary transition-colors duration-300 line-clamp-1">
-                      {category.name}
-                    </h3>
+                      <h3 className="mb-1 text-sm font-bold group-hover:text-primary transition-colors duration-300 line-clamp-1">
+                        {category.name}
+                      </h3>
 
-                    <p className="text-xs text-muted-foreground">
-                      {category.count} Vendors
-                    </p>
-                  </CardContent>
-                </Card>
+                      <p className="text-xs text-muted-foreground">
+                        {category.count} Vendors
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Link>
               </CarouselItem>
             ))}
           </CarouselContent>
