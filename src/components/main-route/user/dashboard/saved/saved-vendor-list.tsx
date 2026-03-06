@@ -7,7 +7,8 @@ const mockSavedVendors: Vendor[] = [
   {
     id: "v-1",
     name: "Block 9: WePlan Associate",
-    image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80",
+    image:
+      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80",
     category: "Venue",
     location: "Downtown, Dhaka",
     rating: 4.8,
@@ -19,7 +20,8 @@ const mockSavedVendors: Vendor[] = [
   {
     id: "v-2",
     name: "Elegant Decorators",
-    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80",
+    image:
+      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80",
     category: "Decoration",
     location: "Gulshan, Dhaka",
     rating: 4.9,
@@ -30,7 +32,8 @@ const mockSavedVendors: Vendor[] = [
   {
     id: "v-3",
     name: "Royal Catering Service",
-    image: "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80",
+    image:
+      "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80",
     category: "Catering",
     location: "Banani, Dhaka",
     rating: 4.7,

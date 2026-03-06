@@ -56,7 +56,7 @@ export function DesktopNav({
         {isLoggedIn ? (
           <>
             <Link href="/wishlist">
-              <Button variant="ghost" size="icon" className="rounded-full">
+              <Button variant="ghost" size="icon-sm" className="rounded-full">
                 <Heart />
               </Button>
             </Link>
@@ -64,7 +64,7 @@ export function DesktopNav({
             <DropdownMenu>
               <DropdownMenuTrigger>
                 <div className="flex items-center gap-2 cursor-pointer">
-                  <Avatar className="h-10 w-10 border-2">
+                  <Avatar className="h-10 w-10">
                     <AvatarImage
                       src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=100&auto=format&fit=crop"
                       alt="Nurulla Hasan"
