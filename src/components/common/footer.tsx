@@ -52,6 +52,9 @@ export default function Footer() {
               <li>
                 <Link href="/about" className="text-sm text-primary-foreground/80 hover:text-primary-foreground hover:translate-x-1 transition-all inline-block">About Us</Link>
               </li>
+              <li>
+                <Link href="/contact" className="text-sm text-primary-foreground/80 hover:text-primary-foreground hover:translate-x-1 transition-all inline-block">Contact Us</Link>
+              </li>
             </ul>
           </div>
 

@@ -85,16 +85,17 @@ export default function VendorFilter() {
               {isRefineOpen ? "Hide Filters" : "Search & Filter"}
             </Button>
 
-            {isFilterActive() && (
+            {/* {isFilterActive() && ( */}
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => clearAll()}
+                disabled={!isFilterActive()}
                 className="text-xs text-muted-foreground uppercase hover:text-destructive"
               >
                 Reset All
               </Button>
-            )}
+            {/* )} */}
           </div>
         </CardContent>
       </Card>
@@ -253,9 +254,10 @@ export default function VendorFilter() {
 
                 <Button
                   onClick={() => setIsRefineOpen(false)}
-                  className="w-full md:w-auto px-10 font-bold"
+                  className="w-full md:w-auto uppercase"
+                  size="sm"
                 >
-                  Apply Filters
+                  Close
                 </Button>
               </div>
             </CardContent>
