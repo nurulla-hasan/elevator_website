@@ -1,11 +1,11 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Image as ImageIcon } from "lucide-react";
 import Image from "next/image";
 import { IPayment } from "@/types/payment";
+import { PaymentDetailsModal } from "./payment-details-modal";
 
 interface PaymentCardProps {
   payment: IPayment;
@@ -53,9 +53,7 @@ export function PaymentCard({ payment }: PaymentCardProps) {
               
               <div className="flex items-center gap-4">
                 <span className="text-xl font-bold text-primary">{payment.amount}</span>
-                <Button variant="outline" size="sm">
-                  View Details
-                </Button>
+                <PaymentDetailsModal payment={payment} />
               </div>
             </div>
           </div>

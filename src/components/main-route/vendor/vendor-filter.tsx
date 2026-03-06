@@ -107,7 +107,7 @@ export default function VendorFilter() {
                     onChange={(e) => {
                       const val = e.target.value;
                       setSearch(val);
-                      updateFilter("searchTerm", val, 500);
+                      updateFilter("searchTerm", val, { debounce: 500 });
                     }}
                     className="bg-muted/50"
                   />
@@ -126,7 +126,7 @@ export default function VendorFilter() {
                     onChange={(e) => {
                       const val = e.target.value;
                       setLocation(val);
-                      updateFilter("location", val, 500);
+                      updateFilter("location", val, { debounce: 500 });
                     }}
                   />
                 </div>
@@ -149,7 +149,7 @@ export default function VendorFilter() {
                             min: String(values[0]),
                             max: String(values[1]),
                           },
-                          500,
+                          { debounce: 500 },
                         );
                       }}
                     />

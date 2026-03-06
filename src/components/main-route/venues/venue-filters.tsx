@@ -96,7 +96,7 @@ export function VenueFilters() {
                     value={search}
                     onChange={(e) => {
                       setSearch(e.target.value);
-                      updateFilter("searchTerm", e.target.value, 500);
+                      updateFilter("searchTerm", e.target.value, { debounce: 500 });
                     }}
                   />
                 </div>
@@ -110,7 +110,7 @@ export function VenueFilters() {
                     value={location}
                     onChange={(e) => {
                       setLocation(e.target.value);
-                      updateFilter("location", e.target.value, 500);
+                      updateFilter("location", e.target.value, { debounce: 500 });
                     }}
                   />
                 </div>
@@ -135,7 +135,7 @@ export function VenueFilters() {
                           min: String(values[0]),
                           max: String(values[1]),
                         },
-                        500
+                        { debounce: 500 }
                       );
                     }}
                   />

@@ -27,7 +27,7 @@ export default function DashboardPage() {
   const activeTab = getFilter("tab") || "bookings";
 
   const handleTabChange = (value: string) => {
-    updateFilter("tab", value);
+    updateFilter("tab", value, { resetPage: false });
   };
 
   const tabs = [

@@ -1,20 +1,39 @@
-import React from "react"
-import PageHeader from "@/components/ui/custom/page-header"
+import { AboutHero } from "@/components/footer-route/about/about-hero";
+import { AboutStory } from "@/components/footer-route/about/about-story";
+import { AboutStats } from "@/components/footer-route/about/about-stats";
+import { AboutValues } from "@/components/footer-route/about/about-values";
+import { WhyChooseWeddingHub } from "@/components/footer-route/about/why-choose-weddinghub";
+import { AboutCTA } from "@/components/footer-route/about/about-cta";
+import PageLayout from "@/components/ui/custom/page-layout";
 
 export default function AboutUsPage() {
   return (
-    <div className="container mx-auto px-4 py-12 min-h-screen">
-      <PageHeader 
-        title="About Us" 
-        description="Learn more about WE Plan and our mission to simplify wedding planning."
-      />
-      <div className="mt-12 max-w-3xl mx-auto space-y-6 text-muted-foreground leading-relaxed">
-        <p>
-          WE Plan is your dedicated platform for connecting couples with the finest wedding professionals. 
-          Our mission is to take the stress out of wedding planning by providing a seamless marketplace 
-          where you can discover, compare, and book everything from photographers to the perfect venue.
-        </p>
+    <main>
+      <div>
+        <AboutHero />
       </div>
-    </div>
-  )
+
+      <div className="pb-12 lg:pb-18">
+          <AboutStats />
+      </div>
+
+      <PageLayout>
+        <AboutStory />
+      </PageLayout>
+
+      <PageLayout>
+        <AboutValues />
+      </PageLayout>
+
+      <PageLayout>
+        <WhyChooseWeddingHub />
+      </PageLayout>
+
+      {/* <div className="pt-5"> */}
+        <PageLayout paddingSize="none">
+          <AboutCTA />
+        </PageLayout>
+      {/* </div> */}
+    </main>
+  );
 }

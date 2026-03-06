@@ -1,4 +1,3 @@
-
 import Banner from "@/components/home/banner";
 import BudgetVendors from "@/components/home/budget-vendors";
 import Categories from "@/components/home/categories";
@@ -10,19 +9,23 @@ import RecentlyAddedVendors from "@/components/home/recently-added";
 import VenuePreview from "@/components/home/vanue-preview";
 import VendorCTA from "@/components/home/vendor-cta";
 import WePlanAssociate from "@/components/home/we-plan-associate";
-import PageLayout from "@/components/ui/custom/page-layout"
+import PageLayout from "@/components/ui/custom/page-layout";
 
 export default function HomePage() {
   return (
     <>
-      <main className="flex flex-col gap-6 lg:gap-10">
-        <Hero />
+      <main>
+        <div className="pb-12 lg:pb-18">
+          <Hero />
+        </div>
 
         <PageLayout paddingSize="small">
           <Categories />
         </PageLayout>
 
+        <div className="pt-5 pb-12 lg:pb-18">
           <Banner />
+        </div>
 
         <PageLayout paddingSize="small">
           <FeaturedVendors />
@@ -52,7 +55,9 @@ export default function HomePage() {
           <RecentlyAddedVendors />
         </PageLayout>
 
+        <div className="pt-5">
           <VendorCTA />
+        </div>
       </main>
     </>
   );
