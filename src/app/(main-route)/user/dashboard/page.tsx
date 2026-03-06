@@ -1,3 +1,5 @@
+"use client";
+
 import CustomBreadcrumb from "@/components/ui/custom/custom-breadcrumb";
 import PageHeader from "@/components/ui/custom/page-header";
 import PageLayout from "@/components/ui/custom/page-layout";
@@ -17,8 +19,17 @@ import { SavedVendorList } from "@/components/main-route/user/dashboard/saved/sa
 import { NotificationList } from "@/components/main-route/user/dashboard/notification/notification-list";
 import { SettingsList } from "@/components/main-route/user/dashboard/settings/settings-list";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { useSmartFilter } from "@/hooks/useSmartFilter";
 
 export default function DashboardPage() {
+  const { getFilter, updateFilter } = useSmartFilter();
+
+  const activeTab = getFilter("tab") || "bookings";
+
+  const handleTabChange = (value: string) => {
+    updateFilter("tab", value);
+  };
+
   const tabs = [
     { id: "bookings", label: "My Bookings", icon: Calendar },
     { id: "requests", label: "My Requests", icon: Package },
@@ -42,7 +53,7 @@ export default function DashboardPage() {
           description="Manage your bookings, requests, and vendors"
         />
 
-        <Tabs defaultValue="bookings">
+        <Tabs value={activeTab} onValueChange={handleTabChange}>
           <ScrollArea className="w-full">
             <TabsList variant="line" className="w-full justify-start">
               {tabs.map((tab) => (
@@ -56,22 +67,22 @@ export default function DashboardPage() {
           </ScrollArea>
 
           <div className="mt-8">
-            <TabsContent value="bookings" className="mt-0">
+            <TabsContent value="bookings">
               <BookingList />
             </TabsContent>
-            <TabsContent value="requests" className="mt-0">
+            <TabsContent value="requests">
               <RequestList />
             </TabsContent>
-            <TabsContent value="payments" className="mt-0">
+            <TabsContent value="payments">
               <PaymentList />
             </TabsContent>
-            <TabsContent value="saved" className="mt-0">
+            <TabsContent value="saved">
               <SavedVendorList />
             </TabsContent>
-            <TabsContent value="notifications" className="mt-0">
+            <TabsContent value="notifications">
               <NotificationList />
             </TabsContent>
-            <TabsContent value="settings" className="mt-0">
+            <TabsContent value="settings">
               <SettingsList />
             </TabsContent>
           </div>
