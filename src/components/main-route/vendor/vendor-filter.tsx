@@ -21,6 +21,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Label } from "@/components/ui/label";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+  Collapsible,
+  CollapsibleContent,
+} from "@/components/ui/collapsible";
 
 export default function VendorFilter() {
   const [isRefineOpen, setIsRefineOpen] = useState(false);
@@ -31,6 +35,7 @@ export default function VendorFilter() {
     updateBatch,
     isSelected,
     clearAll,
+    isFilterActive,
   } = useSmartFilter();
 
   // Local states for instant UI feedback (only for inputs and sliders)
@@ -57,7 +62,11 @@ export default function VendorFilter() {
   ]);
 
   return (
-    <div className="w-full space-y-4">
+    <Collapsible
+      open={isRefineOpen}
+      onOpenChange={setIsRefineOpen}
+      className="w-full space-y-4"
+    >
       {/* Simplified Main Bar */}
       <Card>
         <CardContent>
@@ -76,21 +85,23 @@ export default function VendorFilter() {
               {isRefineOpen ? "Hide Filters" : "Search & Filter"}
             </Button>
 
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => clearAll()}
-              className="text-xs text-muted-foreground uppercase hover:text-destructive"
-            >
-              Reset All
-            </Button>
+            {isFilterActive() && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => clearAll()}
+                className="text-xs text-muted-foreground uppercase hover:text-destructive"
+              >
+                Reset All
+              </Button>
+            )}
           </div>
         </CardContent>
       </Card>
 
       {/* Refine Your Search - Expanded Panel */}
-      {isRefineOpen && (
-        <Card className="border shadow-md">
+      <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
+        <Card className="overflow-hidden">
           <ScrollArea className="h-[50vh] md:max-h-fit">
             <CardContent className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -107,7 +118,7 @@ export default function VendorFilter() {
                     onChange={(e) => {
                       const val = e.target.value;
                       setSearch(val);
-                      updateFilter("searchTerm", val, { debounce: 500 });
+                      updateFilter("searchTerm", val, { debounce: 300 });
                     }}
                     className="bg-muted/50"
                   />
@@ -126,7 +137,7 @@ export default function VendorFilter() {
                     onChange={(e) => {
                       const val = e.target.value;
                       setLocation(val);
-                      updateFilter("location", val, { debounce: 500 });
+                      updateFilter("location", val, { debounce: 300 });
                     }}
                   />
                 </div>
@@ -149,7 +160,7 @@ export default function VendorFilter() {
                             min: String(values[0]),
                             max: String(values[1]),
                           },
-                          { debounce: 500 },
+                          { debounce: 300 },
                         );
                       }}
                     />
@@ -176,9 +187,11 @@ export default function VendorFilter() {
                         key={item}
                         size="sm"
                         variant={
-                          isSelected("guests", item) ? "default" : "outline"
+                          getFilter("guests") === item ? "default" : "outline"
                         }
-                        onClick={() => toggleFilter("guests", item)}
+                        onClick={() =>
+                          updateFilter("guests", getFilter("guests") === item ? null : item)
+                        }
                         className="h-8 text-xs font-semibold"
                       >
                         {item}
@@ -248,7 +261,7 @@ export default function VendorFilter() {
             </CardContent>
           </ScrollArea>
         </Card>
-      )}
-    </div>
+      </CollapsibleContent>
+    </Collapsible>
   );
 }

@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { SearchInput } from "@/components/ui/custom/search-input";
 import { TSearchParams } from "@/types/global.types";
+import { Suspense } from "react";
 
 const allCategories = [
   { name: "Photographers", count: "245", emoji: "📷" },
@@ -42,7 +43,7 @@ export default async function CategoryPage({
   const search = (params?.searchTerm as string) || "";
 
   const filteredCategories = allCategories.filter((category) =>
-    category.name.toLowerCase().includes(search.toLowerCase())
+    category.name.toLowerCase().includes(search.toLowerCase()),
   );
 
   return (
@@ -59,9 +60,9 @@ export default async function CategoryPage({
           title="Wedding Categories"
           description="Find the perfect vendors and services for every aspect of your big day."
         />
-        <SearchInput
-          placeholder="Search categories..."
-        />
+        <Suspense fallback={<div>Loading...</div>}>
+          <SearchInput placeholder="Search categories..." />
+        </Suspense>
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
