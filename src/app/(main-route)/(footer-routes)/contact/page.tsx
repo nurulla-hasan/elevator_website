@@ -4,18 +4,20 @@ import { ContactForm } from "@/components/main-route/contact/contact-form";
 
 export default function ContactPage() {
   return (
-    <main className="bg-muted/30 min-h-screen">
+    <main className="screen-height">
       {/* Header Section with different background */}
-      <div className="bg-background border-b border-border">
-        <div className="max-w-6xl mx-auto text-center py-16 md:py-24 space-y-4 px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary">
-            Contact Us
-          </h1>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Have a question? We&apos;re here to help make your wedding planning
-            journey smooth.
-          </p>
-        </div>
+      <div className="bg-muted border-b ">
+        <PageLayout className="max-w-6xl text-center">
+          <div className="space-y-2">
+            <h1 className="text-4xl md:text-5xl font-bold text-primary">
+              Contact Us
+            </h1>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Have a question? We&apos;re here to help make your wedding
+              planning journey smooth.
+            </p>
+          </div>
+        </PageLayout>
       </div>
 
       <PageLayout>
@@ -23,7 +25,9 @@ export default function ContactPage() {
           {/* Left Column: Get in Touch */}
           <div className="lg:col-span-5 space-y-6">
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-primary">Get in Touch</h2>
+              <h2 className="text-2xl font-semibold text-primary">
+                Get in Touch
+              </h2>
               <p className="text-muted-foreground leading-relaxed">
                 We&apos;d love to hear from you. Whether you have a question
                 about vendors, pricing, or anything else, our team is ready to

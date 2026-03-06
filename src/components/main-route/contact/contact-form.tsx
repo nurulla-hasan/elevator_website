@@ -51,7 +51,7 @@ export function ContactForm() {
   return (
     <Card>
       <CardContent className="space-y-6">
-        <h2 className="text-2xl font-bold text-primary">Send us a Message</h2>
+        <h2 className="text-2xl font-semibold text-primary">Send us a Message</h2>
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
