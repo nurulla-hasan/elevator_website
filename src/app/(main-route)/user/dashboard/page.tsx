@@ -15,6 +15,7 @@ import { RequestList } from "@/components/main-route/user/dashboard/request/requ
 import { PaymentList } from "@/components/main-route/user/dashboard/payment/payment-list";
 import { SavedVendorList } from "@/components/main-route/user/dashboard/saved/saved-vendor-list";
 import { NotificationList } from "@/components/main-route/user/dashboard/notification/notification-list";
+import { SettingsList } from "@/components/main-route/user/dashboard/settings/settings-list";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 export default function DashboardPage() {
@@ -70,10 +71,9 @@ export default function DashboardPage() {
             <TabsContent value="notifications" className="mt-0">
               <NotificationList />
             </TabsContent>
-            {/* <TabsContent value="settings" className="mt-0">
+            <TabsContent value="settings" className="mt-0">
               <SettingsList />
-            </TabsContent> */}
-            {/* Other contents will go here */}
+            </TabsContent>
           </div>
         </Tabs>
       </div>
