@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function VendorCTA() {
   return (
@@ -15,11 +16,12 @@ export default function VendorCTA() {
             more couples and manage bookings effortlessly.
           </p>
         </div>
-
-        <Button className="group transition-all duration-200" size="lg">
-          Join as a Vendor
-          <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-        </Button>
+        <Link href="/auth/become-vendor">
+          <Button className="group transition-all duration-200" size="lg">
+            Join as a Vendor
+            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+          </Button>
+        </Link>
       </div>
     </section>
   );

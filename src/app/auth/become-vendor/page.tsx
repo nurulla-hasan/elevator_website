@@ -1,17 +1,25 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use client"
+"use client";
 
-import * as React from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { User, Mail, Phone, Lock, ArrowRight, Briefcase, LayoutGrid } from "lucide-react"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
+import * as React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import {
+  User,
+  Mail,
+  Phone,
+  Lock,
+  ArrowRight,
+  Briefcase,
+  LayoutGrid,
+} from "lucide-react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Checkbox } from "@/components/ui/checkbox"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -19,45 +27,47 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
+} from "@/components/ui/form";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 
-const vendorSchema = z.object({
-  firstName: z.string().min(2, {
-    message: "First name must be at least 2 characters.",
-  }),
-  lastName: z.string().min(2, {
-    message: "Last name must be at least 2 characters.",
-  }),
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-  phone: z.string().min(10, {
-    message: "Phone number must be at least 10 characters.",
-  }),
-  businessName: z.string().min(2, {
-    message: "Business name must be at least 2 characters.",
-  }),
-  serviceCategory: z.string().min(1, {
-    message: "Please select a service category.",
-  }),
-  password: z.string().min(8, {
-    message: "Password must be at least 8 characters.",
-  }),
-  confirmPassword: z.string(),
-  terms: z.boolean().refine((val) => val === true, {
-    message: "You must agree to the terms and conditions.",
-  }),
-}).refine((data) => data.password === data.confirmPassword, {
-  message: "Passwords don't match",
-  path: ["confirmPassword"],
-})
+const vendorSchema = z
+  .object({
+    firstName: z.string().min(2, {
+      message: "First name must be at least 2 characters.",
+    }),
+    lastName: z.string().min(2, {
+      message: "Last name must be at least 2 characters.",
+    }),
+    email: z.string().email({
+      message: "Please enter a valid email address.",
+    }),
+    phone: z.string().min(10, {
+      message: "Phone number must be at least 10 characters.",
+    }),
+    businessName: z.string().min(2, {
+      message: "Business name must be at least 2 characters.",
+    }),
+    serviceCategory: z.string().min(1, {
+      message: "Please select a service category.",
+    }),
+    password: z.string().min(8, {
+      message: "Password must be at least 8 characters.",
+    }),
+    confirmPassword: z.string(),
+    terms: z.boolean().refine((val) => val === true, {
+      message: "You must agree to the terms and conditions.",
+    }),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords don't match",
+    path: ["confirmPassword"],
+  });
 
 const categories = [
   "Wedding Venue",
@@ -69,10 +79,10 @@ const categories = [
   "Makeup Artist",
   "Music & DJ",
   "Other",
-]
+];
 
 export default function BecomeVendorPage() {
-  const [isLoading, setIsLoading] = React.useState(false)
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const form = useForm<z.infer<typeof vendorSchema>>({
     resolver: zodResolver(vendorSchema as any),
@@ -87,12 +97,12 @@ export default function BecomeVendorPage() {
       confirmPassword: "",
       terms: false,
     },
-  })
+  });
 
   function onSubmit(values: z.infer<typeof vendorSchema>) {
-    setIsLoading(true)
-    console.log(values)
-    setTimeout(() => setIsLoading(false), 2000)
+    setIsLoading(true);
+    console.log(values);
+    setTimeout(() => setIsLoading(false), 2000);
   }
 
   return (
@@ -109,7 +119,11 @@ export default function BecomeVendorPage() {
             />
           </div>
           <div className="space-y-1">
-            <h1 className="text-2xl font-bold tracking-tight">Join as a Vendor</h1>
+            <Link href="/auth/become-vendor">
+              <h1 className="text-2xl font-bold tracking-tight">
+                Join as a Vendor
+              </h1>
+            </Link>
             <p className="text-xs text-muted-foreground">
               Register your business and reach more couples
             </p>
@@ -132,10 +146,10 @@ export default function BecomeVendorPage() {
                         </div>
                       </FormLabel>
                       <FormControl>
-                        <Input 
-                          placeholder="John" 
-                          {...field} 
-                          disabled={isLoading} 
+                        <Input
+                          placeholder="John"
+                          {...field}
+                          disabled={isLoading}
                           aria-invalid={fieldState.invalid}
                           autoComplete="given-name"
                         />
@@ -151,10 +165,10 @@ export default function BecomeVendorPage() {
                     <FormItem data-invalid={fieldState.invalid}>
                       <FormLabel>Last Name</FormLabel>
                       <FormControl>
-                        <Input 
-                          placeholder="Doe" 
-                          {...field} 
-                          disabled={isLoading} 
+                        <Input
+                          placeholder="Doe"
+                          {...field}
+                          disabled={isLoading}
                           aria-invalid={fieldState.invalid}
                           autoComplete="family-name"
                         />
@@ -178,10 +192,10 @@ export default function BecomeVendorPage() {
                         </div>
                       </FormLabel>
                       <FormControl>
-                        <Input 
-                          placeholder="you@example.com" 
-                          {...field} 
-                          disabled={isLoading} 
+                        <Input
+                          placeholder="you@example.com"
+                          {...field}
+                          disabled={isLoading}
                           aria-invalid={fieldState.invalid}
                           autoComplete="email"
                         />
@@ -203,10 +217,10 @@ export default function BecomeVendorPage() {
                         </div>
                       </FormLabel>
                       <FormControl>
-                        <Input 
-                          placeholder="+1 (555) 123-4567" 
-                          {...field} 
-                          disabled={isLoading} 
+                        <Input
+                          placeholder="+1 (555) 123-4567"
+                          {...field}
+                          disabled={isLoading}
                           aria-invalid={fieldState.invalid}
                           autoComplete="tel"
                         />
@@ -230,10 +244,10 @@ export default function BecomeVendorPage() {
                         </div>
                       </FormLabel>
                       <FormControl>
-                        <Input 
-                          placeholder="Your Business Name" 
-                          {...field} 
-                          disabled={isLoading} 
+                        <Input
+                          placeholder="Your Business Name"
+                          {...field}
+                          disabled={isLoading}
                           aria-invalid={fieldState.invalid}
                         />
                       </FormControl>
@@ -253,8 +267,8 @@ export default function BecomeVendorPage() {
                           Service Category
                         </div>
                       </FormLabel>
-                      <Select 
-                        onValueChange={field.onChange} 
+                      <Select
+                        onValueChange={field.onChange}
                         defaultValue={field.value}
                         disabled={isLoading}
                       >
@@ -290,11 +304,11 @@ export default function BecomeVendorPage() {
                         </div>
                       </FormLabel>
                       <FormControl>
-                        <Input 
-                          type="password" 
-                          placeholder="Create password" 
-                          {...field} 
-                          disabled={isLoading} 
+                        <Input
+                          type="password"
+                          placeholder="Create password"
+                          {...field}
+                          disabled={isLoading}
                           aria-invalid={fieldState.invalid}
                           autoComplete="new-password"
                         />
@@ -311,11 +325,11 @@ export default function BecomeVendorPage() {
                     <FormItem data-invalid={fieldState.invalid}>
                       <FormLabel>Confirm Password</FormLabel>
                       <FormControl>
-                        <Input 
-                          type="password" 
-                          placeholder="Re-enter password" 
-                          {...field} 
-                          disabled={isLoading} 
+                        <Input
+                          type="password"
+                          placeholder="Re-enter password"
+                          {...field}
+                          disabled={isLoading}
                           aria-invalid={fieldState.invalid}
                           autoComplete="new-password"
                         />
@@ -342,11 +356,17 @@ export default function BecomeVendorPage() {
                       <div className="leading-none">
                         <FormLabel>
                           I agree to the{" "}
-                          <Link href="/terms" className="text-primary hover:underline font-bold">
+                          <Link
+                            href="/terms"
+                            className="text-primary hover:underline font-bold"
+                          >
                             Terms
                           </Link>{" "}
                           &{" "}
-                          <Link href="/privacy" className="text-primary hover:underline font-bold">
+                          <Link
+                            href="/privacy"
+                            className="text-primary hover:underline font-bold"
+                          >
                             Privacy
                           </Link>
                         </FormLabel>
@@ -389,5 +409,5 @@ export default function BecomeVendorPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

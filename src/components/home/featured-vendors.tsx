@@ -1,47 +1,50 @@
-"use client"
-import { ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import PageHeader from "@/components/ui/custom/page-header"
-import { VendorCard } from "@/components/main-route/vendor/vendor-card"
+"use client";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import PageHeader from "@/components/ui/custom/page-header";
+import { VendorCard } from "@/components/main-route/vendor/vendor-card";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   type CarouselApi,
-} from "@/components/ui/carousel"
-import Autoplay from "embla-carousel-autoplay"
-import React from "react"
-import { cn } from "@/lib/utils"
-import { mockVendors } from "@/data/vendors.data"
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import React from "react";
+import { cn } from "@/lib/utils";
+import { mockVendors } from "@/data/vendors.data";
+import Link from "next/link";
 
 export default function FeaturedVendors() {
-  const [api, setApi] = React.useState<CarouselApi>()
-  const [current, setCurrent] = React.useState(0)
-  const [count, setCount] = React.useState(0)
+  const [api, setApi] = React.useState<CarouselApi>();
+  const [current, setCurrent] = React.useState(0);
+  const [count, setCount] = React.useState(0);
 
   React.useEffect(() => {
     if (!api) {
-      return
+      return;
     }
 
-    setCount(api.scrollSnapList().length)
-    setCurrent(api.selectedScrollSnap())
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap());
 
     api.on("select", () => {
-      setCurrent(api.selectedScrollSnap())
-    })
-  }, [api])
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
 
   return (
     <section>
       <div className="mb-8">
-        <PageHeader 
-          title="Featured Vendors" 
+        <PageHeader
+          title="Featured Vendors"
           description="Top-rated professionals for your special day"
         >
-          <Button variant="link" className="hover:text-primary">
-            View All <ArrowRight />
-          </Button>
+          <Link href="/vendors?category=featured">
+            <Button variant="link" className="hover:text-primary">
+              View All <ArrowRight />
+            </Button>
+          </Link>
         </PageHeader>
       </div>
 
@@ -62,7 +65,10 @@ export default function FeaturedVendors() {
         >
           <CarouselContent className="-ml-4 p-1">
             {mockVendors.map((vendor) => (
-              <CarouselItem key={vendor.id} className="pl-4 sm:basis-1/2 lg:basis-1/4">
+              <CarouselItem
+                key={vendor.id}
+                className="pl-4 sm:basis-1/2 lg:basis-1/4"
+              >
                 <VendorCard vendor={vendor} />
               </CarouselItem>
             ))}
@@ -76,9 +82,9 @@ export default function FeaturedVendors() {
               key={index}
               className={cn(
                 "h-2 rounded-full transition-all duration-300",
-                current === index 
-                  ? "w-8 bg-primary" 
-                  : "w-2 bg-primary/20 hover:bg-primary/40"
+                current === index
+                  ? "w-8 bg-primary"
+                  : "w-2 bg-primary/20 hover:bg-primary/40",
               )}
               onClick={() => api?.scrollTo(index)}
               aria-label={`Go to slide ${index + 1}`}
@@ -87,5 +93,5 @@ export default function FeaturedVendors() {
         </div>
       </div>
     </section>
-  )
+  );
 }

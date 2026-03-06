@@ -11,7 +11,6 @@ import {
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
@@ -55,31 +54,33 @@ export function DesktopNav({
         <ThemeToggle />
         {isLoggedIn ? (
           <>
-            <Link href="/wishlist">
+            <Link href="/user/dashboard?tab=saved">
               <Button variant="ghost" size="icon-sm" className="rounded-full">
                 <Heart />
               </Button>
             </Link>
 
             <DropdownMenu>
-              <DropdownMenuTrigger>
-                <div className="flex items-center gap-2 cursor-pointer">
-                  <Avatar className="h-10 w-10">
+              <DropdownMenuTrigger asChild>
+                <div className="flex items-center cursor-pointer outline-none">
+                  <Avatar className="h-9 w-9 border-2 border-white/20 transition-all hover:border-white/40">
                     <AvatarImage
                       src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=100&auto=format&fit=crop"
                       alt="Nurulla Hasan"
                     />
                     <AvatarFallback>NH</AvatarFallback>
                   </Avatar>
-                  <span className="text-sm font-medium">
-                    {"Nurulla Hasan"}
-                  </span>
                 </div>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56">
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuContent align="end" className="w-60 p-2">
+                <div className="flex flex-col space-y-1 p-2 mb-1">
+                  <p className="text-sm font-semibold leading-none">Nurulla Hasan</p>
+                  <p className="text-xs leading-none text-muted-foreground">
+                    nurulla@example.com
+                  </p>
+                </div>
                 <DropdownMenuSeparator />
-                <DropdownMenuGroup>
+                <DropdownMenuGroup className="mt-1">
                   <DropdownMenuItem asChild>
                     <Link href="/user/dashboard">
                       <LayoutDashboard className="mr-2" />

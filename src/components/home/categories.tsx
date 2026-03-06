@@ -143,9 +143,11 @@ export default function Categories() {
       </div>
 
       <div className="mt-8 md:hidden">
-        <Button variant="outline" className="w-full">
-          View all categories
-        </Button>
+        <Link href="/category">
+          <Button variant="outline" className="w-full">
+            View all categories
+          </Button>
+        </Link>
       </div>
     </section>
   );
