@@ -23,9 +23,9 @@ export default function HomePage() {
           <Categories />
         </PageLayout>
 
-        <div className="pt-5 pb-12 lg:pb-18">
+        <PageLayout paddingSize="small">
           <Banner />
-        </div>
+        </PageLayout>
 
         <PageLayout paddingSize="small">
           <FeaturedVendors />

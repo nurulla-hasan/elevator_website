@@ -66,7 +66,7 @@ export default function Banner() {
         <CarouselContent>
           {bannerImages.map((image, index) => (
             <CarouselItem key={index}>
-              <div className="relative aspect-21/9 w-full overflow-hidden md:aspect-4/1">
+              <div className="relative aspect-21/9 w-full overflow-hidden md:aspect-4/1 rounded-2xl">
                 <Image
                   src={image.url}
                   alt={image.title}

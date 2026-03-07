@@ -1,4 +1,4 @@
-import CustomBreadcrumb from "@/components/ui/custom/custom-breadcrumb";
+// import CustomBreadcrumb from "@/components/ui/custom/custom-breadcrumb";
 import PageHeader from "@/components/ui/custom/page-header";
 import PageLayout from "@/components/ui/custom/page-layout";
 import {
@@ -44,12 +44,12 @@ export default async function DashboardPage({ searchParams }: PageProps) {
 
   return (
     <PageLayout paddingSize="small" className="screen-height">
-      <CustomBreadcrumb
+      {/* <CustomBreadcrumb
         links={[
           { name: "Home", href: "/" },
           { name: "Dashboard", isCurrent: true },
         ]}
-      />
+      /> */}
       <div className="flex flex-col gap-8">
         <PageHeader
           title="My Dashboard"
