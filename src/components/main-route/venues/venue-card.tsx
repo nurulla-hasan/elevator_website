@@ -1,18 +1,77 @@
-
-import Image from "next/image"
-import { MapPin, Star, Users } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Venue } from "@/types/venue.type"
-import Link from "next/link"
+import Image from "next/image";
+import { MapPin, Users } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Venue } from "@/types/venue.type";
+import Link from "next/link";
+import { StarRating } from "@/components/ui/custom/star-rating";
 
 interface VenueCardProps {
-  venue: Venue
-  className?: string
+  venue: Venue;
+  className?: string;
+  variant?: "vertical" | "horizontal";
 }
 
-export function VenueCard({ venue }: VenueCardProps) {
+export function VenueCard({
+  venue,
+  className,
+  variant = "vertical",
+}: VenueCardProps) {
+  if (variant === "horizontal") {
+    return (
+      <Link href={`/venues/${venue.id}`} className={className}>
+        <Card className="overflow-hidden p-3 hover:shadow-md transition-all duration-300 border border-border/50">
+          <div className="flex gap-4 items-center">
+            {/* Image */}
+            <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-xl bg-muted">
+              <Image
+                src={venue.image}
+                alt={venue.name}
+                fill
+                className="object-cover"
+                sizes="96px"
+              />
+            </div>
+
+            {/* Content */}
+            <div className="flex-1 min-w-0 flex flex-col justify-between self-stretch py-0.5">
+              <div className="space-y-1">
+                <h3 className="text-base font-bold text-primary truncate leading-tight">
+                  {venue.name}
+                </h3>
+                <div className="flex items-center gap-1 text-muted-foreground">
+                  <MapPin size={14} className="shrink-0" />
+                  <span className="text-[11px] font-medium line-clamp-1">
+                    {venue.location}
+                  </span>
+                </div>
+                <div className="flex items-center gap-1 mt-0.5">
+                  <StarRating rating={venue.rating} totalStars={1} size={12} />
+                  <span className="text-[11px] font-bold text-foreground">
+                    {venue.rating}
+                  </span>
+                  {venue.reviews && (
+                    <span className="text-[11px] text-muted-foreground">
+                      ({venue.reviews} reviews)
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Action & Price */}
+            <div className="flex flex-col items-end justify-between self-stretch">
+              <div className="text-right">
+                <p className="font-bold text-primary">{venue.price}</p>
+              </div>
+            </div>
+          </div>
+        </Card>
+      </Link>
+    );
+  }
+
   return (
-    <Link href={`/venues/${venue.id}`}>
+    <Link href={`/venues/${venue.id}`} className={className}>
       <Card className="pt-0 overflow-hidden hover:shadow-lg transition-shadow duration-300">
         <div className="relative aspect-video w-full overflow-hidden rounded-xl">
           <Image
@@ -29,8 +88,10 @@ export function VenueCard({ venue }: VenueCardProps) {
               {venue.name}
             </h3>
             <div className="flex items-center gap-1 shrink-0 ml-2 mt-1">
-              <Star size={18} className="text-yellow-500 fill-yellow-500" />
-              <span className="text-sm font-bold text-foreground">{venue.rating}</span>
+              <StarRating rating={venue.rating} totalStars={1} size={16} />
+              <span className="text-sm font-bold text-foreground">
+                {venue.rating}
+              </span>
             </div>
           </div>
 
@@ -51,5 +112,5 @@ export function VenueCard({ venue }: VenueCardProps) {
         </CardContent>
       </Card>
     </Link>
-  )
+  );
 }

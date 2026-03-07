@@ -1,42 +1,20 @@
-"use client"
+"use client";
 
-import React from "react"
-import { Button } from "@/components/ui/button"
-import PageHeader from "@/components/ui/custom/page-header"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  type CarouselApi,
-} from "@/components/ui/carousel"
-import Autoplay from "embla-carousel-autoplay"
-import { cn } from "@/lib/utils"
-import { VenueCard } from "@/components/main-route/venues/venue-card"
-import { ArrowRight } from "lucide-react"
-import { mockVenues } from "@/data/venues.data"
+import React from "react";
+import { Button } from "@/components/ui/button";
+import PageHeader from "@/components/ui/custom/page-header";
+import { VenueCard } from "@/components/main-route/venues/venue-card";
+import { ArrowRight, MapPin } from "lucide-react";
+import { mockVenues } from "@/data/venues.data";
+import Link from "next/link";
 
 export default function VenuePreview() {
-  const [api, setApi] = React.useState<CarouselApi>()
-  const [current, setCurrent] = React.useState(0)
-  const [count, setCount] = React.useState(0)
-
-  React.useEffect(() => {
-    if (!api) return
-
-    setCount(api.scrollSnapList().length)
-    setCurrent(api.selectedScrollSnap())
-
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap())
-    })
-  }, [api])
-
   return (
     <section>
       <div className="mb-8">
-        <PageHeader 
-          title="Top Rated Wedding Venues" 
-          description="Discover the most beautiful spaces for your unforgettable moments"
+        <PageHeader
+          title="Find Your Perfect Venue"
+          description="Explore our curated list of top-rated venues with an interactive map."
         >
           <Button variant="link" className="hover:text-primary">
             Explore All Venues <ArrowRight />
@@ -44,47 +22,29 @@ export default function VenuePreview() {
         </PageHeader>
       </div>
 
-      <div className="relative">
-        <Carousel
-          setApi={setApi}
-          plugins={[
-            Autoplay({
-              delay: 4000,
-              stopOnInteraction: true,
-            }),
-          ]}
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          className="w-full"
-        >
-          <CarouselContent className="-ml-4 p-1">
-            {mockVenues.map((venue) => (
-              <CarouselItem key={venue.id} className="pl-4 sm:basis-1/2 lg:basis-1/4">
-                <VenueCard venue={venue} />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+        {/* Left Side: Interactive Map Preview */}
+        <div className="bg-muted/50 rounded-2xl flex flex-col items-center justify-center min-h-100 border border-border/50 text-muted-foreground gap-4">
+          <div className="h-16 w-16 rounded-full bg-background flex items-center justify-center shadow-sm border border-border/10">
+            <MapPin size={32} className="text-muted-foreground/60" />
+          </div>
+          <p className="text-lg font-medium">Interactive Map Preview</p>
+        </div>
 
-        {/* Indicators */}
-        <div className="flex justify-center gap-2 mt-8">
-          {Array.from({ length: count }).map((_, index) => (
-            <button
-              key={index}
-              className={cn(
-                "h-1.5 rounded-full transition-all duration-300",
-                current === index 
-                  ? "w-8 bg-primary" 
-                  : "w-2 bg-primary/20 hover:bg-primary/40"
-              )}
-              onClick={() => api?.scrollTo(index)}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
+        {/* Right Side: Horizontal Cards and Button */}
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-3">
+            {mockVenues.slice(0, 3).map((venue) => (
+              <VenueCard key={venue.id} venue={venue} variant="horizontal" />
+            ))}
+          </div>
+          <Button>
+            <Link href="/venues" className="w-full">
+              Open Venue Finder
+            </Link>
+          </Button>
         </div>
       </div>
     </section>
-  )
+  );
 }
