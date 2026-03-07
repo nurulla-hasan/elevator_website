@@ -36,6 +36,9 @@ export function PricingTestimonials() {
         <h3 className="text-3xl font-bold text-primary">
           Real Stories, Real Love
         </h3>
+        <p className="text-muted-foreground max-w-2xl text-sm md:text-base">
+          Hear from couples who trusted us to bring their wedding dreams to life with ease and expertise.
+        </p>
         <div className="h-1.5 w-16 bg-primary/20 rounded-full" />
       </div>
 

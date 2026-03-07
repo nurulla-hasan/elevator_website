@@ -34,6 +34,9 @@ export function PricingBenefits() {
           <h3 className="text-3xl font-bold text-primary">
             The WePlan Advantage
           </h3>
+          <p className="text-muted-foreground max-w-2xl text-sm md:text-base">
+            Discover how we make your wedding planning experience seamless, cost-effective, and truly memorable.
+          </p>
           <div className="h-1.5 w-16 bg-primary/20 rounded-full" />
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
