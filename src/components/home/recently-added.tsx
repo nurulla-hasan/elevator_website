@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import PageHeader from "@/components/ui/custom/page-header"
 import { mockVendors } from "@/data/vendors.data"
+import Link from "next/link"
 
 export default function RecentlyAddedVendors() {
   const recentVendors = mockVendors.slice(0, 5)
@@ -31,10 +32,12 @@ export default function RecentlyAddedVendors() {
         </div>
 
         <div className="mt-10 flex justify-center">
-          <Button variant="outline">
-            View All Vendors
-            <ArrowRight />
-          </Button>
+          <Link href="/vendors">
+            <Button variant="outline">
+              View All Vendors
+              <ArrowRight />
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

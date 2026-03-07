@@ -1,6 +1,7 @@
-import React from "react"
-import { Button } from "@/components/ui/button"
-import { TrendingUp, ArrowRight } from "lucide-react"
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { TrendingUp, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function PostRequirement() {
   return (
@@ -25,15 +26,14 @@ export default function PostRequirement() {
 
         {/* Action Button */}
         <div className="pt-4">
-          <Button 
-            className="group transition-all duration-200"
-            size="lg"
-          >
-            Post Your Requirement
-            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-          </Button>
+          <Link href="/post-request">
+            <Button className="group transition-all duration-200" size="lg">
+              Post Your Requirement
+              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
-  )
+  );
 }
