@@ -1,10 +1,12 @@
-"use client";
-
-import { Suspense } from "react";
 import CustomBreadcrumb from "@/components/ui/custom/custom-breadcrumb";
 import PageHeader from "@/components/ui/custom/page-header";
 import PageLayout from "@/components/ui/custom/page-layout";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs";
 import {
   Calendar,
   Package,
@@ -20,16 +22,16 @@ import { SavedVendorList } from "@/components/main-route/user/dashboard/saved/sa
 import { NotificationList } from "@/components/main-route/user/dashboard/notification/notification-list";
 import { SettingsList } from "@/components/main-route/user/dashboard/settings/settings-list";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { useSmartFilter } from "@/hooks/useSmartFilter";
+import Link from "next/link";
+import { TSearchParams } from "@/types/global.types";
 
-function DashboardContent() {
-  const { getFilter, updateFilter } = useSmartFilter();
+interface PageProps {
+  searchParams: TSearchParams;
+}
 
-  const activeTab = getFilter("tab") || "bookings";
-
-  const handleTabChange = (value: string) => {
-    updateFilter("tab", value, { resetPage: false });
-  };
+export default async function DashboardPage({ searchParams }: PageProps) {
+  const params = await searchParams;
+  const activeTab = (params.tab as string) || "bookings";
 
   const tabs = [
     { id: "bookings", label: "My Bookings", icon: Calendar },
@@ -54,14 +56,16 @@ function DashboardContent() {
           description="Manage your bookings, requests, and vendors"
         />
 
-        <Tabs value={activeTab} onValueChange={handleTabChange}>
+        <Tabs value={activeTab}>
           <ScrollArea className="w-full">
             <TabsList variant="line" className="w-full justify-start">
               {tabs.map((tab) => (
-                <TabsTrigger key={tab.id} value={tab.id}>
-                  <tab.icon />
-                  {tab.label}
-                </TabsTrigger>
+                <Link key={tab.id} href={`?tab=${tab.id}`} scroll={false}>
+                  <TabsTrigger value={tab.id}>
+                    <tab.icon />
+                    {tab.label}
+                  </TabsTrigger>
+                </Link>
               ))}
             </TabsList>
             <ScrollBar orientation="horizontal" />
@@ -90,13 +94,5 @@ function DashboardContent() {
         </Tabs>
       </div>
     </PageLayout>
-  );
-}
-
-export default function DashboardPage() {
-  return (
-    <Suspense fallback={<div>Loading dashboard...</div>}>
-      <DashboardContent />
-    </Suspense>
   );
 }
