@@ -4,7 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { cn } from "@/lib/utils"
 import { Search } from "lucide-react"
 
-type Conversation = {
+export type Conversation = {
   id: string
   name: string
   category: string
@@ -17,7 +17,7 @@ type Conversation = {
   avatarUrl?: string
 }
 
-const conversations: Conversation[] = [
+export const conversations: Conversation[] = [
   {
     id: "1",
     name: "Elegant Moments Photography",
@@ -78,17 +78,82 @@ const conversations: Conversation[] = [
     avatarColor: "bg-primary",
     avatarUrl: "https://images.unsplash.com/photo-1554151228-14d9def656e4?w=100&h=100&fit=crop",
   },
+  {
+    id: "6",
+    name: "Royal Invitation Cards",
+    category: "Stationery",
+    lastMessage: "The draft for your wedding cards is ready for review.",
+    timeLabel: "1d ago",
+    unread: 3,
+    online: true,
+    initial: "R",
+    avatarColor: "bg-primary",
+    avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop",
+  },
+  {
+    id: "7",
+    name: "Sparkle Jewelry Shop",
+    category: "Jewelers",
+    lastMessage: "We have the necklace you were looking for in stock.",
+    timeLabel: "2d ago",
+    unread: 0,
+    online: false,
+    initial: "S",
+    avatarColor: "bg-primary",
+    avatarUrl: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&h=100&fit=crop",
+  },
+  {
+    id: "8",
+    name: "Elite Transport Services",
+    category: "Transport",
+    lastMessage: "Your luxury car is booked for the wedding day.",
+    timeLabel: "4d ago",
+    unread: 0,
+    online: true,
+    initial: "E",
+    avatarColor: "bg-primary",
+    avatarUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
+  },
+  {
+    id: "9",
+    name: "Sweet Delights Bakery",
+    category: "Cakes",
+    lastMessage: "Would you like a tasting session for the cake?",
+    timeLabel: "5d ago",
+    unread: 1,
+    online: false,
+    initial: "S",
+    avatarColor: "bg-primary",
+    avatarUrl: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&h=100&fit=crop",
+  },
+  {
+    id: "10",
+    name: "Harmony Music Band",
+    category: "Entertainment",
+    lastMessage: "We've finalized the playlist for your reception.",
+    timeLabel: "1w ago",
+    unread: 0,
+    online: true,
+    initial: "H",
+    avatarColor: "bg-primary",
+    avatarUrl: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop",
+  },
 ]
 
-export default function ConversationList() {
+type ConversationListProps = {
+  selectedId?: string
+  onSelect: (id: string) => void
+}
+
+export default function ConversationList({ selectedId, onSelect }: ConversationListProps) {
   return (
-    <div className="flex flex-col h-full bg-background">
+    <div className="h-[calc(100vh-80px)] bg-muted">
       {/* Header Area */}
-      <div className="p-6 space-y-4">
+      <div className="p-4 border-b space-y-4">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold text-foreground">Messages</h1>
           <Badge className="rounded-full flex items-center justify-center p-0">
-            <span className="flex items-center justify-center h-6 w-6">3</span>
+            <span className="flex items-center justify-center h-4 w-4">3</span>
           </Badge>
         </div>
         
@@ -102,11 +167,15 @@ export default function ConversationList() {
       </div>
 
       {/* Conversations List */}
-      <div className="flex-1 overflow-y-auto">
+      <div className="flex-1 h-[calc(100vh-116px)] overflow-auto">
         {conversations.map((c) => (
           <div
             key={c.id}
-            className="group flex items-center gap-4 px-6 py-5 cursor-pointer hover:bg-muted transition-colors border-b border-border last:border-0"
+            onClick={() => onSelect(c.id)}
+            className={cn(
+              "group flex items-center gap-4 p-4 cursor-pointer transition-colors border-b last:border-0",
+              selectedId === c.id ? "bg-primary/10" : "hover:bg-primary/10"
+            )}
           >
             <div className="relative shrink-0">
               <Avatar className={cn("h-12 w-12", c.avatarColor)}>
@@ -141,7 +210,7 @@ export default function ConversationList() {
                 </p>
                 {c.unread > 0 && (
                   <Badge className="rounded-full flex items-center justify-center p-0 shrink-0">
-                    <span className="flex items-center justify-center h-5 w-5 text-[10px]">
+                    <span className="flex items-center justify-center h-4 w-4 text-[10px]">
                       {c.unread}
                     </span>
                   </Badge>

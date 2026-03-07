@@ -62,7 +62,7 @@ export function SendQuoteModal({ vendor }: SendQuoteModalProps) {
       }}
       title="Request Booking"
       actionTrigger={
-        <Button variant="outline" size="lg" className="w-full flex items-center gap-3 group">
+        <Button variant="outline"className="w-full group">
           <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           Send Quote
         </Button>

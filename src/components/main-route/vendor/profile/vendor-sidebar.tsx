@@ -7,6 +7,7 @@ import { Vendor } from "@/types/vendor.type";
 import { CalendarDays, Info, Mail, MessageSquare, Phone } from "lucide-react";
 import { useEffect, useState } from "react";
 import { SendQuoteModal } from "./send-quote-modal";
+import Link from "next/link";
 
 interface VendorSidebarProps {
   vendor: Vendor;
@@ -38,20 +39,30 @@ export const VendorSidebar = ({ vendor }: VendorSidebarProps) => {
             onSelect={setDate}
             className="rounded-xl border border-border p-3 mx-auto"
           />
-          
+
           <div className="mt-6 space-y-4 pt-4 border-t border-border">
             <div className="bg-muted rounded-xl p-4 flex flex-col gap-1.5 border border-border/50">
               <span className="text-sm font-bold text-foreground flex items-center gap-2">
                 <Info size={14} className="text-muted-foreground" />
-                {date ? date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) : 'Select a date'}
+                {date
+                  ? date.toLocaleDateString("en-US", {
+                      weekday: "long",
+                      month: "long",
+                      day: "numeric",
+                    })
+                  : "Select a date"}
               </span>
-              <p className="text-xs text-muted-foreground font-medium">No availability information for this date.</p>
+              <p className="text-xs text-muted-foreground font-medium">
+                No availability information for this date.
+              </p>
             </div>
-            
+
             <div className="flex items-center gap-4 text-xs font-semibold px-1">
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-emerald-500/20 border border-emerald-500/30" />
-                <span className="text-emerald-600 dark:text-emerald-400">Available</span>
+                <span className="text-emerald-600 dark:text-emerald-400">
+                  Available
+                </span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-destructive/20 border border-destructive/30" />
@@ -71,17 +82,25 @@ export const VendorSidebar = ({ vendor }: VendorSidebarProps) => {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <Button size="lg" className="w-full flex items-center gap-3">
+          <Button className="w-full">
             <MessageSquare size={20} className="fill-current" />
             WhatsApp
           </Button>
-          
+
           <div className="grid grid-cols-2 gap-4">
-            <Button variant="outline" size="lg" className="flex items-center gap-2">
-              <MessageSquare size={18} />
-              Message
-            </Button>
-            <Button variant="outline" size="lg" className="flex items-center gap-2">
+            <Link href="/chat">
+              <Button
+                variant="outline"
+                className="w-full"
+              >
+                <MessageSquare size={18} />
+                Message
+              </Button>
+            </Link>
+            <Button
+              variant="outline"
+              className="w-full"
+            >
               <Phone size={18} />
               Call Now
             </Button>
@@ -95,18 +114,26 @@ export const VendorSidebar = ({ vendor }: VendorSidebarProps) => {
                 <Phone size={18} />
               </div>
               <div className="flex flex-col">
-                <span className="text-xs text-muted-foreground font-medium">Phone Number</span>
-                <span className="text-sm font-bold text-foreground">{contact.phone}</span>
+                <span className="text-xs text-muted-foreground font-medium">
+                  Phone Number
+                </span>
+                <span className="text-sm font-bold text-foreground">
+                  {contact.phone}
+                </span>
               </div>
             </div>
-            
+
             <div className="flex items-center gap-3.5 group cursor-pointer">
               <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
                 <Mail size={18} />
               </div>
               <div className="flex flex-col">
-                <span className="text-xs text-muted-foreground font-medium">Email Address</span>
-                <span className="text-sm font-bold text-foreground">{contact.email}</span>
+                <span className="text-xs text-muted-foreground font-medium">
+                  Email Address
+                </span>
+                <span className="text-sm font-bold text-foreground">
+                  {contact.email}
+                </span>
               </div>
             </div>
           </div>
