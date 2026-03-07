@@ -1,10 +1,15 @@
+"use client";
 import { Card, CardContent } from "@/components/ui/card";
 import { StarRating } from "@/components/ui/custom/star-rating";
 import {
   Carousel,
+  CarouselApi,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 
 const testimonials = [
   {
@@ -30,6 +35,21 @@ const testimonials = [
 ];
 
 export function PricingTestimonials() {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap());
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
   return (
     <section className="flex flex-col gap-10">
       <div className="flex flex-col gap-3 items-center text-center">
@@ -37,22 +57,29 @@ export function PricingTestimonials() {
           Real Stories, Real Love
         </h3>
         <p className="text-muted-foreground max-w-2xl text-sm md:text-base">
-          Hear from couples who trusted us to bring their wedding dreams to life with ease and expertise.
+          Hear from couples who trusted us to bring their wedding dreams to life
+          with ease and expertise.
         </p>
         <div className="h-1.5 w-16 bg-primary/20 rounded-full" />
       </div>
 
       <div>
         <Carousel
-          opts={{
-            align: "start",
-            loop: true,
-          }}
+          setApi={setApi}
+          plugins={[
+            Autoplay({
+              delay: 4000,
+              stopOnInteraction: true,
+            }),
+          ]}
           className="w-full"
         >
           <CarouselContent className="-ml-4">
             {testimonials.map((testimonial, index) => (
-              <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+              <CarouselItem
+                key={index}
+                className="pl-4 md:basis-1/2 lg:basis-1/3"
+              >
                 <Card className="overflow-hidden">
                   <CardContent className="flex flex-col gap-4">
                     <StarRating totalStars={5} rating={5} size={16} />
@@ -78,6 +105,22 @@ export function PricingTestimonials() {
             ))}
           </CarouselContent>
         </Carousel>
+        {/* Indicators */}
+        <div className="flex justify-center gap-2 mt-8">
+          {Array.from({ length: count }).map((_, index) => (
+            <button
+              key={index}
+              className={cn(
+                "h-1.5 rounded-full transition-all duration-300",
+                current === index
+                  ? "w-8 bg-primary"
+                  : "w-2 bg-primary/20 hover:bg-primary/40",
+              )}
+              onClick={() => api?.scrollTo(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
