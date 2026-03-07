@@ -63,7 +63,7 @@ export default function Footer() {
             <h4 className="text-base font-semibold mb-7 uppercase tracking-wider">For Vendors</h4>
             <ul className="space-y-4">
               <li>
-                <Link href="/join-vendor" className="text-sm text-primary-foreground/80 hover:text-primary-foreground hover:translate-x-1 transition-all inline-block">Join as Vendor</Link>
+                <Link href="/auth/become-vendor" className="text-sm text-primary-foreground/80 hover:text-primary-foreground hover:translate-x-1 transition-all inline-block">Join as Vendor</Link>
               </li>
               <li>
                 <Link href="/pricing" className="text-sm text-primary-foreground/80 hover:text-primary-foreground hover:translate-x-1 transition-all inline-block">Pricing Plans</Link>
