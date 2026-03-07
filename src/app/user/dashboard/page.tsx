@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import CustomBreadcrumb from "@/components/ui/custom/custom-breadcrumb";
 import PageHeader from "@/components/ui/custom/page-header";
 import PageLayout from "@/components/ui/custom/page-layout";
@@ -21,7 +22,7 @@ import { SettingsList } from "@/components/main-route/user/dashboard/settings/se
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { useSmartFilter } from "@/hooks/useSmartFilter";
 
-export default function DashboardPage() {
+function DashboardContent() {
   const { getFilter, updateFilter } = useSmartFilter();
 
   const activeTab = getFilter("tab") || "bookings";
@@ -89,5 +90,13 @@ export default function DashboardPage() {
         </Tabs>
       </div>
     </PageLayout>
+  );
+}
+
+export default function DashboardPage() {
+  return (
+    <Suspense fallback={<div>Loading dashboard...</div>}>
+      <DashboardContent />
+    </Suspense>
   );
 }
