@@ -6,13 +6,13 @@ import { PostRequestForm } from "@/components/main-route/post-request/post-reque
 export default function PostRequestPage() {
   return (
     <PageLayout paddingSize="small" className="screen-height">
-      <CustomBreadcrumb
-        links={[
-          { name: "Home", href: "/" },
-          { name: "Post Request", href: "/post-request", isCurrent: true },
-        ]}
-      />
-      <div className="flex flex-col gap-8 pb-12">
+      <div className="max-w-4xl mx-auto space-y-8">
+        <CustomBreadcrumb
+          links={[
+            { name: "Home", href: "/" },
+            { name: "Post Request", href: "/post-request", isCurrent: true },
+          ]}
+        />
         <PageHeader
           title="Post Your Wedding Requirement"
           description="Submit your wedding requirements and get tailored proposals from top vendors."

@@ -55,14 +55,14 @@ export default function PackageCheckoutPage() {
 
   return (
     <PageLayout paddingSize="small">
-      <CustomBreadcrumb
-        links={[
-          { name: "Home", href: "/" },
-          { name: "Pricing", href: "/pricing" },
-          { name: "Checkout", isCurrent: true },
-        ]}
-      />
       <div className="max-w-4xl mx-auto space-y-8">
+        <CustomBreadcrumb
+          links={[
+            { name: "Home", href: "/" },
+            { name: "Pricing", href: "/pricing" },
+            { name: "Checkout", isCurrent: true },
+          ]}
+        />
         <PageHeader
           title="Complete Your Booking"
           description="Fill in your details to hire your WePlan Associate and start your wedding journey."

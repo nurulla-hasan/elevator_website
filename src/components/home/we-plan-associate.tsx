@@ -1,7 +1,7 @@
-
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Headphones, CheckCircle2 } from "lucide-react"
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Headphones, CheckCircle2 } from "lucide-react";
+import Link from "next/link";
 
 export default function WePlanAssociate() {
   const features = [
@@ -9,7 +9,7 @@ export default function WePlanAssociate() {
     "Vendor negotiations & bookings",
     "Budget management",
     "Timeline coordination",
-  ]
+  ];
 
   return (
     <section className="w-full py-10">
@@ -26,13 +26,18 @@ export default function WePlanAssociate() {
                 WePlan Associate
               </h2>
               <p className="text-muted-foreground text-base leading-relaxed max-w-lg">
-                Get personalized help from our expert wedding associates. We&apos;ll handle vendor coordination, negotiations, and all the details so you can enjoy planning your special day stress-free.
+                Get personalized help from our expert wedding associates.
+                We&apos;ll handle vendor coordination, negotiations, and all the
+                details so you can enjoy planning your special day stress-free.
               </p>
             </div>
 
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4">
               {features.map((feature, index) => (
-                <li key={index} className="flex items-center gap-2 text-muted-foreground text-sm font-medium">
+                <li
+                  key={index}
+                  className="flex items-center gap-2 text-muted-foreground text-sm font-medium"
+                >
                   <CheckCircle2 className="w-4 h-4 text-primary" />
                   {feature}
                 </li>
@@ -40,13 +45,15 @@ export default function WePlanAssociate() {
             </ul>
 
             <div className="space-y-0.5">
-              <p className="text-muted-foreground text-xs uppercase tracking-wider font-semibold">Starting from</p>
+              <p className="text-muted-foreground text-xs uppercase tracking-wider font-semibold">
+                Starting from
+              </p>
               <p className="text-2xl font-bold text-primary">$999</p>
             </div>
 
-            <Button>
-              Hire an Associate
-            </Button>
+            <Link href="/pricing">
+              <Button>Hire an Associate</Button>
+            </Link>
           </div>
 
           {/* Right Image */}
@@ -63,5 +70,5 @@ export default function WePlanAssociate() {
         </div>
       </div>
     </section>
-  )
+  );
 }

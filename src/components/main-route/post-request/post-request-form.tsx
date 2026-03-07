@@ -4,7 +4,12 @@ import * as React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { format } from "date-fns";
-import { Calendar as CalendarIcon, Users, DollarSign, MapPin } from "lucide-react";
+import {
+  Calendar as CalendarIcon,
+  Users,
+  DollarSign,
+  MapPin,
+} from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -31,7 +36,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { postRequestSchema, type PostRequestValues } from "@/schemas/post-request.schema";
+import {
+  postRequestSchema,
+  type PostRequestValues,
+} from "@/schemas/post-request.schema";
 import { toast } from "sonner";
 
 const SERVICES = [
@@ -66,7 +74,7 @@ export function PostRequestForm() {
       form.setValue(
         "services",
         currentServices.filter((s) => s !== service),
-        { shouldValidate: true }
+        { shouldValidate: true },
       );
     } else {
       form.setValue("services", [...currentServices, service], {
@@ -77,14 +85,19 @@ export function PostRequestForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 w-full max-w-2xl mx-auto p-6 bg-card rounded-xl shadow-sm border border-border">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-6 w-full p-6 bg-card rounded-xl shadow-sm border"
+      >
         {/* Event Type */}
         <FormField
           control={form.control}
           name="eventType"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-primary font-semibold">Event Type *</FormLabel>
+              <FormLabel className="text-primary font-semibold">
+                Event Type *
+              </FormLabel>
               <Select onValueChange={field.onChange} value={field.value}>
                 <FormControl>
                   <SelectTrigger>
@@ -120,7 +133,7 @@ export function PostRequestForm() {
                       variant={"outline"}
                       className={cn(
                         "w-full pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -206,7 +219,9 @@ export function PostRequestForm() {
           name="services"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-primary font-semibold">Services Needed *</FormLabel>
+              <FormLabel className="text-primary font-semibold">
+                Services Needed *
+              </FormLabel>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                 {SERVICES.map((service) => {
                   const isSelected = field.value.includes(service);
@@ -217,7 +232,7 @@ export function PostRequestForm() {
                       variant={isSelected ? "default" : "outline"}
                       className={cn(
                         "w-full transition-all",
-                        isSelected && "bg-primary text-primary-foreground"
+                        isSelected && "bg-primary text-primary-foreground",
                       )}
                       onClick={() => toggleService(service)}
                     >
@@ -237,7 +252,9 @@ export function PostRequestForm() {
           name="additionalDetails"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-primary font-semibold">Additional Details</FormLabel>
+              <FormLabel className="text-primary font-semibold">
+                Additional Details
+              </FormLabel>
               <FormControl>
                 <Textarea
                   placeholder="Tell us more about your requirements, preferences, or any specific needs..."
