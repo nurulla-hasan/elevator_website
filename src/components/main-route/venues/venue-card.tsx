@@ -59,7 +59,7 @@ export function VenueCard({
             </div>
 
             {/* Action & Price */}
-            <div className="flex flex-col items-end justify-between self-stretch">
+            <div className="flex flex-col items-end justify-end self-stretch">
               <div className="text-right">
                 <p className="font-bold text-primary">{venue.price}</p>
               </div>
