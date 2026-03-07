@@ -1,12 +1,12 @@
 "use client";
 
-import { 
-  CalendarIcon, 
-  Mail, 
-  Phone, 
-  User, 
-  MapPin, 
-  Users, 
+import {
+  CalendarIcon,
+  Mail,
+  Phone,
+  User,
+  MapPin,
+  Users,
   DollarSign,
 } from "lucide-react";
 import { format } from "date-fns";
@@ -15,7 +15,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Calendar } from "@/components/ui/calendar";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import {
   FormControl,
   FormField,
@@ -26,6 +30,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { UseFormReturn } from "react-hook-form";
 import { PackageCheckoutValues } from "@/schemas/package-checkout.schema";
+import Link from "next/link";
 
 interface PricingBookingFormProps {
   form: UseFormReturn<PackageCheckoutValues>;
@@ -33,7 +38,11 @@ interface PricingBookingFormProps {
   packagePrice: string;
 }
 
-export function PricingBookingForm({ form, packageName, packagePrice }: PricingBookingFormProps) {
+export function PricingBookingForm({
+  form,
+  packageName,
+  packagePrice,
+}: PricingBookingFormProps) {
   return (
     <Card>
       <CardContent className="flex flex-col gap-8">
@@ -45,12 +54,16 @@ export function PricingBookingForm({ form, packageName, packagePrice }: PricingB
             </span>
             <h3 className="text-xl font-bold text-primary">{packageName}</h3>
           </div>
-          <span className="text-3xl font-bold text-primary">${packagePrice}</span>
+          <span className="text-3xl font-bold text-primary">
+            ${packagePrice}
+          </span>
         </div>
 
         {/* Personal Information */}
         <div className="flex flex-col gap-6">
-          <h4 className="text-lg font-bold text-primary">Personal Information</h4>
+          <h4 className="text-lg font-bold text-primary">
+            Personal Information
+          </h4>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FormField
               control={form.control}
@@ -61,7 +74,11 @@ export function PricingBookingForm({ form, packageName, packagePrice }: PricingB
                   <FormControl>
                     <div className="relative">
                       <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                      <Input placeholder="Enter your full name" className="pl-10" {...field} />
+                      <Input
+                        placeholder="Enter your full name"
+                        className="pl-10"
+                        {...field}
+                      />
                     </div>
                   </FormControl>
                   <FormMessage />
@@ -77,7 +94,12 @@ export function PricingBookingForm({ form, packageName, packagePrice }: PricingB
                   <FormControl>
                     <div className="relative">
                       <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                      <Input placeholder="your@email.com" className="pl-10" type="email" {...field} />
+                      <Input
+                        placeholder="your@email.com"
+                        className="pl-10"
+                        type="email"
+                        {...field}
+                      />
                     </div>
                   </FormControl>
                   <FormMessage />
@@ -93,7 +115,11 @@ export function PricingBookingForm({ form, packageName, packagePrice }: PricingB
                   <FormControl>
                     <div className="relative">
                       <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                      <Input placeholder="+1 (555) 000-0000" className="pl-10" {...field} />
+                      <Input
+                        placeholder="+1 (555) 000-0000"
+                        className="pl-10"
+                        {...field}
+                      />
                     </div>
                   </FormControl>
                   <FormMessage />
@@ -113,7 +139,7 @@ export function PricingBookingForm({ form, packageName, packagePrice }: PricingB
                           variant={"outline"}
                           className={cn(
                             "w-full justify-start text-left font-normal",
-                            !field.value && "text-muted-foreground"
+                            !field.value && "text-muted-foreground",
                           )}
                         >
                           <CalendarIcon className="mr-2 h-4 w-4 text-muted-foreground" />
@@ -157,7 +183,11 @@ export function PricingBookingForm({ form, packageName, packagePrice }: PricingB
                   <FormControl>
                     <div className="relative">
                       <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                      <Input placeholder="City, State" className="pl-10" {...field} />
+                      <Input
+                        placeholder="City, State"
+                        className="pl-10"
+                        {...field}
+                      />
                     </div>
                   </FormControl>
                   <FormMessage />
@@ -173,7 +203,11 @@ export function PricingBookingForm({ form, packageName, packagePrice }: PricingB
                   <FormControl>
                     <div className="relative">
                       <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                      <Input placeholder="Budget" className="pl-10" {...field} />
+                      <Input
+                        placeholder="Budget"
+                        className="pl-10"
+                        {...field}
+                      />
                     </div>
                   </FormControl>
                   <FormMessage />
@@ -190,7 +224,11 @@ export function PricingBookingForm({ form, packageName, packagePrice }: PricingB
                 <FormControl>
                   <div className="relative">
                     <Users className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                    <Input placeholder="Number of guests" className="pl-10" {...field} />
+                    <Input
+                      placeholder="Number of guests"
+                      className="pl-10"
+                      {...field}
+                    />
                   </div>
                 </FormControl>
                 <FormMessage />
@@ -208,10 +246,10 @@ export function PricingBookingForm({ form, packageName, packagePrice }: PricingB
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Textarea 
-                    placeholder="Tell us about your vision, specific requirements, or any questions you have..." 
+                  <Textarea
+                    placeholder="Tell us about your vision, specific requirements, or any questions you have..."
                     className="min-h-25"
-                    {...field} 
+                    {...field}
                   />
                 </FormControl>
                 <FormMessage />
@@ -222,13 +260,21 @@ export function PricingBookingForm({ form, packageName, packagePrice }: PricingB
 
         <div className="pt-6 border-t border-border">
           <div className="flex flex-col gap-1 mb-6">
-            <span className="text-muted-foreground font-medium">Total Amount</span>
-            <span className="text-4xl font-bold text-primary">${packagePrice}</span>
-            <p className="text-[10px] text-muted-foreground">Payment will be processed after consultation</p>
+            <span className="text-muted-foreground font-medium">
+              Total Amount
+            </span>
+            <span className="text-4xl font-bold text-primary">
+              ${packagePrice}
+            </span>
+            <p className="text-[10px] text-muted-foreground">
+              Payment will be processed after consultation
+            </p>
           </div>
-          <Button type="submit" size="lg" className="w-full">
-            Confirm Booking
-          </Button>
+          <Link href="/package-checkout/success">
+            <Button type="submit" size="lg" className="w-full">
+              Confirm Booking
+            </Button>
+          </Link>
         </div>
       </CardContent>
     </Card>
