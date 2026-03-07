@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { Heart, Menu, User, LogOut, LucideIcon, Settings, LayoutDashboard } from "lucide-react"
+import { Heart, Menu, User, LogOut, LucideIcon, Settings, LayoutDashboard, MessageSquare } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "./theme-toggle"
@@ -101,6 +101,13 @@ export function MobileNav({ navItems, pathname, isLoggedIn, setIsLoggedIn }: Mob
                     className="flex items-center gap-4 rounded-lg px-4 py-3 text-base font-medium text-primary-foreground/90 transition-all hover:bg-primary-foreground/10 active:scale-95"
                   >
                     <LayoutDashboard className="size-5 text-primary-foreground/70" /> Dashboard
+                  </Link>
+                  <Link
+                    href="/chat"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center gap-4 rounded-lg px-4 py-3 text-base font-medium text-primary-foreground/90 transition-all hover:bg-primary-foreground/10 active:scale-95"
+                  >
+                    <MessageSquare className="size-5 text-primary-foreground/70" /> Messages
                   </Link>
                   <Link
                     href="/settings"

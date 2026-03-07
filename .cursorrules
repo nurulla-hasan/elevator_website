@@ -18,3 +18,5 @@
 - **Color Usage**: Never use custom hex, RGB, or arbitrary color values (e.g., `bg-[#25D366]`).
   - Always use standard Tailwind color classes or CSS variables defined in [globals.css](file:///d:/Nurulla%20Hasan/elevator_website/src/app/globals.css) (e.g., `text-primary`, `bg-secondary`, `border-border`).
   - Ensure the design stays consistent with the project's theme.
+
+- **User Code Preservation**: NEVER overwrite or revert any code changes made by the user. Always respect and incorporate user modifications into the ongoing development.
