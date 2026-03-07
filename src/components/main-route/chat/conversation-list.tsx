@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { cn } from "@/lib/utils"
 import { Search } from "lucide-react"
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 export type Conversation = {
   id: string
@@ -147,7 +148,7 @@ type ConversationListProps = {
 
 export default function ConversationList({ selectedId, onSelect }: ConversationListProps) {
   return (
-    <div className="h-[calc(100vh-80px)] bg-muted">
+    <div className="h-[calc(100vh-80px)] bg-muted border-r w-full">
       {/* Header Area */}
       <div className="p-4 border-b space-y-4">
         <div className="flex items-center justify-between">
@@ -167,13 +168,13 @@ export default function ConversationList({ selectedId, onSelect }: ConversationL
       </div>
 
       {/* Conversations List */}
-      <div className="flex-1 h-[calc(100vh-116px)] overflow-auto">
+      <ScrollArea className="h-[calc(100vh-116px)]">
         {conversations.map((c) => (
           <div
             key={c.id}
             onClick={() => onSelect(c.id)}
             className={cn(
-              "group flex items-center gap-4 p-4 cursor-pointer transition-colors border-b last:border-0",
+              "group flex items-center gap-4 p-4 cursor-pointer transition-colors border-b last:border-0 flex-wrap",
               selectedId === c.id ? "bg-primary/10" : "hover:bg-primary/10"
             )}
           >
@@ -219,7 +220,7 @@ export default function ConversationList({ selectedId, onSelect }: ConversationL
             </div>
           </div>
         ))}
-      </div>
+      </ScrollArea>
     </div>
   )
 }
