@@ -46,7 +46,7 @@ export function DetailsForm({ form }: DetailsFormProps) {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="flex items-center gap-2">
-                  <User size={14} /> First Name *
+                  <User size={14} /> First Name
                 </FormLabel>
                 <FormControl>
                   <Input placeholder="John" {...field} />
@@ -61,7 +61,7 @@ export function DetailsForm({ form }: DetailsFormProps) {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="flex items-center gap-2">
-                  <User size={14} /> Last Name *
+                  <User size={14} /> Last Name
                 </FormLabel>
                 <FormControl>
                   <Input placeholder="Doe" {...field} />

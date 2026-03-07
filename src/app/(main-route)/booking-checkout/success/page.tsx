@@ -14,7 +14,7 @@ export default function BookingSuccessPage() {
     <PageLayout className="screen-height">
       <div className="max-w-2xl w-full mx-auto">
         <Card>
-          <CardContent className="flex flex-col items-center space-y-6 p-8 md:p-12">
+          <CardContent className="flex flex-col items-center space-y-6">
             <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center text-primary">
               <CheckCircle2 size={48} />
             </div>

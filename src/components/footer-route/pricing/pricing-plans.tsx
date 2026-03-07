@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   Card,
   CardContent,
@@ -13,6 +14,7 @@ import { cn } from "@/lib/utils";
 
 const plans = [
   {
+    id: "starter",
     name: "Starter Support",
     price: "999",
     description:
@@ -28,6 +30,7 @@ const plans = [
     buttonText: "Start Planning",
   },
   {
+    id: "concierge",
     name: "Personal Concierge",
     price: "2499",
     description:
@@ -44,6 +47,7 @@ const plans = [
     buttonText: "Hire Associate Now",
   },
   {
+    id: "elite",
     name: "Elite Experience",
     price: "4999",
     description:
@@ -125,21 +129,23 @@ export function PricingPlans() {
 
               <CardFooter>
                 <div className="flex flex-col gap-4 w-full">
+                <Link href={`/package-checkout/${plan.id}`} className="w-full">
                   <Button
                     variant={plan.recommended ? "default" : "outline"}
                     size="lg"
                     className={cn(
                       "w-full uppercase group",
-                      plan.recommended && "shadow-lg shadow-primary/20",
+                      plan.recommended && "shadow-sm shadow-primary/20"
                     )}
                   >
                     {plan.buttonText}
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
-                  <p className="text-center text-xs text-muted-foreground opacity-70">
-                    Transparent pricing • No hidden fees
-                  </p>
-                </div>
+                </Link>
+                <p className="text-center text-xs text-muted-foreground opacity-70">
+                  Transparent pricing • No hidden fees
+                </p>
+              </div>
               </CardFooter>
             </Card>
           </div>
