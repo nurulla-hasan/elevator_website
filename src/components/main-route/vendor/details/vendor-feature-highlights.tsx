@@ -10,7 +10,7 @@ export const VendorFeatureHighlights = () => {
             <ShieldCheck className="text-emerald-600" size={20} />
           </div>
           <div>
-            <h4 className="font-bold text-sm">Verified Vendor</h4>
+            <h4 className="font-semibold text-sm">Verified Vendor</h4>
             <p className="text-xs text-muted-foreground">
               Trusted professional service provider.
             </p>
@@ -23,7 +23,7 @@ export const VendorFeatureHighlights = () => {
             <Mail className="text-blue-600" size={20} />
           </div>
           <div>
-            <h4 className="font-bold text-sm">Quick Response</h4>
+            <h4 className="font-semibold text-sm">Quick Response</h4>
             <p className="text-xs text-muted-foreground">
               Usually responds within 24 hours.
             </p>
@@ -36,7 +36,7 @@ export const VendorFeatureHighlights = () => {
             <Heart className="text-pink-600" size={20} />
           </div>
           <div>
-            <h4 className="font-bold text-sm">Top Rated</h4>
+            <h4 className="font-semibold text-sm">Top Rated</h4>
             <p className="text-xs text-muted-foreground">
               Consistently high customer satisfaction.
             </p>

@@ -27,7 +27,7 @@ export function Navbar() {
       const currentScrollY = window.scrollY
       
       // If scrolling down and scrolled more than 100px, hide navbar
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
         setIsVisible(false)
       } else {
         // If scrolling up or near the top, show navbar

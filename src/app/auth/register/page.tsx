@@ -86,7 +86,7 @@ export default function RegisterPage() {
             />
           </div>
           <div className="space-y-1">
-            <h1 className="text-2xl font-bold tracking-tight">Create Your Account</h1>
+            <h1 className="text-2xl font-semibold tracking-tight">Create Your Account</h1>
             <p className="text-xs text-muted-foreground">
               Join WeddingHub and start planning your perfect wedding
             </p>
@@ -284,11 +284,11 @@ export default function RegisterPage() {
                       <div className="leading-none">
                         <FormLabel>
                           I agree to the{" "}
-                          <Link href="/terms" className="text-primary hover:underline font-bold">
+                          <Link href="/terms" className="text-primary hover:underline font-semibold">
                             Terms
                           </Link>{" "}
                           &{" "}
-                          <Link href="/privacy" className="text-primary hover:underline font-bold">
+                          <Link href="/privacy" className="text-primary hover:underline font-semibold">
                             Privacy
                           </Link>
                         </FormLabel>
@@ -309,7 +309,7 @@ export default function RegisterPage() {
               Already have an account?{" "}
               <Link
                 href="/auth/login"
-                className="font-bold text-primary hover:underline underline-offset-4"
+                className="font-semibold text-primary hover:underline underline-offset-4"
               >
                 Sign in
               </Link>
@@ -323,7 +323,7 @@ export default function RegisterPage() {
             className="group inline-flex items-center text-sm font-medium text-muted-foreground transition-colors"
           >
             Are you a vendor?{" "}
-            <span className="ml-1 font-bold text-primary group-hover:underline">
+            <span className="ml-1 font-semibold text-primary group-hover:underline">
               Join as a vendor
             </span>
             <ArrowRight className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-1" />

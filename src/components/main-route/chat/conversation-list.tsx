@@ -1,9 +1,8 @@
-import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { cn } from "@/lib/utils"
-import { Search } from "lucide-react"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { SearchInput } from "@/components/ui/custom/search-input"
 
 export type Conversation = {
   id: string
@@ -148,23 +147,20 @@ type ConversationListProps = {
 
 export default function ConversationList({ selectedId, onSelect }: ConversationListProps) {
   return (
-    <div className="h-[calc(100vh-80px)] bg-muted border-r w-full">
+    <div className="h-[calc(100vh-80px)] border-r w-full">
       {/* Header Area */}
       <div className="p-4 border-b space-y-4">
         <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-foreground">Messages</h1>
+          <h1 className="text-2xl font-semibold text-foreground">Messages</h1>
           <Badge className="rounded-full flex items-center justify-center p-0">
             <span className="flex items-center justify-center h-4 w-4">3</span>
           </Badge>
         </div>
         
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <Input 
-            placeholder="Search conversations..." 
-            className="pl-10"
-          />
-        </div>
+        <SearchInput
+          placeholder="Search conversations..."
+          className="md:max-w-full"
+        />
       </div>
 
       {/* Conversations List */}
@@ -181,7 +177,7 @@ export default function ConversationList({ selectedId, onSelect }: ConversationL
             <div className="relative shrink-0">
               <Avatar className={cn("h-12 w-12", c.avatarColor)}>
                 <AvatarImage src={c.avatarUrl} alt={c.name} />
-                <AvatarFallback className="text-primary-foreground font-bold">{c.initial}</AvatarFallback>
+                <AvatarFallback className="text-primary-foreground font-semibold">{c.initial}</AvatarFallback>
               </Avatar>
               {c.online && (
                 <span className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-green-500 border-2 border-background" />
@@ -190,7 +186,7 @@ export default function ConversationList({ selectedId, onSelect }: ConversationL
 
             <div className="flex-1 min-w-0">
               <div className="flex items-center justify-between gap-2 mb-0.5">
-                <h3 className="font-bold text-foreground truncate text-sm leading-tight">
+                <h3 className="font-semibold text-foreground truncate text-sm leading-tight">
                   {c.name}
                 </h3>
                 <span className="text-[11px] text-muted-foreground whitespace-nowrap">

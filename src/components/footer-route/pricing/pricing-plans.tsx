@@ -69,7 +69,7 @@ export function PricingPlans() {
   return (
     <div className="flex flex-col gap-10">
       <div className="flex flex-col gap-3 items-center text-center">
-        <h3 className="text-3xl font-bold text-primary">
+        <h3 className="text-3xl font-semibold text-primary">
           Simple, Transparent Pricing
         </h3>
         <p className="text-muted-foreground max-w-2xl text-sm md:text-base">
@@ -83,7 +83,7 @@ export function PricingPlans() {
           <div key={index} className="relative group h-full">
             {plan.recommended && (
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
-                <Badge className="px-4 py-1 bg-primary text-xs text-primary-foreground font-bold shadow-xl shadow-primary/30 border-none">
+                <Badge className="px-4 py-1 bg-primary text-xs text-primary-foreground font-semibold shadow-xl shadow-primary/30 border-none">
                   <Sparkles className="h-3.5 w-3.5 mr-1.5" />
                   MOST POPULAR
                 </Badge>
@@ -99,7 +99,7 @@ export function PricingPlans() {
             >
               <CardHeader className="space-y-4 text-center">
                 <div className="space-y-2">
-                  <CardTitle className="text-2xl font-bold">
+                  <CardTitle className="text-2xl font-semibold">
                     {plan.name}
                   </CardTitle>
                   <CardDescription className="text-sm min-h-12 leading-relaxed">

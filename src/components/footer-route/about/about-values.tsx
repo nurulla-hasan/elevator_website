@@ -27,7 +27,7 @@ export function AboutValues() {
   return (
     <section>
       <div className="text-center max-w-3xl mx-auto space-y-2 mb-8">
-        <h2 className="text-2xl md:text-4xl font-bold text-primary uppercase tracking-tight">
+        <h2 className="text-2xl md:text-4xl font-semibold text-primary uppercase tracking-tight">
           Our Values
         </h2>
         <p className="text-muted-foreground text-lg">
@@ -44,7 +44,7 @@ export function AboutValues() {
             <div className="h-14 w-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 transition-colors group-hover:bg-primary/20">
               <value.icon className="h-7 w-7 text-primary" />
             </div>
-            <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+            <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
               {value.title}
             </h3>
             <p className="text-muted-foreground leading-relaxed">

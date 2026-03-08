@@ -6,7 +6,7 @@ export function AboutStory() {
       <div className="flex flex-col lg:flex-row items-center gap-12">
         {/* Left: Text Content */}
         <div className="flex-1 space-y-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary">
+          <h2 className="text-3xl md:text-4xl font-semibold text-primary">
             Our Story
           </h2>
           <div className="space-y-4 text-muted-foreground leading-relaxed">

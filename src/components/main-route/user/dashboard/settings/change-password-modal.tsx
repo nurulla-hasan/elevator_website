@@ -124,7 +124,7 @@ export function ChangePasswordModal() {
           <div className="flex justify-end gap-3 pt-4 border-t mt-6">
             <Button
               type="submit"
-              className="w-full sm:w-auto px-8 font-bold"
+              className="w-full sm:w-auto px-8 font-semibold"
               disabled={isLoading}
             >
               {isLoading ? (

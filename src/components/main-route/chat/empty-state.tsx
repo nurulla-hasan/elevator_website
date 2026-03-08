@@ -9,7 +9,7 @@ export default function ChatEmptyState() {
         <MessageSquareMore className="w-16 h-16 text-primary stroke-[1.5px]" />
       </div>
 
-      <h2 className="text-2xl font-bold mb-3">Select a Conversation</h2>
+      <h2 className="text-2xl font-semibold mb-3">Select a Conversation</h2>
 
       <p className="text-muted-foreground text-sm leading-relaxed mb-8">
         Choose a conversation from the left sidebar to start messaging with

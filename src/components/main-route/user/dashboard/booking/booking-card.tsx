@@ -45,8 +45,8 @@ export function BookingCard({ booking }: BookingCardProps) {
           <div className="flex-1 p-5 space-y-4">
             <div className="flex flex-wrap items-start justify-between gap-2">
               <div>
-                <h3 className="text-lg font-bold text-foreground">{booking.vendorName}</h3>
-                <p className="text-sm font-medium text-primary">{booking.eventType}</p>
+                <h3 className="text-lg font-semibold text-foreground">{booking.vendorName}</h3>
+                <p className="text-sm font-medium">{booking.eventType}</p>
               </div>
               <Badge variant={statusConfig.variant}>
                 {statusConfig.label}
@@ -69,21 +69,21 @@ export function BookingCard({ booking }: BookingCardProps) {
                 </div>
               )}
               <div className="flex items-center gap-2">
-                <span className="font-bold text-foreground">Total: {booking.price}</span>
+                <span className="font-semibold text-foreground">Total: {booking.price}</span>
               </div>
             </div>
 
             <div className="flex flex-wrap gap-2 pt-2 border-t border-border">
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="xs">
                 View Details
               </Button>
               {booking.status === "accepted" && (
-                <Button size="sm">
+                <Button size="xs">
                   Make Payment
                 </Button>
               )}
               {booking.status === "review" && (
-                <Button variant="destructive" size="sm">
+                <Button variant="destructive" size="xs">
                   Cancel Booking
                 </Button>
               )}

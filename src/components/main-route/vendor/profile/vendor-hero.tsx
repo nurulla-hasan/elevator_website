@@ -70,7 +70,7 @@ export const VendorHero = ({ vendor }: VendorHeroProps) => {
           </div>
 
           <div className="flex flex-col items-start md:items-end justify-center border-t md:border-t-0 md:border-l pt-6 md:pt-0 md:pl-8 border-border">
-            <span className="text-xs md:text-sm text-muted-foreground font-bold uppercase tracking-wider">Starting from</span>
+            <span className="text-xs md:text-sm text-muted-foreground font-semibold uppercase tracking-wider">Starting from</span>
             <span className="text-3xl md:text-4xl font-semibold text-primary">{vendor.price}</span>
           </div>
         </div>

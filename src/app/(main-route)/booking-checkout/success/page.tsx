@@ -20,14 +20,14 @@ export default function BookingSuccessPage() {
             </div>
             
             <div className="text-center space-y-4">
-              <h2 className="text-3xl font-bold text-primary">Booking Confirmed!</h2>
+              <h2 className="text-3xl font-semibold text-primary">Booking Confirmed!</h2>
               <p className="text-muted-foreground max-w-md mx-auto">
                 Your booking with <span className="font-semibold text-primary">{mockVendor.name}</span> has been confirmed. We&apos;ve sent a confirmation email to <span className="font-semibold text-primary">{email}</span>.
               </p>
             </div>
 
             <div className="w-full bg-muted/30 rounded-2xl p-8 space-y-6 border border-border/50">
-              <h3 className="text-lg font-bold text-primary">Booking Details</h3>
+              <h3 className="text-lg font-semibold text-primary">Booking Details</h3>
               <div className="space-y-3">
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Vendor:</span>
@@ -39,11 +39,11 @@ export default function BookingSuccessPage() {
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Booking ID:</span>
-                  <span className="font-bold">#WH-80018</span>
+                  <span className="font-semibold">#WH-80018</span>
                 </div>
                 <div className="flex justify-between text-sm pt-3 border-t border-border">
                   <span className="text-muted-foreground">Total Paid:</span>
-                  <span className="font-extrabold text-primary text-lg">{mockPackage.deposit}</span>
+                  <span className="font-semibold text-primary text-lg">{mockPackage.deposit}</span>
                 </div>
               </div>
             </div>

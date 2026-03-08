@@ -22,7 +22,7 @@ export default function WePlanAssociate() {
             </div>
 
             <div className="space-y-3">
-              <h2 className="text-2xl md:text-3xl font-bold text-primary">
+              <h2 className="text-2xl md:text-3xl font-semibold text-primary">
                 WePlan Associate
               </h2>
               <p className="text-muted-foreground text-base leading-relaxed max-w-lg">
@@ -48,7 +48,7 @@ export default function WePlanAssociate() {
               <p className="text-muted-foreground text-xs uppercase tracking-wider font-semibold">
                 Starting from
               </p>
-              <p className="text-2xl font-bold text-primary">PKR 999</p>
+              <p className="text-2xl font-semibold text-primary">PKR 999</p>
             </div>
 
             <Link href="/pricing">

@@ -11,7 +11,7 @@ export function SettingsList() {
         <CardHeader>
           <div className="flex items-center gap-2">
             <UserCircle className="h-5 w-5 text-primary" />
-            <CardTitle className="text-xl font-bold">Account Settings</CardTitle>
+            <CardTitle className="text-xl font-semibold">Account Settings</CardTitle>
           </div>
           <CardDescription>
             Manage your account credentials and contact information.

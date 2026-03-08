@@ -34,7 +34,7 @@ export function PaymentCard({ payment }: PaymentCardProps) {
           <div className="flex-1 space-y-3 w-full">
             <div className="flex items-start justify-between gap-2">
               <div className="space-y-1">
-                <h3 className="font-bold text-primary">{payment.vendorName}</h3>
+                <h3 className="font-semibold">{payment.vendorName}</h3>
                 <p className="text-sm text-muted-foreground">{payment.serviceName}</p>
               </div>
               <Badge 
@@ -52,7 +52,7 @@ export function PaymentCard({ payment }: PaymentCardProps) {
               </div>
               
               <div className="flex items-center gap-4">
-                <span className="text-xl font-bold text-primary">{payment.amount}</span>
+                <span className="font-semibold">{payment.amount}</span>
                 <PaymentDetailsModal payment={payment} />
               </div>
             </div>

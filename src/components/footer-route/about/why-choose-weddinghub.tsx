@@ -31,7 +31,7 @@ export function WhyChooseWeddingHub() {
   return (
     <section>
       <div className="text-center max-w-3xl mx-auto space-y-4 mb-20">
-        <h2 className="text-3xl md:text-4xl font-bold text-primary tracking-tight">
+        <h2 className="text-3xl md:text-4xl font-semibold text-primary tracking-tight">
           Why Choose WeddingHub
         </h2>
         <p className="text-muted-foreground text-lg">
@@ -48,7 +48,7 @@ export function WhyChooseWeddingHub() {
               </div>
             </div>
             <div className="space-y-2 pt-1">
-              <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
+              <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
                 {reason.title}
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">

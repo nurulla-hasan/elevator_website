@@ -37,7 +37,7 @@ export function AboutHero() {
           <span className="text-[10px] md:text-xs font-semibold tracking-wider uppercase text-white/90">Our Journey</span>
         </div>
 
-        <h1 className="text-3xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-tight animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
+        <h1 className="text-3xl md:text-6xl lg:text-7xl font-semibold text-white tracking-tight leading-tight animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
           About <span className="text-primary italic font-serif">WeddingHub</span>
         </h1>
         
@@ -52,10 +52,10 @@ export function AboutHero() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-6 md:gap-8 p-6 md:p-8 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl animate-in fade-in zoom-in-95 duration-1000 delay-700">
           {stats.map((stat, index) => (
             <div key={index} className="text-center space-y-1 group md:border-r border-white/10 last:border-none">
-              <h3 className="text-xl md:text-3xl lg:text-4xl font-extrabold text-white transition-transform group-hover:scale-105 duration-300">
+              <h3 className="text-xl md:text-3xl lg:text-4xl font-semibold text-white transition-transform group-hover:scale-105 duration-300">
                 {stat.value}
               </h3>
-              <p className="text-[9px] md:text-xs font-bold uppercase tracking-[0.2em] text-white/60">
+              <p className="text-[9px] md:text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
                 {stat.label}
               </p>
             </div>

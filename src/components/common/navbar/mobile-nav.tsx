@@ -39,7 +39,7 @@ export function MobileNav({ navItems, pathname, isLoggedIn, setIsLoggedIn }: Mob
             {/* Header / User Profile Section */}
             <div className="mb-8 flex flex-col space-y-4">
               <div className="flex items-center justify-between">
-                <SheetTitle className="text-xl font-bold tracking-tight text-primary-foreground">
+                <SheetTitle className="text-xl font-semibold tracking-tight text-primary-foreground">
                   Menu
                 </SheetTitle>
               </div>
@@ -141,7 +141,7 @@ export function MobileNav({ navItems, pathname, isLoggedIn, setIsLoggedIn }: Mob
               {isLoggedIn ? (
                 <Button
                   variant="outline"
-                  className="w-full h-12 text-base font-bold bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/20 hover:text-primary-foreground"
+                  className="w-full h-12 text-base font-semibold bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/20 hover:text-primary-foreground"
                   onClick={() => {
                     setIsLoggedIn(false)
                     setIsOpen(false)
@@ -152,7 +152,7 @@ export function MobileNav({ navItems, pathname, isLoggedIn, setIsLoggedIn }: Mob
               ) : (
                 <Button
                   variant="secondary"
-                  className="w-full h-12 text-base font-bold"
+                  className="w-full h-12 text-base font-semibold"
                   asChild
                   onClick={() => setIsOpen(false)}
                 >

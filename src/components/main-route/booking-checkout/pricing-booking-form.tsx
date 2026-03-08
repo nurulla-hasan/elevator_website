@@ -52,16 +52,16 @@ export function PricingBookingForm({
             <span className="text-primary uppercase text-xs font-semibold opacity-70">
               Selected Package
             </span>
-            <h3 className="text-xl font-bold text-primary">{packageName}</h3>
+            <h3 className="text-xl font-semibold text-primary">{packageName}</h3>
           </div>
-          <span className="text-3xl font-bold text-primary">
+          <span className="text-3xl font-semibold text-primary">
             ${packagePrice}
           </span>
         </div>
 
         {/* Personal Information */}
         <div className="flex flex-col gap-6">
-          <h4 className="text-lg font-bold text-primary">
+          <h4 className="text-lg font-semibold text-primary">
             Personal Information
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -172,7 +172,7 @@ export function PricingBookingForm({
 
         {/* Wedding Details */}
         <div className="flex flex-col gap-6">
-          <h4 className="text-lg font-bold text-primary">Wedding Details</h4>
+          <h4 className="text-lg font-semibold text-primary">Wedding Details</h4>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FormField
               control={form.control}
@@ -263,7 +263,7 @@ export function PricingBookingForm({
             <span className="text-muted-foreground font-medium">
               Total Amount
             </span>
-            <span className="text-4xl font-bold text-primary">
+            <span className="text-4xl font-semibold text-primary">
               ${packagePrice}
             </span>
             <p className="text-[10px] text-muted-foreground">

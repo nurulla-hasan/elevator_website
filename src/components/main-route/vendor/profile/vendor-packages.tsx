@@ -47,13 +47,13 @@ export const VendorPackages = ({ packages }: VendorPackagesProps) => {
                 {pkg.sponsored && (
                   <Badge className={`${pkg.isPopular ? "bg-white/20 text-white" : "bg-primary/10 text-orange-600"} border-none flex items-center gap-1 py-0.5 px-2 h-5 shadow-none`}>
                     <Flame size={10} className="fill-current" />
-                    <span className="text-[8px] font-bold uppercase tracking-wider">Sponsored</span>
+                    <span className="text-[8px] font-semibold uppercase tracking-wider">Sponsored</span>
                   </Badge>
                 )}
               </div>
 
               <div className="space-y-0.5">
-                <span className="text-[10px] font-bold opacity-80 uppercase tracking-widest">Starts from</span>
+                <span className="text-[10px] font-semibold opacity-80 uppercase tracking-widest">Starts from</span>
                 <div className="flex items-baseline justify-center gap-1">
                   <span className="text-3xl font-semibold">{pkg.price}</span>
                 </div>
@@ -61,7 +61,7 @@ export const VendorPackages = ({ packages }: VendorPackagesProps) => {
 
               {/* Rating moved to left section */}
               {pkg.rating && (
-                <div className="flex items-center justify-center gap-1 text-[11px] font-bold">
+                <div className="flex items-center justify-center gap-1 text-[11px] font-semibold">
                   <StarRating rating={pkg.rating} totalStars={1} size={10} />
                   <span>{pkg.rating}</span>
                   <span className="opacity-70 font-medium">({pkg.reviews})</span>
@@ -122,7 +122,7 @@ export const VendorPackages = ({ packages }: VendorPackagesProps) => {
               </div>
 
               <div className="space-y-3">
-                <h4 className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
+                <h4 className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
                   <Gift size={14} className="text-primary" />
                   What&apos;s Included
                 </h4>
@@ -138,7 +138,7 @@ export const VendorPackages = ({ packages }: VendorPackagesProps) => {
               
               <div className="pt-4 border-t border-border/50 flex items-center gap-3 text-[10px] text-muted-foreground">
                 <div className="flex items-center gap-1">
-                  <div className="relative h-3 w-3 shrink-0">
+                  <div className="relative h-8 w-10 shrink-0">
                     <Image
                       src="/home/v.png"
                       alt="Verified"

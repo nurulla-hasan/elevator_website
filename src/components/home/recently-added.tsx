@@ -16,7 +16,6 @@ export default function RecentlyAddedVendors() {
           <PageHeader 
             title="Recently Added Vendors" 
             description="Explore our newest professional wedding vendors"
-            length={recentVendors.length}
           />
         </div>
 

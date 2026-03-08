@@ -44,7 +44,7 @@ export default function Hero() {
           <div className="flex flex-[1.2] items-center px-4 py-2 md:py-0">
             <Search className="mr-3 h-5 w-5 text-primary shrink-0" />
             <div className="flex flex-col items-start w-full">
-              <span className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider mb-1 ml-1">Looking for</span>
+              <span className="text-[10px] uppercase font-semibold text-muted-foreground tracking-wider mb-1 ml-1">Looking for</span>
               <Input
                 type="text"
                 placeholder="Venues, Photographers..."
@@ -58,7 +58,7 @@ export default function Hero() {
           <div className="flex flex-1 items-center px-4 py-2 md:py-0 border-t border-border md:border-none">
             <MapPin className="mr-3 h-5 w-5 text-primary shrink-0" />
             <div className="flex flex-col items-start w-full">
-              <span className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider mb-1 ml-1">Location</span>
+              <span className="text-[10px] uppercase font-semibold text-muted-foreground tracking-wider mb-1 ml-1">Location</span>
               <Input
                 type="text"
                 placeholder="Where in the city?"

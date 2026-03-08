@@ -56,7 +56,7 @@ export const VenueDetails = ({ venue }: VenueDetailsProps) => {
               <p className="text-sm font-semibold text-primary uppercase tracking-wider">
                 Event Venue
               </p>
-              <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
+              <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">
                 {venue.name}
               </h1>
             </div>
@@ -76,7 +76,7 @@ export const VenueDetails = ({ venue }: VenueDetailsProps) => {
                     size={16}
                     className="text-yellow-500 fill-yellow-500"
                   />
-                  <span className="text-sm font-bold text-yellow-700">
+                  <span className="text-sm font-semibold text-yellow-700">
                     {venue.rating}
                   </span>
                 </div>
@@ -93,7 +93,7 @@ export const VenueDetails = ({ venue }: VenueDetailsProps) => {
                 <span className="text-sm text-muted-foreground">
                   Starting from
                 </span>
-                <span className="text-3xl font-bold text-foreground">
+                <span className="text-3xl font-semibold text-foreground">
                   {venue.price}
                 </span>
               </div>

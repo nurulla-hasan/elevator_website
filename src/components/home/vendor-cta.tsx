@@ -8,7 +8,7 @@ export default function VendorCTA() {
     <section>
       <div className="flex flex-col items-center text-center space-y-8">
         <div className="space-y-4 max-w-2xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary">
+          <h2 className="text-3xl md:text-4xl font-semibold text-primary">
             Are You a Wedding Vendor?
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">

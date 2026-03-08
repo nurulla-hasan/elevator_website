@@ -165,11 +165,11 @@ export default function VendorFilter() {
                         );
                       }}
                     />
-                    <div className="flex items-center justify-between text-xs font-bold">
+                    <div className="flex items-center justify-between text-xs font-semibold">
                       <span className="text-muted-foreground">
                         ${budget[0]}
                       </span>
-                      <span className="text-primary font-bold">
+                      <span className="text-primary font-semibold">
                         ${budget[1].toLocaleString()}
                       </span>
                     </div>
@@ -224,7 +224,7 @@ export default function VendorFilter() {
                           )
                         }
                       />
-                      <span className="text-xs font-bold text-muted-foreground min-w-12.5">
+                      <span className="text-xs font-semibold text-muted-foreground min-w-12.5">
                         {getFilter("rating")
                           ? `${getFilter("rating")} & up`
                           : "Any"}

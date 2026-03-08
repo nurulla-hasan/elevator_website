@@ -33,7 +33,7 @@ export default function CategoryCard({ name, count, image }: CategoryCardProps) 
         
         {/* Category Info */}
         <div className="text-center px-1">
-          <h3 className="text-sm md:text-base font-bold text-foreground transition-colors duration-300 group-hover:text-primary leading-tight">
+          <h3 className="text-sm md:text-base font-semibold text-foreground transition-colors duration-300 group-hover:text-primary leading-tight">
             {name}
           </h3>
           <p className="text-[10px] md:text-[11px] font-medium text-muted-foreground uppercase tracking-wider mt-0.5">

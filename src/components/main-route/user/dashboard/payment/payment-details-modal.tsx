@@ -31,7 +31,7 @@ export function PaymentDetailsModal({ payment }: PaymentDetailsModalProps) {
       onOpenChange={setOpen}
       title="Payment Overview"
       actionTrigger={
-        <Button variant="outline" size="sm" className="font-semibold">
+        <Button variant="link" size="xs">
           View Details
         </Button>
       }
@@ -45,7 +45,7 @@ export function PaymentDetailsModal({ payment }: PaymentDetailsModalProps) {
                 <CheckCircle2 className="h-6 w-6 text-primary" />
               </div>
               <div className="flex-1">
-                <h4 className="text-sm font-bold text-foreground">
+                <h4 className="text-sm font-semibold text-foreground">
                   Payment Successful
                 </h4>
                 <p className="text-xs text-muted-foreground">
@@ -53,7 +53,7 @@ export function PaymentDetailsModal({ payment }: PaymentDetailsModalProps) {
                 </p>
               </div>
               <div className="text-right">
-                <p className="text-lg font-bold text-primary">
+                <p className="text-lg font-semibold text-primary">
                   {payment.amount}
                 </p>
                 <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium">
@@ -67,7 +67,7 @@ export function PaymentDetailsModal({ payment }: PaymentDetailsModalProps) {
             {/* Transaction Info Card */}
             <Card>
               <CardHeader>
-                <CardTitle className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
+                <CardTitle className="text-xs font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
                   <Hash className="h-3 w-3" />
                   Transaction
                 </CardTitle>
@@ -96,7 +96,7 @@ export function PaymentDetailsModal({ payment }: PaymentDetailsModalProps) {
             {/* Payment Method Card */}
             <Card>
               <CardHeader>
-                <CardTitle className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
+                <CardTitle className="text-xs font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
                   <CreditCard className="h-3 w-3" />
                   Method
                 </CardTitle>
@@ -123,7 +123,7 @@ export function PaymentDetailsModal({ payment }: PaymentDetailsModalProps) {
           {/* Vendor & Service Card */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
+              <CardTitle className="text-xs font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
                 <Package className="h-3 w-3" />
                 Vendor & Package
               </CardTitle>
@@ -159,7 +159,7 @@ export function PaymentDetailsModal({ payment }: PaymentDetailsModalProps) {
                   <Download className="h-4 w-4 text-primary" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xs font-bold">Tax Invoice</span>
+                  <span className="text-xs font-semibold">Tax Invoice</span>
                   <span className="text-[10px] text-muted-foreground">
                     PDF Format (1.2 MB)
                   </span>

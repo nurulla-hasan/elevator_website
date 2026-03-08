@@ -53,7 +53,7 @@ export function NotificationCard({ notification }: NotificationCardProps) {
           <div className="flex items-center justify-between gap-2">
             <h4
               className={cn(
-                "font-bold text-base leading-tight transition-colors",
+                "font-semibold text-base leading-tight transition-colors",
                 !notification.isRead ? "text-primary" : "text-foreground",
               )}
             >
@@ -84,7 +84,7 @@ export function NotificationCard({ notification }: NotificationCardProps) {
             </div>
 
             {!notification.isRead && (
-              <button className="text-xs font-bold text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:underline">
+              <button className="text-xs font-semibold text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:underline">
                 Mark as read
               </button>
             )}

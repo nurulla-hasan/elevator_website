@@ -97,7 +97,7 @@ export const VendorDetails = ({ vendor }: VendorDetailsProps) => {
                     size={16}
                     className="text-yellow-500 fill-yellow-500"
                   />
-                  <span className="text-sm font-bold text-yellow-700">
+                  <span className="text-sm font-semibold text-yellow-700">
                     {vendor.rating}
                   </span>
                 </div>

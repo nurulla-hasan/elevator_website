@@ -37,12 +37,12 @@ export function VenueBottomSheet({ venues }: VenueBottomSheetProps) {
           <div className="w-12 h-1.5 bg-muted group-hover:bg-muted-foreground transition-colors rounded-full mx-auto"></div>
           
           <div className="flex items-center gap-3 text-sm bg-primary/20 px-2 py-1 rounded-full">
-            <span className="font-bold text-xs text-foreground">{venues.length} Venues Found</span>
+            <span className="font-semibold text-xs text-foreground">{venues.length} Venues Found</span>
             <div className="w-1 h-1 rounded-full bg-muted-foreground"></div>
             <Button 
               variant="link" 
               size="sm" 
-              className="text-primary text-xs font-bold h-auto p-0 hover:no-underline"
+              className="text-primary text-xs font-semibold h-auto p-0 hover:no-underline"
               onClick={(e) => {
                 e.stopPropagation();
                 setIsExpanded(!isExpanded);

@@ -53,7 +53,7 @@ export function PricingTestimonials() {
   return (
     <section className="flex flex-col gap-10">
       <div className="flex flex-col gap-3 items-center text-center">
-        <h3 className="text-3xl font-bold text-primary">
+        <h3 className="text-3xl font-semibold text-primary">
           Real Stories, Real Love
         </h3>
         <p className="text-muted-foreground max-w-2xl text-sm md:text-base">
@@ -87,11 +87,11 @@ export function PricingTestimonials() {
                       &ldquo;{testimonial.text}&rdquo;
                     </p>
                     <div className="flex items-center gap-4 mt-auto pt-4 border-t border-primary/10">
-                      <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center font-bold text-primary text-sm">
+                      <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center font-semibold text-primary text-sm">
                         {testimonial.author.charAt(0)}
                       </div>
                       <div className="flex flex-col">
-                        <span className="font-bold text-primary text-sm">
+                        <span className="font-semibold text-primary text-sm">
                           {testimonial.author}
                         </span>
                         <span className="text-xs text-muted-foreground font-semibold uppercase tracking-wider">

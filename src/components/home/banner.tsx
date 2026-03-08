@@ -80,7 +80,7 @@ export default function Banner() {
                 
                 {/* Content */}
                 <div className="absolute inset-0 flex flex-col justify-center items-center px-8 md:px-16 lg:px-24 space-y-2 md:space-y-4 text-white z-10">
-                  <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight animate-in fade-in slide-in-from-left-8 duration-700">
+                  <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold tracking-tight animate-in fade-in slide-in-from-left-8 duration-700">
                     {image.title}
                   </h2>
                   <p className="text-sm text-center md:text-lg lg:text-xl max-w-lg text-white/90 leading-relaxed animate-in fade-in slide-in-from-left-10 duration-1000 delay-200">

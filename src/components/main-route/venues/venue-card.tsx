@@ -46,7 +46,7 @@ export function VenueCard({
                 </div>
                 <div className="flex items-center gap-1 mt-0.5">
                   <StarRating rating={venue.rating} totalStars={1} size={12} />
-                  <span className="text-[11px] font-bold text-foreground">
+                  <span className="text-[11px] font-semibold text-foreground">
                     {venue.rating}
                   </span>
                   {venue.reviews && (
@@ -89,7 +89,7 @@ export function VenueCard({
             </h3>
             <div className="flex items-center gap-1 shrink-0 ml-2 mt-1">
               <StarRating rating={venue.rating} totalStars={1} size={16} />
-              <span className="text-sm font-bold text-foreground">
+              <span className="text-sm font-semibold text-foreground">
                 {venue.rating}
               </span>
             </div>

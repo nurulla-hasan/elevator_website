@@ -80,7 +80,7 @@ export default function LoginPage() {
             />
           </div>
           <div className="space-y-2">
-            <h1 className="text-3xl font-bold tracking-tight">Welcome Back</h1>
+            <h1 className="text-3xl font-semibold tracking-tight">Welcome Back</h1>
             <p className="text-sm text-muted-foreground">
               Sign in to continue planning your perfect wedding
             </p>
@@ -209,7 +209,7 @@ export default function LoginPage() {
               Don&apos;t have an account?{" "}
               <Link
                 href="/auth/register"
-                className="font-bold text-primary hover:underline underline-offset-4"
+                className="font-semibold text-primary hover:underline underline-offset-4"
               >
                 Sign up
               </Link>
@@ -223,7 +223,7 @@ export default function LoginPage() {
             className="group inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
           >
             Are you a vendor?{" "}
-            <span className="ml-1 font-bold text-primary group-hover:underline">
+            <span className="ml-1 font-semibold text-primary group-hover:underline">
               Join as a vendor
             </span>
             <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />

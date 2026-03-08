@@ -48,9 +48,9 @@ const mockMessages: Message[] = [
 
 export default function ChatWindow({ conversation, onBack }: ChatWindowProps) {
   return (
-    <div className="flex flex-col h-full bg-background w-full">
+    <div className="flex flex-col h-full bg-muted w-full">
       {/* Chat Header */}
-      <div className="flex items-center justify-between sm:px-4 py-4 border-b bg-muted border-l">
+      <div className="flex items-center justify-between sm:px-4 py-4 border-b bg-background border-l">
         <div className="flex items-center gap-3 min-w-0">
           {onBack && (
             <Button 
@@ -65,14 +65,14 @@ export default function ChatWindow({ conversation, onBack }: ChatWindowProps) {
           <div className="relative shrink-0">
             <Avatar className="md:h-10 md:w-10">
               <AvatarImage src={conversation.avatarUrl} alt={conversation.name} />
-              <AvatarFallback className="text-primary-foreground font-bold">{conversation.initial}</AvatarFallback>
+              <AvatarFallback className="text-primary-foreground font-semibold">{conversation.initial}</AvatarFallback>
             </Avatar>
             {conversation.online && (
               <span className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-green-500 border-2" />
             )}
           </div>
           <div className="max-w-40">
-            <h3 className="text-sm font-bold leading-none mb-1 truncate">{conversation.name}</h3>
+            <h3 className="text-sm font-semibold leading-none mb-1 truncate">{conversation.name}</h3>
             <p className="text-xs text-muted-foreground truncate">{conversation.category}</p>
           </div>
         </div>
@@ -114,7 +114,7 @@ export default function ChatWindow({ conversation, onBack }: ChatWindowProps) {
       </ScrollArea>
 
       {/* Input Area */}
-      <div className="p-4 bg-background border-t border-border">
+      <div className="p-4 border-t border-border">
         <div className="flex items-center gap-2">
           <Input 
             placeholder="Type your message..." 

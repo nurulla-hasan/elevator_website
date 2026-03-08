@@ -9,7 +9,7 @@ export default function ContactPage() {
       <div className="bg-muted border-b ">
         <PageLayout className="max-w-6xl text-center">
           <div className="space-y-2">
-            <h1 className="text-4xl md:text-5xl font-bold text-primary">
+            <h1 className="text-4xl md:text-5xl font-semibold text-primary">
               Contact Us
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -41,7 +41,7 @@ export default function ContactPage() {
                   <Phone className="h-5 w-5 text-primary" />
                 </div>
                 <div className="space-y-1">
-                  <p className="font-bold text-lg text-foreground">Phone</p>
+                  <p className="font-semibold text-lg text-foreground">Phone</p>
                   <p className="text-muted-foreground">+1 (555) 123-4567</p>
                   <p className="text-xs text-muted-foreground/70">
                     Mon-Fri 9am-6pm EST
@@ -54,7 +54,7 @@ export default function ContactPage() {
                   <Mail className="h-5 w-5 text-primary" />
                 </div>
                 <div className="space-y-1">
-                  <p className="font-bold text-lg text-foreground">Email</p>
+                  <p className="font-semibold text-lg text-foreground">Email</p>
                   <p className="text-muted-foreground">hello@weddinghub.com</p>
                   <p className="text-xs text-muted-foreground/70">
                     We&apos;ll respond within 24 hours
@@ -67,7 +67,7 @@ export default function ContactPage() {
                   <MapPin className="h-5 w-5 text-primary" />
                 </div>
                 <div className="space-y-1">
-                  <p className="font-bold text-lg text-foreground">Office</p>
+                  <p className="font-semibold text-lg text-foreground">Office</p>
                   <p className="text-muted-foreground">123 Wedding Street</p>
                   <p className="text-muted-foreground text-sm">
                     New York, NY 10001
@@ -77,7 +77,7 @@ export default function ContactPage() {
             </div>
 
             <div className="pt-2 border-t border-border space-y-4">
-              <h3 className="text-lg font-bold text-primary">Office Hours</h3>
+              <h3 className="text-lg font-semibold text-primary">Office Hours</h3>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between items-center">
                   <span className="text-muted-foreground">Monday - Friday</span>

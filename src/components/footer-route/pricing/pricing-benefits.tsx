@@ -31,7 +31,7 @@ export function PricingBenefits() {
     <PageLayout >
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-3 items-center text-center">
-          <h3 className="text-3xl font-bold text-primary">
+          <h3 className="text-3xl font-semibold text-primary">
             The WePlan Advantage
           </h3>
           <p className="text-muted-foreground max-w-2xl text-sm md:text-base">
@@ -47,7 +47,7 @@ export function PricingBenefits() {
                   <benefit.icon className="h-5 w-5" />
                 </div>
                 <div className="space-y-1">
-                  <h4 className="font-bold text-primary">{benefit.title}</h4>
+                  <h4 className="font-semibold text-primary">{benefit.title}</h4>
                   <p className="text-xs text-muted-foreground font-medium">
                     {benefit.description}
                   </p>

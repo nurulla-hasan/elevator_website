@@ -28,7 +28,7 @@ export default function PackageSuccessPage() {
             
             {/* Header */}
             <div className="text-center space-y-3">
-              <h2 className="text-2xl font-bold text-primary">Booking Confirmed!</h2>
+              <h2 className="text-2xl font-semibold text-primary">Booking Confirmed!</h2>
               <p className="text-muted-foreground text-sm leading-relaxed">
                 Thank you, {userName}! Your WePlan Associate booking has been received.
               </p>
@@ -36,7 +36,7 @@ export default function PackageSuccessPage() {
 
             {/* Booking Details */}
             <div className="w-full bg-muted rounded-xl p-6 space-y-4">
-              <h3 className="text-base font-bold text-primary">Booking Details</h3>
+              <h3 className="text-base font-semibold text-primary">Booking Details</h3>
               <div className="space-y-3">
                 <div className="flex justify-between text-xs">
                   <span className="text-muted-foreground">Package:</span>
@@ -56,10 +56,10 @@ export default function PackageSuccessPage() {
             {/* Next Steps */}
             <div className="w-full rounded-xl p-4 border">
               <p className="text-[11px] text-center leading-relaxed text-primary">
-                <span className="font-bold">Next Steps:</span>{" "}
+                <span className="font-semibold">Next Steps:</span>{" "}
                 <span className="font-medium">
                   Our team will contact you within 24 hours at{" "}
-                  <span className="font-bold">{email}</span> to schedule your initial consultation.
+                  <span className="font-semibold">{email}</span> to schedule your initial consultation.
                 </span>
               </p>
             </div>

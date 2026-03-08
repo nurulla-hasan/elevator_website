@@ -41,7 +41,7 @@ export function VendorCard({
                     className="bg-primary/90 backdrop-blur-sm text-white border-none flex items-center gap-1 py-0.5 px-1.5 shadow-lg w-fit text-[8px] h-4"
                   >
                     <Flame className="h-2.5 w-2.5 fill-current" />
-                    <span className="font-bold uppercase tracking-wider">
+                    <span className="tracking-wider">
                       Sponsored
                     </span>
                   </Badge>
@@ -79,7 +79,7 @@ export function VendorCard({
                 </div>
                 <div className="flex items-center gap-1">
                   <StarRating rating={vendor.rating} totalStars={1} size={12} />
-                  <span className="text-[11px] font-bold">{vendor.rating}</span>
+                  <span className="text-[11px] font-semibold">{vendor.rating}</span>
                   <span className="text-[11px] text-muted-foreground">
                     ({vendor.reviews} reviews)
                   </span>
@@ -130,7 +130,7 @@ export function VendorCard({
               className="bg-primary/90 backdrop-blur-sm text-white border-none flex items-center gap-1 py-1 px-2.5 shadow-lg w-fit"
             >
               <Flame className="h-3.5 w-3.5 fill-current" />
-              <span className="text-[10px] font-bold uppercase tracking-wider">
+              <span className="text-[10px] tracking-wider">
                 Sponsored
               </span>
             </Badge>
@@ -158,7 +158,7 @@ export function VendorCard({
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-1.5">
             <StarRating rating={vendor.rating} totalStars={1} size={16} />
-            <span className="text-sm font-bold">{vendor.rating}</span>
+            <span className="text-sm font-semibold">{vendor.rating}</span>
             <span className="text-xs text-muted-foreground">
               ({vendor.reviews} reviews)
             </span>

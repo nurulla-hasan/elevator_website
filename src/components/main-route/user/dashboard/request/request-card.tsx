@@ -17,7 +17,7 @@ export function RequestCard({ request }: RequestCardProps) {
         {/* Header */}
         <div className="flex items-start justify-between">
           <div className="space-y-1">
-            <h3 className="text-xl font-bold text-primary">{request.eventName}</h3>
+            <h3 className="text-xl font-semibold text-primary">{request.eventName}</h3>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <span>Posted: {request.postedDate}</span>
               <span>•</span>
@@ -33,22 +33,22 @@ export function RequestCard({ request }: RequestCardProps) {
         <div className="grid grid-cols-3 gap-4 py-4 border-y border-border/50">
           <div>
             <p className="text-sm text-muted-foreground mb-1">Budget</p>
-            <p className="font-bold text-primary">{request.budget}</p>
+            <p className="font-semibold text-primary">{request.budget}</p>
           </div>
           <div>
             <p className="text-sm text-muted-foreground mb-1">Guests</p>
-            <p className="font-bold text-primary">{request.guests}</p>
+            <p className="font-semibold text-primary">{request.guests}</p>
           </div>
           <div>
             <p className="text-sm text-muted-foreground mb-1">Area</p>
-            <p className="font-bold text-primary">{request.area}</p>
+            <p className="font-semibold text-primary">{request.area}</p>
           </div>
         </div>
 
         {/* Quotes Section */}
         {request.quotes.length > 0 && (
           <div className="space-y-4">
-            <h4 className="text-sm font-bold text-primary uppercase tracking-wider">Recent Quotes</h4>
+            <h4 className="text-sm font-semibold text-primary uppercase tracking-wider">Recent Quotes</h4>
             <div className="space-y-3">
               {request.quotes.map((quote) => (
                 <div 
@@ -58,8 +58,8 @@ export function RequestCard({ request }: RequestCardProps) {
                   <div className="flex items-start justify-between">
                     <div>
                       <div className="flex items-center gap-2">
-                        <h5 className="font-bold text-primary">{quote.vendorName}</h5>
-                        <div className="flex items-center gap-1 text-xs font-bold text-amber-500">
+                        <h5 className="font-semibold text-primary">{quote.vendorName}</h5>
+                        <div className="flex items-center gap-1 text-xs font-semibold text-amber-500">
                           <Star className="w-3 h-3 fill-current" />
                           {quote.rating}
                         </div>
@@ -68,7 +68,7 @@ export function RequestCard({ request }: RequestCardProps) {
                       <p className="text-xs text-muted-foreground mt-1">Valid until: {quote.validUntil}</p>
                     </div>
                     <div className="text-right space-y-2">
-                      <p className="text-xl font-bold text-primary">{quote.price}</p>
+                      <p className="text-xl font-semibold text-primary">{quote.price}</p>
                       <Button size="xs">
                         Accept Quote
                       </Button>

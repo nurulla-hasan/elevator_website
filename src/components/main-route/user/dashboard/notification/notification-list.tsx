@@ -51,8 +51,8 @@ export function NotificationList() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between px-2">
-        <h3 className="text-xl font-bold text-primary">Recent Notifications</h3>
-        <Button variant="ghost" size="sm" className="text-xs font-bold text-primary hover:text-primary hover:bg-primary/5">
+        <h3 className="text-xl font-semibold text-primary">Recent Notifications</h3>
+        <Button variant="ghost" size="sm" className="text-xs font-semibold text-primary hover:text-primary hover:bg-primary/5">
           Mark all as read
         </Button>
       </div>

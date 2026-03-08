@@ -4,7 +4,6 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import PageHeader from "@/components/ui/custom/page-header";
 import { VenueCard } from "@/components/main-route/venues/venue-card";
-import { ArrowRight } from "lucide-react";
 import { mockVenues } from "@/data/venues.data";
 import Link from "next/link";
 import { VenueMap } from "@/components/main-route/venues/venue-map";
@@ -17,9 +16,6 @@ export default function VenuePreview() {
           title="Find Your Perfect Venue" 
           description="Explore our curated list of top-rated venues with an interactive map."
         >
-          <Button variant="link" className="hover:text-primary">
-            Explore All Venues <ArrowRight />
-          </Button>
         </PageHeader>
       </div>
 

@@ -10,7 +10,7 @@ export const VenueFeatureHighlights = () => {
             <Sparkles className="text-amber-600" size={20} />
           </div>
           <div>
-            <h4 className="font-bold text-sm">Premium Amenities</h4>
+            <h4 className="font-semibold text-sm">Premium Amenities</h4>
             <p className="text-xs text-muted-foreground">
               Top-notch facilities for your special events.
             </p>
@@ -23,7 +23,7 @@ export const VenueFeatureHighlights = () => {
             <Utensils className="text-blue-600" size={20} />
           </div>
           <div>
-            <h4 className="font-bold text-sm">Catering Options</h4>
+            <h4 className="font-semibold text-sm">Catering Options</h4>
             <p className="text-xs text-muted-foreground">
               In-house and external catering available.
             </p>
@@ -36,7 +36,7 @@ export const VenueFeatureHighlights = () => {
             <Car className="text-pink-600" size={20} />
           </div>
           <div>
-            <h4 className="font-bold text-sm">Ample Parking</h4>
+            <h4 className="font-semibold text-sm">Ample Parking</h4>
             <p className="text-xs text-muted-foreground">
               Secure parking for over 100+ vehicles.
             </p>

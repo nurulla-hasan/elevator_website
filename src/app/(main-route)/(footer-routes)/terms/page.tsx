@@ -10,7 +10,7 @@ export default function TermsPage() {
       />
       <div className="mt-12 max-w-3xl mx-auto space-y-8 text-muted-foreground leading-relaxed">
         <section>
-          <h2 className="text-xl font-bold text-primary mb-4">1. Acceptance of Terms</h2>
+          <h2 className="text-xl font-semibold text-primary mb-4">1. Acceptance of Terms</h2>
           <p>Detailed terms and conditions will be added here...</p>
         </section>
       </div>

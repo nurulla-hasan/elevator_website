@@ -14,7 +14,7 @@ export default function PostRequirement() {
 
         {/* Text Content */}
         <div className="space-y-4 max-w-2xl text-white">
-          <h2 className="text-3xl md:text-4xl font-bold">
+          <h2 className="text-3xl md:text-4xl font-semibold">
             Let Vendors Come to You
           </h2>
           <p className="text-white/80 text-lg leading-relaxed">
