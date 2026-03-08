@@ -12,9 +12,9 @@ export default function WePlanAssociate() {
   ];
 
   return (
-    <section className="w-full py-10">
-      <div className="max-w-6xl mx-auto bg-muted rounded-[24px] overflow-hidden">
-        <div className="flex flex-col lg:flex-row items-center gap-8 p-6 md:p-10 lg:p-12">
+    <section className="w-full">
+      <div className="max-w-6xl mx-auto bg-card rounded-[24px] overflow-hidden">
+        <div className="flex flex-col lg:flex-row items-center gap-8">
           {/* Left Content */}
           <div className="flex-1 space-y-6">
             <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-primary-foreground shadow-md shadow-primary/20">
@@ -58,13 +58,16 @@ export default function WePlanAssociate() {
 
           {/* Right Image */}
           <div className="flex-1 w-full lg:max-w-120">
-            <div className="relative aspect-square rounded-[24px] overflow-hidden shadow-xl">
+            <div className="relative aspect-square rounded-[24px] overflow-hidden shadow-xl group">
               <Image
                 src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070&auto=format&fit=crop"
                 alt="Wedding Planning Associate"
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
+              {/* Pinkish Primary Overlay */}
+              <div className="absolute inset-0 bg-linear-to-t from-primary/0 to-primary/80 z-10" />
+              {/* <div className="absolute inset-0 bg-primary/10 mix-blend-overlay z-10" /> */}
             </div>
           </div>
         </div>

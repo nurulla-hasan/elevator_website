@@ -5,7 +5,7 @@ interface PageLayoutProps {
   children: React.ReactNode;
   pagination?: React.ReactNode;
   className?: string;
-  paddingSize?: "default" | "small" | "none"; // | "compact"
+  paddingSize?: "default" | "small" | "none" | "zero"; // | "compact"
 }
 
 const PageLayout = ({ children, pagination, className, paddingSize = "default" }: PageLayoutProps) => {
@@ -14,6 +14,7 @@ const PageLayout = ({ children, pagination, className, paddingSize = "default" }
     default: "px-5 py-12 lg:py-18",
     small: "px-5 pt-5 pb-12 lg:pb-18",
     none: "px-5 pb-12 lg:pb-18",
+    zero: "px-5",
   };
 
   return (

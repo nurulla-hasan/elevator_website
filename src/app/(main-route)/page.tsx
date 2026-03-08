@@ -23,39 +23,55 @@ export default function HomePage() {
           <Categories />
         </PageLayout>
 
-        <PageLayout paddingSize="small">
-          <Banner />
-        </PageLayout>
+        <div className="bg-card py-16">
+          <PageLayout paddingSize="zero">
+            <Banner />
+          </PageLayout>
+        </div>
 
-        <PageLayout paddingSize="small">
-          <FeaturedVendors />
-        </PageLayout>
+        <div className="py-16">
+          <PageLayout paddingSize="zero">
+            <FeaturedVendors />
+          </PageLayout>
+        </div>
 
-        <PageLayout paddingSize="small">
-          <EventTypes />
-        </PageLayout>
+        <div className="bg-card py-16">
+          <PageLayout paddingSize="zero">
+            <EventTypes />
+          </PageLayout>
+        </div>
 
-        <PageLayout paddingSize="small">
-          <VenuePreview />
-        </PageLayout>
+        <div className="py-16">
+          <PageLayout paddingSize="zero">
+            <VenuePreview />
+          </PageLayout>
+        </div>
 
-        <PageLayout paddingSize="small">
-          <BudgetVendors />
-        </PageLayout>
+        <div className="bg-card py-16">
+          <PageLayout paddingSize="zero">
+            <BudgetVendors />
+          </PageLayout>
+        </div>
 
-        <PageLayout paddingSize="small">
-          <PostRequirement />
-        </PageLayout>
+        <div className="py-16">
+          <PageLayout paddingSize="zero">
+            <PostRequirement />
+          </PageLayout>
+        </div>
 
-        <PageLayout paddingSize="small">
-          <WePlanAssociate />
-        </PageLayout>
+        <div className="bg-card py-16">
+          <PageLayout paddingSize="zero">
+            <WePlanAssociate />
+          </PageLayout>
+        </div>
 
-        <PageLayout paddingSize="small">
-          <RecentlyAddedVendors />
-        </PageLayout>
+        <div className="py-16">
+          <PageLayout paddingSize="zero">
+            <RecentlyAddedVendors />
+          </PageLayout>
+        </div>
 
-        <div className="pt-5">
+        <div className="bg-card py-16">
           <VendorCTA />
         </div>
       </main>

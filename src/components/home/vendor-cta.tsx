@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function VendorCTA() {
   return (
     <section>
-      <div className="bg-muted p-8 md:p-16 flex flex-col items-center text-center space-y-8">
+      <div className="flex flex-col items-center text-center space-y-8">
         <div className="space-y-4 max-w-2xl">
           <h2 className="text-3xl md:text-4xl font-bold text-primary">
             Are You a Wedding Vendor?
