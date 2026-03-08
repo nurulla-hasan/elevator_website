@@ -1,4 +1,4 @@
-
+"use client"
 import { Search, MapPin, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,15 +7,15 @@ import { Separator } from "@/components/ui/separator";
 export default function Hero() {
   return (
     <section className="relative w-full h-[calc(100vh-64px)] lg:h-[calc(100vh-80px)] overflow-hidden">
-      {/* Background Image with Overlay */}
+      {/* Background Image with Subtle Zoom Effect */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 scale-105"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-10000 ease-out scale-110 animate-subtle-zoom"
         style={{
           backgroundImage: `url('/home/hero2.jpg')`,
         }}
       />
       {/* Pinkish Gradient Overlay for Client Requirement */}
-      <div className="absolute inset-0 bg-primary/10 bg-linear-to-tr from-primary/10 via-black/40 to-primary/20 z-10" />
+      <div className="absolute inset-0 bg-linear-to-t from-primary/20 via-primary/60 to-primary/80 z-10" />
       <div className="absolute inset-0 bg-black/30 z-10" />
       
       {/* Subtle Pink Glows */}
@@ -32,7 +32,7 @@ export default function Hero() {
 
         <h1 className="mb-6 text-4xl font-semibold tracking-widest md:text-6xl lg:text-7xl leading-[1.1] animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
           Crafting Your Perfect <br /> 
-          <span className="text-primary italic font-serif">Wedding Story</span>
+          <span className="text-4xl md:text-6xl lg:text-7xl">Wedding Story</span>
         </h1>
         
         <p className="mb-10 max-w-2xl text-sm font-medium text-white/95 md:text-lg px-2 leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500 drop-shadow-md">
@@ -73,6 +73,14 @@ export default function Hero() {
           </Button>
         </div>
       </div>
+
+      <style jsx global>{`
+        @keyframes subtle-zoom {
+          0% { transform: scale(1.1); }
+          100% { transform: scale(1.2); }
+        }
+        .animate-subtle-zoom { animation: subtle-zoom 20s linear infinite alternate; }
+      `}</style>
     </section>
   );
 }

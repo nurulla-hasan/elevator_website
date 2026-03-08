@@ -1,7 +1,6 @@
 "use client";
 import * as React from "react";
 import { ArrowRight } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import PageHeader from "@/components/ui/custom/page-header";
 import Autoplay from "embla-carousel-autoplay";
@@ -13,44 +12,8 @@ import {
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-
-const categories = [
-  {
-    name: "Photographers",
-    count: "245",
-    emoji: "📷",
-  },
-  {
-    name: "Venues",
-    count: "189",
-    emoji: "🏛️",
-  },
-  {
-    name: "Caterers",
-    count: "312",
-    emoji: "🍴",
-  },
-  {
-    name: "Decorators",
-    count: "156",
-    emoji: "🎨",
-  },
-  {
-    name: "Makeup Artists",
-    count: "278",
-    emoji: "💄",
-  },
-  {
-    name: "DJ & Music",
-    count: "134",
-    emoji: "🎵",
-  },
-  {
-    name: "Videographers",
-    count: "198",
-    emoji: "🎥",
-  },
-];
+import CategoryCard from "../main-route/category/category-card";
+import { categories } from "@/data/categories.data";  
 
 export default function Categories() {
   const [api, setApi] = React.useState<CarouselApi>();
@@ -104,23 +67,7 @@ export default function Categories() {
                 key={category.name}
                 className="pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/6"
               >
-                <Link href={`/vendors?category=${category.name.toLowerCase().replace(/\s+/g, "-")}`}>
-                  <Card className="group cursor-pointer transition-all duration-300 border-none overflow-hidden">
-                    <CardContent className="flex flex-col items-center justify-center text-center">
-                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/5 group-hover:bg-primary/10 transition-colors duration-300">
-                        <span className="text-3xl">{category.emoji}</span>
-                      </div>
-
-                      <h3 className="mb-1 text-sm font-bold group-hover:text-primary transition-colors duration-300 line-clamp-1">
-                        {category.name}
-                      </h3>
-
-                      <p className="text-xs text-muted-foreground">
-                        {category.count} Vendors
-                      </p>
-                    </CardContent>
-                  </Card>
-                </Link>
+                <CategoryCard {...category} />
               </CarouselItem>
             ))}
           </CarouselContent>

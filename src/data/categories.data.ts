@@ -1,0 +1,28 @@
+
+
+export const categories = [
+  { name: "Photographers", count: "245", emoji: "📷" },
+  { name: "Venues", count: "189", emoji: "🏛️" },
+  { name: "Caterers", count: "312", emoji: "🍴" },
+  { name: "Decorators", count: "156", emoji: "🎨" },
+  { name: "Makeup Artists", count: "278", emoji: "💄" },
+  { name: "DJ & Music", count: "134", emoji: "🎵" },
+  { name: "Videographers", count: "198", emoji: "🎥" },
+  { name: "Florists", count: "167", emoji: "💐" },
+  { name: "Wedding Planners", count: "95", emoji: "📅" },
+  { name: "Jewelry", count: "142", emoji: "💎" },
+  { name: "Bridal Wear", count: "215", emoji: "👗" },
+  { name: "Transport", count: "78", emoji: "🚗" },
+  { name: "Invitations", count: "112", emoji: "💌" },
+  { name: "Cakes", count: "86", emoji: "🎂" },
+  { name: "Mehndi Artists", count: "154", emoji: "🌿" },
+  { name: "Groom Wear", count: "98", emoji: "🤵" },
+  { name: "Honeymoon", count: "45", emoji: "✈️" },
+  { name: "Gift Items", count: "123", emoji: "🎁" },
+  { name: "Sound & Lighting", count: "67", emoji: "💡" },
+  { name: "Wedding Cards", count: "89", emoji: "🧧" },
+  { name: "Security", count: "34", emoji: "🛡️" },
+  { name: "Valet Parking", count: "28", emoji: "🅿️" },
+  { name: "Pandit/Kazi", count: "56", emoji: "📜" },
+  { name: "Fireworks", count: "22", emoji: "🎆" },
+];

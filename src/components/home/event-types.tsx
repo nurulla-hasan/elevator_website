@@ -94,16 +94,16 @@ export default function EventTypes() {
             {events.map((event) => (
               <CarouselItem key={event.id} className="pl-4 sm:basis-1/2 lg:basis-1/5">
                 <Card 
-                  className="group cursor-pointer border-none shadow-sm hover:shadow-md transition-all duration-300 rounded-2xl"
+                  className="group cursor-pointer border-none shadow-sm hover:shadow-xl hover:bg-primary transition-all duration-300 rounded-2xl"
                 >
-                  <CardContent className="flex flex-col items-center justify-center p-8">
-                    <div className="mb-4 text-4xl transition-transform duration-300 group-hover:scale-125">
+                  <CardContent className="flex flex-col items-center justify-center p-6">
+                    <div className="mb-4 text-4xl transition-transform duration-300 group-hover:scale-125 group-hover:drop-shadow-md">
                       {event.icon}
                     </div>
-                    <h3 className="mb-2 text-xl font-bold text-foreground group-hover:text-primary transition-colors text-center">
+                    <h3 className="mb-2 text-xl font-bold text-foreground group-hover:text-primary-foreground transition-colors text-center">
                       {event.name}
                     </h3>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-muted-foreground group-hover:text-primary-foreground/80 transition-colors">
                       {event.count} vendors
                     </p>
                   </CardContent>

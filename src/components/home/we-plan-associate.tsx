@@ -13,7 +13,7 @@ export default function WePlanAssociate() {
 
   return (
     <section className="w-full py-10">
-      <div className="max-w-6xl mx-auto bg-muted/40 rounded-[24px] overflow-hidden">
+      <div className="max-w-6xl mx-auto bg-muted rounded-[24px] overflow-hidden">
         <div className="flex flex-col lg:flex-row items-center gap-8 p-6 md:p-10 lg:p-12">
           {/* Left Content */}
           <div className="flex-1 space-y-6">
