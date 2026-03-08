@@ -140,8 +140,8 @@ export function VenueFilters() {
                     }}
                   />
                   <div className="flex flex-row items-center justify-between text-sm">
-                    <span>Rs. {budget[0].toLocaleString()}</span>
-                    <span className="text-primary">Rs. {budget[1].toLocaleString()}</span>
+                    <span>PKR {budget[0].toLocaleString()}</span>
+                    <span className="text-primary">PKR {budget[1].toLocaleString()}</span>
                   </div>
                 </div>
               </div>

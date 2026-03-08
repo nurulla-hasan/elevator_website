@@ -57,8 +57,8 @@ export function VenueMap({ venues }: VenueMapProps) {
                       <Image src={venue.image} alt={venue.name} fill className="object-cover" />
                     </div>
                     <div className="pr-5 py-1.5">
-                      <p className="text-[12px] font-bold text-primary leading-tight line-clamp-1 mb-0.5">{venue.name}</p>
-                      <p className="text-base font-black text-foreground tracking-tight">{venue.price}</p>
+                      <p className="text-sm font-bolsemid text-primary line-clamp-1 mb-0.5">{venue.name}</p>
+                      <p className="text-sm font-semibold text-foreground">{venue.price}</p>
                     </div>
                   </div>
                   <div className="w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-t-12 border-t-card -mt-px drop-shadow-md"></div>

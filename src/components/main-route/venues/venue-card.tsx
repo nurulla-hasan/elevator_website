@@ -35,7 +35,7 @@ export function VenueCard({
             {/* Content */}
             <div className="flex-1 min-w-0 flex flex-col justify-between self-stretch py-0.5">
               <div className="space-y-1">
-                <h3 className="text-base font-bold text-primary truncate leading-tight">
+                <h3 className="text-base font-semibold truncate leading-tight">
                   {venue.name}
                 </h3>
                 <div className="flex items-center gap-1 text-muted-foreground">
@@ -61,7 +61,7 @@ export function VenueCard({
             {/* Action & Price */}
             <div className="flex flex-col items-end justify-end self-stretch">
               <div className="text-right">
-                <p className="font-bold text-primary">{venue.price}</p>
+                <p className="font-semibold text-sm">{venue.price}</p>
               </div>
             </div>
           </div>
@@ -84,7 +84,7 @@ export function VenueCard({
         </div>
         <CardContent>
           <div className="flex items-start justify-between mb-2">
-            <h3 className="text-lg font-bold text-primary line-clamp-1 leading-tight">
+            <h3 className="text-lg font-semibold truncate line-clamp-1">
               {venue.name}
             </h3>
             <div className="flex items-center gap-1 shrink-0 ml-2 mt-1">
@@ -97,7 +97,7 @@ export function VenueCard({
 
           <div className="flex items-center gap-1.5 text-muted-foreground mb-4">
             <MapPin className="h-4 w-4 shrink-0" />
-            <span className="text-sm font-medium">{venue.location}</span>
+            <span className="text-sm font-medium truncate line-clamp-1">{venue.location}</span>
           </div>
 
           <div className="border-t border-border pt-4 mt-2 flex items-center justify-between">
@@ -105,7 +105,7 @@ export function VenueCard({
               <Users size={18} />
               <span className="text-sm font-medium">{venue.capacity}</span>
             </div>
-            <span className="text-xl font-bold text-primary">
+            <span className="text-sm font-semibold">
               {venue.price}
             </span>
           </div>

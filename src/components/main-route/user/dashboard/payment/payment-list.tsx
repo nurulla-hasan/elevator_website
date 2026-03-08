@@ -9,7 +9,7 @@ const mockPayments: IPayment[] = [
     vendorImage: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80",
     serviceName: "Concierge info",
     date: "2/15/2026",
-    amount: "$2,500",
+    amount: "PKR 2,500",
     status: "completed",
   },
   {
@@ -18,7 +18,7 @@ const mockPayments: IPayment[] = [
     vendorImage: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80",
     serviceName: "Bridal Makeup Package",
     date: "2/10/2026",
-    amount: "$500",
+    amount: "PKR 500",
     status: "pending",
   },
   {
@@ -27,7 +27,7 @@ const mockPayments: IPayment[] = [
     vendorImage: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80",
     serviceName: "Concierge info",
     date: "2/15/2026",
-    amount: "$2,500",
+    amount: "PKR 2,500",
     status: "completed",
   },
 ];

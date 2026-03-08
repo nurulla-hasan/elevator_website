@@ -13,7 +13,7 @@ const mockSavedVendors: Vendor[] = [
     location: "Downtown, Dhaka",
     rating: 4.8,
     reviews: 124,
-    price: "$2,500",
+    price: "PKR 2,500",
     verified: true,
     sponsored: true,
   },
@@ -26,7 +26,7 @@ const mockSavedVendors: Vendor[] = [
     location: "Gulshan, Dhaka",
     rating: 4.9,
     reviews: 86,
-    price: "$1,200",
+    price: "PKR 1,200",
     verified: true,
   },
   {
@@ -38,7 +38,7 @@ const mockSavedVendors: Vendor[] = [
     location: "Banani, Dhaka",
     rating: 4.7,
     reviews: 210,
-    price: "$15/person",
+    price: "PKR 15/person",
     verified: false,
   },
 ];

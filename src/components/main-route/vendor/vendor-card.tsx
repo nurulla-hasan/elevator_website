@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { MapPin, Heart, ShieldCheck, Flame } from "lucide-react";
+import { MapPin, Heart, Flame } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -7,6 +7,7 @@ import { StarRating } from "@/components/ui/custom/star-rating";
 import { cn } from "@/lib/utils";
 import { Vendor } from "@/types/vendor.type";
 import Link from "next/link";
+import { Separator } from "@/components/ui/separator";
 
 interface VendorCardProps {
   vendor: Vendor;
@@ -57,16 +58,17 @@ export function VendorCard({
                   {vendor.category}
                 </Badge>
                 {vendor.verified && (
-                  <Badge
-                    variant="secondary"
-                    className="bg-primary text-primary-foreground border-none text-[10px] h-5 px-2 flex items-center gap-1"
-                  >
-                    <ShieldCheck className="h-3 w-3" />
-                    Verified
-                  </Badge>
+                  <div className="relative h-4 w-10">
+                    <Image
+                      src="/home/v.png"
+                      alt="Verified"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
                 )}
               </div>
-              <h3 className="text-base font-bold text-primary truncate">
+              <h3 className="text-base font-semibold truncate">
                 {vendor.name}
               </h3>
               <div className="flex items-center gap-1 text-muted-foreground">
@@ -86,9 +88,9 @@ export function VendorCard({
           {/* Action & Price */}
           <div className="flex flex-col items-end justify-between self-stretch">
             <Button
-              size="icon"
-              variant="ghost"
-              className="rounded-full text-muted-foreground hover:text-primary"
+              size="icon-sm"
+              variant="outline"
+              className="rounded-full bg-primary/10 text-primary"
             >
               <Heart />
             </Button>
@@ -96,7 +98,7 @@ export function VendorCard({
               <span className="text-[10px] text-muted-foreground">
                 Starting at
               </span>
-              <p className="text-lg font-bold text-primary">{vendor.price}</p>
+              <p className="text-sm font-semibold">{vendor.price}</p>
             </div>
           </div>
         </div>
@@ -115,17 +117,6 @@ export function VendorCard({
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
         />
         <div className="absolute top-3 left-3 z-10 flex flex-col gap-2">
-          {vendor.verified && (
-            <Badge
-              variant="secondary"
-              className="bg-primary backdrop-blur-sm text-primary-foreground border-none flex items-center gap-1 py-1 px-2.5 shadow-lg w-fit"
-            >
-              <ShieldCheck className="h-3.5 w-3.5" />
-              <span className="text-[10px] font-bold uppercase tracking-wider">
-                Verified
-              </span>
-            </Badge>
-          )}
           {vendor.sponsored && (
             <Badge
               variant="secondary"
@@ -165,9 +156,19 @@ export function VendorCard({
               ({vendor.reviews} reviews)
             </span>
           </div>
+          {vendor.verified && (
+            <div className="relative h-4 w-10">
+              <Image
+                src="/home/v.png"
+                alt="Verified"
+                fill
+                className="object-contain"
+              />
+            </div>
+          )}
         </div>
 
-        <h3 className="mb-2 text-lg font-bold line-clamp-1 group-hover:text-primary transition-colors duration-300">
+        <h3 className="mb-2 text-lg font-semibold line-clamp-1 group-hover:text-primary transition-colors duration-300">
           {vendor.name}
         </h3>
 
@@ -175,16 +176,17 @@ export function VendorCard({
           <MapPin className="h-3.5 w-3.5" />
           <span className="text-xs">{vendor.location}</span>
         </div>
+        <Separator className="my-4" />
 
-        <div className="flex items-center justify-between border-t pt-4">
+        <div className="flex items-end justify-between">
           <div>
             <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium mb-0.5">
               Starting from
             </p>
-            <p className="text-lg font-bold text-primary">{vendor.price}</p>
+            <p className="text-base font-semibold">{vendor.price}</p>
           </div>
           <Link href={`/vendors/1`} className="block">
-            <Button size="sm" className="rounded-full px-5 font-semibold">
+            <Button size="xs">
               Details
             </Button>
           </Link>

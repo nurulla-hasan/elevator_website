@@ -13,7 +13,7 @@ const mockVendor: Vendor = {
   location: "Clifton, Karachi",
   rating: 4.9,
   reviews: 245,
-  price: "$2,500",
+  price: "PKR 2,500",
   image:
     "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80",
   verified: false,

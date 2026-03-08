@@ -7,7 +7,7 @@ import PageLayout from "@/components/ui/custom/page-layout";
 export default function BookingSuccessPage() {
   // Mock data for success page
   const mockVendor = { name: "Elegant Moments Photography" };
-  const mockPackage = { name: "Complete Wedding Coverage", deposit: "$1,050" };
+  const mockPackage = { name: "Complete Wedding Coverage", deposit: "PKR 1,050" };
   const email = "user@example.com";
 
   return (

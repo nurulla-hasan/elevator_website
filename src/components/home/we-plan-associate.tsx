@@ -48,7 +48,7 @@ export default function WePlanAssociate() {
               <p className="text-muted-foreground text-xs uppercase tracking-wider font-semibold">
                 Starting from
               </p>
-              <p className="text-2xl font-bold text-primary">$999</p>
+              <p className="text-2xl font-bold text-primary">PKR 999</p>
             </div>
 
             <Link href="/pricing">

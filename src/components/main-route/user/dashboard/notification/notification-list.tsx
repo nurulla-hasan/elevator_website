@@ -25,7 +25,7 @@ const mockNotifications: INotification[] = [
     id: "n-3",
     type: "payment",
     title: "Payment successful",
-    description: "Your payment of $2,500 for Block 9: WePlan Associate was successful",
+    description: "Your payment of PKR 2,500 for Block 9: WePlan Associate was successful",
     time: "3 days ago",
     isRead: true,
   },

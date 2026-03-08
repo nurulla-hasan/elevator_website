@@ -8,7 +8,7 @@ export const mockVendors: Vendor[] = [
     location: "Gulshan, Dhaka",
     rating: 4.8,
     reviews: 124,
-    price: "$5,000",
+    price: "PKR 5,000",
     image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80",
     verified: true
   },
@@ -19,7 +19,7 @@ export const mockVendors: Vendor[] = [
     location: "Dhanmondi, Dhaka",
     rating: 4.9,
     reviews: 86,
-    price: "$1,200",
+    price: "PKR 1,200",
     image: "https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&q=80",
     verified: true
   },
@@ -30,7 +30,7 @@ export const mockVendors: Vendor[] = [
     location: "Banani, Dhaka",
     rating: 4.7,
     reviews: 210,
-    price: "$3,500",
+    price: "PKR 3,500",
     image: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&q=80",
     verified: true,
     sponsored: true
@@ -42,7 +42,7 @@ export const mockVendors: Vendor[] = [
     location: "Uttara, Dhaka",
     rating: 4.6,
     reviews: 45,
-    price: "$500",
+    price: "PKR 500",
     image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&q=80",
     verified: true
   },
@@ -53,7 +53,7 @@ export const mockVendors: Vendor[] = [
     location: "Mirpur, Dhaka",
     rating: 4.5,
     reviews: 156,
-    price: "$2,000",
+    price: "PKR 2,000",
     image: "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80",
     verified: true
   },
@@ -64,7 +64,7 @@ export const mockVendors: Vendor[] = [
     location: "Mohakhali, Dhaka",
     rating: 4.8,
     reviews: 67,
-    price: "$1,800",
+    price: "PKR 1,800",
     image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80",
     verified: false,
     sponsored: true
@@ -78,7 +78,7 @@ export const mockVendorDetails: Vendor = {
   location: "Clifton, Karachi",
   rating: 4.9,
   reviews: 245,
-  price: "$2,500",
+  price: "PKR 2,500",
   image:
     "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80",
   verified: true,

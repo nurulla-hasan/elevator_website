@@ -9,7 +9,7 @@ export default function PackageSuccessPage() {
   const userName = "sdgrth";
   const packageDetails = {
     name: "Premium Planning",
-    price: "$2499",
+    price: "PKR 2499",
     weddingDate: "December 12, 2026",
   };
   const email = "you@gmail.com";

@@ -17,11 +17,11 @@ const mockVendor = {
 const mockPackage = {
   id: "pkg-1",
   name: "Complete Wedding Coverage",
-  price: "$3,500",
+  price: "PKR 3,500",
   duration: "10 hours",
-  serviceFee: "$0",
-  total: "$3,500",
-  deposit: "$1,050",
+  serviceFee: "PKR 0",
+  total: "PKR 3,500",
+  deposit: "PKR 1,050",
 };
 
 export default function BookingCheckoutPage() {
