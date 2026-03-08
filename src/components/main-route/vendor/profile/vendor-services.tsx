@@ -9,7 +9,7 @@ export const VendorServices = ({ services }: VendorServicesProps) => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-xl md:text-2xl font-bold text-foreground">Services Offered</CardTitle>
+        <CardTitle className="text-xl md:text-2xl font-semibold text-foreground">Services Offered</CardTitle>
       </CardHeader>
       <CardContent className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
         {services.map((service, index) => (

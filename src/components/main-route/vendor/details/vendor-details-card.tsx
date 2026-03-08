@@ -7,7 +7,6 @@ import { Separator } from "@/components/ui/separator";
 import {
   MapPin,
   Star,
-  ShieldCheck,
   Flame,
   Share2,
   Heart,
@@ -54,16 +53,19 @@ export const VendorDetails = ({ vendor }: VendorDetailsProps) => {
           </div>
           <div className="absolute top-4 left-4 flex flex-col gap-2">
             {vendor.verified && (
-              <Badge
-                className="bg-primary text-primary-foreground border-none hover:bg-primary/90"
-              >
-                <ShieldCheck size={14} />
-                Verified
-              </Badge>
+              <div className="relative h-6 w-24">
+                <Image
+                  src="/home/v.png"
+                  alt="Verified"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
             )}
             {vendor.sponsored && (
               <Badge
-                className="bg-orange-500/90 hover:bg-orange-500 border-none flex items-center gap-1.5 py-1 px-3 shadow-md"
+                className="bg-primary/90 hover:bg-primary border-none flex items-center gap-1.5 py-1 px-3 shadow-md"
               >
                 <Flame size={14} className="fill-current" />
                 Sponsored
@@ -79,7 +81,7 @@ export const VendorDetails = ({ vendor }: VendorDetailsProps) => {
               <p className="text-sm font-semibold text-primary uppercase tracking-wider">
                 {vendor.category}
               </p>
-              <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
+              <h1 className="text-3xl md:text-4xl font-semibold">
                 {vendor.name}
               </h1>
             </div>
@@ -112,7 +114,7 @@ export const VendorDetails = ({ vendor }: VendorDetailsProps) => {
                 <span className="text-sm text-muted-foreground">
                   Starting from
                 </span>
-                <span className="text-3xl font-bold text-foreground">
+                <span className="text-2xl font-semibold text-foreground">
                   {vendor.price}
                 </span>
               </div>

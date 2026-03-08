@@ -27,7 +27,7 @@ export const VendorSidebar = ({ vendor }: VendorSidebarProps) => {
       {/* Availability Calendar */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg font-bold flex items-center gap-2">
+          <CardTitle className="text-lg font-semibold flex items-center gap-2">
             <CalendarDays size={20} />
             Check Availability
           </CardTitle>
@@ -42,7 +42,7 @@ export const VendorSidebar = ({ vendor }: VendorSidebarProps) => {
 
           <div className="mt-6 space-y-4 pt-4 border-t border-border">
             <div className="bg-muted rounded-xl p-4 flex flex-col gap-1.5 border border-border/50">
-              <span className="text-sm font-bold text-foreground flex items-center gap-2">
+              <span className="text-sm font-semibold text-foreground flex items-center gap-2">
                 <Info size={14} className="text-muted-foreground" />
                 {date
                   ? date.toLocaleDateString("en-US", {
@@ -76,7 +76,7 @@ export const VendorSidebar = ({ vendor }: VendorSidebarProps) => {
       {/* Contact Section */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg font-bold flex items-center gap-2">
+          <CardTitle className="text-lg font-semibold flex items-center gap-2">
             <MessageSquare size={20} />
             Contact Vendor
           </CardTitle>
@@ -117,7 +117,7 @@ export const VendorSidebar = ({ vendor }: VendorSidebarProps) => {
                 <span className="text-xs text-muted-foreground font-medium">
                   Phone Number
                 </span>
-                <span className="text-sm font-bold text-foreground">
+                <span className="text-sm font-semibold text-foreground">
                   {contact.phone}
                 </span>
               </div>
@@ -131,7 +131,7 @@ export const VendorSidebar = ({ vendor }: VendorSidebarProps) => {
                 <span className="text-xs text-muted-foreground font-medium">
                   Email Address
                 </span>
-                <span className="text-sm font-bold text-foreground">
+                <span className="text-sm font-semibold text-foreground">
                   {contact.email}
                 </span>
               </div>

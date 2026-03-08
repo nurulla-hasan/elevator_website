@@ -29,7 +29,7 @@ export const VendorReviews = ({ reviews, totalReviews }: VendorReviewsProps) => 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
             {/* Average Rating */}
             <div className="md:col-span-4 flex flex-col items-center justify-center text-center space-y-2 border-border md:border-r">
-              <span className="text-5xl font-black text-foreground">{averageRating}</span>
+              <span className="text-5xl font-semibold text-foreground">{averageRating}</span>
               <StarRating totalStars={5} rating={averageRating} size={20} />
               <p className="text-xs font-medium text-muted-foreground">Based on {totalReviews} reviews</p>
             </div>
@@ -57,7 +57,7 @@ export const VendorReviews = ({ reviews, totalReviews }: VendorReviewsProps) => 
       {/* Individual Reviews List */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg font-bold flex items-center">
+          <CardTitle className="text-lg font-semibold flex items-center">
             User Reviews
             <Badge variant="secondary" className="text-xs ml-2">
               {totalReviews}
@@ -72,12 +72,12 @@ export const VendorReviews = ({ reviews, totalReviews }: VendorReviewsProps) => 
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
                   <Avatar className="h-9 w-9 border border-border">
-                    <AvatarFallback className="bg-muted text-foreground text-xs font-bold">
+                    <AvatarFallback className="bg-muted text-foreground text-xs font-semibold">
                       {review.userName.split(' ').map(n => n[0]).join('')}
                     </AvatarFallback>
                   </Avatar>
                   <div className="space-y-0.5">
-                    <h4 className="font-bold text-foreground text-sm leading-none">{review.userName}</h4>
+                    <h4 className="font-semibold text-foreground text-sm leading-none">{review.userName}</h4>
                     <div className="flex items-center gap-2">
                       <StarRating totalStars={5} rating={review.rating} size={11} />
                       <span className="text-[10px] text-muted-foreground font-medium uppercase tracking-wider">{review.date}</span>
@@ -87,7 +87,7 @@ export const VendorReviews = ({ reviews, totalReviews }: VendorReviewsProps) => 
               </div>
 
               {/* Review Content */}
-              <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+              <p className="text-muted-foreground leading-relaxed text-sm">
                 {review.comment}
               </p>
             </div>

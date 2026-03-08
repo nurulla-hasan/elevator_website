@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { MapPin, Heart, Flame } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -22,87 +23,93 @@ export function VendorCard({
 }: VendorCardProps) {
   if (variant === "horizontal") {
     return (
-      <Card className={cn("overflow-hidden p-3", className)}>
-        <div className="flex gap-4 items-center">
-          {/* Image */}
-          <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-xl">
-            <Image
-              src={vendor.image}
-              alt={vendor.name}
-              fill
-              className="object-cover"
-            />
-            {vendor.sponsored && (
-              <div className="absolute top-1 left-1 z-10">
-                <Badge
-                  variant="secondary"
-                  className="bg-orange-500/90 backdrop-blur-sm text-white border-none flex items-center gap-1 py-0.5 px-1.5 shadow-lg w-fit text-[8px] h-4"
-                >
-                  <Flame className="h-2.5 w-2.5 fill-current" />
-                  <span className="font-bold uppercase tracking-wider">
-                    Sponsored
+      <Link href={`/vendors/1`}>
+        <Card className={cn("overflow-hidden p-3", className)}>
+          <div className="flex gap-4 items-center">
+            {/* Image */}
+            <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-xl">
+              <Image
+                src={vendor.image}
+                alt={vendor.name}
+                fill
+                className="object-cover"
+              />
+              {vendor.sponsored && (
+                <div className="absolute top-1 left-1 z-10">
+                  <Badge
+                    variant="secondary"
+                    className="bg-primary/90 backdrop-blur-sm text-white border-none flex items-center gap-1 py-0.5 px-1.5 shadow-lg w-fit text-[8px] h-4"
+                  >
+                    <Flame className="h-2.5 w-2.5 fill-current" />
+                    <span className="font-bold uppercase tracking-wider">
+                      Sponsored
+                    </span>
+                  </Badge>
+                </div>
+              )}
+            </div>
+
+            {/* Content */}
+            <div className="flex-1 min-w-0 flex flex-col justify-between h-full">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <Badge
+                    variant="secondary"
+                    className="bg-primary/10 text-primary hover:bg-primary/15 border-none text-[10px] h-5 px-2"
+                  >
+                    {vendor.category}
+                  </Badge>
+                  {vendor.verified && (
+                    <div className="relative h-4 w-10">
+                      <Image
+                        src="/home/v.png"
+                        alt="Verified"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                  )}
+                </div>
+                <h3 className="text-base font-semibold truncate">
+                  {vendor.name}
+                </h3>
+                <div className="flex items-center gap-1 text-muted-foreground">
+                  <MapPin className="h-3 w-3" />
+                  <span className="text-[11px]">{vendor.location}</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <StarRating rating={vendor.rating} totalStars={1} size={12} />
+                  <span className="text-[11px] font-bold">{vendor.rating}</span>
+                  <span className="text-[11px] text-muted-foreground">
+                    ({vendor.reviews} reviews)
                   </span>
-                </Badge>
+                </div>
               </div>
-            )}
-          </div>
+            </div>
 
-          {/* Content */}
-          <div className="flex-1 min-w-0 flex flex-col justify-between h-full">
-            <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <Badge
-                  variant="secondary"
-                  className="bg-primary/10 text-primary hover:bg-primary/15 border-none text-[10px] h-5 px-2"
-                >
-                  {vendor.category}
-                </Badge>
-                {vendor.verified && (
-                  <div className="relative h-4 w-10">
-                    <Image
-                      src="/home/v.png"
-                      alt="Verified"
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                )}
-              </div>
-              <h3 className="text-base font-semibold truncate">
-                {vendor.name}
-              </h3>
-              <div className="flex items-center gap-1 text-muted-foreground">
-                <MapPin className="h-3 w-3" />
-                <span className="text-[11px]">{vendor.location}</span>
-              </div>
-              <div className="flex items-center gap-1">
-                <StarRating rating={vendor.rating} totalStars={1} size={12} />
-                <span className="text-[11px] font-bold">{vendor.rating}</span>
-                <span className="text-[11px] text-muted-foreground">
-                  ({vendor.reviews} reviews)
+            {/* Action & Price */}
+            <div className="flex flex-col items-end justify-between self-stretch">
+              <Button
+                size="icon-sm"
+                variant="outline"
+                className="rounded-full bg-primary/10 text-primary"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                }}
+              >
+                <Heart />
+              </Button>
+              <div className="text-right">
+                <span className="text-[10px] text-muted-foreground">
+                  Starting at
                 </span>
+                <p className="text-sm font-semibold">{vendor.price}</p>
               </div>
             </div>
           </div>
-
-          {/* Action & Price */}
-          <div className="flex flex-col items-end justify-between self-stretch">
-            <Button
-              size="icon-sm"
-              variant="outline"
-              className="rounded-full bg-primary/10 text-primary"
-            >
-              <Heart />
-            </Button>
-            <div className="text-right">
-              <span className="text-[10px] text-muted-foreground">
-                Starting at
-              </span>
-              <p className="text-sm font-semibold">{vendor.price}</p>
-            </div>
-          </div>
-        </div>
-      </Card>
+        </Card>
+      </Link>
     );
   }
 
@@ -120,7 +127,7 @@ export function VendorCard({
           {vendor.sponsored && (
             <Badge
               variant="secondary"
-              className="bg-orange-500/90 backdrop-blur-sm text-white border-none flex items-center gap-1 py-1 px-2.5 shadow-lg w-fit"
+              className="bg-primary/90 backdrop-blur-sm text-white border-none flex items-center gap-1 py-1 px-2.5 shadow-lg w-fit"
             >
               <Flame className="h-3.5 w-3.5 fill-current" />
               <span className="text-[10px] font-bold uppercase tracking-wider">
@@ -186,9 +193,7 @@ export function VendorCard({
             <p className="text-base font-semibold">{vendor.price}</p>
           </div>
           <Link href={`/vendors/1`} className="block">
-            <Button size="xs">
-              Details
-            </Button>
+            <Button variant="link" size="xs">Details</Button>
           </Link>
         </div>
       </CardContent>

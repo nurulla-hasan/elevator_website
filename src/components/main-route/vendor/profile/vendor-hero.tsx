@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { StarRating } from "@/components/ui/custom/star-rating";
 import { Vendor } from "@/types/vendor.type";
-import { MapPin, ShieldCheck, Flame } from "lucide-react";
+import { MapPin, Flame } from "lucide-react";
 import Image from "next/image";
 
 interface VendorHeroProps {
@@ -20,7 +20,7 @@ export const VendorHero = ({ vendor }: VendorHeroProps) => {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 bg-linear-to-b from-primary/60 to-black/30" />
       </div>
 
       {/* Floating Info Card */}
@@ -28,15 +28,21 @@ export const VendorHero = ({ vendor }: VendorHeroProps) => {
         <div className="flex flex-col md:flex-row justify-between gap-6">
           <div className="flex-1 space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-              <h1 className="text-2xl md:text-3xl font-bold text-foreground leading-tight">{vendor.name}</h1>
+              <h1 className="text-2xl md:text-3xl font-semibold text-foreground">{vendor.name}</h1>
               <div className="flex items-center gap-2">
                 {vendor.verified && (
-                  <Badge className="bg-primary text-primary-foreground border-none hover:bg-primary/90 shrink-0">
-                    <ShieldCheck size={14} className="mr-1" /> Verified
-                  </Badge>
+                  <div className="relative h-4 w-24 shrink-0">
+                    <Image
+                      src="/home/v.png"
+                      alt="Verified"
+                      fill
+                      className="object-contain"
+                      priority
+                    />
+                  </div>
                 )}
                 {vendor.sponsored && (
-                  <Badge variant="outline" className="bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20 shrink-0">
+                  <Badge variant="outline" className="bg-primary/10 text-primary dark:text-primary border-primary/20 shrink-0">
                     <Flame size={14} className="mr-1 fill-current" /> Sponsored
                   </Badge>
                 )}
@@ -50,7 +56,7 @@ export const VendorHero = ({ vendor }: VendorHeroProps) => {
               </div>
               <div className="flex items-center gap-2 md:border-l md:pl-4 border-border">
                 <StarRating rating={vendor.rating} totalStars={5} size={18} />
-                <span className="font-bold text-foreground">{vendor.rating}</span>
+                <span className="font-semibold text-foreground">{vendor.rating}</span>
                 <span className="text-sm text-muted-foreground">({vendor.reviews} reviews)</span>
               </div>
               <Badge variant="secondary" className="font-semibold px-3">
@@ -65,7 +71,7 @@ export const VendorHero = ({ vendor }: VendorHeroProps) => {
 
           <div className="flex flex-col items-start md:items-end justify-center border-t md:border-t-0 md:border-l pt-6 md:pt-0 md:pl-8 border-border">
             <span className="text-xs md:text-sm text-muted-foreground font-bold uppercase tracking-wider">Starting from</span>
-            <span className="text-3xl md:text-4xl font-extrabold text-primary">{vendor.price}</span>
+            <span className="text-3xl md:text-4xl font-semibold text-primary">{vendor.price}</span>
           </div>
         </div>
       </div>

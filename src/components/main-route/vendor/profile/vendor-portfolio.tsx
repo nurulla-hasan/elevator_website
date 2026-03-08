@@ -14,7 +14,7 @@ export const VendorPortfolioSection = ({ portfolio }: VendorPortfolioProps) => {
       {portfolio.videos && portfolio.videos.length > 0 && (
         <Card>
           <CardHeader>
-            <CardTitle className="text-xl md:text-2xl font-bold text-foreground">Portfolio Videos</CardTitle>
+            <CardTitle className="text-xl md:text-2xl font-semibold text-foreground">Portfolio Videos</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
@@ -41,7 +41,7 @@ export const VendorPortfolioSection = ({ portfolio }: VendorPortfolioProps) => {
       {/* Portfolio Gallery */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-xl md:text-2xl font-bold text-foreground">Portfolio Gallery</CardTitle>
+          <CardTitle className="text-xl md:text-2xl font-semibold text-foreground">Portfolio Gallery</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-6">

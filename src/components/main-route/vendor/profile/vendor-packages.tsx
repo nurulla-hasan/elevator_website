@@ -1,8 +1,9 @@
-import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
+  import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { VendorPackage } from "@/types/vendor.type";
-import { Check, Sparkles, Zap, ShieldCheck, Gift, MapPin, Flame, Heart } from "lucide-react";
+import { Check, Sparkles, Zap, Gift, MapPin, Flame, Heart } from "lucide-react";
 import Link from "next/link";
 import { StarRating } from "@/components/ui/custom/star-rating";
 
@@ -14,7 +15,7 @@ export const VendorPackages = ({ packages }: VendorPackagesProps) => {
   return (
     <Card className="border-none shadow-none bg-transparent">
       <CardHeader className="px-0">
-        <CardTitle className="text-2xl md:text-3xl font-bold text-foreground flex items-center gap-3">
+        <CardTitle className="text-2xl md:text-3xl font-semibold text-foreground flex items-center gap-3">
           <Zap className="text-primary fill-primary/20" />
           Available Packages
         </CardTitle>
@@ -34,13 +35,17 @@ export const VendorPackages = ({ packages }: VendorPackagesProps) => {
               {/* Badges moved to left section for compactness */}
               <div className="flex flex-wrap justify-center gap-1.5">
                 {pkg.verified && (
-                  <Badge className={`${pkg.isPopular ? "bg-white/20 text-white" : "bg-green-500/10 text-green-600"} border-none flex items-center gap-1 py-0.5 px-2 h-5 shadow-none`}>
-                    <ShieldCheck size={10} />
-                    <span className="text-[8px] font-bold uppercase tracking-wider">Verified</span>
-                  </Badge>
+                  <div className="relative h-4 w-16 shrink-0">
+                    <Image
+                      src="/home/v.png"
+                      alt="Verified"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
                 )}
                 {pkg.sponsored && (
-                  <Badge className={`${pkg.isPopular ? "bg-white/20 text-white" : "bg-orange-500/10 text-orange-600"} border-none flex items-center gap-1 py-0.5 px-2 h-5 shadow-none`}>
+                  <Badge className={`${pkg.isPopular ? "bg-white/20 text-white" : "bg-primary/10 text-orange-600"} border-none flex items-center gap-1 py-0.5 px-2 h-5 shadow-none`}>
                     <Flame size={10} className="fill-current" />
                     <span className="text-[8px] font-bold uppercase tracking-wider">Sponsored</span>
                   </Badge>
@@ -50,7 +55,7 @@ export const VendorPackages = ({ packages }: VendorPackagesProps) => {
               <div className="space-y-0.5">
                 <span className="text-[10px] font-bold opacity-80 uppercase tracking-widest">Starts from</span>
                 <div className="flex items-baseline justify-center gap-1">
-                  <span className="text-3xl font-black">{pkg.price}</span>
+                  <span className="text-3xl font-semibold">{pkg.price}</span>
                 </div>
               </div>
 
@@ -67,7 +72,7 @@ export const VendorPackages = ({ packages }: VendorPackagesProps) => {
                 <Button 
                   size="sm" 
                   variant={pkg.isPopular ? "secondary" : "default"}
-                  className="w-full font-bold shadow-md h-9" 
+                  className="w-full" 
                   asChild
                 >
                   <Link href={`/booking-checkout/${pkg.id}`}>
@@ -92,14 +97,14 @@ export const VendorPackages = ({ packages }: VendorPackagesProps) => {
                   <Button
                     size="icon"
                     variant="ghost"
-                    className="rounded-full text-muted-foreground hover:text-destructive transition-all h-8 w-8"
+                    className="rounded-full bg-primary/10 text-primary"
                   >
                     <Heart size={16} />
                   </Button>
                 </div>
 
                 <div className="space-y-1">
-                  <h3 className="text-xl font-extrabold text-foreground group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
                     {pkg.name}
                   </h3>
                   
@@ -133,7 +138,14 @@ export const VendorPackages = ({ packages }: VendorPackagesProps) => {
               
               <div className="pt-4 border-t border-border/50 flex items-center gap-3 text-[10px] text-muted-foreground">
                 <div className="flex items-center gap-1">
-                  <ShieldCheck size={12} className="text-emerald-500" />
+                  <div className="relative h-3 w-3 shrink-0">
+                    <Image
+                      src="/home/v.png"
+                      alt="Verified"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
                   Secure Booking
                 </div>
                 <div className="w-1 h-1 rounded-full bg-border" />
