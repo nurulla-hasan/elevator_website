@@ -13,7 +13,7 @@ import {
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import CategoryCard from "../main-route/category/category-card";
-import { categories } from "@/data/categories.data";  
+import { categories } from "@/data/categories.data";
 
 export default function Categories() {
   const [api, setApi] = React.useState<CarouselApi>();
@@ -65,7 +65,7 @@ export default function Categories() {
             {categories.map((category) => (
               <CarouselItem
                 key={category.name}
-                className="pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/6"
+                className="pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/7"
               >
                 <CategoryCard {...category} />
               </CarouselItem>

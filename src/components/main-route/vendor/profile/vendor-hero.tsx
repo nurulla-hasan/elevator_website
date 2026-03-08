@@ -31,7 +31,7 @@ export const VendorHero = ({ vendor }: VendorHeroProps) => {
               <h1 className="text-2xl md:text-3xl font-bold text-foreground leading-tight">{vendor.name}</h1>
               <div className="flex items-center gap-2">
                 {vendor.verified && (
-                  <Badge className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20 hover:bg-emerald-500/20 shrink-0">
+                  <Badge className="bg-primary text-primary-foreground border-none hover:bg-primary/90 shrink-0">
                     <ShieldCheck size={14} className="mr-1" /> Verified
                   </Badge>
                 )}

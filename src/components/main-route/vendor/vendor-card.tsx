@@ -59,7 +59,7 @@ export function VendorCard({
                 {vendor.verified && (
                   <Badge
                     variant="secondary"
-                    className="bg-green-500/10 text-green-600 border-none text-[10px] h-5 px-2 flex items-center gap-1"
+                    className="bg-primary text-primary-foreground border-none text-[10px] h-5 px-2 flex items-center gap-1"
                   >
                     <ShieldCheck className="h-3 w-3" />
                     Verified
@@ -118,7 +118,7 @@ export function VendorCard({
           {vendor.verified && (
             <Badge
               variant="secondary"
-              className="bg-green-500/90 backdrop-blur-sm text-white border-none flex items-center gap-1 py-1 px-2.5 shadow-lg w-fit"
+              className="bg-primary backdrop-blur-sm text-primary-foreground border-none flex items-center gap-1 py-1 px-2.5 shadow-lg w-fit"
             >
               <ShieldCheck className="h-3.5 w-3.5" />
               <span className="text-[10px] font-bold uppercase tracking-wider">

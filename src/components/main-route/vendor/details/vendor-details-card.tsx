@@ -55,7 +55,7 @@ export const VendorDetails = ({ vendor }: VendorDetailsProps) => {
           <div className="absolute top-4 left-4 flex flex-col gap-2">
             {vendor.verified && (
               <Badge
-                variant="success"
+                className="bg-primary text-primary-foreground border-none hover:bg-primary/90"
               >
                 <ShieldCheck size={14} />
                 Verified

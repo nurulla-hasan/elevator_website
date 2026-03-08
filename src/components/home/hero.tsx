@@ -15,8 +15,7 @@ export default function Hero() {
         }}
       />
       {/* Pinkish Gradient Overlay for Client Requirement */}
-      <div className="absolute inset-0 bg-linear-to-t from-primary/20 via-primary/60 to-primary/80 z-10" />
-      <div className="absolute inset-0 bg-black/30 z-10" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/40 to-primary z-10" />
       
       {/* Subtle Pink Glows */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[150px] z-0 animate-pulse" />
