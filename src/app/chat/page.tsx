@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import ConversationList, {
   conversations,
 } from "@/components/main-route/chat/conversation-list";
@@ -8,7 +8,7 @@ import ChatEmptyState from "@/components/main-route/chat/empty-state";
 import ChatWindow from "@/components/main-route/chat/chat-window";
 import { cn } from "@/lib/utils";
 
-export default function ChatPage() {
+function ChatContent() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
   const selectedConversation = conversations.find((c) => c.id === selectedId);
@@ -53,5 +53,13 @@ export default function ChatPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ChatPage() {
+  return (
+    <Suspense fallback={<div>Loading chat...</div>}>
+      <ChatContent />
+    </Suspense>
   );
 }

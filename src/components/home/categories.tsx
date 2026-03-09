@@ -31,6 +31,14 @@ export default function Categories() {
     });
   }, [api]);
 
+  const flattenedCategories = React.useMemo(() => {
+    return categories.flatMap((cat) =>
+      cat.subcategories && cat.subcategories.length > 0
+        ? cat.subcategories
+        : [cat]
+    );
+  }, []);
+
   return (
     <section>
       <div className="mb-8">
@@ -62,7 +70,7 @@ export default function Categories() {
           }}
         >
           <CarouselContent className="-ml-4 p-1">
-            {categories.map((category) => (
+            {flattenedCategories.map((category) => (
               <CarouselItem
                 key={category.name}
                 className="pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/7"
