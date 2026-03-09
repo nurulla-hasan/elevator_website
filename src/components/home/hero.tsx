@@ -25,7 +25,7 @@ export default function Hero() {
       <div className="container mx-auto relative z-20 flex h-full flex-col items-center justify-center px-4 text-center text-white">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <Sparkles className="w-4 h-4 text-primary" />
+          <Sparkles className="w-4 h-4" />
           <span className="text-sm font-medium tracking-wide uppercase">Start Your Journey Together</span>
         </div>
 

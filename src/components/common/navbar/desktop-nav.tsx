@@ -122,7 +122,7 @@ export function DesktopNav({
                 Login
               </Button>
             </Link>
-            <Link href="/auth/become-vendor">
+            <Link href="/become-vendor">
               <Button variant="secondary" asChild>
                 <span>Become a Vendor</span>
               </Button>

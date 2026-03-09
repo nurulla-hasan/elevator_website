@@ -219,7 +219,7 @@ export default function LoginPage() {
 
         <div className="text-center">
           <Link
-            href="/auth/become-vendor"
+            href="/auth/vendor"
             className="group inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
           >
             Are you a vendor?{" "}

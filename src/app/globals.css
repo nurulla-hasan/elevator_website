@@ -137,7 +137,7 @@
   --card-foreground: oklch(0.985 0.005 10);
   --popover: oklch(0.21 0.02 12);
   --popover-foreground: oklch(0.985 0.005 10);
-  --primary: oklch(0.577 0.222 10.38);
+  --primary: oklch(46.384% 0.21654 317.586);
   --primary-foreground: oklch(0.985 0.005 10);
   --secondary: oklch(0.26 0.025 12);
   --secondary-foreground: oklch(0.985 0.005 10);
@@ -185,18 +185,20 @@
   min-height: calc(100vh - 80px);
 }
 
-/* Scrollbar track */
+/* Custom Scrollbar Styles */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-  transition: all 0.3s ease;
+  width: 6px;
 }
 
-/* Scrollbar thumb */
-::-webkit-scrollbar-thumb {
-  background-color: var(--primary);
-  border-radius: 50px;
-  border: 2px solid transparent;
-  background-clip: padding-box;
-  transition: background-color 0.3s ease;
+::-webkit-scrollbar-track {
+  background: transparent;
 }
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary transition-colors;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary/40;
+}
+

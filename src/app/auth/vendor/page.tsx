@@ -119,7 +119,7 @@ export default function BecomeVendorPage() {
             />
           </div>
           <div className="space-y-1">
-            <Link href="/auth/become-vendor">
+            <Link href="/auth/vendor">
               <h1 className="text-2xl font-semibold tracking-tight">
                 Join as a Vendor
               </h1>

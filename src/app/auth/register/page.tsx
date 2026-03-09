@@ -319,7 +319,7 @@ export default function RegisterPage() {
 
         <div className="text-center">
           <Link
-            href="/auth/become-vendor"
+            href="/auth/vendor"
             className="group inline-flex items-center text-sm font-medium text-muted-foreground transition-colors"
           >
             Are you a vendor?{" "}

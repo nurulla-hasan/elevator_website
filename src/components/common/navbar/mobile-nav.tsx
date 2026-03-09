@@ -156,7 +156,7 @@ export function MobileNav({ navItems, pathname, isLoggedIn, setIsLoggedIn }: Mob
                   asChild
                   onClick={() => setIsOpen(false)}
                 >
-                  <Link href="/auth/become-vendor">Become a Vendor</Link>
+                  <Link href="/Become-vendor">Become a Vendor</Link>
                 </Button>
               )}
             </div>
