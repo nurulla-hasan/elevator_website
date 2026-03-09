@@ -24,7 +24,7 @@ export function VendorCard({
   if (variant === "horizontal") {
     return (
       <Link href={`/vendors/1`}>
-        <Card className={cn("overflow-hidden p-3", className)}>
+        <Card className={cn("overflow-hidden p-3 group relative", className)}>
           <div className="flex gap-4 items-center">
             {/* Image */}
             <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-xl">
@@ -32,8 +32,10 @@ export function VendorCard({
                 src={vendor.image}
                 alt={vendor.name}
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
+              {/* Primary Linear Gradient Overlay on Hover */}
+              <div className="absolute inset-0 bg-linear-to-t from-primary/60 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-1" />
               {vendor.sponsored && (
                 <div className="absolute top-1 left-1 z-10">
                   <Badge
@@ -123,6 +125,8 @@ export function VendorCard({
           className="object-cover transition-transform duration-700 group-hover:scale-110"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
         />
+        {/* Primary Linear Gradient Overlay on Hover */}
+        <div className="absolute inset-0 bg-linear-to-t from-primary/60 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-1" />
         <div className="absolute top-3 left-3 z-10 flex flex-col gap-2">
           {vendor.sponsored && (
             <Badge

@@ -31,8 +31,8 @@ export const VendorPackages = ({ packages, vendors = [] }: VendorPackagesProps) 
       </TabsList>
 
       <TabsContent value="packages">
-        <Card>
-          <CardContent className="grid grid-cols-1 gap-6">
+        <Card className="py-0 bg-transparent border-0">
+          <CardContent className="grid grid-cols-1 gap-6 px-0">
             {packages.map((pkg) => (
               <VendorPackageCard key={pkg.id} pkg={pkg} />
             ))}
@@ -41,8 +41,8 @@ export const VendorPackages = ({ packages, vendors = [] }: VendorPackagesProps) 
       </TabsContent>
 
       <TabsContent value="services">
-        <Card>
-          <CardContent className="grid grid-cols-1 gap-6">
+        <Card className="py-0 bg-transparent border-0">
+          <CardContent className="grid grid-cols-1 gap-6 px-0">
               {vendors.length > 0 ? (
                 vendors.map((vendor) => (
                   <VendorCard key={vendor.id} vendor={vendor} variant="horizontal" />

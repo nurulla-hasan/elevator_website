@@ -13,7 +13,7 @@ interface VendorPackageCardProps {
 export const VendorPackageCard = ({ pkg }: VendorPackageCardProps) => {
   return (
     <div
-      className={`relative flex flex-col md:flex-row gap-0 rounded-2xl overflow-hidden border transition-all duration-500 hover:shadow-lg group`}
+      className={`relative flex flex-col md:flex-row gap-0 rounded-2xl overflow-hidden border bg-card transition-all duration-500 hover:shadow-lg group`}
     >
       {/* ${
         pkg.isPopular

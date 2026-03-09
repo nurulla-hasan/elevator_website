@@ -7,7 +7,6 @@ import { mockVendors } from "@/data/vendors.data"
 import Link from "next/link"
 
 export default function RecentlyAddedVendors() {
-  const recentVendors = mockVendors.slice(0, 5)
 
   return (
     <section>
@@ -19,8 +18,8 @@ export default function RecentlyAddedVendors() {
           />
         </div>
 
-        <div className="flex flex-col gap-4">
-          {recentVendors.map((vendor) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {mockVendors.map((vendor) => (
             <VendorCard 
               key={vendor.id} 
               vendor={vendor} 

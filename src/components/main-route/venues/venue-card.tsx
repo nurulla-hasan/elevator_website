@@ -19,7 +19,7 @@ export function VenueCard({
   if (variant === "horizontal") {
     return (
       <Link href={`/venues/${venue.id}`} className={className}>
-        <Card className="overflow-hidden p-3 hover:shadow-md transition-all duration-300 border border-border/50">
+        <Card className="overflow-hidden p-3 hover:shadow-md transition-all duration-300 border border-border/50 group relative">
           <div className="flex gap-4 items-center">
             {/* Image */}
             <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-xl bg-muted">
@@ -27,9 +27,11 @@ export function VenueCard({
                 src={venue.image}
                 alt={venue.name}
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
                 sizes="96px"
               />
+              {/* Primary Linear Gradient Overlay on Hover */}
+              <div className="absolute inset-0 bg-linear-to-t from-primary/60 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-1" />
             </div>
 
             {/* Content */}
@@ -72,15 +74,17 @@ export function VenueCard({
 
   return (
     <Link href={`/venues/${venue.id}`} className={className}>
-      <Card className="pt-0 overflow-hidden hover:shadow-lg transition-shadow duration-300">
+      <Card className="pt-0 overflow-hidden hover:shadow-lg transition-shadow duration-300 group relative">
         <div className="relative aspect-video w-full overflow-hidden rounded-xl">
           <Image
             src={venue.image}
             alt={venue.name}
             fill
-            className="object-cover transition-transform duration-500 hover:scale-105"
+            className="object-cover transition-transform duration-700 group-hover:scale-110"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
+          {/* Primary Linear Gradient Overlay on Hover */}
+          <div className="absolute inset-0 bg-linear-to-t from-primary/60 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-1" />
         </div>
         <CardContent>
           <div className="flex items-start justify-between mb-2">
