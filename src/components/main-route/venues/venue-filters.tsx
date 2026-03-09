@@ -24,7 +24,6 @@ export function VenueFilters() {
   const {
     updateFilter,
     getFilter,
-    toggleFilter,
     updateBatch,
     isSelected,
     clearAll,
@@ -162,13 +161,13 @@ export function VenueFilters() {
                         variant={
                           isSelected("capacity", item) ? "default" : "outline"
                         }
-                        onClick={() => toggleFilter("capacity", item)}
+                        onClick={() => updateFilter("capacity", item)}
                       >
                         {item}
                       </Button>
                     )
                   )}
-                </div>
+                </div> 
               </div>
 
               <Separator />

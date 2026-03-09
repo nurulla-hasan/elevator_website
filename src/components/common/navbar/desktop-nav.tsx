@@ -94,7 +94,7 @@ export function DesktopNav({
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/settings">
+                    <Link href="/user/dashboard?tab=settings">
                       <Settings className="mr-2" />
                       <span>Settings</span>
                     </Link>
