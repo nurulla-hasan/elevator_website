@@ -13,31 +13,22 @@ interface VendorPackageCardProps {
 export const VendorPackageCard = ({ pkg }: VendorPackageCardProps) => {
   return (
     <div
-      className={`relative flex flex-col md:flex-row gap-0 rounded-2xl overflow-hidden border transition-all duration-500 hover:shadow-lg group ${
+      className={`relative flex flex-col md:flex-row gap-0 rounded-2xl overflow-hidden border transition-all duration-500 hover:shadow-lg group`}
+    >
+      {/* ${
         pkg.isPopular
           ? "border-primary/30 bg-primary/5 ring-1 ring-primary/10"
           : "border-border bg-card"
-      }`}
-    >
+      } */}
       {/* Left Pricing Section */}
       <div
-        className={`flex flex-col items-center justify-center p-6 md:w-52 shrink-0 text-center space-y-3 ${
-          pkg.isPopular ? "bg-primary text-primary-foreground" : "bg-muted/50"
-        }`}
+        className={`flex flex-col items-center justify-center p-6 md:w-52 shrink-0 text-center space-y-3 bg-primary text-primary-foreground`} // ${pkg.isPopular ? "bg-primary text-primary-foreground" : "bg-muted/50"}
       >
         <div className="flex flex-wrap justify-center gap-1.5">
           {pkg.sponsored && (
-            <Badge
-              className={`${
-                pkg.isPopular
-                  ? "bg-white/20 text-white"
-                  : "bg-primary/10 text-orange-600"
-              } border-none flex items-center gap-1 py-0.5 px-2 h-5 shadow-none`}
-            >
+            <Badge variant="secondary">
               <Flame size={10} className="fill-current" />
-              <span className="text-[8px] font-semibold uppercase tracking-wider">
-                Sponsored
-              </span>
+              Sponsored
             </Badge>
           )}
         </div>
@@ -61,8 +52,8 @@ export const VendorPackageCard = ({ pkg }: VendorPackageCardProps) => {
 
         <div className="pt-1 w-full">
           <Button
+            variant="secondary"
             size="sm"
-            variant={pkg.isPopular ? "secondary" : "default"}
             className="w-full"
             asChild
           >

@@ -18,7 +18,10 @@ export default function VendorProfilePage() {
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8 md:space-y-12">
             <VendorServices services={mockVendorDetails.services || []} />
-            <VendorPackages packages={mockVendorDetails.packages || []} />
+            <VendorPackages 
+              packages={mockVendorDetails.packages ? mockVendorDetails.packages.slice(0, 3) : []}
+              vendors={mockVendors} 
+            />
 
             {mockVendorDetails.portfolio && (
               <VendorPortfolioSection portfolio={mockVendorDetails.portfolio} />

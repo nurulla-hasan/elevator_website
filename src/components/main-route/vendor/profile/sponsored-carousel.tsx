@@ -22,7 +22,7 @@ export function SponsoredCarousel({ vendors }: SponsoredCarouselProps) {
       <PageHeader
         title="Sponsored Partners"
         description="Hand-picked premium vendors for your special day"
-        length={sponsoredVendors.length}
+        // length={sponsoredVendors.length}
       />
 
       <Carousel
