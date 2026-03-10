@@ -3,8 +3,7 @@ import DashboardPageLayout from "@/components/ui/custom/dashboard-page-layout";
 import PackageStats from "@/components/vendor/dashboard/packages/package-stats";
 import { DataTable } from "@/components/ui/custom/data-table";
 import { packageColumns, Package } from "@/components/vendor/dashboard/packages/package-columns";
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
+import AddPackageModal from "@/components/vendor/dashboard/packages/add-package-modal";
 
 const data: Package[] = [
   {
@@ -69,10 +68,7 @@ export default function PackagesPage() {
           title="My Packages"
           description="Manage your service packages and pricing"
         />
-        <Button>
-          <Plus/>
-          Add Package
-        </Button>
+        <AddPackageModal />
       </div>
 
       <div className="space-y-6">

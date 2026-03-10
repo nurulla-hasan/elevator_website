@@ -15,7 +15,7 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
 import { ThemeToggle } from "@/components/common/navbar/theme-toggle";
-import Image from "next/image";
+// import Image from "next/image";
 
 const Header = ({ onMenuClick }: { onMenuClick: () => void }) => {
 
@@ -47,14 +47,14 @@ const Header = ({ onMenuClick }: { onMenuClick: () => void }) => {
                 <span className="text-primary">
                   Elegant Moments Photography
                 </span>
-                <div className="h-5 w-px bg-foreground/50 mx-1" />
-                <Image 
+                {/* <div className="h-5 w-px bg-foreground/50 mx-1" /> */}
+                {/* <Image 
                   src="/home/v.png" 
                   alt="Verified" 
                   width={80} 
                   height={24} 
                   className="h-6 w-auto object-contain"
-                />
+                /> */}
               </h1>
               <p className="text-xs text-muted-foreground font-medium">
                 Manage your business profile and bookings from here

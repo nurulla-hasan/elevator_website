@@ -247,10 +247,10 @@ const Sidebar = ({
       <div className="border-t p-4">
         <Button
           variant="outline"
-          className="justify-start w-full"
+          className="justify-start w-full text-primary"
           onClick={handleLogout}
         >
-          <LogOut className="mr-2 h-4 w-4" />
+          <LogOut />
           Logout
         </Button>
       </div>
