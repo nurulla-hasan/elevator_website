@@ -22,7 +22,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
         
         <main className="flex-1 overflow-hidden pt-20">
           <ScrollArea className="h-full">
-            <div className="p-4 md:p-6">
+            <div className="p-4">
               {children}
             </div>
           </ScrollArea>
