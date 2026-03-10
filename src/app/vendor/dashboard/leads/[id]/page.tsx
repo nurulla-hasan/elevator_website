@@ -1,4 +1,5 @@
 import DashboardPageLayout from "@/components/ui/custom/dashboard-page-layout";
+import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -87,10 +88,12 @@ export default function LeadDetailsPage() {
                     </div>
                   </div>
                 </div>
-                <Button>
-                  <Send />
-                  Send Quote
-                </Button>
+                <Link href={`/vendor/dashboard/leads/${lead.id}/create-quote`}>
+                  <Button>
+                    <Send />
+                    Send Quote
+                  </Button>
+                </Link>
               </div>
             </CardContent>
           </Card>
