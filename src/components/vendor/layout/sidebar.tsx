@@ -131,7 +131,7 @@ const Sidebar = ({
       )}
     >
       {/* Brand */}
-      <div className="flex flex-col items-start justify-center pl-4 border-b h-20">
+      <div className="flex flex-col items-start justify-center pl-8 border-b h-20">
         <Link href="/" className="flex flex-col items-center">
           <Image
             src="/logo-2.png"

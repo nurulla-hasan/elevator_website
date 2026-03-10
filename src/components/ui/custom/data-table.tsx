@@ -28,6 +28,7 @@ import {
 } from "@/components/ui/table";
 import { DataTablePagination } from "./data-table-pagination";
 import { ScrollArea, ScrollBar } from "../scroll-area";
+import { cn } from "@/lib/utils";
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 declare module "@tanstack/react-table" {
@@ -43,6 +44,7 @@ interface DataTableProps<TData, TValue> {
   limit?: number;
   meta?: PaginationMeta;
   searchKey?: string;
+  showFooter?: boolean;
 }
 
 export function DataTable<TData, TValue>({
@@ -51,6 +53,7 @@ export function DataTable<TData, TValue>({
   limit = 10,
   meta,
   searchKey,
+  showFooter = false,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
@@ -113,7 +116,10 @@ export function DataTable<TData, TValue>({
                   return (
                     <TableHead
                       key={header.id}
-                      className={header.column.columnDef.meta?.headerClassName}
+                      className={cn(
+                        "h-12 pl-4 bg-accent",
+                        header.column.columnDef.meta?.headerClassName
+                      )}
                     >
                       {header.isPlaceholder ? null : (
                         <div
@@ -157,7 +163,7 @@ export function DataTable<TData, TValue>({
                   data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
+                    <TableCell key={cell.id} className="h-12 pl-4">
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()
@@ -177,22 +183,24 @@ export function DataTable<TData, TValue>({
               </TableRow>
             )}
           </TableBody>
-          <TableFooter className="border-t">
-            {table.getFooterGroups().map((footerGroup) => (
-              <TableRow key={footerGroup.id}>
-                {footerGroup.headers.map((footer) => (
-                  <TableCell key={footer.id} className="p-2">
-                    {footer.isPlaceholder
-                      ? null
-                      : flexRender(
-                          footer.column.columnDef.footer,
-                          footer.getContext()
-                        )}
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))}
-          </TableFooter>
+          {showFooter && (
+            <TableFooter className="border-t">
+              {table.getFooterGroups().map((footerGroup) => (
+                <TableRow key={footerGroup.id}>
+                  {footerGroup.headers.map((footer) => (
+                    <TableCell key={footer.id} className="p-2">
+                      {footer.isPlaceholder
+                        ? null
+                        : flexRender(
+                            footer.column.columnDef.footer,
+                            footer.getContext()
+                          )}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))}
+            </TableFooter>
+          )}
         </Table>
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
