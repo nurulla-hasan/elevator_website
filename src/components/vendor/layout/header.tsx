@@ -1,6 +1,6 @@
 "use client";
 
-import { Moon, Sun, Menu, Bell } from "lucide-react";
+import { Menu, Bell } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,10 +14,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Skeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
-import { useTheme } from "next-themes";
+import { ThemeToggle } from "@/components/common/navbar/theme-toggle";
 
 const Header = ({ onMenuClick }: { onMenuClick: () => void }) => {
-  const { setTheme, theme } = useTheme();
 
   const admin = {
     fullName: "Nurulla Hasan",
@@ -43,7 +42,10 @@ const Header = ({ onMenuClick }: { onMenuClick: () => void }) => {
           <div className="hidden lg:block">
             <div className="flex flex-col">
               <h1 className="text-xl font-semibold tracking-tight text-foreground flex items-center gap-2">
-                Welcome back, <span className="text-primary">Elegant Moments Photography</span>
+                Welcome back,{" "}
+                <span className="text-primary">
+                  Elegant Moments Photography
+                </span>
               </h1>
               <p className="text-xs text-muted-foreground font-medium">
                 Manage your business profile and bookings from here
@@ -54,6 +56,9 @@ const Header = ({ onMenuClick }: { onMenuClick: () => void }) => {
 
         {/* Right: notification + theme toggle + profile */}
         <div className="flex items-center space-x-3 md:space-x-5">
+          {/* Theme toggle */}
+          <ThemeToggle variant="outline" size="icon-sm" />
+
           {/* Notification icon */}
           <Link href="/vendor/notifications">
             <Button
@@ -64,23 +69,6 @@ const Header = ({ onMenuClick }: { onMenuClick: () => void }) => {
               <Bell className="h-4 w-4" />
             </Button>
           </Link>
-
-          {/* Theme toggle */}
-          <Button
-            variant="outline"
-            size="icon-sm"
-            className="rounded-full hidden lg:flex "
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            aria-label={
-              theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
-            }
-          >
-            {theme === "dark" ? (
-              <Sun className="h-4 w-4" />
-            ) : (
-              <Moon className="h-4 w-4" />
-            )}
-          </Button>
 
           <div className="flex items-center pl-2">
             {/* Profile dropdown menu */}

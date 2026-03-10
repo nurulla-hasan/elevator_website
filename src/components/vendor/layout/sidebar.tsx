@@ -92,10 +92,9 @@ const Sidebar = ({
   }
 
   useEffect(() => {
-    if (isSidebarOpen) {
-      setIsSidebarOpen(false);
-    }
-  }, [pathname, isSidebarOpen, setIsSidebarOpen]);
+    // Close sidebar on mobile when pathname changes
+    setIsSidebarOpen(false);
+  }, [pathname, setIsSidebarOpen]);
 
   const handleLogout = () => {
     console.log("Logged out");
