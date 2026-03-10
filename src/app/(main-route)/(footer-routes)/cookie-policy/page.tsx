@@ -1,9 +1,17 @@
 import React from "react"
 import PageHeader from "@/components/ui/custom/page-header"
+import PageLayout from "@/components/ui/custom/page-layout"
+import CustomBreadcrumb from "@/components/ui/custom/custom-breadcrumb"
 
 export default function CookiePolicyPage() {
   return (
-    <div className="container mx-auto px-4 py-12 min-h-screen">
+    <PageLayout paddingSize="small" className="screen-height">
+      <CustomBreadcrumb
+        links={[
+          { name: "Home", href: "/" },
+          { name: "Cookie Policy", href: "/cookie-policy", isCurrent: true },
+        ]}
+      />
       <PageHeader 
         title="Cookie Policy" 
         description="Information about our use of cookies to improve your experience."
@@ -14,6 +22,6 @@ export default function CookiePolicyPage() {
           <p>Detailed cookie policy information will be added here...</p>
         </section>
       </div>
-    </div>
+    </PageLayout>
   )
 }

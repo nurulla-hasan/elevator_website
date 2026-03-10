@@ -1,9 +1,17 @@
 import React from "react"
 import PageHeader from "@/components/ui/custom/page-header"
+import PageLayout from "@/components/ui/custom/page-layout"
+import CustomBreadcrumb from "@/components/ui/custom/custom-breadcrumb"
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="container mx-auto px-4 py-12 min-h-screen">
+    <PageLayout paddingSize="small" className="screen-height">
+      <CustomBreadcrumb
+        links={[
+          { name: "Home", href: "/" },
+          { name: "Privacy Policy", href: "/privacy-policy", isCurrent: true },
+        ]}
+      />
       <PageHeader 
         title="Privacy Policy" 
         description="Learn how we protect and handle your personal information."
@@ -14,6 +22,6 @@ export default function PrivacyPolicyPage() {
           <p>Detailed privacy policy content will be added here...</p>
         </section>
       </div>
-    </div>
+    </PageLayout>
   )
 }
