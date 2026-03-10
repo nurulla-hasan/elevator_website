@@ -137,7 +137,7 @@
   --card-foreground: oklch(0.985 0.005 10);
   --popover: oklch(0.21 0.02 12);
   --popover-foreground: oklch(0.985 0.005 10);
-  --primary: oklch(54.325% 0.22991 342.826);
+  --primary: oklch(0.577 0.222 10.38);
   --primary-foreground: oklch(0.985 0.005 10);
   --secondary: oklch(0.26 0.025 12);
   --secondary-foreground: oklch(0.985 0.005 10);
@@ -201,4 +201,3 @@
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-primary/40;
 }
-

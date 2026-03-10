@@ -15,12 +15,12 @@ import {
   Bell,
   Settings,
 } from "lucide-react";
-import { BookingList } from "@/components/main-route/user/dashboard/booking/booking-list";
-import { RequestList } from "@/components/main-route/user/dashboard/request/request-list";
-import { PaymentList } from "@/components/main-route/user/dashboard/payment/payment-list";
-import { SavedVendorList } from "@/components/main-route/user/dashboard/saved/saved-vendor-list";
-import { NotificationList } from "@/components/main-route/user/dashboard/notification/notification-list";
-import { SettingsList } from "@/components/main-route/user/dashboard/settings/settings-list";
+import { BookingList } from "@/components/user/dashboard/booking/booking-list";
+import { RequestList } from "@/components/user/dashboard/request/request-list";
+import { PaymentList } from "@/components/user/dashboard/payment/payment-list";
+import { SavedVendorList } from "@/components/user/dashboard/saved/saved-vendor-list";
+import { NotificationList } from "@/components/user/dashboard/notification/notification-list";
+import { SettingsList } from "@/components/user/dashboard/settings/settings-list";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import Link from "next/link";
 import { TSearchParams } from "@/types/global.types";
