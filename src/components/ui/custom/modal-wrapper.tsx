@@ -43,8 +43,8 @@ export function ModalWrapper({
         
         {/* Header Section */}
         {title && (
-          <DialogHeader className="px-6 py-4 border-b shrink-0 text-left">
-            <DialogTitle className="text-xl uppercase tracking-widest">
+          <DialogHeader className="px-6 py-4 border-b shrink-0 text-left gap-0">
+            <DialogTitle className="text-xl font-medium">
               {title}
             </DialogTitle>
             {description && <DialogDescription>{description}</DialogDescription>}

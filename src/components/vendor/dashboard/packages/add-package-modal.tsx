@@ -34,6 +34,7 @@ export default function AddPackageModal() {
       open={isOpen}
       onOpenChange={setIsOpen}
       title="Add New Package"
+      description="Add a new package to your catalog"
       actionTrigger={
         <Button>
           <Plus />
