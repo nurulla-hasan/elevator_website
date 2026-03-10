@@ -179,7 +179,7 @@ export const categories: Category[] = [
   {
     name: "Car Rental",
     count: "78",
-    emoji: "�",
+    emoji: "🚗",
     image:
       "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=400&h=400&auto=format&fit=crop",
   },
