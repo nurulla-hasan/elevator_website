@@ -3,6 +3,7 @@ import DashboardPageLayout from "@/components/ui/custom/dashboard-page-layout";
 import { SearchInput } from "@/components/ui/custom/search-input";
 import { LeadStats } from "@/components/vendor/dashboard/leads/lead-stats";
 import { LeadCard } from "@/components/vendor/dashboard/leads/lead-card";
+import { Suspense } from "react";
 
 const dummyLeads = [
   {
@@ -16,7 +17,8 @@ const dummyLeads = [
     location: "Los Angeles, CA",
     budget: "PKR 50,000 - PKR 100,000",
     guests: 200,
-    message: "Looking for a photographer for our outdoor wedding. We want both traditional and candid shots.",
+    message:
+      "Looking for a photographer for our outdoor wedding. We want both traditional and candid shots.",
     receivedDate: "February 18, 2026",
   },
   {
@@ -44,7 +46,8 @@ const dummyLeads = [
     location: "Santa Barbara, CA",
     budget: "PKR 50,000 - PKR 100,000",
     guests: 120,
-    message: "Small destination wedding, looking for photography and videography.",
+    message:
+      "Small destination wedding, looking for photography and videography.",
     receivedDate: "February 15, 2026",
   },
   {
@@ -58,7 +61,8 @@ const dummyLeads = [
     location: "Napa Valley, CA",
     budget: "PKR 50,000 - PKR 100,000",
     guests: 180,
-    message: "Vineyard wedding, need experienced photographer familiar with outdoor settings.",
+    message:
+      "Vineyard wedding, need experienced photographer familiar with outdoor settings.",
     receivedDate: "February 14, 2026",
   },
 ];
@@ -71,9 +75,11 @@ export default function LeadsPage() {
           title="Leads & Inquiries"
           description="Manage your leads and send quotes to potential customers."
         />
-        <SearchInput placeholder="Search leads..." />
+        <Suspense fallback={<div>Loading...</div>}>
+          <SearchInput placeholder="Search leads..." />
+        </Suspense>
       </div>
-      
+
       <LeadStats />
 
       <div className="grid grid-cols-1 gap-6">
