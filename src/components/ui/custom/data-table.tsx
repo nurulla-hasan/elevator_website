@@ -107,7 +107,7 @@ export function DataTable<TData, TValue>({
           />
         </div>
       )}
-      <ScrollArea className="w-[calc(100vw-85px)] md:w-[calc(100vw-340px)]  xl:w-full rounded-lg border whitespace-nowrap">
+      <ScrollArea className="w-[calc(100vw-40px)] md:w-[calc(100vw-56px)] lg:w-[calc(100vw-311px)] xl:w-full rounded-lg border whitespace-nowrap">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -117,7 +117,7 @@ export function DataTable<TData, TValue>({
                     <TableHead
                       key={header.id}
                       className={cn(
-                        "h-12 pl-4 bg-accent",
+                        "h-12 px-4 bg-accent",
                         header.column.columnDef.meta?.headerClassName
                       )}
                     >
