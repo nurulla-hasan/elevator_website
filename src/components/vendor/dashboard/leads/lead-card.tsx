@@ -76,19 +76,18 @@ export function LeadCard({ lead }: LeadCardProps) {
 
         <div className="flex items-center gap-2 self-end md:self-center">
           <Link href={`/vendor/dashboard/leads/${lead.id}`}>
-            <Button
-              variant="outline"
-              size="sm"
-            >
+            <Button variant="outline" size="sm">
               <Eye />
               View Details
             </Button>
           </Link>
           {lead.status === "New" && (
-            <Button size="sm">
-              <Send />
-              Send Quote
-            </Button>
+            <Link href={`/vendor/dashboard/leads/${lead.id}/create-quote`}>
+              <Button size="sm">
+                <Send />
+                Send Quote
+              </Button>
+            </Link>
           )}
         </div>
       </CardContent>
