@@ -5,9 +5,10 @@ import {
   Search,
   MapPin,
   SlidersHorizontal,
-  Users,
   Banknote,
   Star,
+  ChevronDown,
+  LayoutGrid,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -24,10 +25,18 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Collapsible,
   CollapsibleContent,
+  CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { categories } from "@/data/categories.data";
 
 export default function VendorFilter() {
   const [isRefineOpen, setIsRefineOpen] = useState(false);
+  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const {
     updateFilter,
     getFilter,
@@ -176,29 +185,114 @@ export default function VendorFilter() {
                   </div>
                 </div>
 
-                {/* Guest Count */}
+                {/* Category Filter */}
                 <div className="space-y-3">
                   <Label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
-                    <Users className="h-4 w-4" />
-                    Capacity
+                    <LayoutGrid className="h-4 w-4" />
+                    Category
                   </Label>
-                  <div className="flex flex-wrap gap-2">
-                    {["0-50", "50-100", "100-200", "200+"].map((item) => (
+                  <Popover
+                    open={isCategoriesOpen}
+                    onOpenChange={setIsCategoriesOpen}
+                  >
+                    <PopoverTrigger asChild>
                       <Button
-                        key={item}
-                        size="sm"
-                        variant={
-                          getFilter("guests") === item ? "default" : "outline"
-                        }
-                        onClick={() =>
-                          updateFilter("guests", getFilter("guests") === item ? null : item)
-                        }
-                        className="h-8 text-xs font-semibold"
+                        variant="outline"
+                        className={cn(
+                          "w-full justify-between font-normal",
+                          !getFilter("category") && "text-muted-foreground",
+                        )}
                       >
-                        {item}
+                        {getFilter("category") || "Select a category"}
+                        <ChevronDown className="ml-2 h-4 w-4 opacity-50" />
                       </Button>
-                    ))}
-                  </div>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-80 p-0" align="start">
+                      <ScrollArea className="h-80">
+                        <div className="p-2 space-y-1">
+                          {categories.map((category) => {
+                            const hasSubcategories =
+                              category.subcategories &&
+                              category.subcategories.length > 0;
+                            const isCatSelected =
+                              getFilter("category") === category.name;
+
+                            if (hasSubcategories) {
+                              return (
+                                <Collapsible
+                                  key={category.name}
+                                  className="w-full"
+                                >
+                                  <CollapsibleTrigger asChild>
+                                    <Button
+                                      variant="ghost"
+                                      className="w-full justify-between hover:bg-accent px-3 py-2.5 text-sm font-normal group"
+                                    >
+                                      <div className="flex items-center gap-2">
+                                        <span className="text-lg">
+                                          {category.emoji}
+                                        </span>
+                                        <span>{category.name}</span>
+                                      </div>
+                                      <ChevronDown className="h-4 w-4 opacity-50 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                                    </Button>
+                                  </CollapsibleTrigger>
+                                  <CollapsibleContent className="pl-4 space-y-1 mt-1 border-l ml-4 border-muted">
+                                    {category.subcategories?.map((sub) => {
+                                      const isSubSelected =
+                                        getFilter("category") === sub.name;
+                                      return (
+                                        <Button
+                                          key={sub.name}
+                                          variant="ghost"
+                                          size="sm"
+                                          className={cn(
+                                            "w-full justify-start font-normal px-2 py-1.5 h-auto hover:bg-accent",
+                                            isSubSelected &&
+                                              "bg-primary/10 text-primary font-medium",
+                                          )}
+                                          onClick={() => {
+                                            updateFilter("category", sub.name);
+                                            setIsCategoriesOpen(false);
+                                          }}
+                                        >
+                                          <span className="mr-2">
+                                            {sub.emoji}
+                                          </span>
+                                          {sub.name}
+                                        </Button>
+                                      );
+                                    })}
+                                  </CollapsibleContent>
+                                </Collapsible>
+                              );
+                            }
+
+                            return (
+                              <Button
+                                key={category.name}
+                                variant="ghost"
+                                className={cn(
+                                  "w-full justify-start font-normal px-3 py-2.5 h-auto hover:bg-accent",
+                                  isCatSelected &&
+                                    "bg-primary/10 text-primary font-medium",
+                                )}
+                                onClick={() => {
+                                  updateFilter("category", category.name);
+                                  setIsCategoriesOpen(false);
+                                }}
+                              >
+                                <span className="mr-2 text-lg">
+                                  {category.emoji}
+                                </span>
+                                {category.name}
+                              </Button>
+                            );
+                          })}
+                        </div>
+                      </ScrollArea>
+                    </PopoverContent>
+                  </Popover>
                 </div>
               </div>
 
