@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Heart, LogOut, Settings, LucideIcon, LayoutDashboard, MessageSquare } from "lucide-react";
+import { Heart, LogOut, Settings, LucideIcon, LayoutDashboard, MessageSquare, Store } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./theme-toggle";
@@ -55,8 +55,12 @@ export function DesktopNav({
         {isLoggedIn ? (
           <>
             <Link href="/user/dashboard?tab=saved">
-              <Button variant="ghost" size="icon-sm" className="rounded-full">
-                <Heart />
+              <Button
+                variant="ghost"
+                size="icon-sm"
+                className="rounded-full"
+              >
+                <Heart className="h-5 w-5" />
               </Button>
             </Link>
 
@@ -99,6 +103,13 @@ export function DesktopNav({
                       <span>Settings</span>
                     </Link>
                   </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem asChild>
+                    <Link href="/become-vendor">
+                      <Store className="mr-2" />
+                      <span>Become a Vendor</span>
+                    </Link>
+                  </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
@@ -116,15 +127,17 @@ export function DesktopNav({
             <Link href="/auth/login">
               <Button
                 variant="ghost"
-                className="text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
-                // onClick={() => setIsLoggedIn(true)}
+                className="text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground font-medium uppercase tracking-wider"
               >
                 Login
               </Button>
             </Link>
-            <Link href="/become-vendor">
-              <Button variant="secondary" asChild>
-                <span>Become a Vendor</span>
+            <Link href="/auth/register">
+              <Button
+                variant="secondary"
+                className="font-semibold uppercase tracking-wider px-6"
+              >
+                Join Now
               </Button>
             </Link>
           </>
