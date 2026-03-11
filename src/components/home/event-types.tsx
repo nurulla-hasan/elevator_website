@@ -1,15 +1,17 @@
-"use client"
-import React from "react"
-import PageHeader from "@/components/ui/custom/page-header"
-import { Card, CardContent } from "@/components/ui/card"
+"use client";
+import React from "react";
+import PageHeader from "@/components/ui/custom/page-header";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   type CarouselApi,
-} from "@/components/ui/carousel"
-import Autoplay from "embla-carousel-autoplay"
-import { cn } from "@/lib/utils"
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { Button } from "../ui/button";
 
 const events = [
   {
@@ -48,29 +50,29 @@ const events = [
     count: 156,
     icon: "🥂",
   },
-]
+];
 
 export default function EventTypes() {
-  const [api, setApi] = React.useState<CarouselApi>()
-  const [current, setCurrent] = React.useState(0)
-  const [count, setCount] = React.useState(0)
+  const [api, setApi] = React.useState<CarouselApi>();
+  const [current, setCurrent] = React.useState(0);
+  const [count, setCount] = React.useState(0);
 
   React.useEffect(() => {
-    if (!api) return
+    if (!api) return;
 
-    setCount(api.scrollSnapList().length)
-    setCurrent(api.selectedScrollSnap())
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap());
 
     api.on("select", () => {
-      setCurrent(api.selectedScrollSnap())
-    })
-  }, [api])
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
 
   return (
     <section>
       <div className="mb-8">
-        <PageHeader 
-          title="Find Vendors by Event Type" 
+        <PageHeader
+          title="Find Vendors by Event Type"
           description="Plan your specific wedding events with the right professionals"
         />
       </div>
@@ -92,10 +94,11 @@ export default function EventTypes() {
         >
           <CarouselContent className="-ml-4 p-1">
             {events.map((event) => (
-              <CarouselItem key={event.id} className="pl-4 sm:basis-1/2 lg:basis-1/5">
-                <Card 
-                  className="group cursor-pointer hover:bg-primary transition-all duration-300"
-                >
+              <CarouselItem
+                key={event.id}
+                className="pl-4 sm:basis-1/2 lg:basis-1/5"
+              >
+                <Card className="group cursor-pointer hover:bg-primary transition-all duration-300">
                   <CardContent className="flex flex-col items-center justify-center">
                     <div className="mb-4 text-4xl transition-transform duration-300 group-hover:scale-125 group-hover:drop-shadow-md">
                       {event.icon}
@@ -120,9 +123,9 @@ export default function EventTypes() {
               key={index}
               className={cn(
                 "h-1.5 rounded-full transition-all duration-300",
-                current === index 
-                  ? "w-8 bg-primary" 
-                  : "w-2 bg-primary/20 hover:bg-primary/40"
+                current === index
+                  ? "w-8 bg-primary"
+                  : "w-2 bg-primary/20 hover:bg-primary/40",
               )}
               onClick={() => api?.scrollTo(index)}
               aria-label={`Go to slide ${index + 1}`}
@@ -130,6 +133,13 @@ export default function EventTypes() {
           ))}
         </div>
       </div>
+
+
+      <div className="mt-8 md:hidden">
+        <Link href="/vendor">
+          <Button className="w-full">View all vendors</Button>
+        </Link>
+      </div>
     </section>
-  )
+  );
 }

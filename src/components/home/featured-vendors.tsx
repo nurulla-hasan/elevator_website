@@ -40,7 +40,7 @@ export default function FeaturedVendors() {
           title="Featured Vendors"
           description="Top-rated professionals for your special day"
         >
-          <Link href="/vendors?category=featured">
+          <Link href="/vendors?category=featured" className="hidden md:block">
             <Button variant="link" className="hover:text-primary">
               View All <ArrowRight />
             </Button>
@@ -91,6 +91,12 @@ export default function FeaturedVendors() {
             />
           ))}
         </div>
+      </div>
+
+      <div className="mt-8 md:hidden">
+        <Link href="/vendor">
+          <Button className="w-full">View all vendors</Button>
+        </Link>
       </div>
     </section>
   );

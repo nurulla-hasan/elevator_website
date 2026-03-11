@@ -23,55 +23,55 @@ export default function HomePage() {
           <Categories />
         </PageLayout>
 
-        <div className="bg-card py-16">
+        <div className="bg-primary py-10 md:py-16">
           <PageLayout paddingSize="zero">
             <Banner />
           </PageLayout>
         </div>
 
-        <div className="py-16">
+        <div className="py-10 md:py-16">
           <PageLayout paddingSize="zero">
             <FeaturedVendors />
           </PageLayout>
         </div>
 
-        <div className="bg-card py-16">
+        <div className="bg-card py-10 md:py-16">
           <PageLayout paddingSize="zero">
             <EventTypes />
           </PageLayout>
         </div>
 
-        <div className="py-16">
+        <div className="py-10 md:py-16">
           <PageLayout paddingSize="zero">
             <VenuePreview />
           </PageLayout>
         </div>
 
-        <div className="bg-card py-16">
+        <div className="bg-card py-10 md:py-16">
           <PageLayout paddingSize="zero">
             <BudgetVendors />
           </PageLayout>
         </div>
 
-        <div className="py-16">
+        <div className="py-10 md:py-16">
           <PageLayout paddingSize="zero">
             <PostRequirement />
           </PageLayout>
         </div>
 
-        <div className="bg-card py-16">
+        <div className="bg-card py-10 md:py-16">
           <PageLayout paddingSize="zero">
             <WePlanAssociate />
           </PageLayout>
         </div>
 
-        <div className="py-16">
+        <div className="py-10 md:py-16">
           <PageLayout paddingSize="zero">
             <RecentlyAddedVendors />
           </PageLayout>
         </div>
 
-        <div className="bg-card py-16">
+        <div className="bg-card px-5 py-10 md:py-16">
           <VendorCTA />
         </div>
       </main>
