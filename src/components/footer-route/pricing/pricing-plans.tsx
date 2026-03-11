@@ -1,155 +1,85 @@
 import Link from "next/link";
 import {
   Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardFooter,
 } from "@/components/ui/card";
 import { Check, Sparkles, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
-
-const plans = [
-  {
-    id: "starter",
-    name: "Starter Support",
-    price: "999",
-    description:
-      "Perfect for couples who need a head start with vendor selection.",
-    features: [
-      "Budget-based vendor shortlisting",
-      "Quality & availability verification",
-      "Initial vendor introductions",
-      "Email coordination support",
-      "Planning checklist & timeline",
-    ],
-    recommended: false,
-    buttonText: "Start Planning",
-  },
-  {
-    id: "concierge",
-    name: "Personal Concierge",
-    price: "2499",
-    description:
-      "Our most popular plan for comprehensive support from start to finish.",
-    features: [
-      "Everything in Starter Support",
-      "Dedicated associate assigned",
-      "Vendor negotiation support",
-      "In-app / WhatsApp Coordination",
-      "Contract review & guidance",
-      "Final curated booking package",
-    ],
-    recommended: true,
-    buttonText: "Hire Associate Now",
-  },
-  {
-    id: "elite",
-    name: "Elite Experience",
-    price: "4999",
-    description:
-      "Ultimate luxury planning with full-service management and on-site support.",
-    features: [
-      "Everything in Personal Concierge",
-      "Priority 24/7 VIP support",
-      "Unlimited vendor consultations",
-      "On-site wedding day coordination",
-      "RSVP & guest list management",
-      "Post-wedding wrap-up services",
-    ],
-    recommended: false,
-    buttonText: "Go Elite",
-  },
-];
 
 export function PricingPlans() {
+  const features = [
+    "Budget-based vendor shortlisting",
+    "Quality & availability verification",
+    "Dedicated personal concierge",
+    "Vendor negotiation support",
+    "Contract review & guidance",
+    "On-site wedding day coordination",
+  ];
+
   return (
-    <div className="flex flex-col gap-10">
-      <div className="flex flex-col gap-3 items-center text-center">
-        <h3 className="text-3xl font-semibold text-primary">
-          Simple, Transparent Pricing
+    <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-2.5 items-center text-center">
+        <h3 className="text-2xl font-semibold text-primary tracking-tight">
+          Simple, Fixed Pricing
         </h3>
         <p className="text-muted-foreground max-w-2xl text-sm md:text-base">
-          Choose the perfect plan for your special day. No hidden fees, just
-          expert support when you need it most.
+          Get full-service wedding management with our dedicated WePlan associates at a flat rate.
         </p>
-        <div className="h-1.5 w-16 bg-primary/20 rounded-full" />
+        <div className="h-1 w-12 bg-primary/20 rounded-full mt-1" />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {plans.map((plan, index) => (
-          <div key={index} className="relative group h-full">
-            {plan.recommended && (
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
-                <Badge className="px-4 py-1 bg-primary text-xs text-primary-foreground font-semibold shadow-xl shadow-primary/30 border-none">
-                  <Sparkles className="h-3.5 w-3.5 mr-1.5" />
-                  MOST POPULAR
-                </Badge>
-              </div>
-            )}
-            <Card
-              className={cn(
-                "h-full flex flex-col border transition-all duration-300 shadow-sm hover:shadow-md",
-                plan.recommended
-                  ? "border-primary shadow-primary/10 ring-1 ring-primary/20"
-                  : "border-border",
-              )}
-            >
-              <CardHeader className="space-y-4 text-center">
-                <div className="space-y-2">
-                  <CardTitle className="text-2xl font-semibold">
-                    {plan.name}
-                  </CardTitle>
-                  <CardDescription className="text-sm min-h-12 leading-relaxed">
-                    {plan.description}
-                  </CardDescription>
-                </div>
-                <div className="flex items-baseline justify-center gap-1">
-                  <span className="text-3xl font-semibold">${plan.price}</span>
-                  <span className="text-sm text-muted-foreground">/event</span>
-                </div>
-              </CardHeader>
 
-              <CardContent className="flex-1">
-                <div className="space-y-4">
-                  {plan.features.map((feature, fIndex) => (
-                    <div key={fIndex} className="flex items-start gap-3">
-                      <div className="bg-primary/10 p-1 rounded-full mt-0.5">
-                        <Check className="h-4 w-4 text-primary" />
+      <div className="max-w-3xl mx-auto w-full">
+        <div className="relative group">
+          <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-20">
+            <Badge className="px-4 py-1 bg-primary text-[10px] text-primary-foreground font-medium shadow-lg shadow-primary/20 border-none tracking-widest uppercase">
+              <Sparkles className="h-3 w-3 mr-1.5 animate-pulse" />
+              Most Popular Choice
+            </Badge>
+          </div>
+          
+          <Card className="border border-primary/30 shadow-xl shadow-primary/5 ring-0 overflow-hidden py-0">
+            <div className="grid grid-cols-1 md:grid-cols-5 h-full">
+              {/* Price Side */}
+              <div className="md:col-span-2 bg-primary/3 p-6 flex flex-col items-center justify-center text-center border-b md:border-b-0 md:border-r border-primary/10">
+                <h4 className="text-lg font-medium text-foreground/90 mb-1">WePlan Associate</h4>
+                <div className="flex items-baseline gap-1 mb-5">
+                  <span className="text-3xl font-semibold text-primary tracking-tighter">PKR 4,999</span>
+                  <span className="text-xs text-muted-foreground font-medium">/event</span>
+                </div>
+                <Link href="/package-checkout/concierge" className="w-full max-w-50">
+                  <Button size="sm" className="w-full font-medium shadow-md shadow-primary/20 group py-5">
+                    GET STARTED NOW
+                    <ArrowRight className="ml-1.5 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+                <p className="mt-3 text-xs text-muted-foreground font-normal">
+                  Transparent pricing • No hidden fees
+                </p>
+              </div>
+
+              {/* Features Side */}
+              <div className="md:col-span-3 p-6 bg-card">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3.5 gap-x-5">
+                  {features.map((feature, index) => (
+                    <div key={index} className="flex items-start gap-2.5">
+                      <div className="bg-primary/10 p-1 rounded-full mt-0.5 shrink-0">
+                        <Check className="h-3 w-3 text-primary" />
                       </div>
-                      <span className="text-sm font-medium text-foreground/80">
+                      <span className="text-xs font-medium text-foreground/70 leading-snug">
                         {feature}
                       </span>
                     </div>
                   ))}
                 </div>
-              </CardContent>
-
-              <CardFooter>
-                <div className="flex flex-col gap-4 w-full">
-                <Link href={`/package-checkout/${plan.id}`} className="w-full">
-                  <Button
-                    variant={plan.recommended ? "default" : "outline"}
-                    size="lg"
-                    className={cn(
-                      "w-full uppercase group",
-                      plan.recommended && "shadow-sm shadow-primary/20"
-                    )}
-                  >
-                    {plan.buttonText}
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Link>
-                <p className="text-center text-xs text-muted-foreground opacity-70">
-                  Transparent pricing • No hidden fees
-                </p>
+                <div className="mt-6 pt-5 border-t border-border/40">
+                  <p className="text-[11px] text-muted-foreground/80 italic leading-relaxed text-center md:text-left">
+                    &quot;Our goal is to make your wedding planning stress-free and perfect. Your dedicated associate will handle everything from start to finish.&quot;
+                  </p>
+                </div>
               </div>
-              </CardFooter>
-            </Card>
-          </div>
-        ))}
+            </div>
+          </Card>
+        </div>
       </div>
     </div>
   );

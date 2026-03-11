@@ -53,7 +53,7 @@ export function PricingTestimonials() {
   return (
     <section className="flex flex-col gap-10">
       <div className="flex flex-col gap-3 items-center text-center">
-        <h3 className="text-3xl font-semibold text-primary">
+        <h3 className="text-2xl md:text-3xl font-semibold text-primary">
           Real Stories, Real Love
         </h3>
         <p className="text-muted-foreground max-w-2xl text-sm md:text-base">
