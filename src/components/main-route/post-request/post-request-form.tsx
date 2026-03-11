@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { format } from "date-fns";
@@ -12,6 +14,9 @@ import {
   PartyPopper,
   LayoutPanelLeft,
   ChevronDownIcon,
+  Upload,
+  X,
+  Image as ImageIcon,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -64,12 +69,37 @@ export function PostRequestForm() {
       location: "",
       services: "",
       additionalDetails: "",
+      images: [],
     },
   });
+
+  const [previews, setPreviews] = React.useState<string[]>([]);
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>, onChange: (...event: any[]) => void) => {
+    const files = Array.from(e.target.files || []);
+    if (files.length > 0) {
+      const newPreviews = files.map(file => URL.createObjectURL(file as Blob));
+      setPreviews(prev => [...prev, ...newPreviews]);
+      const currentImages = form.getValues("images") || [];
+      onChange([...currentImages, ...files]);
+    }
+  };
+
+  const removeImage = (index: number, onChange: (...event: any[]) => void) => {
+    const newPreviews = [...previews];
+    URL.revokeObjectURL(newPreviews[index]);
+    newPreviews.splice(index, 1);
+    setPreviews(newPreviews);
+    
+    const currentImages = [...(form.getValues("images") || [])];
+    currentImages.splice(index, 1);
+    onChange(currentImages);
+  };
 
   function onSubmit(values: PostRequestValues) {
     console.log(values);
     toast.success("Request submitted successfully!");
+    setPreviews([]);
     form.reset();
   }
 
@@ -331,6 +361,57 @@ export function PostRequestForm() {
                   className="min-h-30 resize-none"
                   {...field}
                 />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        {/* Image Upload */}
+        <FormField
+          control={form.control}
+          name="images"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="flex items-center gap-2">
+                <ImageIcon size={16} /> Reference Images
+              </FormLabel>
+              <FormControl>
+                <div className="space-y-4">
+                  <div className="flex flex-wrap gap-4">
+                    {previews.map((preview, index) => (
+                      <div key={index} className="relative w-24 h-24 border rounded-lg overflow-hidden group">
+                        <Image
+                          src={preview}
+                          alt={`preview ${index}`}
+                          fill
+                          className="object-cover"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => removeImage(index, field.onChange)}
+                          className="absolute top-1 right-1 bg-destructive text-destructive-foreground p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                        >
+                          <X size={12} />
+                        </button>
+                      </div>
+                    ))}
+                    <label className="w-24 h-24 border-2 border-dashed rounded-lg flex flex-col items-center justify-center cursor-pointer hover:bg-accent transition-colors">
+                      <Upload size={20} className="text-muted-foreground mb-1" />
+                      <span className="text-[10px] text-muted-foreground">Upload</span>
+                      <input
+                        type="file"
+                        multiple
+                        accept="image/*"
+                        className="hidden"
+                        onChange={(e) => handleImageChange(e, field.onChange)}
+                      />
+                    </label>
+                  </div>
+                  <p className="text-[12px] text-muted-foreground">
+                    Upload reference images to show vendors what exactly you need.
+                  </p>
+                </div>
               </FormControl>
               <FormMessage />
             </FormItem>

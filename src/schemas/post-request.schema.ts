@@ -12,6 +12,7 @@ export const postRequestSchema = z.object({
   location: z.string().min(1, "Area/Location is required."),
   services: z.string().min(1, "Please select a service."),
   additionalDetails: z.string().optional(),
+  images: z.array(z.any()).optional(),
 });
 
 export type PostRequestValues = z.infer<typeof postRequestSchema>;
