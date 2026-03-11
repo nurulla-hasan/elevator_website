@@ -4,7 +4,7 @@
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Phone, Mail } from "lucide-react"
+import { Phone, Mail, Check, ArrowRight } from "lucide-react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
@@ -12,6 +12,20 @@ import * as z from "zod"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command"
+import { cn } from "@/lib/utils"
 import {
   Form,
   FormControl,
@@ -21,7 +35,20 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 
+const countries = [
+  { label: "Pakistan", value: "+92", code: "PK" },
+  { label: "United States", value: "+1", code: "US" },
+  { label: "United Kingdom", value: "+44", code: "GB" },
+  { label: "United Arab Emirates", value: "+971", code: "AE" },
+  { label: "Saudi Arabia", value: "+966", code: "SA" },
+  { label: "Canada", value: "+1", code: "CA" },
+  { label: "Australia", value: "+61", code: "AU" },
+  { label: "India", value: "+91", code: "IN" },
+  { label: "Bangladesh", value: "+880", code: "BD" },
+]
+
 const phoneSchema = z.object({
+  countryCode: z.string().min(1),
   phone: z.string().min(10, {
     message: "Phone number must be at least 10 characters.",
   }),
@@ -42,6 +69,7 @@ export default function LoginPage() {
   const phoneForm = useForm<z.infer<typeof phoneSchema>>({
     resolver: zodResolver(phoneSchema as any),
     defaultValues: {
+      countryCode: "+92",
       phone: "",
     },
   })
@@ -107,30 +135,95 @@ export default function LoginPage() {
             <TabsContent value="phone">
               <Form {...phoneForm}>
                 <form onSubmit={phoneForm.handleSubmit(onPhoneSubmit)} className="grid gap-4">
-                  <FormField
-                    control={phoneForm.control}
-                    name="phone"
-                    render={({ field, fieldState }) => (
-                      <FormItem data-invalid={fieldState.invalid}>
-                        <FormLabel>
-                          <div className="flex items-center gap-2">
-                            <Phone className="h-4 w-4" />
-                            Phone Number
-                          </div>
-                        </FormLabel>
-                        <FormControl>
-                          <Input 
-                            placeholder="+1 234-567-8900" 
-                            {...field} 
-                            disabled={isLoading} 
-                            aria-invalid={fieldState.invalid}
-                            autoComplete="tel"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                  <div className="flex gap-2">
+                    <FormField
+                      control={phoneForm.control}
+                      name="countryCode"
+                      render={({ field }) => (
+                        <FormItem className="flex flex-col">
+                          <FormLabel className="flex items-center gap-2">
+                            Code
+                          </FormLabel>
+                          <Popover>
+                            <PopoverTrigger asChild>
+                              <FormControl>
+                                <Button
+                                  variant="outline"
+                                  role="combobox"
+                                  className={cn(
+                                    "w-16 justify-between px-3",
+                                    !field.value && "text-muted-foreground"
+                                  )}
+                                  disabled={isLoading}
+                                >
+                                  {field.value
+                                    ? countries.find(
+                                        (country) => country.value === field.value
+                                      )?.value
+                                    : "+92"}
+                                </Button>
+                              </FormControl>
+                            </PopoverTrigger>
+                            <PopoverContent className="w-50 p-0" align="start">
+                              <Command>
+                                <CommandInput placeholder="Search country..." />
+                                <CommandList>
+                                  <CommandEmpty>No country found.</CommandEmpty>
+                                  <CommandGroup>
+                                    {countries.map((country) => (
+                                      <CommandItem
+                                        value={country.label}
+                                        key={country.label}
+                                        onSelect={() => {
+                                          phoneForm.setValue("countryCode", country.value)
+                                        }}
+                                      >
+                                        <Check
+                                          className={cn(
+                                            "mr-2 h-4 w-4",
+                                            country.value === field.value
+                                              ? "opacity-100"
+                                              : "opacity-0"
+                                          )}
+                                        />
+                                        <span className="flex-1">{country.label}</span>
+                                        <span className="text-muted-foreground">{country.value}</span>
+                                      </CommandItem>
+                                    ))}
+                                  </CommandGroup>
+                                </CommandList>
+                              </Command>
+                            </PopoverContent>
+                          </Popover>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={phoneForm.control}
+                      name="phone"
+                      render={({ field, fieldState }) => (
+                        <FormItem className="flex-1" data-invalid={fieldState.invalid}>
+                          <FormLabel>
+                            <div className="flex items-center gap-2">
+                              <Phone className="h-4 w-4" />
+                              Phone Number
+                            </div>
+                          </FormLabel>
+                          <FormControl>
+                            <Input 
+                              placeholder="345-678-9000" 
+                              {...field} 
+                              disabled={isLoading} 
+                              aria-invalid={fieldState.invalid}
+                              autoComplete="tel"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
                   <Button type="submit" disabled={isLoading} size="lg">
                     {isLoading ? "Sending OTP..." : "Send OTP"}
                   </Button>
@@ -217,7 +310,7 @@ export default function LoginPage() {
           </div>
         </div>
 
-        {/* <div className="text-center">
+        <div className="text-center">
           <Link
             href="/auth/vendor"
             className="group inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
@@ -228,7 +321,7 @@ export default function LoginPage() {
             </span>
             <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
-        </div> */}
+        </div>
       </div>
     </div>
   )
