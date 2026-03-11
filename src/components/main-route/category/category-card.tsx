@@ -5,16 +5,25 @@ interface CategoryCardProps {
   name: string;
   count: string;
   emoji: string;
-  image?: string; // Add optional image property
+  image?: string;
+  filterParam?: string; // Optional custom parameter name, defaults to 'category'
 }
 
-export default function CategoryCard({ name, count, image }: CategoryCardProps) {
+export default function CategoryCard({ 
+  name, 
+  count, 
+  image, 
+  filterParam = "category" 
+}: CategoryCardProps) {
+  // Construct the URL using the specified filter parameter
+  const linkHref = `/vendors?${filterParam}=${name.toLowerCase().replace(/\s+/g, "-")}`;
+  
   // Using a representative placeholder if no image is provided.
   const displayImage = image || `https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=400&h=400&auto=format&fit=crop`;
 
   return (
     <Link 
-      href={`/vendors?category=${name.toLowerCase().replace(/\s+/g, "-")}`} 
+      href={linkHref} 
       className="group block w-full transition-all duration-300"
     >
       <div className="flex flex-col items-center gap-3">

@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import PageHeader from "@/components/ui/custom/page-header";
-import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
@@ -12,43 +11,50 @@ import Autoplay from "embla-carousel-autoplay";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Button } from "../ui/button";
+import CategoryCard from "../main-route/category/category-card";
 
 const events = [
   {
     id: 1,
     name: "Mehndi",
-    count: 145,
-    icon: "🎨",
+    count: "145",
+    emoji: "🎨",
+    image: "https://images.unsplash.com/photo-1599305090598-fe179d501227?q=80&w=400&h=400&auto=format&fit=crop",
   },
   {
     id: 2,
     name: "Baraat",
-    count: 189,
-    icon: "🎊",
+    count: "189",
+    emoji: "🎊",
+    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=400&h=400&auto=format&fit=crop",
   },
   {
     id: 3,
     name: "Walima",
-    count: 234,
-    icon: "⛪",
+    count: "234",
+    emoji: "⛪",
+    image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=400&h=400&auto=format&fit=crop",
   },
   {
     id: 4,
     name: "Combined",
-    count: 167,
-    icon: "✨",
+    count: "167",
+    emoji: "✨",
+    image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=400&h=400&auto=format&fit=crop",
   },
   {
     id: 5,
     name: "Engagement",
-    count: 98,
-    icon: "💍",
+    count: "98",
+    emoji: "💍",
+    image: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=400&h=400&auto=format&fit=crop",
   },
   {
     id: 6,
     name: "Reception",
-    count: 156,
-    icon: "🥂",
+    count: "156",
+    emoji: "🥂",
+    image: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=400&h=400&auto=format&fit=crop",
   },
 ];
 
@@ -96,21 +102,9 @@ export default function EventTypes() {
             {events.map((event) => (
               <CarouselItem
                 key={event.id}
-                className="pl-4 sm:basis-1/2 lg:basis-1/5"
+                className="pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/6"
               >
-                <Card className="group cursor-pointer hover:bg-primary transition-all duration-300">
-                  <CardContent className="flex flex-col items-center justify-center">
-                    <div className="mb-4 text-4xl transition-transform duration-300 group-hover:scale-125 group-hover:drop-shadow-md">
-                      {event.icon}
-                    </div>
-                    <h3 className="mb-2 text-xl font-semibold text-foreground group-hover:text-primary-foreground transition-colors text-center">
-                      {event.name}
-                    </h3>
-                    <p className="text-sm text-muted-foreground group-hover:text-primary-foreground/80 transition-colors">
-                      {event.count} vendors
-                    </p>
-                  </CardContent>
-                </Card>
+                <CategoryCard {...event} filterParam="eventType" />
               </CarouselItem>
             ))}
           </CarouselContent>
