@@ -24,50 +24,50 @@ export default function Hero() {
       {/* Content */}
       <div className="container mx-auto relative z-20 flex h-full flex-col items-center justify-center px-4 text-center text-white">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <Sparkles className="w-4 h-4" />
-          <span className="text-sm font-medium tracking-wide uppercase">Start Your Journey Together</span>
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6 sm:mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <Sparkles className="w-3 h-3 sm:w-4 sm:h-4" />
+          <span className="text-[10px] sm:text-sm font-medium tracking-wide uppercase">Start Your Journey Together</span>
         </div>
 
-        <h1 className="mb-6 text-4xl font-semibold tracking-widest md:text-6xl lg:text-7xl leading-[1.1] animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
-          Crafting Your Perfect <br /> 
-          <span className="text-4xl md:text-6xl lg:text-7xl">Wedding Story</span>
+        <h1 className="mb-4 sm:mb-6 text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-semibold tracking-wider sm:tracking-widest leading-[1.15] sm:leading-[1.1] animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
+          Crafting Your Perfect <br className="hidden sm:block" /> 
+          <span className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl">Wedding Story</span>
         </h1>
         
-        <p className="mb-10 max-w-2xl text-sm font-medium text-white/95 md:text-lg px-2 leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500 drop-shadow-md">
+        <p className="mb-8 sm:mb-10 max-w-2xl text-xs sm:text-sm font-medium text-white/95 md:text-lg px-2 leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500 drop-shadow-md">
           Connect with the finest wedding vendors and venues. From intimate ceremonies 
           to grand celebrations, we help you find the best professionals for your big day.
         </p>
 
         {/* Search Bar */}
-        <div className="flex w-full max-w-5xl flex-col gap-2 rounded-2xl bg-card/95 backdrop-blur-sm p-3 shadow-2xl md:flex-row md:items-center md:gap-0 animate-in fade-in zoom-in-95 duration-1000 delay-700 border border-border/50 text-foreground">
-          <div className="flex flex-[1.2] items-center px-4 py-2 md:py-0">
-            <Search className="mr-3 h-5 w-5 text-primary shrink-0" />
+        <div className="flex w-full max-w-5xl flex-col gap-1 rounded-2xl bg-card/95 backdrop-blur-sm p-2 sm:p-3 shadow-2xl md:flex-row md:items-center md:gap-0 animate-in fade-in zoom-in-95 duration-1000 delay-700 border border-border/50 text-foreground">
+          <div className="flex flex-[1.2] items-center px-3 py-1.5 md:py-0">
+            <Search className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" />
             <div className="flex flex-col items-start w-full">
-              <span className="text-[10px] uppercase font-semibold text-muted-foreground tracking-wider mb-1 ml-1">Looking for</span>
+              <span className="text-[8px] sm:text-[10px] uppercase font-semibold text-muted-foreground tracking-wider mb-0.5 ml-1">Looking for</span>
               <Input
                 type="text"
                 placeholder="Venues, Photographers..."
-                className="border-none h-8 shadow-none"
+                className="border-none h-7 sm:h-8 shadow-none text-xs sm:text-sm focus-visible:ring-0"
               />
             </div>
           </div>
 
           <Separator orientation="vertical" className="hidden h-10 md:block bg-border" />
 
-          <div className="flex flex-1 items-center px-4 py-2 md:py-0 border-t border-border md:border-none">
-            <MapPin className="mr-3 h-5 w-5 text-primary shrink-0" />
+          <div className="flex flex-1 items-center px-3 py-1.5 md:py-0 border-t border-border md:border-none">
+            <MapPin className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" />
             <div className="flex flex-col items-start w-full">
-              <span className="text-[10px] uppercase font-semibold text-muted-foreground tracking-wider mb-1 ml-1">Location</span>
+              <span className="text-[8px] sm:text-[10px] uppercase font-semibold text-muted-foreground tracking-wider mb-0.5 ml-1">Location</span>
               <Input
                 type="text"
                 placeholder="Where in the city?"
-                className="border-none h-8 shadow-none"
+                className="border-none h-7 sm:h-8 shadow-none text-xs sm:text-sm focus-visible:ring-0"
               />
             </div>
           </div>
 
-          <Button className="h-12 px-6 w-full md:w-auto transition-all shadow-lg hover:shadow-primary/20 md:ml-2 text-primary-foreground">
+          <Button className="h-10 sm:h-12 px-6 w-full md:w-auto transition-all shadow-lg hover:shadow-primary/20 md:ml-2 text-primary-foreground font-semibold text-xs sm:text-sm">
             Explore Now
           </Button>
         </div>
