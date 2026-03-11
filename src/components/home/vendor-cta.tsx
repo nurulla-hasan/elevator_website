@@ -16,7 +16,7 @@ export default function VendorCTA() {
             more couples and manage bookings effortlessly.
           </p>
         </div>
-        <Link href="/auth/vendor">
+        <Link href="/become-vendor">
           <Button className="group transition-all duration-200">
             Join as a Vendor
             <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transition-transform group-hover:translate-x-1" />
