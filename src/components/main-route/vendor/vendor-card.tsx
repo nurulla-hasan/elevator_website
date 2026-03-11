@@ -14,12 +14,14 @@ interface VendorCardProps {
   vendor: Vendor;
   className?: string;
   variant?: "vertical" | "horizontal";
+  showSponsored?: boolean;
 }
 
 export function VendorCard({
   vendor,
   className,
   variant = "vertical",
+  showSponsored = true,
 }: VendorCardProps) {
   if (variant === "horizontal") {
     return (
@@ -36,7 +38,7 @@ export function VendorCard({
               />
               {/* Primary Linear Gradient Overlay on Hover */}
               <div className="absolute inset-0 bg-linear-to-t from-primary/60 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-1" />
-              {vendor.sponsored && (
+              {vendor.sponsored && showSponsored && (
                 <div className="absolute top-1 left-1 z-10">
                   <Badge
                     variant="secondary"
@@ -133,7 +135,7 @@ export function VendorCard({
         {/* Primary Linear Gradient Overlay on Hover */}
         <div className="absolute inset-0 bg-linear-to-t from-primary/60 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-1" />
         <div className="absolute top-3 left-3 z-10 flex flex-col gap-2">
-          {vendor.sponsored && (
+          {vendor.sponsored && showSponsored && (
             <Badge
               variant="secondary"
               className="bg-primary/90 backdrop-blur-sm text-white border-none flex items-center gap-1 py-1 px-2.5 shadow-lg w-fit"
