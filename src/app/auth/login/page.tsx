@@ -4,7 +4,7 @@
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Phone, Mail, ArrowRight } from "lucide-react"
+import { Phone, Mail } from "lucide-react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
@@ -217,7 +217,7 @@ export default function LoginPage() {
           </div>
         </div>
 
-        <div className="text-center">
+        {/* <div className="text-center">
           <Link
             href="/auth/vendor"
             className="group inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
@@ -228,7 +228,7 @@ export default function LoginPage() {
             </span>
             <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   )
