@@ -7,15 +7,16 @@ import { format } from "date-fns";
 import {
   Calendar as CalendarIcon,
   Users,
-  DollarSign,
+  Banknote,
   MapPin,
   PartyPopper,
+  LayoutPanelLeft,
   ChevronDownIcon,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
+import CustomCalendar from "@/components/ui/custom/custom-calender";
 import {
   Form,
   FormControl,
@@ -138,8 +139,7 @@ export function PostRequestForm() {
                   </FormControl>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0" align="start">
-                  <Calendar
-                    mode="single"
+                  <CustomCalendar
                     selected={field.value}
                     onSelect={field.onChange}
                     disabled={(date) =>
@@ -178,7 +178,7 @@ export function PostRequestForm() {
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                <DollarSign size={16} /> Budget Range (PKR)
+                <Banknote size={16} /> Budget Range (PKR)
               </FormLabel>
               <FormControl>
                 <Input placeholder="e.g., 5000 - 10000" {...field} />
@@ -211,7 +211,9 @@ export function PostRequestForm() {
           name="services"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel>Service Needed</FormLabel>
+              <FormLabel>
+                <LayoutPanelLeft size={16} /> Service Needed
+              </FormLabel>
               <Popover open={isServicesOpen} onOpenChange={setIsServicesOpen}>
                 <PopoverTrigger asChild>
                   <FormControl>
