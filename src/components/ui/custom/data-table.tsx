@@ -107,7 +107,7 @@ export function DataTable<TData, TValue>({
           />
         </div>
       )}
-      <ScrollArea className="w-[calc(100vw-40px)] md:w-[calc(100vw-56px)] lg:w-[calc(100vw-311px)] xl:w-full rounded-lg border whitespace-nowrap">
+      <ScrollArea className="max-w-[calc(100vw-40px)] md:max-w-[calc(100vw-56px)] lg:max-w-[calc(100vw-311px)] xl:w-full rounded-lg border whitespace-nowrap">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

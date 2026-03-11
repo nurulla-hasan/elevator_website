@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Skeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
-import { ThemeToggle } from "@/components/common/navbar/theme-toggle";
+// import { ThemeToggle } from "@/components/common/navbar/theme-toggle";
 // import Image from "next/image";
 
 const Header = ({ onMenuClick }: { onMenuClick: () => void }) => {
@@ -66,7 +66,7 @@ const Header = ({ onMenuClick }: { onMenuClick: () => void }) => {
         {/* Right: notification + theme toggle + profile */}
         <div className="flex items-center space-x-3 md:space-x-5">
           {/* Theme toggle */}
-          <ThemeToggle variant="outline" size="icon-sm" />
+          {/* <ThemeToggle variant="outline" size="icon-sm" /> */}
 
           {/* Notification icon */}
           <Link href="/vendor/notifications">

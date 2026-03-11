@@ -17,17 +17,24 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { format } from "date-fns";
+import CustomCalendar from "@/components/ui/custom/custom-calender";
+import {
   Plus,
   Trash2,
   Send,
-  Eye,
-  Calendar,
+  Calendar as CalendarIcon,
   MapPin,
   User,
   Mail,
 } from "lucide-react";
 import DashboardHeader from "@/components/ui/custom/dashboard-header";
 import { quoteSchema, type QuoteFormValues } from "@/schemas/quote.schema";
+import { QuotePreviewModal } from "@/components/vendor/dashboard/leads/quote-preview-modal";
 
 export default function CreateQuotePage() {
   const form = useForm<QuoteFormValues>({
@@ -82,7 +89,7 @@ export default function CreateQuotePage() {
   return (
     <DashboardPageLayout>
       <div>
-        <BackButton label="Back to Lead Details" variant="outline" />
+        <BackButton label="Back to Lead Details" variant="outline" /> 
       </div>
 
       <div>
@@ -110,8 +117,8 @@ export default function CreateQuotePage() {
                     control={form.control}
                     name="packageName"
                     render={({ field }) => (
-                      <FormItem className="space-y-2">
-                        <FormLabel className="font-semibold">
+                      <FormItem>
+                        <FormLabel>
                           Package Name
                         </FormLabel>
                         <FormControl>
@@ -128,11 +135,34 @@ export default function CreateQuotePage() {
                     control={form.control}
                     name="validUntil"
                     render={({ field }) => (
-                      <FormItem className="space-y-2">
+                      <FormItem className="flex flex-col">
                         <FormLabel>Valid Until</FormLabel>
-                        <FormControl>
-                          <Input {...field} type="date" />
-                        </FormControl>
+                        <Popover>
+                          <PopoverTrigger asChild>
+                            <FormControl>
+                              <Button
+                                variant="outline"
+                              >
+                                {field.value ? (
+                                  format(new Date(field.value), "PPP")
+                                ) : (
+                                  <span>Pick a date</span>
+                                )}
+                                <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                              </Button>
+                            </FormControl>
+                          </PopoverTrigger>
+                          <PopoverContent className="w-auto p-0" align="start">
+                            <CustomCalendar
+                              selected={field.value ? new Date(field.value) : undefined}
+                              onSelect={(date) => field.onChange(date?.toISOString() || "")}
+                              disabled={(date) =>
+                                date < new Date() || date < new Date("1900-01-01")
+                              }
+                              initialFocus
+                            />
+                          </PopoverContent>
+                        </Popover>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -217,7 +247,7 @@ export default function CreateQuotePage() {
                             control={form.control}
                             name={`items.${index}.quantity`}
                             render={({ field }) => (
-                              <FormItem className="space-y-2">
+                              <FormItem>
                                 <FormLabel className="text-xs text-muted-foreground font-semibold uppercase">
                                   Quantity
                                 </FormLabel>
@@ -240,7 +270,7 @@ export default function CreateQuotePage() {
                             control={form.control}
                             name={`items.${index}.unitPrice`}
                             render={({ field }) => (
-                              <FormItem className="space-y-2">
+                              <FormItem>
                                 <FormLabel className="text-xs text-muted-foreground font-semibold uppercase">
                                   Unit Price ($)
                                 </FormLabel>
@@ -326,7 +356,7 @@ export default function CreateQuotePage() {
                     control={form.control}
                     name="notes"
                     render={({ field }) => (
-                      <FormItem className="space-y-2">
+                      <FormItem>
                         <FormLabel>Notes to Client (Optional)</FormLabel>
                         <FormControl>
                           <Textarea
@@ -343,7 +373,7 @@ export default function CreateQuotePage() {
                     control={form.control}
                     name="terms"
                     render={({ field }) => (
-                      <FormItem className="space-y-2">
+                      <FormItem>
                         <FormLabel>Terms & Conditions</FormLabel>
                         <FormControl>
                           <Textarea
@@ -399,13 +429,10 @@ export default function CreateQuotePage() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 gap-3 pt-4">
-                  <Button type="button" variant="outline" className="w-full">
-                    <Eye />
-                    Preview Quote
-                  </Button>
-                  <Button type="submit" className="w-full">
-                    <Send />
+                <div className="space-y-4 pt-4">
+                  <QuotePreviewModal data={form.getValues()} lead={lead} />
+                  <Button type="submit" className="w-full gap-2">
+                    <Send className="h-4 w-4" />
                     Send Quote
                   </Button>
                 </div>
@@ -443,7 +470,7 @@ export default function CreateQuotePage() {
                       Event Date
                     </p>
                     <div className="flex items-center gap-2 text-sm">
-                      <Calendar className="h-4 w-4 text-primary/70" />
+                      <CalendarIcon className="h-4 w-4 text-primary/70" />
                       {lead.eventDate}
                     </div>
                   </div>
