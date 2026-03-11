@@ -11,7 +11,7 @@ import { VenueMap } from "@/components/main-route/venues/venue-map";
 export default function VenuePreview() {
   return (
     <section>
-      <div className="mb-8">
+      <div className="mb-4 md:mb-6">
         <PageHeader 
           title="Find Your Perfect Venue" 
           description="Explore our curated list of top-rated venues with an interactive map."
@@ -32,7 +32,7 @@ export default function VenuePreview() {
               <VenueCard key={venue.id} venue={venue} variant="horizontal" />
             ))}
           </div>
-          <Button>
+          <Button className="w-full">
             <Link href="/venues" className="w-full">
               Open Venue Finder
             </Link>

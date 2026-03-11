@@ -13,7 +13,7 @@ export default function WePlanAssociate() {
 
   return (
     <section className="w-full">
-      <div className="max-w-6xl mx-auto bg-card rounded-[24px] overflow-hidden">
+      <div className="max-w-6xl mx-auto bg-card overflow-hidden">
         <div className="flex flex-col lg:flex-row items-center gap-8">
           {/* Left Content */}
           <div className="flex-1 space-y-6">
@@ -57,7 +57,7 @@ export default function WePlanAssociate() {
           </div>
 
           {/* Right Image */}
-          <div className="flex-1 w-full lg:max-w-120">
+          <div className="flex-1 w-full lg:max-w-120 hidden md:block">
             <div className="relative aspect-square rounded-[24px] overflow-hidden shadow-xl group">
               <Image
                 src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070&auto=format&fit=crop"

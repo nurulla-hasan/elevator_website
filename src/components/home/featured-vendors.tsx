@@ -35,17 +35,16 @@ export default function FeaturedVendors() {
 
   return (
     <section>
-      <div className="mb-8">
+      <div className="flex justify-between items-center mb-4 md:mb-6">
         <PageHeader
           title="Featured Vendors"
           description="Top-rated professionals for your special day"
-        >
-          <Link href="/vendors?category=featured" className="hidden md:block">
-            <Button variant="link" className="hover:text-primary">
-              View All <ArrowRight />
-            </Button>
-          </Link>
-        </PageHeader>
+        />
+        <Link href="/vendors?category=featured" className="hidden md:block">
+          <Button variant="link" className="hover:text-primary">
+            View All <ArrowRight />
+          </Button>
+        </Link>
       </div>
 
       <div className="relative">
@@ -76,7 +75,7 @@ export default function FeaturedVendors() {
         </Carousel>
 
         {/* Indicators */}
-        <div className="flex justify-center gap-2 mt-8">
+        <div className="flex justify-center gap-2 mt-4">
           {Array.from({ length: count }).map((_, index) => (
             <button
               key={index}
@@ -93,7 +92,7 @@ export default function FeaturedVendors() {
         </div>
       </div>
 
-      <div className="mt-8 md:hidden">
+      <div className="md:hidden mt-4">
         <Link href="/vendor">
           <Button className="w-full">View all vendors</Button>
         </Link>

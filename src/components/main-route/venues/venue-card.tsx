@@ -28,7 +28,7 @@ export function VenueCard({
                 alt={venue.name}
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
-                sizes="96px"
+                // sizes="96px"
               />
               {/* Primary Linear Gradient Overlay on Hover */}
               <div className="absolute inset-0 bg-linear-to-t from-primary/60 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-1" />

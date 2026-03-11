@@ -76,14 +76,14 @@ export default function EventTypes() {
 
   return (
     <section>
-      <div className="mb-8">
+      <div className="mb-4 md:mb-6">
         <PageHeader
           title="Find Vendors by Event Type"
           description="Plan your specific wedding events with the right professionals"
         />
       </div>
 
-      <div className="relative">
+      <div>
         <Carousel
           setApi={setApi}
           plugins={[
@@ -129,7 +129,7 @@ export default function EventTypes() {
       </div>
 
 
-      <div className="mt-8 md:hidden">
+      <div className="mt-4 md:hidden">
         <Link href="/vendor">
           <Button className="w-full">View all vendors</Button>
         </Link>

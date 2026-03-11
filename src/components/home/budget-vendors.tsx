@@ -45,7 +45,7 @@ export default function BudgetVendors() {
 
   return (
     <section>
-      <div className="mb-8">
+      <div className="mb-4 md:mb-6">
         <PageHeader 
           title="Find Vendors by Budget" 
           description="Plan your wedding within your financial comfort zone"
@@ -96,7 +96,7 @@ export default function BudgetVendors() {
               </Carousel>
 
               {/* Indicators */}
-              <div className="flex justify-center gap-2 mt-8">
+              <div className="flex justify-center gap-2 mt-4 md:mt-6">
                 {Array.from({ length: count }).map((_, index) => (
                   <button
                     key={index}
