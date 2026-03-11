@@ -11,6 +11,8 @@ export const mockVenues: Venue[] = [
     image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=2074&auto=format&fit=crop",
     lat: 24.7937,
     lng: 67.0645,
+    description: "An opulent ballroom featuring crystal chandeliers and high ceilings, perfect for grand wedding receptions and corporate galas with top-tier amenities.",
+    distance: "2.5 km"
   },
   {
     id: 2,
@@ -22,6 +24,8 @@ export const mockVenues: Venue[] = [
     image: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2070&auto=format&fit=crop",
     lat: 24.8138,
     lng: 67.0305,
+    description: "A serene outdoor garden venue by the river, offering a picturesque setting for intimate ceremonies and evening celebrations under the stars.",
+    distance: "5.8 km"
   },
   {
     id: 3,
@@ -33,6 +37,8 @@ export const mockVenues: Venue[] = [
     image: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2070&auto=format&fit=crop",
     lat: 24.9012,
     lng: 67.1155,
+    description: "A modern rooftop venue with panoramic city views, ideal for contemporary weddings and cocktail parties with a sophisticated urban vibe.",
+    distance: "12.4 km"
   },
   {
     id: 4,
@@ -44,6 +50,8 @@ export const mockVenues: Venue[] = [
     image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2069&auto=format&fit=crop",
     lat: 24.8607,
     lng: 67.0011,
+    description: "A classic heritage building with timeless architecture and rich history, providing a majestic and traditional atmosphere for your special day.",
+    distance: "1.2 km"
   },
   {
     id: 5,
@@ -55,6 +63,8 @@ export const mockVenues: Venue[] = [
     image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=2070&auto=format&fit=crop",
     lat: 24.8922,
     lng: 67.1867,
+    description: "A luxury lakefront resort offering both indoor and outdoor spaces, surrounded by lush greenery for a tranquil and upscale wedding experience.",
+    distance: "15.0 km"
   },
   {
     id: 6,
@@ -66,6 +76,8 @@ export const mockVenues: Venue[] = [
     image: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop",
     lat: 24.9333,
     lng: 67.0500,
+    description: "A massive, temperature-controlled marquee with elegant decor and state-of-the-art lighting, designed for large-scale wedding festivities.",
+    distance: "8.7 km"
   },
   {
     id: 7,
@@ -77,6 +89,8 @@ export const mockVenues: Venue[] = [
     image: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?q=80&w=2069&auto=format&fit=crop",
     lat: 24.9167,
     lng: 67.0833,
+    description: "An elegant indoor hall with versatile layouts and premium catering, suitable for both traditional ceremonies and modern wedding receptions.",
+    distance: "6.2 km"
   },
   {
     id: 8,
@@ -88,5 +102,7 @@ export const mockVenues: Venue[] = [
     image: "https://images.unsplash.com/photo-1505236858219-8359eb29e329?q=80&w=2062&auto=format&fit=crop",
     lat: 24.8472,
     lng: 66.8522,
+    description: "A stunning beachside resort with vast open spaces, perfect for grand destination weddings with breathtaking views of the Arabian Sea.",
+    distance: "25.0 km"
   },
 ]

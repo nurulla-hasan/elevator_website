@@ -10,7 +10,8 @@ export const mockVendors: Vendor[] = [
     reviews: 124,
     price: "PKR 5,000",
     image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80",
-    verified: true
+    verified: true,
+    description: "Experience luxury and elegance at the Grand Palace Hotel. Our spacious banquet halls and premium catering services make it the perfect choice for your grand wedding celebrations in the heart of the city."
   },
   {
     id: "2",
@@ -21,7 +22,8 @@ export const mockVendors: Vendor[] = [
     reviews: 86,
     price: "PKR 1,200",
     image: "https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&q=80",
-    verified: true
+    verified: true,
+    description: "Capturing your special moments with artistic flair and precision. Our team specializes in cinematic wedding photography and videography, ensuring your memories last a lifetime with a unique storytelling approach."
   },
   {
     id: "3",
@@ -33,7 +35,8 @@ export const mockVendors: Vendor[] = [
     price: "PKR 3,500",
     image: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&q=80",
     verified: true,
-    sponsored: true
+    sponsored: true,
+    description: "A stunning outdoor and indoor venue that blends nature with sophistication. Royal Garden Banquet offers a serene atmosphere for your wedding ceremonies, featuring beautifully landscaped gardens and modern facilities."
   },
   {
     id: "4",
@@ -44,7 +47,8 @@ export const mockVendors: Vendor[] = [
     reviews: 45,
     price: "PKR 500",
     image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&q=80",
-    verified: true
+    verified: true,
+    description: "Transforming you into your most beautiful self on your big day. Our expert makeup artists use high-end products and the latest techniques to create stunning bridal looks that enhance your natural features."
   },
   {
     id: "5",
@@ -55,7 +59,8 @@ export const mockVendors: Vendor[] = [
     reviews: 156,
     price: "PKR 2,000",
     image: "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80",
-    verified: true
+    verified: true,
+    description: "Delighting your guests with an exquisite culinary experience. From traditional local flavors to international cuisines, our catering services provide a wide range of menu options prepared with the freshest ingredients."
   },
   {
     id: "6",
@@ -67,7 +72,8 @@ export const mockVendors: Vendor[] = [
     price: "PKR 1,800",
     image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80",
     verified: false,
-    sponsored: true
+    sponsored: true,
+    description: "Bringing your wedding vision to life with breathtaking floral and thematic decorations. Our creative team designs elegant stage setups and venue transformations that create a magical ambiance for your special day."
   }
 ];
 

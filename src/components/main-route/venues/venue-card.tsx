@@ -46,7 +46,12 @@ export function VenueCard({
                     {venue.location}
                   </span>
                 </div>
-                <div className="flex items-center gap-1 mt-0.5">
+                {venue.description && (
+                  <p className="text-[10px] text-muted-foreground line-clamp-1 border-l border-primary/20 pl-1.5 mt-1">
+                    {venue.description}
+                  </p>
+                )}
+                <div className="flex items-center gap-1 mt-1">
                   <StarRating rating={venue.rating} totalStars={1} size={12} />
                   <span className="text-[11px] font-semibold text-foreground">
                     {venue.rating}
@@ -61,7 +66,14 @@ export function VenueCard({
             </div>
 
             {/* Action & Price */}
-            <div className="flex flex-col items-end justify-end self-stretch">
+            <div className="flex flex-col items-end justify-between self-stretch">
+              {venue.distance && (
+                <div className="flex items-center gap-1 text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+                  <span className="text-[10px] font-bold whitespace-nowrap">
+                    {venue.distance}
+                  </span>
+                </div>
+              )}
               <div className="text-right">
                 <p className="font-semibold text-sm">{venue.price}</p>
               </div>
@@ -85,6 +97,12 @@ export function VenueCard({
           />
           {/* Primary Linear Gradient Overlay on Hover */}
           <div className="absolute inset-0 bg-linear-to-t from-primary/60 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-1" />
+          
+          {venue.distance && (
+            <div className="absolute top-3 left-3 z-10 bg-white/90 backdrop-blur-sm text-primary text-[10px] font-bold px-2 py-1 rounded-lg shadow-sm">
+              {venue.distance}
+            </div>
+          )}
         </div>
         <CardContent>
           <div className="flex items-start justify-between mb-2">
@@ -99,10 +117,16 @@ export function VenueCard({
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 text-muted-foreground mb-4">
+          <div className="flex items-center gap-1.5 text-muted-foreground mb-3">
             <MapPin className="h-4 w-4 shrink-0" />
             <span className="text-sm font-medium truncate line-clamp-1">{venue.location}</span>
           </div>
+
+          {venue.description && (
+            <p className="text-xs text-muted-foreground line-clamp-2 mb-4 leading-relaxed border-l-2 border-primary/20 pl-2">
+              {venue.description}
+            </p>
+          )}
 
           <div className="border-t border-border pt-4 mt-2 flex items-center justify-between">
             <div className="flex items-center gap-2 text-muted-foreground">

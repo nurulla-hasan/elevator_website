@@ -10,6 +10,7 @@ export interface Venue {
   lng?: number
   reviews?: number
   description?: string
+  distance?: string
   services?: string[]
   contact?: {
     phone: string

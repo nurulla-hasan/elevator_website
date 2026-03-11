@@ -75,10 +75,15 @@ export function VendorCard({
                 <h3 className="text-base font-semibold truncate">
                   {vendor.name}
                 </h3>
-                <div className="flex items-center gap-1 text-muted-foreground">
+                <div className="flex items-center gap-1 text-muted-foreground mb-1">
                   <MapPin className="h-3 w-3" />
                   <span className="text-[11px]">{vendor.location}</span>
                 </div>
+                {vendor.description && (
+                  <p className="text-[10px] text-muted-foreground line-clamp-1 border-l border-primary/20 pl-1.5 mb-1">
+                    {vendor.description}
+                  </p>
+                )}
                 <div className="flex items-center gap-1">
                   <StarRating rating={vendor.rating} totalStars={1} size={12} />
                   <span className="text-[11px] font-semibold">{vendor.rating}</span>
@@ -179,14 +184,21 @@ export function VendorCard({
           )}
         </div>
 
-        <h3 className="mb-2 text-lg font-semibold line-clamp-1 group-hover:text-primary transition-colors duration-300">
+        <h3 className="mb-1 text-lg font-semibold line-clamp-1 group-hover:text-primary transition-colors duration-300">
           {vendor.name}
         </h3>
 
-        <div className="flex items-center gap-1 text-muted-foreground mb-4">
+        <div className="flex items-center gap-1 text-muted-foreground mb-3">
           <MapPin className="h-3.5 w-3.5" />
           <span className="text-xs">{vendor.location}</span>
         </div>
+
+        {vendor.description && (
+          <p className="text-xs text-muted-foreground line-clamp-2 mb-2 leading-relaxed border-l-2 border-primary/20 pl-2">
+            {vendor.description}
+          </p>
+        )}
+
         <Separator className="my-4" />
 
         <div className="flex items-end justify-between">
