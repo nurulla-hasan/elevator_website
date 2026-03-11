@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Heart, LogOut, Settings, LucideIcon, LayoutDashboard, MessageSquare, Store } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "./theme-toggle";
+// import { ThemeToggle } from "./theme-toggle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -51,7 +51,7 @@ export function DesktopNav({
 
       {/* Desktop Actions */}
       <div className="hidden items-center gap-4 lg:flex">
-        <ThemeToggle />
+        {/* <ThemeToggle /> */}
         {isLoggedIn ? (
           <>
             <Link href="/user/dashboard?tab=saved">

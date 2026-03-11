@@ -5,7 +5,7 @@ import Link from "next/link"
 import { Heart, Menu, User, LogOut, LucideIcon, Settings, LayoutDashboard, MessageSquare, Store } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { ThemeToggle } from "./theme-toggle"
+// import { ThemeToggle } from "./theme-toggle"
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
 import { cn } from "@/lib/utils"
 
@@ -21,7 +21,7 @@ export function MobileNav({ navItems, pathname, isLoggedIn, setIsLoggedIn }: Mob
 
   return (
     <div className="flex items-center gap-2 lg:hidden">
-      <ThemeToggle />
+      {/* <ThemeToggle /> */}
 
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger asChild>

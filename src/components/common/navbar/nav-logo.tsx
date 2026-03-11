@@ -9,7 +9,7 @@ export function NavLogo() {
         alt="WEPLAN Logo"
         width={120}
         height={40}
-        className="h-12 w-auto md:h-18"
+        className="h-14 w-auto md:h-18"
         priority
       />
     </Link>
