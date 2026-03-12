@@ -10,6 +10,8 @@ import InspirationSection from "@/components/home/inspiration-section";
 import VenuePreview from "@/components/home/vanue-preview";
 import VendorCTA from "@/components/home/vendor-cta";
 import WePlanEventAdvisor from "@/components/home/we-plan-event-advisor";
+import HomeStats from "@/components/home/home-stats";
+import AppDownload from "@/components/home/app-download";
 import PageLayout from "@/components/ui/custom/page-layout";
 
 export default function HomePage() {
@@ -78,7 +80,19 @@ export default function HomePage() {
           </PageLayout>
         </div>
 
-        <div className="bg-muted px-5 py-10 md:py-16">
+        <div className="py-10 md:py-16">
+          <PageLayout paddingSize="zero">
+            <HomeStats />
+          </PageLayout>
+        </div>
+
+        <div className="bg-card py-10 md:py-16">
+          <PageLayout paddingSize="zero">
+            <AppDownload />
+          </PageLayout>
+        </div>
+
+        <div className="px-5 py-10 md:py-16">
           <VendorCTA />
         </div>
       </main>

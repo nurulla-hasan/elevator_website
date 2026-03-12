@@ -18,7 +18,7 @@ const PageHeader = ({ title, description, length, children }: PageHeaderProps) =
                     <h1 className="text-xl sm:text-2xl text-primary font-semibold uppercase tracking-normal">{title}</h1>
                     {length && <Badge className="rounded-full">{length}</Badge>}
                 </div>
-                <p className="text-muted-foreground text-sm sm:text-base max-w-[600px]">    
+                <p className="text-muted-foreground text-sm sm:text-base max-w-150">    
                     {description}
                 </p>
             </div>
