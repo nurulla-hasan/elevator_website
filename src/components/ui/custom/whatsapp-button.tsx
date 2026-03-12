@@ -26,7 +26,8 @@ export function WhatsAppButton({
       size="icon-lg"
       variant="outline"
       className={cn(
-        "fixed bottom-6 right-6 rounded-full shadow-lg z-50 transition-all hover:scale-110 bg-[#25D366] hover:bg-[#22c35e] text-white border-none",
+        "fixed right-6 rounded-full shadow-lg z-100 transition-all duration-300 ease-in-out hover:scale-110 bg-[#25D366] hover:bg-[#22c35e] text-white border-none",
+        "bottom-20 md:bottom-6",
         className
       )}
     >
