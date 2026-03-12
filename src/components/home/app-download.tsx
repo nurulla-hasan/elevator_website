@@ -5,8 +5,8 @@ import { Smartphone } from "lucide-react";
 
 export default function AppDownload() {
   return (
-    <section className="w-full">
-      <div className="bg-primary/5 rounded-[2.5rem] overflow-hidden border border-primary/10">
+    <section id="app-download" className="w-full scroll-mt-24">
+      <div className="bg-primary/5 rounded-2xl overflow-hidden border border-primary/10">
         <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 p-8 md:p-16">
           {/* Content Side */}
           <div className="flex-1 space-y-6 text-center md:text-left">
