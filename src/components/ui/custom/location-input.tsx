@@ -8,6 +8,14 @@ import { cn } from "@/lib/utils"
 
 const LIBRARIES: ("places")[] = ["places"]
 
+// Karachi, Pakistan Bounds
+const KARACHI_BOUNDS = {
+  north: 25.15,
+  south: 24.75,
+  east: 67.35,
+  west: 66.85,
+}
+
 export interface LocationData {
   address: string
   city?: string
@@ -37,6 +45,13 @@ export function LocationInput({
 }: LocationInputProps) {
   const [autocomplete, setAutocomplete] = React.useState<google.maps.places.Autocomplete | null>(null)
 
+  const autocompleteOptions = React.useMemo(() => ({
+    componentRestrictions: { country: "pk" },
+    bounds: KARACHI_BOUNDS,
+    strictBounds: true,
+    types: ['geocode', 'establishment']
+  }), [])
+
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
@@ -44,6 +59,16 @@ export function LocationInput({
   })
 
   const onLoad = (autocompleteInstance: google.maps.places.Autocomplete) => {
+    const sw = new google.maps.LatLng(KARACHI_BOUNDS.south, KARACHI_BOUNDS.west)
+    const ne = new google.maps.LatLng(KARACHI_BOUNDS.north, KARACHI_BOUNDS.east)
+    const bounds = new google.maps.LatLngBounds(sw, ne)
+    
+    autocompleteInstance.setBounds(bounds)
+    autocompleteInstance.setComponentRestrictions({ country: "pk" })
+    autocompleteInstance.setOptions({ 
+      strictBounds: true,
+      types: ['geocode', 'establishment']
+    })
     setAutocomplete(autocompleteInstance)
   }
 
@@ -79,7 +104,11 @@ export function LocationInput({
   return (
     <div className="relative w-full">
       {isLoaded ? (
-        <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
+        <Autocomplete 
+          onLoad={onLoad} 
+          onPlaceChanged={onPlaceChanged}
+          options={autocompleteOptions}
+        >
           <div className="relative">
             {!hideIcon && <MapPin className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />}
             <Input
