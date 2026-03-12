@@ -1,7 +1,7 @@
 "use client"
 import * as React from "react";
-import { Search, MapPin, Sparkles, ChevronDownIcon, Loader2 } from "lucide-react";
-import { useJsApiLoader, Autocomplete } from "@react-google-maps/api";
+import { Search, MapPin, Sparkles, ChevronDownIcon } from "lucide-react";
+import { LocationInput } from "@/components/ui/custom/location-input";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -18,32 +18,10 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { categories } from "@/data/categories.data";
 
-const GOOGLE_MAPS_LIBRARIES: ("places")[] = ["places"];
-
 export default function Hero() {
   const [isServicesOpen, setIsServicesOpen] = React.useState(false);
   const [selectedService, setSelectedService] = React.useState("");
   const [selectedLocation, setSelectedLocation] = React.useState("");
-  const [autocomplete, setAutocomplete] = React.useState<google.maps.places.Autocomplete | null>(null);
-
-  const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
-    libraries: GOOGLE_MAPS_LIBRARIES,
-  });
-
-  const onLoad = (autocompleteInstance: google.maps.places.Autocomplete) => {
-    setAutocomplete(autocompleteInstance);
-  };
-
-  const onPlaceChanged = () => {
-    if (autocomplete !== null) {
-      const place = autocomplete.getPlace();
-      if (place.formatted_address) {
-        setSelectedLocation(place.formatted_address);
-      }
-    }
-  };
 
   return (
     <section className="relative w-full h-[calc(100vh-64px)] lg:h-[calc(100vh-80px)] overflow-hidden">
@@ -188,26 +166,13 @@ export default function Hero() {
             <MapPin className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" />
             <div className="flex flex-col items-start w-full relative">
               <span className="text-[8px] sm:text-[10px] uppercase font-semibold text-muted-foreground tracking-wider mb-0.5 ml-1">Location</span>
-              {isLoaded ? (
-                <Autocomplete
-                  onLoad={onLoad}
-                  onPlaceChanged={onPlaceChanged}
-                  className="w-full"
-                >
-                  <input
-                    type="text"
-                    placeholder="Where in Karachi?"
-                    value={selectedLocation}
-                    onChange={(e) => setSelectedLocation(e.target.value)}
-                    className="w-full bg-transparent border-none outline-none text-xs sm:text-sm h-7 sm:h-8 px-1 placeholder:text-muted-foreground focus:ring-0"
-                  />
-                </Autocomplete>
-              ) : (
-                <div className="flex items-center gap-2 h-7 sm:h-8 px-1 text-xs sm:text-sm text-muted-foreground">
-                  <Loader2 className="h-3 w-3 animate-spin" />
-                  <span>Loading maps...</span>
-                </div>
-              )}
+              <LocationInput
+                placeholder="Where in Karachi?"
+                value={selectedLocation}
+                onChange={(val) => setSelectedLocation(val)}
+                hideIcon
+                className="w-full bg-transparent shadow-none border-none outline-none text-xs sm:text-sm h-7 sm:h-8 px-1 placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0"
+              />
             </div>
           </div>
 

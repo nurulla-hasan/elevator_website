@@ -24,6 +24,7 @@ interface LocationInputProps {
   placeholder?: string
   className?: string
   error?: boolean
+  hideIcon?: boolean
 }
 
 export function LocationInput({
@@ -32,6 +33,7 @@ export function LocationInput({
   placeholder = "Search location...",
   className,
   error,
+  hideIcon = false,
 }: LocationInputProps) {
   const [autocomplete, setAutocomplete] = React.useState<google.maps.places.Autocomplete | null>(null)
 
@@ -79,23 +81,23 @@ export function LocationInput({
       {isLoaded ? (
         <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
           <div className="relative">
-            <MapPin className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            {!hideIcon && <MapPin className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />}
             <Input
               type="text"
               value={value}
               onChange={(e) => onChange(e.target.value)}
               placeholder={placeholder}
-              className={cn("pl-9", error && "border-destructive focus-visible:ring-destructive", className)}
+              className={cn(!hideIcon && "pl-9", error && "border-destructive focus-visible:ring-destructive", className)}
             />
           </div>
         </Autocomplete>
       ) : (
         <div className="relative">
-          <Loader2 className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 animate-spin text-muted-foreground" />
+          {!hideIcon && <Loader2 className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 animate-spin text-muted-foreground" />}
           <Input
             disabled
             placeholder="Loading maps..."
-            className={cn("pl-9 opacity-50", className)}
+            className={cn(!hideIcon && "pl-9", "opacity-50", className)}
           />
         </div>
       )}
