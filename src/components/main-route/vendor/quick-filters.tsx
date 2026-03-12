@@ -135,7 +135,7 @@ export function QuickCapacityFilter() {
               key={option}
               variant={isSelected("capacity", option) ? "default" : "outline"}
               size="sm"
-              className="rounded-full"
+              className="rounded-full text-xs font-normal"
               onClick={() => updateFilter("capacity", isSelected("capacity", option) ? null : option)}
             >
               {option}

@@ -10,6 +10,7 @@ import { inspirationItems } from "@/data/inspiration.data";
 
 import CustomBreadcrumb from "@/components/ui/custom/custom-breadcrumb";
 import { SearchInput } from "@/components/ui/custom/search-input";
+import { Suspense } from "react";
 
 export default function InspirationPage() {
   return (
@@ -26,7 +27,9 @@ export default function InspirationPage() {
             title="Inspiration and Ideas"
             description="Explore unique wedding ideas and connect with the vendors who bring them to life. Get inspired for your big day."
           />
-          <SearchInput placeholder="Search for inspiration..." />
+          <Suspense fallback={<div>Loading...</div>}>
+            <SearchInput placeholder="Search for inspiration..." />
+          </Suspense>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
