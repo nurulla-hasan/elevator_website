@@ -6,7 +6,7 @@ import { PostRequestForm } from "@/components/main-route/post-request/post-reque
 export default function PostRequestPage() {
   return (
     <PageLayout paddingSize="small" className="screen-height">
-      <div className="max-w-4xl mx-auto space-y-8">
+      <div className="max-w-4xl mx-auto space-y-6">
         <CustomBreadcrumb
           links={[
             { name: "Home", href: "/" },
