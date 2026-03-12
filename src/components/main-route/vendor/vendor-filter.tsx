@@ -105,7 +105,7 @@ export default function VendorFilter() {
       </Card>
       
       {/* Mobile view filters */}
-      <div className="md:hidden flex justify-between flex-nowrap items-center gap-2 overflow-x-auto scrollbar-hide">
+      <div className="md:hidden bg-card p-4 rounded-xl flex justify-between flex-nowrap items-center gap-2 overflow-x-auto scrollbar-hide">
         <Button
           variant="outline"
           size="sm"
