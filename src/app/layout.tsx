@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import NextTopLoader from 'nextjs-toploader';
+import { WhatsAppButton } from "@/components/ui/custom/whatsapp-button";
 // import { ThemeProvider } from "@/providers/theme-provider";
 
 const poppins = Poppins({
@@ -34,6 +35,7 @@ export default function RootLayout({
             showSpinner={false}
           />
           {children}
+          <WhatsAppButton />
         {/* </ThemeProvider> */}
       </body>
     </html>
