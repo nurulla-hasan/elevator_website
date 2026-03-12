@@ -7,11 +7,11 @@ export function PricingHero() {
         <Headphones className="h-8 w-8 text-white" />
       </div>
       <div className="flex flex-col gap-2">
-        <h2 className="text-2xl md:text-3xl font-semibold text-primary">
-          Hire a WePlan Associate
-        </h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
-          Get personalized help from our expert wedding associates. We&apos;ll handle vendor coordination, 
+        <h1 className="text-2xl md:text-3xl font-semibold text-primary">
+          Hire a WePlan Event Advisor
+        </h1>
+        <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto font-medium">
+          Get personalized help from our expert wedding event advisors. We&apos;ll handle vendor coordination, 
           negotiations, and all the details so you can enjoy planning your special day stress-free.
         </p>
       </div>

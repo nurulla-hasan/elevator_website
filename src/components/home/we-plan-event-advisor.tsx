@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Headphones, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
-export default function WePlanAssociate() {
+export default function WePlanEventAdvisor() {
   const features = [
     "Dedicated wedding planner",
     "Vendor negotiations & bookings",
@@ -23,10 +23,10 @@ export default function WePlanAssociate() {
 
             <div className="space-y-3">
               <h2 className="text-2xl md:text-3xl font-semibold text-primary">
-                WePlan Associate
+                WePlan Event Advisor
               </h2>
               <p className="text-muted-foreground text-base leading-relaxed max-w-lg">
-                Get personalized help from our expert wedding associates.
+                Get personalized help from our expert wedding event advisors.
                 We&apos;ll handle vendor coordination, negotiations, and all the
                 details so you can enjoy planning your special day stress-free.
               </p>
@@ -52,7 +52,7 @@ export default function WePlanAssociate() {
             </div>
 
             <Link href="/pricing">
-              <Button>Hire an Associate</Button>
+              <Button>Hire an Event Advisor</Button>
             </Link>
           </div>
 
@@ -61,7 +61,7 @@ export default function WePlanAssociate() {
             <div className="relative aspect-square rounded-[24px] overflow-hidden shadow-xl group">
               <Image
                 src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070&auto=format&fit=crop"
-                alt="Wedding Planning Associate"
+                alt="Wedding Planning Event Advisor"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />

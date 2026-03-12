@@ -65,7 +65,7 @@ export default function PackageCheckoutPage() {
         />
         <PageHeader
           title="Complete Your Booking"
-          description="Fill in your details to hire your WePlan Associate and start your wedding journey."
+          description="Fill in your details to hire your WePlan Event Advisor and start your wedding journey."
         />
 
         <Form {...form}>

@@ -23,7 +23,7 @@ export function PricingPlans() {
           Simple, Fixed Pricing
         </h3>
         <p className="text-muted-foreground max-w-2xl text-sm md:text-base">
-          Get full-service wedding management with our dedicated WePlan associates at a flat rate.
+          Get full-service wedding management with our dedicated WePlan Event Advisors at a flat rate.
         </p>
         <div className="h-1 w-12 bg-primary/20 rounded-full mt-1" />
       </div>
@@ -41,7 +41,7 @@ export function PricingPlans() {
             <div className="grid grid-cols-1 md:grid-cols-5 h-full">
               {/* Price Side */}
               <div className="md:col-span-2 bg-primary/3 p-6 flex flex-col items-center justify-center text-center border-b md:border-b-0 md:border-r border-primary/10">
-                <h4 className="text-lg font-medium text-foreground/90 mb-1">WePlan Associate</h4>
+                <h4 className="text-lg font-medium text-foreground/90 mb-1">WePlan Event Advisor</h4>
                 <div className="flex items-baseline gap-1 mb-5">
                   <span className="text-3xl font-semibold text-primary tracking-tighter">PKR 4,999</span>
                   <span className="text-xs text-muted-foreground font-medium">/event</span>
@@ -73,7 +73,7 @@ export function PricingPlans() {
                 </div>
                 <div className="mt-6 pt-5 border-t border-border/40">
                   <p className="text-[11px] text-muted-foreground/80 italic leading-relaxed text-center md:text-left">
-                    &quot;Our goal is to make your wedding planning stress-free and perfect. Your dedicated associate will handle everything from start to finish.&quot;
+                    &quot;Our goal is to make your wedding planning stress-free and perfect. Your dedicated Event Advisor will handle everything from start to finish.&quot;
                   </p>
                 </div>
               </div>

@@ -6,7 +6,7 @@ import { Vendor } from "@/types/vendor.type";
 const mockSavedVendors: Vendor[] = [
   {
     id: "v-1",
-    name: "Block 9: WePlan Associate",
+    name: "Block 9: WePlan Event Advisor",
     image:
       "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80",
     category: "Venue",

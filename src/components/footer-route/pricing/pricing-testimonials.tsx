@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 
 const testimonials = [
   {
-    text: "Our associate made planning so much easier! They found amazing vendors within our budget.",
+    text: "Our event advisor made planning so much easier! They found amazing vendors within our budget.",
     author: "Sarah & Michael",
   },
   {

@@ -30,7 +30,7 @@ export default function PackageSuccessPage() {
             <div className="text-center space-y-3">
               <h2 className="text-2xl font-semibold text-primary">Booking Confirmed!</h2>
               <p className="text-muted-foreground text-sm leading-relaxed">
-                Thank you, {userName}! Your WePlan Associate booking has been received.
+                Thank you, {userName}! Your WePlan Event Advisor booking has been received.
               </p>
             </div>
 

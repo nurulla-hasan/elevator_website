@@ -6,9 +6,10 @@ import FeaturedVendors from "@/components/home/featured-vendors";
 import Hero from "@/components/home/hero";
 import PostRequirement from "@/components/home/post-requirement";
 import RecentlyAddedVendors from "@/components/home/recently-added";
+import InspirationSection from "@/components/home/inspiration-section";
 import VenuePreview from "@/components/home/vanue-preview";
 import VendorCTA from "@/components/home/vendor-cta";
-import WePlanAssociate from "@/components/home/we-plan-associate";
+import WePlanEventAdvisor from "@/components/home/we-plan-event-advisor";
 import PageLayout from "@/components/ui/custom/page-layout";
 
 export default function HomePage() {
@@ -61,7 +62,7 @@ export default function HomePage() {
 
         <div className="bg-card py-10 md:py-16">
           <PageLayout paddingSize="zero">
-            <WePlanAssociate />
+            <WePlanEventAdvisor />
           </PageLayout>
         </div>
 
@@ -71,7 +72,13 @@ export default function HomePage() {
           </PageLayout>
         </div>
 
-        <div className="bg-card px-5 py-10 md:py-16">
+        <div className="bg-card py-10 md:py-16">
+          <PageLayout paddingSize="zero">
+            <InspirationSection />
+          </PageLayout>
+        </div>
+
+        <div className="bg-muted px-5 py-10 md:py-16">
           <VendorCTA />
         </div>
       </main>
