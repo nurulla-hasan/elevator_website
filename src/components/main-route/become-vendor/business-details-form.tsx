@@ -8,6 +8,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { LocationInput } from "@/components/ui/custom/location-input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
@@ -17,7 +18,7 @@ interface BusinessDetailsFormProps {
 }
 
 export const BusinessDetailsForm: React.FC<BusinessDetailsFormProps> = ({ onNext }) => {
-  const { control, trigger } = useFormContext();
+  const { control, trigger, setValue } = useFormContext();
 
   const handleNext = async () => {
     const isValid = await trigger([
@@ -71,6 +72,8 @@ export const BusinessDetailsForm: React.FC<BusinessDetailsFormProps> = ({ onNext
           )}
         />
 
+        {/* Location */}
+
         <FormField
           control={control}
           name="businessAddress"
@@ -78,7 +81,15 @@ export const BusinessDetailsForm: React.FC<BusinessDetailsFormProps> = ({ onNext
             <FormItem>
               <FormLabel className="font-semibold">Business Address</FormLabel>
               <FormControl>
-                <Input placeholder="Street address" {...field} />
+                <LocationInput
+                  placeholder="Street address"
+                  value={field.value}
+                  onChange={(val, data) => {
+                    field.onChange(val);
+                    if (data?.city) setValue("city", data.city, { shouldValidate: true });
+                    if (data?.state) setValue("state", data.state, { shouldValidate: true });
+                  }}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>

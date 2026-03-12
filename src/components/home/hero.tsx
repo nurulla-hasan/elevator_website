@@ -1,6 +1,7 @@
 "use client"
 import * as React from "react";
-import { Search, MapPin, Sparkles, ChevronDownIcon, Check } from "lucide-react";
+import { Search, MapPin, Sparkles, ChevronDownIcon, Loader2 } from "lucide-react";
+import { useJsApiLoader, Autocomplete } from "@react-google-maps/api";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -17,29 +18,32 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { categories } from "@/data/categories.data";
 
-const karachiAreas = [
-  "DHA Phase 1-8",
-  "Clifton",
-  "Gulshan-e-Iqbal",
-  "North Nazimabad",
-  "Bahria Town",
-  "Saddar",
-  "Malir",
-  "Karsaz",
-  "PECHS",
-  "Tariq Road",
-  "Gulistan-e-Jauhar",
-  "Federal B Area",
-  "Nazimabad",
-  "Garden",
-  "Defense View"
-];
+const GOOGLE_MAPS_LIBRARIES: ("places")[] = ["places"];
 
 export default function Hero() {
   const [isServicesOpen, setIsServicesOpen] = React.useState(false);
-  const [isLocationOpen, setIsLocationOpen] = React.useState(false);
   const [selectedService, setSelectedService] = React.useState("");
   const [selectedLocation, setSelectedLocation] = React.useState("");
+  const [autocomplete, setAutocomplete] = React.useState<google.maps.places.Autocomplete | null>(null);
+
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
+    libraries: GOOGLE_MAPS_LIBRARIES,
+  });
+
+  const onLoad = (autocompleteInstance: google.maps.places.Autocomplete) => {
+    setAutocomplete(autocompleteInstance);
+  };
+
+  const onPlaceChanged = () => {
+    if (autocomplete !== null) {
+      const place = autocomplete.getPlace();
+      if (place.formatted_address) {
+        setSelectedLocation(place.formatted_address);
+      }
+    }
+  };
 
   return (
     <section className="relative w-full h-[calc(100vh-64px)] lg:h-[calc(100vh-80px)] overflow-hidden">
@@ -182,46 +186,28 @@ export default function Hero() {
 
           <div className="flex flex-1 items-center px-3 py-1.5 md:py-0 border-t border-border md:border-none">
             <MapPin className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" />
-            <div className="flex flex-col items-start w-full">
+            <div className="flex flex-col items-start w-full relative">
               <span className="text-[8px] sm:text-[10px] uppercase font-semibold text-muted-foreground tracking-wider mb-0.5 ml-1">Location</span>
-              <Popover open={isLocationOpen} onOpenChange={setIsLocationOpen}>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    className={cn(
-                      "w-full justify-start font-normal h-7 sm:h-8 px-1 shadow-none text-xs sm:text-sm hover:bg-transparent focus-visible:ring-0",
-                      !selectedLocation && "text-muted-foreground"
-                    )}
-                  >
-                    <span className="truncate">{selectedLocation || "Where in Karachi?"}</span>
-                    <ChevronDownIcon className="ml-auto h-3 w-3 opacity-50" />
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-56 sm:w-64 p-0" align="start">
-                  <ScrollArea className="h-64 sm:h-80">
-                    <div className="p-2 space-y-1">
-                      {karachiAreas.map((area) => (
-                        <Button
-                          key={area}
-                          variant="ghost"
-                          className={cn(
-                            "w-full justify-start font-normal px-3 py-2 h-auto hover:bg-accent text-xs sm:text-sm",
-                            selectedLocation === area && "bg-primary/10 text-primary font-medium"
-                          )}
-                          onClick={() => {
-                            setSelectedLocation(area);
-                            setIsLocationOpen(false);
-                          }}
-                        >
-                          <MapPin className="mr-2 h-3 w-3 sm:h-4 sm:w-4 opacity-50" />
-                          {area}
-                          {selectedLocation === area && <Check className="ml-auto h-3 w-3 sm:h-4 sm:w-4" />}
-                        </Button>
-                      ))}
-                    </div>
-                  </ScrollArea>
-                </PopoverContent>
-              </Popover>
+              {isLoaded ? (
+                <Autocomplete
+                  onLoad={onLoad}
+                  onPlaceChanged={onPlaceChanged}
+                  className="w-full"
+                >
+                  <input
+                    type="text"
+                    placeholder="Where in Karachi?"
+                    value={selectedLocation}
+                    onChange={(e) => setSelectedLocation(e.target.value)}
+                    className="w-full bg-transparent border-none outline-none text-xs sm:text-sm h-7 sm:h-8 px-1 placeholder:text-muted-foreground focus:ring-0"
+                  />
+                </Autocomplete>
+              ) : (
+                <div className="flex items-center gap-2 h-7 sm:h-8 px-1 text-xs sm:text-sm text-muted-foreground">
+                  <Loader2 className="h-3 w-3 animate-spin" />
+                  <span>Loading maps...</span>
+                </div>
+              )}
             </div>
           </div>
 

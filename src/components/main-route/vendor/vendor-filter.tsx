@@ -11,6 +11,7 @@ import {
   LayoutGrid,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { LocationInput } from "@/components/ui/custom/location-input";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { useSmartFilter } from "@/hooks/useSmartFilter";
@@ -140,12 +141,10 @@ export default function VendorFilter() {
                     <MapPin className="h-4 w-4" />
                     Location
                   </Label>
-                  <Input
-                    type="text"
+                  <LocationInput
                     placeholder="Area or City"
                     value={location}
-                    onChange={(e) => {
-                      const val = e.target.value;
+                    onChange={(val) => {
                       setLocation(val);
                       updateFilter("location", val, { debounce: 300 });
                     }}

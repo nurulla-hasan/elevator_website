@@ -51,6 +51,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { categories } from "@/data/categories.data";
+import { LocationInput } from "@/components/ui/custom/location-input";
 import {
   postRequestSchema,
   type PostRequestValues,
@@ -234,7 +235,12 @@ export function PostRequestForm() {
                   <MapPin size={16} /> Area/Location
                 </FormLabel>
                 <FormControl>
-                  <Input placeholder="e.g., Downtown, Riverside" {...field} />
+                  <LocationInput
+                    value={field.value}
+                    onChange={(val) => field.onChange(val)}
+                    placeholder="e.g., Downtown, Riverside"
+                    error={!!form.formState.errors.location}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>

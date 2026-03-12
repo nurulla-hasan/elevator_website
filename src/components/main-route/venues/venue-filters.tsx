@@ -18,6 +18,7 @@ import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { StarRating } from "@/components/ui/custom/star-rating";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { LocationInput } from "@/components/ui/custom/location-input";
 import {
   Drawer,
   DrawerContent,
@@ -119,13 +120,13 @@ export function VenueFilters() {
                       <MapPin size={14} />
                       Location
                     </Label>
-                    <Input
+                    <LocationInput
                       placeholder="Area in Karachi"
                       value={location}
-                      onChange={(e) => {
-                        setLocation(e.target.value);
-                        updateFilter("location", e.target.value, {
-                          debounce: 500,
+                      onChange={(val) => {
+                        setLocation(val);
+                        updateFilter("location", val, {
+                          debounce: 300,
                         });
                       }}
                     />
