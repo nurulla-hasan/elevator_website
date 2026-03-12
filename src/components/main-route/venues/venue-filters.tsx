@@ -19,6 +19,7 @@ import { Separator } from "@/components/ui/separator";
 import { StarRating } from "@/components/ui/custom/star-rating";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { LocationInput } from "@/components/ui/custom/location-input";
+import { QuickBudgetFilter, QuickAreaFilter, QuickCapacityFilter } from "@/components/main-route/vendor/quick-filters";
 import {
   Drawer,
   DrawerContent,
@@ -68,15 +69,22 @@ export function VenueFilters() {
   const activeCount = getActiveCount();
 
   const filterTrigger = (
-    <Button className="hover:bg-primary/80 hover:text-foreground">
+    <Button size="sm" className="hover:bg-primary/80 hover:text-foreground rounded-full">
       Filters
       <Separator orientation="vertical" className="h-4" />
-      <SlidersHorizontal size={18} />
+      <SlidersHorizontal size={16} />
     </Button>
   );
 
   return (
-    <div className="absolute top-6 right-6 z-30">
+    <div className="absolute top-6 right-6 z-30 flex items-center gap-3">
+      {/* Quick Filters */}
+      <div className="hidden lg:flex items-center gap-2">
+        <QuickBudgetFilter max={50000} step={1000} />
+        <QuickAreaFilter />
+        <QuickCapacityFilter />
+      </div>
+
       <Drawer open={isOpen} onOpenChange={setIsOpen} direction="right">
         <DrawerTrigger asChild>{filterTrigger}</DrawerTrigger>
         <DrawerContent className="h-full w-full sm:max-w-md">
@@ -84,7 +92,7 @@ export function VenueFilters() {
             <DrawerHeader className="flex flex-row items-center justify-between border-b">
               <div className="flex flex-col gap-1">
                 <DrawerTitle className="flex items-center gap-2">
-                  <SlidersHorizontal size={18} />
+                  <SlidersHorizontal size={16} />
                   Filters
                 </DrawerTitle>
               </div>

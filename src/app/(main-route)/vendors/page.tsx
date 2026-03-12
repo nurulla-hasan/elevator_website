@@ -20,7 +20,7 @@ export default function VendorsPage() {
           description="Browse verified wedding professionals to make your big day special."
         />
 
-        <div className="sticky top-16 z-30 backdrop-blur-md pb-4 pt-8 rounded-xl -mx-4 px-4">
+        <div className="sticky top-16 z-30 backdrop-blur-md md:pb-4 pt-4 pb-2 md:pt-8 rounded-b-xl -mx-4 px-4">
           <Suspense fallback={<div>Loading filters...</div>}>
             <VendorFilter />
           </Suspense>

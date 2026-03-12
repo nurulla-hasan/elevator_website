@@ -12,6 +12,10 @@ import {
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { LocationInput } from "@/components/ui/custom/location-input";
+import {
+  QuickBudgetFilter,
+  QuickCapacityFilter,
+} from "@/components/main-route/vendor/quick-filters";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { useSmartFilter } from "@/hooks/useSmartFilter";
@@ -78,37 +82,42 @@ export default function VendorFilter() {
       className="w-full space-y-4"
     >
       {/* Simplified Main Bar */}
-      <Card>
-        <CardContent>
-          <div className="flex flex-row items-center justify-between gap-4">
-            <Button
-              variant={isRefineOpen ? "secondary" : "outline"}
-              size="sm"
-              onClick={() => setIsRefineOpen(!isRefineOpen)}
-            >
-              <SlidersHorizontal
-                className={cn(
-                  "h-4 w-4 transition-transform duration-300",
-                  isRefineOpen && "rotate-180",
-                )}
-              />
-              {isRefineOpen ? "Hide Filters" : "Search & Filter"}
-            </Button>
 
-            {/* {isFilterActive() && ( */}
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => clearAll()}
-                disabled={!isFilterActive()}
-                className="text-xs text-muted-foreground uppercase hover:text-destructive"
-              >
-                Reset All
-              </Button>
-            {/* )} */}
-          </div>
+      <Card className="hidden md:block">
+        <CardContent className="md:flex flex-wrap items-center gap-3">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setIsRefineOpen(!isRefineOpen)}
+            className="rounded-full font-normal"
+          >
+            <SlidersHorizontal
+              className={cn(
+                "transition-transform duration-300",
+                isRefineOpen && "rotate-180",
+              )}
+            />
+            {isRefineOpen ? "Hide Filters" : "Filters"}
+          </Button>
+          <QuickBudgetFilter max={20000} step={100} />
+          <QuickCapacityFilter />
         </CardContent>
       </Card>
+      
+      {/* Mobile view filters */}
+      <div className="md:hidden flex justify-between flex-nowrap items-center gap-2 overflow-x-auto scrollbar-hide">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => setIsRefineOpen(!isRefineOpen)}
+          className="rounded-full font-normal text-xs"
+        >
+          <SlidersHorizontal />
+          {isRefineOpen ? "Hide" : "Filters"}
+        </Button>
+        <QuickBudgetFilter max={20000} step={100} />
+        <QuickCapacityFilter />
+      </div>
 
       {/* Refine Your Search - Expanded Panel */}
       <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
@@ -297,9 +306,9 @@ export default function VendorFilter() {
 
               <Separator className="opacity-50" />
 
-              <div className="flex flex-col md:flex-row items-end justify-between gap-8">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                 {/* Rating & Verified */}
-                <div className="flex flex-wrap items-end gap-10">
+                <div className="flex flex-wrap items-center gap-10">
                   <div className="space-y-3">
                     <Label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
                       <Star className="h-4 w-4" />
@@ -345,13 +354,23 @@ export default function VendorFilter() {
                   </div>
                 </div>
 
-                <Button
-                  onClick={() => setIsRefineOpen(false)}
-                  className="w-full md:w-auto uppercase"
-                  size="sm"
-                >
-                  Close
-                </Button>
+                <div className="flex items-center gap-3 w-full md:w-auto">
+                  <Button
+                    variant="outline"
+                    onClick={() => clearAll()}
+                    className={cn("flex-1 md:flex-none uppercase", !isFilterActive() && "hidden")}
+                    size="sm"
+                  >
+                    Reset
+                  </Button>
+                  <Button
+                    onClick={() => setIsRefineOpen(false)}
+                    className="flex-1 md:flex-none uppercase"
+                    size="sm"
+                  >
+                    Close
+                  </Button>
+                </div>
               </div>
             </CardContent>
           </ScrollArea>
