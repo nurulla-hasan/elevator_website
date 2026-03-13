@@ -5,7 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { 
-  ChevronLeft, 
   Zap, 
   CheckCircle2, 
   Calendar, 
@@ -13,7 +12,6 @@ import {
   ArrowRight
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import DashboardHeader from "@/components/ui/custom/dashboard-header";
 
 interface PlanOption {
   id: string;
@@ -40,11 +38,12 @@ export interface BoostTheme {
 
 export interface BoostPlanSelectionProps {
   planType: string;
-  onBack: () => void;
   theme: BoostTheme;
+  features?: string[];
+  plans?: PlanOption[];
 }
 
-const plans: PlanOption[] = [
+const defaultPlans: PlanOption[] = [
   {
     id: "1-week",
     duration: "1 Week",
@@ -80,7 +79,7 @@ const plans: PlanOption[] = [
   },
 ];
 
-const features = [
+const defaultFeatures = [
   "All Featured Listing benefits included",
   "Guaranteed top 3 search position",
   "Premium vendor badge and styling",
@@ -137,29 +136,16 @@ export const defaultThemes: Record<string, BoostTheme> = {
   },
 };
 
-export function BoostPlanSelection({ planType, onBack, theme }: BoostPlanSelectionProps) {
-  const [selectedPlan, setSelectedPlan] = useState<PlanOption>(plans[1]);
+export function BoostPlanSelection({ 
+  planType, 
+  theme,
+  features = defaultFeatures,
+  plans = defaultPlans,
+}: BoostPlanSelectionProps) {
+  const [selectedPlan, setSelectedPlan] = useState<PlanOption>(plans[1] || plans[0]);
 
   return (
     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-      {/* Header Section */}
-      <div className="flex flex-col gap-4">
-        <button 
-          onClick={onBack}
-          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors w-fit"
-        >
-          <ChevronLeft className="h-4 w-4" />
-          Back to Promotions
-        </button>
-        
-        <div className="flex items-center gap-4">
-          <DashboardHeader 
-            title={`${planType} Plans`}
-            description="Choose the perfect plan to boost your visibility and grow your business"
-          />
-        </div>
-      </div>
-
       {/* Offer Banner */}
       <div className={cn("border rounded-xl px-4 py-3 flex items-center gap-3 w-fit", theme.light, theme.border)}>
         <Zap className="h-4 w-4 text-orange-500 fill-orange-500" />
@@ -192,7 +178,7 @@ export function BoostPlanSelection({ planType, onBack, theme }: BoostPlanSelecti
                   )}
                   onClick={() => setSelectedPlan(plan)}
                 >
-                  <CardContent className="p-6 space-y-4">
+                  <CardContent className="space-y-4">
                     <div className="flex justify-between items-start">
                       <div className="flex items-center gap-2">
                         <Calendar className={cn("h-4 w-4", theme.text)} />
@@ -210,13 +196,6 @@ export function BoostPlanSelection({ planType, onBack, theme }: BoostPlanSelecti
                       </div>
                       <p className="text-xs text-muted-foreground">{plan.dailyRate}</p>
                     </div>
-
-                    {selectedPlan.id === plan.id && (
-                      <div className={cn("flex items-center gap-2 py-2 px-3 rounded-lg text-sm font-medium animate-in zoom-in-95 duration-200", theme.text, theme.light)}>
-                        <CheckCircle2 className="h-4 w-4" />
-                        Selected
-                      </div>
-                    )}
                   </CardContent>
                 </Card>
               </div>
