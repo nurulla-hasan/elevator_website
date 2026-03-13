@@ -22,7 +22,7 @@ export const packageColumns: ColumnDef<Package>[] = [
     cell: ({ row }) => (
       <div className="flex flex-col gap-1">
         <span className="font-medium text-foreground">{row.getValue("name")}</span>
-        <span className="text-xs text-muted-foreground line-clamp-1 max-w-100">
+        <span className="text-xs  line-clamp-1 max-w-100">
           {row.original.description}
         </span>
       </div>
@@ -32,7 +32,7 @@ export const packageColumns: ColumnDef<Package>[] = [
     accessorKey: "price",
     header: "Price",
     cell: ({ row }) => (
-      <span className="text-foreground">
+      <span>
         {row.getValue("price")}
       </span>
     ),
@@ -41,7 +41,7 @@ export const packageColumns: ColumnDef<Package>[] = [
     accessorKey: "duration",
     header: "Duration",
     cell: ({ row }) => (
-      <span className="text-muted-foreground">
+      <span className="">
         {row.getValue("duration")}
       </span>
     ),
@@ -50,7 +50,7 @@ export const packageColumns: ColumnDef<Package>[] = [
     accessorKey: "bookings",
     header: "Bookings",
     cell: ({ row }) => (
-      <span className="text-muted-foreground pl-4">
+      <span className=" pl-4">
         {row.getValue("bookings")}
       </span>
     ),

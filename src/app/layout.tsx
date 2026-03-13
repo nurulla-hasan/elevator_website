@@ -3,7 +3,6 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import NextTopLoader from 'nextjs-toploader';
 import { WhatsAppButton } from "@/components/ui/custom/whatsapp-button";
-// import { MobileBottomNav } from "@/components/ui/custom/mobile-bottom-nav";
 // import { ThemeProvider } from "@/providers/theme-provider";
 
 const poppins = Poppins({
@@ -37,7 +36,6 @@ export default function RootLayout({
           />
           {children}
           <WhatsAppButton />
-          {/* <MobileBottomNav /> */}
         {/* </ThemeProvider> */}
       </body>
     </html>
