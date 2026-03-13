@@ -70,7 +70,7 @@ const dummyLeads = [
 export default function LeadsPage() {
   return (
     <DashboardPageLayout>
-      <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="flex flex-col md:flex-row items-start justify-between gap-4">
         <DashboardHeader
           title="Leads & Inquiries"
           description="Manage your leads and send quotes to potential customers."

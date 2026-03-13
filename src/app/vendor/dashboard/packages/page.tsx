@@ -63,7 +63,7 @@ const meta = {
 export default function PackagesPage() {
   return (
     <DashboardPageLayout>
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="flex flex-col md:flex-row items-start justify-between gap-4">
         <DashboardHeader
           title="My Packages"
           description="Manage your service packages and pricing"
