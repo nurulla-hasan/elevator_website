@@ -6,12 +6,10 @@ import { ReviewList } from "@/components/vendor/dashboard/reviews/review-list";
 export default function ReviewsPage() {
   return (
     <DashboardPageLayout>
-      <div className="flex flex-col md:flex-row items-start justify-between gap-4">
-        <DashboardHeader
-          title="Reviews & Ratings"
-          description="See what your clients are saying about you"
-        />
-      </div>
+      <DashboardHeader
+        title="Reviews & Ratings"
+        description="See what your clients are saying about you"
+      />
 
       <div className="space-y-12">
         <ReviewStats />

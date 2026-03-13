@@ -20,8 +20,8 @@ import Link from "next/link";
 const Header = ({ onMenuClick }: { onMenuClick: () => void }) => {
 
   const admin = {
-    fullName: "Nurulla Hasan",
-    email: "nurulla.hasan@example.com",
+    fullName: "Ubaid Kazmi",
+    email: "ubaidkazmi@gmail.com",
     role: "Vendor",
     image: "https://github.com/shadcn.png",
   };

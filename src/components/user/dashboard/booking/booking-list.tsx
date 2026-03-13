@@ -16,7 +16,7 @@ const mockBookings: IBooking[] = [
     location: "Gulshan, Dhaka",
     price: "PKR 5,000",
     status: "review" as const,
-    customerName: "Md. Nurulla Hasan",
+    customerName: "Md. Ubaid Kazmi",
   },
   {
     id: "2",
@@ -28,7 +28,7 @@ const mockBookings: IBooking[] = [
     location: "Dhanmondi, Dhaka",
     price: "PKR 1,200",
     status: "process" as const,
-    customerName: "Md. Nurulla Hasan",
+    customerName: "Md. Ubaid Kazmi",
   },
   {
     id: "3",
@@ -40,7 +40,7 @@ const mockBookings: IBooking[] = [
     location: "Banani, Dhaka",
     price: "PKR 3,500",
     status: "accepted" as const,
-    customerName: "Md. Nurulla Hasan",
+    customerName: "Md. Ubaid Kazmi",
   },
   {
     id: "4",
@@ -52,7 +52,7 @@ const mockBookings: IBooking[] = [
     location: "Uttara, Dhaka",
     price: "PKR 2,800",
     status: "completed" as const,
-    customerName: "Md. Nurulla Hasan",
+    customerName: "Md. Ubaid Kazmi",
   },
 ];
 

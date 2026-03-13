@@ -70,7 +70,7 @@ export function DesktopNav({
                   <Avatar className="h-9 w-9 border-2 border-white/20 transition-all hover:border-white/40">
                     <AvatarImage
                       src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=100&auto=format&fit=crop"
-                      alt="Nurulla Hasan"
+                      alt="Ubaid Kazmi"
                     />
                     <AvatarFallback>NH</AvatarFallback>
                   </Avatar>
@@ -78,7 +78,7 @@ export function DesktopNav({
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-60 p-2">
                 <div className="flex flex-col space-y-1 p-2 mb-1">
-                  <p className="text-sm font-semibold leading-none">Nurulla Hasan</p>
+                  <p className="text-sm font-semibold leading-none">Ubaid Kazmi</p>
                   <p className="text-xs leading-none text-muted-foreground">
                     nurulla@example.com
                   </p>

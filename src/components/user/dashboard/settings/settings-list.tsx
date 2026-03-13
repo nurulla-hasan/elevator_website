@@ -49,7 +49,7 @@ export function SettingsList() {
                     Full Name
                   </span>
                   <span className="text-base font-medium text-foreground">
-                    Nurulla Hasan
+                    Ubaid Kazmi
                   </span>
                 </div>
               </div>
