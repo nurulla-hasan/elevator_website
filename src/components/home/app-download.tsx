@@ -17,7 +17,7 @@ export default function AppDownload() {
           </div>
 
           <div className="space-y-3">
-            <h2 className="text-2xl font-bold tracking-tight text-white md:text-4xl lg:leading-[1.1]">
+            <h2 className="text-2xl font-semibold text-white md:text-4xl lg:leading-[1.1]">
               Your dream wedding, <br />
               <span className="opacity-80 text-xl md:text-3xl">one tap away.</span>
             </h2>

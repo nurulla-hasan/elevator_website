@@ -68,7 +68,9 @@ export default function ContactPage() {
                   <MapPin className="h-5 w-5 text-primary" />
                 </div>
                 <div className="space-y-1">
-                  <p className="font-semibold text-lg text-foreground">Office</p>
+                  <p className="font-semibold text-lg text-foreground">
+                    Office
+                  </p>
                   <p className="text-muted-foreground">123 Wedding Street</p>
                   <p className="text-muted-foreground text-sm">
                     New York, NY 10001
@@ -78,7 +80,9 @@ export default function ContactPage() {
             </div>
 
             <div className="pt-2 border-t border-border space-y-4">
-              <h3 className="text-lg font-semibold text-primary">Office Hours</h3>
+              <h3 className="text-lg font-semibold text-primary">
+                Office Hours
+              </h3>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between items-center">
                   <span className="text-muted-foreground">Monday - Friday</span>
@@ -108,12 +112,11 @@ export default function ContactPage() {
       </PageLayout>
 
       {/* Feedback Section at the bottom */}
-      <PageLayout className="max-w-6xl">
-        <div className="mt-12">
+      <div className="bg-muted pt-12">
+        <PageLayout paddingSize="small">
           <FeedbackSection />
-        </div>
-      </PageLayout>
+        </PageLayout>
+      </div>
     </main>
   );
 }
-
