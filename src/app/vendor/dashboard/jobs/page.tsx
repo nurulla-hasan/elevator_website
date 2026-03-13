@@ -101,8 +101,8 @@ const data: Job[] = [
 const meta = {
   page: 1,
   limit: 10,
-  total: data.length,
-  totalPages: 1,
+  total: 20,
+  totalPages: 4,
 };
 
 export default function JobsPage() {
