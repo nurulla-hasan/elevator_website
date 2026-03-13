@@ -1,70 +1,57 @@
 "use client";
 
-import React from "react";
-import { Send, MessageSquareText, Mail } from "lucide-react";
+import { Mail, Sparkles, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 
 export default function NewsletterFeedback() {
   return (
     <section className="w-full">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-        {/* Newsletter Section */}
-        <div className="bg-primary/5 rounded-2xl p-8 md:p-12 border border-primary/10 flex flex-col justify-center space-y-6">
-          <div className="space-y-3">
-            <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
-              <Mail className="w-6 h-6 text-primary" />
-            </div>
-            <h2 className="text-2xl md:text-3xl font-semibold text-primary">
-              Stay Updated
+      <div className="relative overflow-hidden rounded-xl bg-white border border-primary/10 px-6 py-12 md:px-12 md:py-16 text-center shadow-sm">
+        {/* Decorative elements */}
+        <div className="absolute -left-10 -top-10 h-40 w-40 rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute -right-10 -bottom-10 h-40 w-40 rounded-full bg-primary/5 blur-3xl" />
+        
+        <div className="relative z-10 max-w-2xl mx-auto space-y-8">
+          <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary uppercase tracking-wider">
+            <Sparkles className="w-3.5 h-3.5" />
+            Newsletter
+          </div>
+
+          <div className="space-y-4">
+            <h2 className="text-2xl md:text-4xl font-semibold text-primary">
+              Stay in the loop with <br className="hidden md:block" />
+              <span className="text-foreground">wedding trends</span>
             </h2>
-            <p className="text-muted-foreground">
-              Subscribe to our newsletter for the latest wedding trends, tips, and exclusive vendor offers.
+            <p className="text-muted-foreground text-base md:text-lg max-w-lg mx-auto">
+              Get exclusive vendor offers, planning tips, and inspiration delivered directly to your inbox every week.
             </p>
           </div>
           
-          <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-            <Input 
-              type="email" 
-              placeholder="Enter your email" 
-              className="bg-white border-primary/10 focus-visible:ring-primary"
-            />
-            <Button className="w-full text-base font-medium transition-all hover:scale-[1.02]">
-              Subscribe Now
-            </Button>
-          </form>
-        </div>
-
-        {/* Feedback Section */}
-        <div className="bg-primary rounded-2xl p-8 md:p-12 shadow-lg shadow-primary/10 flex flex-col justify-center space-y-6">
-          <div className="space-y-3">
-            <div className="w-12 h-12 rounded-xl bg-primary-foreground/10 flex items-center justify-center">
-              <MessageSquareText className="w-6 h-6 text-primary-foreground" />
+          <form 
+            className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" 
+            onSubmit={(e) => e.preventDefault()}
+          >
+            <div className="relative flex-1">
+              <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <Input 
+                type="email" 
+                placeholder="Your email address" 
+                className="pl-10"
+              />
             </div>
-            <h2 className="text-2xl md:text-3xl font-semibold text-primary-foreground">
-              Got suggestions?
-            </h2>
-            <p className="text-primary-foreground/70">
-              Help us improve your experience. Share your thoughts or suggestions with our team.
-            </p>
-          </div>
-
-          <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-            <Textarea 
-              placeholder="Type your message here..." 
-              className="min-h-30 bg-primary-foreground/10 border-2 border-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/50 focus-visible:ring-primary-foreground/40 resize-none shadow-sm"
-            />
-            <Button 
-              variant="secondary"
-              className="w-full text-base font-medium bg-white text-primary hover:bg-primary-foreground/90 transition-all hover:scale-[1.02]"
-            >
-              <Send className="w-4 h-4 mr-2" />
-              Submit Feedback
+            <Button>
+              Subscribe
+              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </form>
+
+          <p className="text-xs text-muted-foreground">
+            By subscribing, you agree to our Privacy Policy and Terms of Service.
+          </p>
         </div>
       </div>
     </section>
   );
 }
+

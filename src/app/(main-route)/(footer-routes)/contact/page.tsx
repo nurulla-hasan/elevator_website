@@ -1,6 +1,7 @@
 import PageLayout from "@/components/ui/custom/page-layout";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { ContactForm } from "@/components/main-route/contact/contact-form";
+import { FeedbackSection } from "@/components/main-route/contact/feedback-section";
 
 export default function ContactPage() {
   return (
@@ -105,6 +106,14 @@ export default function ContactPage() {
           </div>
         </div>
       </PageLayout>
+
+      {/* Feedback Section at the bottom */}
+      <PageLayout className="max-w-6xl">
+        <div className="mt-12">
+          <FeedbackSection />
+        </div>
+      </PageLayout>
     </main>
   );
 }
+
