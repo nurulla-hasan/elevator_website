@@ -42,7 +42,7 @@ export default function AppDownload() {
 
           <div className="flex flex-wrap items-center gap-6 pt-2">
             <div className="flex gap-2">
-              <Link href="#" className="transition-transform hover:-translate-y-0.5">
+              <Link href="#" className="transition-transform hover:-translate-y-0.5 bg-white">
                 <Image 
                   src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
                   alt="Google Play" 
@@ -75,7 +75,7 @@ export default function AppDownload() {
         </div>
 
         {/* Mockup Side */}
-        <div className="relative mt-12 flex-1 lg:mt-0 lg:flex lg:justify-center">
+        <div className="relative mt-12 flex-1 lg:mt-0 lg:flex lg:justify-center hidden">
           <div className="relative h-100 w-52.5 md:h-120 md:w-60">
             {/* Main Phone Mockup */}
             <div className="absolute inset-0 rounded-[2.5rem] border-[6px] border-white/10 bg-white/5 shadow-2xl overflow-hidden backdrop-blur-sm ring-1 ring-white/20">
