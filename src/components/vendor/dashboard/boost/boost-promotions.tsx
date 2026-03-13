@@ -5,12 +5,16 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle2, Star, Crown, Share2, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+import { useRouter } from "next/navigation";
+
 interface PromotionPlanProps {
   icon: React.ElementType;
   title: string;
   description: string;
   features: string[];
   buttonText: string;
+  slug: string;
+  tag?: string;
   isPopular?: boolean;
 }
 
@@ -23,20 +27,20 @@ const planStyles: Record<
     border?: string;
   }
 > = {
-  "Featured Listing": {
-    color: "text-[#F97316]",
-    button: "bg-[#F97316] hover:bg-[#EA580C] text-white",
+  "Sponsored Listing": {
+    color: "text-orange-600",
+    button: "bg-orange-600 hover:bg-orange-700 text-white",
     iconBg: "bg-orange-50",
   },
-  "Premium Placement": {
-    color: "text-[#8B5CF6]",
-    button: "bg-[#8B5CF6] hover:bg-[#7C3AED] text-white",
+  "🛡 Verified Vendor": {
+    color: "text-purple-600",
+    button: "bg-purple-600 hover:bg-purple-700 text-white",
     iconBg: "bg-purple-50",
-    border: "border-[#8B5CF6]",
+    border: "border-purple-600",
   },
-  "Sponsored Posts": {
-    color: "text-[#1D4ED8]",
-    button: "bg-[#1D4ED8] hover:bg-[#1E40AF] text-white",
+  "Featured Placement": {
+    color: "text-blue-600",
+    button: "bg-blue-600 hover:bg-blue-700 text-white",
     iconBg: "bg-blue-50",
   },
 };
@@ -47,8 +51,11 @@ function PromotionPlan({
   description,
   features,
   buttonText,
+  slug,
+  tag,
   isPopular,
 }: PromotionPlanProps) {
+  const router = useRouter();
   const styles = planStyles[title] || {
     color: "text-primary",
     button: "bg-primary text-primary-foreground",
@@ -57,17 +64,17 @@ function PromotionPlan({
 
   return (
     <div className="relative h-full">
-      {isPopular && (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-          <span className="bg-[#7C2D12] text-white text-[10px] px-3 py-1 rounded-full font-medium uppercase tracking-wider">
-            Most Popular
+      {(isPopular || tag) && (
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 whitespace-nowrap">
+          <span className="bg-orange-900 text-white text-[10px] px-3 py-1 rounded-full font-medium uppercase tracking-wider">
+            {tag || "Most Popular"}
           </span>
         </div>
       )}
       <Card
         className={cn(
           "h-full flex flex-col",
-          isPopular && styles.border ? styles.border : "",
+          styles.border ? styles.border : "",
         )}
       >
         <CardHeader className="space-y-4">
@@ -105,6 +112,7 @@ function PromotionPlan({
               "w-full flex items-center justify-center gap-2 font-medium transition-colors hover:text-background",
               styles.button,
             )}
+            onClick={() => router.push(`/vendor/dashboard/boost/${slug}`)}
           >
             {buttonText}
             <ArrowRight className="h-4 w-4" />
@@ -119,41 +127,56 @@ export function BoostPromotions() {
   const plans = [
     {
       icon: Star,
-      title: "Featured Listing",
-      description: "Appear in the featured vendors section on homepage",
+      title: "Sponsored Listing",
+      slug: "sponsored-listing",
+      description:
+        "Get seen first. Get booked faster. Boost your ranking in listings, search results, and similar vendors.",
       features: [
-        "Homepage featured section placement",
-        "Category page top banner",
-        "Enhanced profile styling",
-        "Priority in search results",
+        "Top placement",
+        "Search priority",
+        "Auto-expiry",
+        "Higher visibility than regular vendors",
+        "7 Days – PKR 3,500",
+        "30 Days – PKR 7,000",
+        "90 Days – PKR 18,000",
       ],
-      buttonText: "View Plans",
+      buttonText: "Boost My Visibility",
+      tag: "Most Popular",
     },
     {
       icon: Crown,
-      title: "Premium Placement",
-      description: "Top position in all search results and category listings",
+      title: "🛡 Verified Vendor",
+      slug: "verified-vendor",
+      description:
+        "Build trust. Increase bookings. Stand out with an official verified badge and appear in verified filters.",
       features: [
-        "All Featured Listing benefits",
-        "Guaranteed top 3 search position",
-        "Premium vendor badge",
-        "Advanced analytics dashboard",
-        "Priority customer support",
+        "Verified badge on profile",
+        "Appears in “Verified” filter",
+        "Higher client trust",
+        "Better conversion rate",
+        "Annual Plan – PKR 20,000",
       ],
-      buttonText: "View Plans",
-      isPopular: true,
+      buttonText: "Get Verified",
+      tag: "High Trust",
     },
     {
       icon: Share2,
-      title: "Sponsored Posts",
-      description: "Promote specific packages or offers to targeted audience",
+      title: "Featured Placement",
+      slug: "featured-placement",
+      description:
+        "Premium spotlight position. Appear in premium sections on homepage or category pages.",
       features: [
-        "Highlight special packages",
-        "Targeted promotion to couples",
-        "Social media integration",
-        "Performance tracking",
+        "Homepage spotlight",
+        "Category page premium section",
+        "Select placement",
+        "Premium Spot",
+        "Homepage: 7 Days – PKR 5,000",
+        "Homepage: 30 Days – PKR 15,000",
+        "Category: 7 Days – PKR 3,000",
+        "Category: 30 Days – PKR 10,000",
       ],
-      buttonText: "View Plans",
+      buttonText: "Feature Me Now",
+      tag: "Premium Spot",
     },
   ];
 
@@ -165,7 +188,10 @@ export function BoostPromotions() {
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {plans.map((plan, index) => (
-            <PromotionPlan key={index} {...plan} />
+            <PromotionPlan
+              key={index}
+              {...plan}
+            />
           ))}
         </div>
       </CardContent>
