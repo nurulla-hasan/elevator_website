@@ -58,9 +58,9 @@ export function MobileBottomNav() {
             <Link
               key={item.label}
               href={item.href}
-              className="relative -top-6 flex flex-col items-center group"
+              className="relative -top-2 flex flex-col items-center group"
             >
-              <div className="bg-primary h-14 w-14 rounded-full flex items-center justify-center shadow-lg transition-transform group-active:scale-90 border-4 border-white">
+              <div className="bg-primary h-12 w-12 rounded-full flex items-center justify-center shadow-lg transition-transform group-active:scale-90 border-4 border-white">
                 <Icon className="h-7 w-7 text-white" />
               </div>
               <span className={cn(

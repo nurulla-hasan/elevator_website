@@ -5,23 +5,23 @@ import {
   Search,
   MapPin,
   SlidersHorizontal,
-  Banknote,
+  // Banknote,
   Star,
-  ChevronDown,
-  LayoutGrid,
+  // ChevronDown,
+  // LayoutGrid,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { LocationInput } from "@/components/ui/custom/location-input";
 import {
   QuickBudgetFilter,
-  QuickCapacityFilter,
+  QuickCategoryFilter,
 } from "@/components/main-route/vendor/quick-filters";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { useSmartFilter } from "@/hooks/useSmartFilter";
 import { cn } from "@/lib/utils";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Slider } from "@/components/ui/slider";
+// import { Slider } from "@/components/ui/slider";
 import { StarRating } from "@/components/ui/custom/star-rating";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -30,23 +30,23 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Collapsible,
   CollapsibleContent,
-  CollapsibleTrigger,
+  // CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { categories } from "@/data/categories.data";
+// import {
+//   Popover,
+//   PopoverContent,
+//   PopoverTrigger,
+// } from "@/components/ui/popover";
+// import { categories } from "@/data/categories.data";
 
 export default function VendorFilter() {
   const [isRefineOpen, setIsRefineOpen] = useState(false);
-  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
+  // const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const {
     updateFilter,
     getFilter,
     toggleFilter,
-    updateBatch,
+    // updateBatch,
     isSelected,
     clearAll,
     isFilterActive,
@@ -55,19 +55,19 @@ export default function VendorFilter() {
   // Local states for instant UI feedback (only for inputs and sliders)
   const [search, setSearch] = useState(getFilter("searchTerm") || "");
   const [location, setLocation] = useState(getFilter("location") || "");
-  const [budget, setBudget] = useState([
-    Number(getFilter("min")) || 0,
-    Number(getFilter("max")) || 20000,
-  ]);
+  // const [budget, setBudget] = useState([
+  //   Number(getFilter("min")) || 0,
+  //   Number(getFilter("max")) || 20000,
+  // ]);
 
   // Sync local state when filters are cleared or updated externally
   useEffect(() => {
     setSearch(getFilter("searchTerm") || "");
     setLocation(getFilter("location") || "");
-    setBudget([
-      Number(getFilter("min")) || 1000,
-      Number(getFilter("max")) || 10000,
-    ]);
+    // setBudget([
+    //   Number(getFilter("min")) || 1000,
+    //   Number(getFilter("max")) || 10000,
+    // ]);
   }, [
     getFilter("searchTerm"),
     getFilter("location"),
@@ -99,8 +99,8 @@ export default function VendorFilter() {
             />
             {isRefineOpen ? "Hide Filters" : "Filters"}
           </Button>
+          <QuickCategoryFilter />
           <QuickBudgetFilter max={20000} step={100} />
-          <QuickCapacityFilter />
         </CardContent>
       </Card>
       
@@ -115,8 +115,8 @@ export default function VendorFilter() {
           <SlidersHorizontal />
           {isRefineOpen ? "Hide" : "Filters"}
         </Button>
+        <QuickCategoryFilter />
         <QuickBudgetFilter max={20000} step={100} />
-        <QuickCapacityFilter />
       </div>
 
       {/* Refine Your Search - Expanded Panel */}
@@ -161,7 +161,7 @@ export default function VendorFilter() {
                 </div>
 
                 {/* Budget Filter */}
-                <div className="space-y-3">
+                {/* <div className="space-y-3">
                   <Label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
                     <Banknote className="h-4 w-4" />
                     Budget
@@ -191,10 +191,10 @@ export default function VendorFilter() {
                       </span>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
                 {/* Category Filter */}
-                <div className="space-y-3">
+                {/* <div className="space-y-3">
                   <Label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
                     <LayoutGrid className="h-4 w-4" />
                     Category
@@ -301,7 +301,7 @@ export default function VendorFilter() {
                       </ScrollArea>
                     </PopoverContent>
                   </Popover>
-                </div>
+                </div> */}
               </div>
 
               <Separator className="opacity-50" />
