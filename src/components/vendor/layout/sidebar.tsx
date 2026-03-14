@@ -19,7 +19,6 @@ import {
   Star,
   BarChart3,
   TrendingUp,
-  CreditCard,
   User,
   LucideIcon,
 } from "lucide-react";
@@ -60,7 +59,7 @@ const INSIGHTS_SUB_ITEMS: NavItemType[] = [
 ];
 
 const ACCOUNT_SUB_ITEMS: NavItemType[] = [
-  { name: "Billing", icon: CreditCard, href: "/vendor/dashboard/billing" },
+  { name: "Promote", icon: TrendingUp, href: "/vendor/dashboard/promote" },
   { name: "Profile", icon: User, href: "/vendor/dashboard/profile" },
   { name: "Settings", icon: Settings, href: "/vendor/dashboard/settings" },
 ];
