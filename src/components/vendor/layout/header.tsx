@@ -125,10 +125,10 @@ const Header = ({ onMenuClick }: { onMenuClick: () => void }) => {
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                   <DropdownMenuItem asChild>
-                    <Link href="/vendor/settings/profile">Profile</Link>
+                    <Link href="/vendor/dashboard/profile">Profile</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/vendor/settings">Settings</Link>
+                    <Link href="/vendor/dashboard/settings">Settings</Link>
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
