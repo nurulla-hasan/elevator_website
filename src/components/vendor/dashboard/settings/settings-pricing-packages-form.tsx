@@ -135,7 +135,7 @@ function PackageItem({ index, form, onRemove }: { index: number; form: any; onRe
           name={`packages.${index}.name`}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Package Name *</FormLabel>
+              <FormLabel>Package Name</FormLabel>
               <FormControl>
                 <Input placeholder="Enter package name" {...field} />
               </FormControl>
@@ -149,7 +149,7 @@ function PackageItem({ index, form, onRemove }: { index: number; form: any; onRe
           name={`packages.${index}.price`}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Price (৳) *</FormLabel>
+              <FormLabel>Price (৳)</FormLabel>
               <FormControl>
                 <Input placeholder="Enter price" {...field} />
               </FormControl>

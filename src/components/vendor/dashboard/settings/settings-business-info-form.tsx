@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Save } from "lucide-react";
+import { Save, X } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Form,
@@ -16,6 +16,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import {
   Select,
   SelectContent,
@@ -24,6 +25,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { SuccessToast } from "@/lib/utils";
+import { LocationInput } from "@/components/ui/custom/location-input";
 
 const businessInfoSchema = z.object({
   businessName: z.string().min(2, "Business name is required"),
@@ -32,17 +34,12 @@ const businessInfoSchema = z.object({
   description: z.string().optional(),
   phone: z.string().min(10, "Valid phone number is required"),
   email: z.string().email("Invalid email address"),
-  website: z.string().url("Invalid URL").optional().or(z.literal("")),
+  website: z.string().optional().or(z.literal("")),
   location: z.string().min(1, "Location is required"),
   serviceAreas: z.array(z.string()).min(1, "Select at least one service area"),
 });
 
 type BusinessInfoFormValues = z.infer<typeof businessInfoSchema>;
-
-const SERVICE_AREAS = [
-  "Dhaka", "Gulshan", "Banani", "Dhanmondi", 
-  "Mirpur", "Uttara", "Chittagong", "Sylhet"
-];
 
 export function SettingsBusinessInfoForm() {
   const form = useForm<BusinessInfoFormValues>({
@@ -55,8 +52,8 @@ export function SettingsBusinessInfoForm() {
       phone: "+880 1712-345678",
       email: "info@royalphoto.com",
       website: "www.royalphoto.com",
-      location: "Gulshan, Dhaka",
-      serviceAreas: ["Dhaka", "Gulshan", "Banani", "Dhanmondi"],
+      location: "",
+      serviceAreas: [],
     },
   });
 
@@ -87,7 +84,7 @@ export function SettingsBusinessInfoForm() {
                 name="businessName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Business Name *</FormLabel>
+                    <FormLabel>Business Name </FormLabel>
                     <FormControl>
                       <Input placeholder="Enter business name" {...field} />
                     </FormControl>
@@ -101,7 +98,7 @@ export function SettingsBusinessInfoForm() {
                 name="category"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Category *</FormLabel>
+                    <FormLabel>Category</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
                         <SelectTrigger>
@@ -164,7 +161,7 @@ export function SettingsBusinessInfoForm() {
                 name="phone"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Phone Number *</FormLabel>
+                    <FormLabel>Phone Number</FormLabel>
                     <FormControl>
                       <Input placeholder="Enter phone number" {...field} />
                     </FormControl>
@@ -178,7 +175,7 @@ export function SettingsBusinessInfoForm() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email Address *</FormLabel>
+                    <FormLabel>Email Address</FormLabel>
                     <FormControl>
                       <Input placeholder="Enter email address" {...field} />
                     </FormControl>
@@ -208,9 +205,13 @@ export function SettingsBusinessInfoForm() {
                 name="location"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Location *</FormLabel>
+                    <FormLabel>Location</FormLabel>
                     <FormControl>
-                      <Input placeholder="Enter location" {...field} />
+                      <LocationInput
+                        value={field.value}
+                        onChange={(value) => field.onChange(value)}
+                        placeholder="Search location..."
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -223,19 +224,41 @@ export function SettingsBusinessInfoForm() {
               name="serviceAreas"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Service Areas * (Select multiple)</FormLabel>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                    {SERVICE_AREAS.map((area) => (
-                      <Button
-                        key={area}
-                        type="button"
-                        variant={field.value.includes(area) ? "default" : "outline"}
-                        className="w-full h-9 font-normal"
-                        onClick={() => toggleServiceArea(area)}
-                      >
-                        {area}
-                      </Button>
-                    ))}
+                  <FormLabel>Service Areas (Select multiple)</FormLabel>
+                  <div className="space-y-4">
+                    <LocationInput
+                      value=""
+                      onChange={(value, data) => {
+                        // Only add if 'data' is present (meaning a location was selected from the list)
+                        if (data && value && !field.value.includes(value)) {
+                          field.onChange([...field.value, value]);
+                        }
+                      }}
+                      placeholder="Search and add a service area..."
+                    />
+
+                    <div className="flex flex-wrap gap-2 min-h-10 p-3 bg-muted/20 border border-border/50 rounded-xl">
+                      {field.value.length === 0 ? (
+                        <p className="text-xs text-muted-foreground italic">No service areas added yet.</p>
+                      ) : (
+                        field.value.map((area) => (
+                          <Badge
+                            key={area}
+                            variant="secondary"
+                            className="pl-2 pr-1 py-1 flex items-center gap-1 font-medium bg-background border-border/50 hover:bg-background"
+                          >
+                            {area}
+                            <button
+                              type="button"
+                              onClick={() => toggleServiceArea(area)}
+                              className="hover:bg-primary/10 rounded-full p-0.5 transition-colors"
+                            >
+                              <X className="h-3 w-3" />
+                            </button>
+                          </Badge>
+                        ))
+                      )}
+                    </div>
                   </div>
                   <FormMessage />
                 </FormItem>

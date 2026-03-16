@@ -74,7 +74,7 @@ export default async function SettingsPage({ searchParams }: PageProps) {
       />
 
       <Tabs value={activeTab}>
-        <ScrollArea className="w-[calc(100vw-40px)]">
+        <ScrollArea className="w-[calc(100vw-40px)] md:w-full">
           <TabsList variant="line" className="w-full justify-start">
             {SETTINGS_TABS.map((tab) => (
               <Link key={tab.value} href={`?tab=${tab.value}`} scroll={false}>
