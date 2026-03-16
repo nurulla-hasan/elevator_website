@@ -6,6 +6,7 @@ import { BoostPromotions } from "@/components/vendor/dashboard/boost/boost-promo
 import { BoostSuccessStories } from "@/components/vendor/dashboard/boost/boost-success-stories";
 import { BoostCTA } from "@/components/vendor/dashboard/boost/boost-cta";
 import { BoostBannerAdvertising } from "@/components/vendor/dashboard/boost/boost-banner-advertising";
+import { WePlanAssociateService } from "@/components/vendor/dashboard/boost/weplan-associate-service";
 
 export default function BoostPage() {
   return (
@@ -20,6 +21,7 @@ export default function BoostPage() {
         <BoostFeatures />
         <BoostPromotions />
         <BoostBannerAdvertising />
+        <WePlanAssociateService />
         <BoostSuccessStories />
         <BoostCTA />
       </div>

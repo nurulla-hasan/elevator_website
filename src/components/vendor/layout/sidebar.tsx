@@ -51,7 +51,6 @@ const BUSINESS_SUB_ITEMS: NavItemType[] = [
   { name: "My Packages", icon: Package, href: "/vendor/dashboard/packages" },
   { name: "All Jobs", icon: Briefcase, href: "/vendor/dashboard/jobs" },
   { name: "Bookings", icon: Calendar, href: "/vendor/dashboard/bookings" },
-  // { name: "Promotions", icon: BadgePercent, href: "/vendor/dashboard/promotions" },
 ];
 
 const INSIGHTS_SUB_ITEMS: NavItemType[] = [
@@ -61,7 +60,6 @@ const INSIGHTS_SUB_ITEMS: NavItemType[] = [
 ];
 
 const ACCOUNT_SUB_ITEMS: NavItemType[] = [
-  // { name: "Promote", icon: TrendingUp, href: "/vendor/dashboard/promote" },
   { name: "Profile", icon: User, href: "/vendor/dashboard/profile" },
   { name: "Settings", icon: Settings, href: "/vendor/dashboard/settings" },
 ];

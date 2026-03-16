@@ -2,27 +2,31 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Megaphone, AlertTriangle, Calendar } from "lucide-react";
+import { Megaphone, AlertTriangle, Calendar, CheckCircle2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 const BANNER_PRICING = [
   {
     category: "Homepage Banner",
     plans: [
-      { duration: "7 Days", price: "PKR 8,000" },
-      { duration: "30 Days", price: "PKR 25,000" },
+      { id: "hp-7", duration: "7 Days", price: "PKR 8,000" },
+      { id: "hp-30", duration: "30 Days", price: "PKR 25,000" },
     ],
   },
   {
     category: "Category Banner",
     plans: [
-      { duration: "7 Days", price: "PKR 6,000" },
-      { duration: "30 Days", price: "PKR 18,000" },
+      { id: "cat-7", duration: "7 Days", price: "PKR 6,000" },
+      { id: "cat-30", duration: "30 Days", price: "PKR 18,000" },
     ],
   },
 ];
 
 export function BoostBannerAdvertising() {
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+
   return (
     <Card>
       <CardHeader className="flex flex-row items-start gap-4 space-y-0">
@@ -51,11 +55,32 @@ export function BoostBannerAdvertising() {
                 {section.category}
               </h4>
               <div className="grid gap-3">
-                {section.plans.map((plan, pIdx) => (
-                  <div key={pIdx} className="flex items-center justify-between p-4 bg-muted/30 border border-border/40 rounded-2xl group hover:border-primary/30 transition-colors">
-                    <span className="text-sm font-medium text-muted-foreground">{plan.duration}</span>
-                    <span className="text-lg font-semibold text-primary">{plan.price}</span>
-                  </div>
+                {section.plans.map((plan) => (
+                  <button
+                    key={plan.id}
+                    onClick={() => setSelectedPlan(plan.id)}
+                    className={cn(
+                      "flex items-center justify-between p-4 border rounded-2xl transition-all relative overflow-hidden",
+                      selectedPlan === plan.id
+                        ? "bg-primary/5 border-primary shadow-sm ring-1 ring-primary/20"
+                        : "bg-muted/30 border-border/40 hover:border-primary/30"
+                    )}
+                  >
+                    <div className="flex flex-col items-start gap-1">
+                      <span className={cn(
+                        "text-sm font-medium",
+                        selectedPlan === plan.id ? "text-primary" : "text-muted-foreground"
+                      )}>
+                        {plan.duration}
+                      </span>
+                      <span className="text-lg font-semibold">{plan.price}</span>
+                    </div>
+                    {selectedPlan === plan.id && (
+                      <div className="bg-primary/10 p-1.5 rounded-full">
+                        <CheckCircle2 className="h-4 w-4 text-primary" />
+                      </div>
+                    )}
+                  </button>
                 ))}
               </div>
             </div>
@@ -72,16 +97,24 @@ export function BoostBannerAdvertising() {
         </div>
 
         {/* CTA Buttons */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <Button className="rounded-xl font-semibold h-11">
-            Book Banner Slot
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <Button 
+            disabled={!selectedPlan}
+          >
+            {selectedPlan ? "Book Selected Slot" : "Select a Plan"}
           </Button>
-          <Button variant="outline" className="rounded-xl font-semibold h-11">
+          <Button 
+            variant="outline" 
+            disabled={!selectedPlan}
+          >
             <Calendar className="mr-2 h-4 w-4" /> Check Availability
           </Button>
-          <Button variant="ghost" className="rounded-xl font-semibold h-11 text-muted-foreground hover:text-primary">
+          {/* <Button 
+            variant="ghost" 
+            disabled={!selectedPlan}
+          >
             Join Waiting List
-          </Button>
+          </Button> */}
         </div>
       </CardContent>
     </Card>
