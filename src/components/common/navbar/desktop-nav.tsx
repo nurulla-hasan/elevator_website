@@ -88,7 +88,13 @@ export function DesktopNav({
                   <DropdownMenuItem asChild>
                     <Link href="/user/dashboard">
                       <LayoutDashboard className="mr-2" />
-                      <span>Dashboard</span>
+                      <span>User Dashboard</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="/vendor/dashboard">
+                      <LayoutDashboard className="mr-2" />
+                      <span>Vendor Dashboard</span>
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>

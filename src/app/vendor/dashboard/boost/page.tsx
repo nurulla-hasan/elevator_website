@@ -5,6 +5,7 @@ import { BoostFeatures } from "@/components/vendor/dashboard/boost/boost-feature
 import { BoostPromotions } from "@/components/vendor/dashboard/boost/boost-promotions";
 import { BoostSuccessStories } from "@/components/vendor/dashboard/boost/boost-success-stories";
 import { BoostCTA } from "@/components/vendor/dashboard/boost/boost-cta";
+import { BoostBannerAdvertising } from "@/components/vendor/dashboard/boost/boost-banner-advertising";
 
 export default function BoostPage() {
   return (
@@ -14,10 +15,11 @@ export default function BoostPage() {
         description="Grow your business with premium promotion options"
       />
 
-      <div className="space-y-12">
+      <div className="space-y-12 mt-8">
         <BoostStats />
         <BoostFeatures />
         <BoostPromotions />
+        <BoostBannerAdvertising />
         <BoostSuccessStories />
         <BoostCTA />
       </div>

@@ -93,7 +93,14 @@ export function MobileNav({ navItems, pathname, isLoggedIn, setIsLoggedIn }: Mob
                     onClick={() => setIsOpen(false)}
                     className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-primary-foreground/80 transition-all hover:bg-primary-foreground/5 active:scale-95"
                   >
-                    <LayoutDashboard className="size-4.5 text-primary-foreground/50" /> Dashboard
+                    <LayoutDashboard className="size-4.5 text-primary-foreground/50" /> User Dashboard
+                  </Link>
+                  <Link
+                    href="/vendor/dashboard"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-primary-foreground/80 transition-all hover:bg-primary-foreground/5 active:scale-95"
+                  >
+                    <LayoutDashboard className="size-4.5 text-primary-foreground/50" /> Vendor Dashboard
                   </Link>
                   <Link
                     href="/chat"
