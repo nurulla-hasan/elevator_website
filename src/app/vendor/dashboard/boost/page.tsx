@@ -16,7 +16,7 @@ export default function BoostPage() {
         description="Grow your business with premium promotion options"
       />
 
-      <div className="space-y-12 mt-8">
+      <div className="space-y-12">
         <BoostStats />
         <BoostFeatures />
         <BoostPromotions />
