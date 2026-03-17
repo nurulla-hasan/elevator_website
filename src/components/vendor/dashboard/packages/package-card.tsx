@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Check, Edit, Trash2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { PackageModal } from "./package-modal";
 
 interface PackageCardProps {
   packageData: {
@@ -19,7 +20,7 @@ interface PackageCardProps {
   onDelete?: (id: string) => void;
 }
 
-export default function PackageCard({ packageData, onEdit, onDelete }: PackageCardProps) {
+export default function PackageCard({ packageData, onDelete }: PackageCardProps) {
   const { title, type, price, description, services } = packageData;
 
   return (
@@ -38,19 +39,24 @@ export default function PackageCard({ packageData, onEdit, onDelete }: PackageCa
             {type}
           </Badge>
           <div className="flex gap-1">
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              onClick={() => onEdit?.(packageData.id)}
-            >
-              <Edit />
-            </Button>
+            <PackageModal 
+              mode="edit"
+              initialType={type}
+              trigger={
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                >
+                  <Edit/>
+                </Button>
+              }
+            />
             <Button 
               variant="ghost" 
               size="icon" 
               onClick={() => onDelete?.(packageData.id)}
             >
-              <Trash2 />
+              <Trash2 className="w-4 h-4" />
             </Button>
           </div>
         </div>
