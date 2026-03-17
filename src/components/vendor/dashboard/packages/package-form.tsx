@@ -21,27 +21,26 @@ interface PackageFormProps {
 export default function PackageForm({ type }: PackageFormProps) {
   return (
     <div className="space-y-6 max-w-4xl mx-auto">
-      <div className="p-8 border rounded-3xl bg-card shadow-sm">
+      <div className="">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
           {/* Left Column: Title & Description */}
           <div className="md:col-span-7 space-y-6">
             <div className="space-y-2">
-              <Label className="text-sm font-semibold tracking-tight text-foreground/80 uppercase">
+              <Label className="uppercase">
                 Package Title ({type})
               </Label>
               <Input
                 placeholder={`e.g., ${type} Wedding Package`}
-                className="h-11 rounded-xl focus:ring-primary/20"
               />
             </div>
 
             <div className="space-y-2">
-              <Label className="text-sm font-semibold tracking-tight text-foreground/80 uppercase">
+              <Label className="uppercase">
                 Description
               </Label>
               <Textarea
                 placeholder="Detailed description of your package..."
-                className="min-h-40 resize-none rounded-xl focus:ring-primary/20 p-4"
+                className="min-h-40"
               />
             </div>
           </div>
@@ -49,35 +48,31 @@ export default function PackageForm({ type }: PackageFormProps) {
           {/* Right Column: Price & Services */}
           <div className="md:col-span-5 space-y-6">
             <div className="space-y-2">
-              <Label className="text-sm font-semibold tracking-tight text-foreground/80 uppercase">
+              <Label className="uppercase">
                 Price ($)
               </Label>
               <Input
                 type="number"
                 defaultValue={0}
-                className="h-11 rounded-xl focus:ring-primary/20"
               />
             </div>
 
             <div className="space-y-2">
-              <Label className="text-sm font-semibold tracking-tight text-foreground/80 uppercase">
+              <Label className="uppercase">
                 Vendor Services
               </Label>
-              <div className="rounded-xl border">
-                <MultipleSelector
-                  defaultOptions={VENDOR_SERVICES}
-                  placeholder="Search and select services..."
-                  className="border-none"
-                  emptyIndicator={
-                    <p className="text-center text-sm py-4 text-muted-foreground">
-                      No services found.
-                    </p>
-                  }
-                  commandProps={{
-                    label: "Select services",
-                  }}
-                />
-              </div>
+              <MultipleSelector
+                defaultOptions={VENDOR_SERVICES}
+                placeholder="Search and select services..."
+                emptyIndicator={
+                  <p className="text-center text-sm py-4 text-muted-foreground">
+                    No services found.
+                  </p>
+                }
+                commandProps={{
+                  label: "Select services",
+                }}
+              />
               <p className="text-[10px] text-muted-foreground px-1 italic">
                 * You can select multiple services for this package.
               </p>
@@ -89,7 +84,7 @@ export default function PackageForm({ type }: PackageFormProps) {
             <p className="text-xs text-muted-foreground hidden sm:block">
               Make sure to save your changes before leaving this tab.
             </p>
-            <Button className="h-11 px-8 rounded-xl gap-2 font-medium shadow-md hover:shadow-lg transition-all active:scale-95">
+            <Button className="gap-2">
               <Save className="w-4 h-4" />
               Save {type} Package
             </Button>
