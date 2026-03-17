@@ -16,6 +16,7 @@ import { SuccessScreen } from "@/components/main-route/become-vendor/success-scr
 import PageLayout from "@/components/ui/custom/page-layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { CategoriesForm } from "@/components/main-route/become-vendor/categories-form";
 
 export default function BecomeVendorPage() {
   const [currentStep, setCurrentStep] = useState<RegistrationStep>("details");
@@ -25,14 +26,18 @@ export default function BecomeVendorPage() {
     resolver: zodResolver(vendorRegistrationSchema),
     defaultValues: {
       businessName: "",
-      businessDescription: "",
-      businessAddress: "",
+      ownerName: "",
+      phone: "",
+      whatsapp: "",
+      email: "",
       city: "",
-      state: "",
-      website: "",
+      businessDescription: "",
       yearsOfExperience: "",
-      businessLogo: "",
-      portfolioImages: [],
+      instagram: "",
+      facebook: "",
+      website: "",
+      portfolioDrive: "",
+      categories: [],
       agreedToTerms: false,
     },
     mode: "onChange",
@@ -58,10 +63,12 @@ export default function BecomeVendorPage() {
         return 1;
       case "portfolio":
         return 2;
-      case "review":
+      case "categories":
         return 3;
-      case "success":
+      case "review":
         return 4;
+      case "success":
+        return 5;
       default:
         return 1;
     }
@@ -85,7 +92,7 @@ export default function BecomeVendorPage() {
           <StepIndicator currentStep={stepToNumber(currentStep)} />
         )}
 
-        <Card className={cn(currentStep === "success" && "border-none bg-transparent shadow-none")}>
+        <Card className={cn(currentStep === "success" && "border-none bg-transparent shadow-none hover:shadow-none")}>
           <CardContent className={cn(currentStep === "success" && "p-0")}>
             <FormProvider {...methods}>
               {currentStep === "details" && (
@@ -95,13 +102,19 @@ export default function BecomeVendorPage() {
               )}
               {currentStep === "portfolio" && (
                 <PortfolioForm
-                  onNext={() => setCurrentStep("review")}
+                  onNext={() => setCurrentStep("categories")}
                   onPrevious={() => setCurrentStep("details")}
+                />
+              )}
+              {currentStep === "categories" && (
+                <CategoriesForm
+                  onNext={() => setCurrentStep("review")}
+                  onPrevious={() => setCurrentStep("portfolio")}
                 />
               )}
               {currentStep === "review" && (
                 <ReviewForm
-                  onPrevious={() => setCurrentStep("portfolio")}
+                  onPrevious={() => setCurrentStep("categories")}
                   onSubmit={onSubmit}
                   isLoading={isLoading}
                 />

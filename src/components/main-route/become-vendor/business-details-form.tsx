@@ -18,16 +18,17 @@ interface BusinessDetailsFormProps {
 }
 
 export const BusinessDetailsForm: React.FC<BusinessDetailsFormProps> = ({ onNext }) => {
-  const { control, trigger, setValue } = useFormContext();
+  const { control, trigger } = useFormContext();
 
   const handleNext = async () => {
     const isValid = await trigger([
       "businessName",
-      "businessDescription",
-      "businessAddress",
+      "ownerName",
+      "phone",
+      "whatsapp",
+      "email",
       "city",
-      "state",
-      "website",
+      "businessDescription",
       "yearsOfExperience",
     ]);
     if (isValid) onNext();
@@ -40,71 +41,15 @@ export const BusinessDetailsForm: React.FC<BusinessDetailsFormProps> = ({ onNext
       </div>
 
       <div className="grid gap-6">
-        <FormField
-          control={control}
-          name="businessName"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="font-semibold">Business Name</FormLabel>
-              <FormControl>
-                <Input placeholder="Enter your business name" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={control}
-          name="businessDescription"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="font-semibold">Business Description</FormLabel>
-              <FormControl>
-                <Textarea 
-                  placeholder="Describe your business and services..." 
-                  className="min-h-30 resize-none"
-                  {...field} 
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* Location */}
-
-        <FormField
-          control={control}
-          name="businessAddress"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="font-semibold">Business Address</FormLabel>
-              <FormControl>
-                <LocationInput
-                  placeholder="Street address"
-                  value={field.value}
-                  onChange={(val, data) => {
-                    field.onChange(val);
-                    if (data?.city) setValue("city", data.city, { shouldValidate: true });
-                    if (data?.state) setValue("state", data.state, { shouldValidate: true });
-                  }}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <FormField
             control={control}
-            name="city"
+            name="businessName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="font-semibold">City</FormLabel>
+                <FormLabel className="font-semibold">Business Name</FormLabel>
                 <FormControl>
-                  <Input placeholder="City" {...field} />
+                  <Input placeholder="Enter your business name" {...field} value={field.value || ""} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -113,12 +58,12 @@ export const BusinessDetailsForm: React.FC<BusinessDetailsFormProps> = ({ onNext
 
           <FormField
             control={control}
-            name="state"
+            name="ownerName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="font-semibold">State</FormLabel>
+                <FormLabel className="font-semibold">Owner Name</FormLabel>
                 <FormControl>
-                  <Input placeholder="State" {...field} />
+                  <Input placeholder="Enter owner name" {...field} value={field.value || ""} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -129,12 +74,12 @@ export const BusinessDetailsForm: React.FC<BusinessDetailsFormProps> = ({ onNext
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <FormField
             control={control}
-            name="website"
+            name="phone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="font-semibold">Website (Optional)</FormLabel>
+                <FormLabel className="font-semibold">Mobile Number</FormLabel>
                 <FormControl>
-                  <Input placeholder="https://yourbusiness.com" {...field} />
+                  <Input placeholder="Enter mobile number" {...field} value={field.value || ""} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -143,12 +88,81 @@ export const BusinessDetailsForm: React.FC<BusinessDetailsFormProps> = ({ onNext
 
           <FormField
             control={control}
+            name="whatsapp"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="font-semibold">WhatsApp Number</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter WhatsApp number" {...field} value={field.value || ""} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <FormField
+            control={control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="font-semibold">Email Address</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter email address" {...field} value={field.value || ""} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={control}
+            name="city"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="font-semibold">City (Location)</FormLabel>
+                <FormControl>
+                  <LocationInput
+                    placeholder="Search city/location"
+                    value={field.value || ""}
+                    onChange={(val) => field.onChange(val)}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+
+        <FormField
+          control={control}
+          name="businessDescription"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="font-semibold">Business Details</FormLabel>
+              <FormControl>
+                <Textarea 
+                  placeholder="Describe your business and services..." 
+                  className="min-h-30 resize-none"
+                  {...field} 
+                  value={field.value || ""}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <FormField
+            control={control}
             name="yearsOfExperience"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="font-semibold">Years of Experience</FormLabel>
+                <FormLabel className="font-semibold">Business Experience (Years)</FormLabel>
                 <FormControl>
-                  <Input placeholder="e.g., 5" {...field} />
+                  <Input placeholder="e.g., 5" {...field} value={field.value || ""} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Check, User, Image, FileText, CheckCircle } from "lucide-react";
+import { Check, User, Image, FileText, CheckCircle, LayoutGrid } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface StepIndicatorProps {
@@ -9,8 +9,9 @@ interface StepIndicatorProps {
 const steps = [
   { id: 1, name: "Business Details", icon: User },
   { id: 2, name: "Portfolio", icon: Image },
-  { id: 3, name: "Review", icon: FileText },
-  { id: 4, name: "Success", icon: CheckCircle, hidden: true },
+  { id: 3, name: "Categories", icon: LayoutGrid },
+  { id: 4, name: "Review", icon: FileText },
+  { id: 5, name: "Success", icon: CheckCircle, hidden: true },
 ];
 
 export const StepIndicator: React.FC<StepIndicatorProps> = ({ currentStep }) => {

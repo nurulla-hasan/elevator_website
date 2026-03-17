@@ -58,7 +58,7 @@ export function LocationInput({
 }: LocationInputProps) {
   const [open, setOpen] = React.useState(false)
   const [predictions, setPredictions] = React.useState<google.maps.places.AutocompletePrediction[]>([])
-  const [inputValue, setInputValue] = React.useState(value)
+  const [inputValue, setInputValue] = React.useState(value || "")
   const [isFetching, setIsFetching] = React.useState(false)
 
   const { isLoaded } = useJsApiLoader({
@@ -83,7 +83,7 @@ export function LocationInput({
 
   // Sync internal input value with prop value
   React.useEffect(() => {
-    setInputValue(value)
+    setInputValue(value || "")
   }, [value])
 
   const fetchPredictions = React.useCallback(
