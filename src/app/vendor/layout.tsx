@@ -9,7 +9,7 @@ export default function VendorLayout({
   children: ReactNode;
 }>) {
 
-  const isApproved = false;
+  const isApproved = true;
 
   if (!isApproved) {
     return (
