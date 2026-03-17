@@ -44,7 +44,7 @@ export const SuccessScreen: React.FC = () => {
           </div>
 
           <div className="w-full">
-            <Link href="/" className="w-full">
+            <Link href="/vendor/dashboard" className="w-full">
               <Button className="w-full">
                 View Status
               </Button>
