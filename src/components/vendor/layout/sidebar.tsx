@@ -49,6 +49,7 @@ const MAIN_NAV_ITEMS: NavItemType[] = [
 const BUSINESS_SUB_ITEMS: NavItemType[] = [
   { name: "Leads", icon: Mail, href: "/vendor/dashboard/leads" },
   { name: "My Packages", icon: Package, href: "/vendor/dashboard/packages" },
+  { name: "My Services", icon: LayoutGrid, href: "/vendor/dashboard/services" },
   { name: "All Jobs", icon: Briefcase, href: "/vendor/dashboard/jobs" },
   { name: "Bookings", icon: Calendar, href: "/vendor/dashboard/bookings" },
 ];
@@ -73,7 +74,7 @@ const Sidebar = ({
 }) => {
   const pathname = usePathname();
   
-  const isBusinessPath = ["leads", "packages", "jobs", "bookings"].some(p => pathname.includes(`/vendor/dashboard/${p}`));
+  const isBusinessPath = ["leads", "packages", "services", "jobs", "bookings"].some(p => pathname.includes(`/vendor/dashboard/${p}`));
   const isInsightsPath = ["reviews", "analytics", "boost"].some(p => pathname.includes(`/vendor/dashboard/${p}`));
   const isAccountPath = ["billing", "profile", "settings"].some(p => pathname.includes(`/vendor/dashboard/${p}`));
 
