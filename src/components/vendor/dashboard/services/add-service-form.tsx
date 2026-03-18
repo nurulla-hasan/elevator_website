@@ -114,6 +114,8 @@ export function AddServiceForm() {
   
   // Integrated Features State (Array of IDs)
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
+  const [customFeatures, setCustomFeatures] = useState<string[]>([]);
+  const [newCustomFeature, setNewCustomFeature] = useState("");
 
   // Get dynamic features based on category
   const coreFeatures = category ? FEATURES_BY_CATEGORY[category] || [] : [];
@@ -122,6 +124,7 @@ export function AddServiceForm() {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setSelectedFeatures([]);
+    setCustomFeatures([]);
   }, [category]);
 
   const toggleEventType = (type: string) => {
@@ -136,6 +139,17 @@ export function AddServiceForm() {
     );
   };
 
+  const addCustomFeature = () => {
+    if (newCustomFeature.trim()) {
+      setCustomFeatures(prev => [...prev, newCustomFeature.trim()]);
+      setNewCustomFeature("");
+    }
+  };
+
+  const removeCustomFeature = (index: number) => {
+    setCustomFeatures(prev => prev.filter((_, i) => i !== index));
+  };
+
   const handleReset = () => {
     setServiceTitle("");
     setCategory("");
@@ -148,6 +162,8 @@ export function AddServiceForm() {
     setPolicies("");
     setAvailableDates([]);
     setSelectedFeatures([]);
+    setCustomFeatures([]);
+    setNewCustomFeature("");
   };
 
   const handleSubmit = () => {
@@ -160,7 +176,8 @@ export function AddServiceForm() {
       location: { isAcrossCity, area },
       policies,
       availability: availableDates,
-      features: selectedFeatures
+      features: selectedFeatures,
+      customFeatures
     };
     console.log("Final Form Data:", formData);
     alert("Service listing created successfully!");
@@ -288,19 +305,19 @@ export function AddServiceForm() {
                         key={feature.id}
                         onClick={() => toggleFeature(feature.id)}
                         className={cn(
-                          "flex items-center gap-3 p-2 border transition-all cursor-pointer rounded-lg",
+                          "flex items-center gap-3 p-4 border transition-all cursor-pointer",
                           isSelected 
                             ? "border-primary bg-primary/5" 
                             : "bg-card border-border"
                         )}
                       >
                         <div className={cn(
-                          "size-4 rounded-full border flex items-center justify-center transition-colors shrink-0",
+                          "size-5 rounded-full border flex items-center justify-center transition-colors shrink-0",
                           isSelected ? "bg-primary border-primary text-white" : "border-muted-foreground/30"
                         )}>
                           {isSelected && <Check className="size-3 stroke-3" />}
                         </div>
-                        <Label className="flex-1 cursor-pointer text-sm leading-none">
+                        <Label className="flex-1 cursor-pointer text-base leading-none">
                           {feature.name}
                         </Label>
                       </div>
@@ -309,6 +326,46 @@ export function AddServiceForm() {
                 </div>
               )}
             </div>
+
+            {/* Custom Features Input */}
+            {category && (
+              <div className="flex flex-col gap-3 pt-4 border-t">
+                <Label>Add Additional Features (Optional)</Label>
+                <div className="flex gap-2">
+                  <Input 
+                    placeholder="e.g. Drone Photography, Same Day Delivery" 
+                    value={newCustomFeature}
+                    onChange={(e) => setNewCustomFeature(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        e.preventDefault();
+                        addCustomFeature();
+                      }
+                    }}
+                  />
+                  <Button type="button" onClick={addCustomFeature} variant="secondary" className="shrink-0">
+                    Add
+                  </Button>
+                </div>
+                {customFeatures.length > 0 && (
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {customFeatures.map((feature, index) => (
+                      <Badge 
+                        key={index} 
+                        variant="secondary" 
+                        className="px-3 py-1 flex items-center gap-2"
+                      >
+                        {feature}
+                        <X 
+                          className="size-3 cursor-pointer hover:text-destructive" 
+                          onClick={() => removeCustomFeature(index)}
+                        />
+                      </Badge>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Section 3: Logistics & Media */}
