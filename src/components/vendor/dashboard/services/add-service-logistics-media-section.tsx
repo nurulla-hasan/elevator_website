@@ -2,8 +2,8 @@
 
 import type { UseFormReturn } from "react-hook-form";
 import type { ServiceFormValues } from "@/schemas/service.schema";
-import { MapPin, Upload, Calendar as CalendarIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { MapPin, Upload } from "lucide-react";
+// import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -14,9 +14,9 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+// import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+// import { Calendar } from "@/components/ui/calendar";
+// import { cn } from "@/lib/utils";
 
 type AddServiceLogisticsMediaSectionProps = {
   form: UseFormReturn<ServiceFormValues>;
@@ -66,7 +66,7 @@ export function AddServiceLogisticsMediaSection({
             )}
           </div>
 
-          <FormField
+          {/* <FormField
             control={form.control}
             name="availableDates"
             render={({ field }) => (
@@ -99,7 +99,7 @@ export function AddServiceLogisticsMediaSection({
                 <FormMessage />
               </FormItem>
             )}
-          />
+          /> */}
         </div>
 
         <div className="space-y-5">

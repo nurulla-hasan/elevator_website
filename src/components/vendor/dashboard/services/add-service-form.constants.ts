@@ -20,6 +20,7 @@ export const PRICE_TYPES = [
   "Per Hour",
   "Per Head",
   "Per Event",
+  "Car Rental",
 ];
 
 export const SERVICE_CATEGORIES = [
