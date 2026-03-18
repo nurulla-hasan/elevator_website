@@ -1,7 +1,7 @@
 
 import DashboardPageLayout from "@/components/ui/custom/dashboard-page-layout";
-import { AddServiceForm } from "@/components/vendor/dashboard/services/add-service-form";
 import BackButton from "@/components/ui/custom/back-button";
+import { AddServiceForm } from "@/components/vendor/dashboard/services/add-service-form";
 
 export default function AddServicePage() {
   return (
