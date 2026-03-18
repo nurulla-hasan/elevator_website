@@ -175,7 +175,7 @@ export function AddServiceForm() {
         <CardDescription>Complete the global fields and specific features for your service.</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-6">
           {/* Section 1: Service Overview */}
           <div className="flex flex-col gap-6">
             <div className="flex items-center gap-2 pb-2 border-b">
@@ -288,19 +288,19 @@ export function AddServiceForm() {
                         key={feature.id}
                         onClick={() => toggleFeature(feature.id)}
                         className={cn(
-                          "flex items-center gap-3 p-4 border transition-all cursor-pointer",
+                          "flex items-center gap-3 p-2 border transition-all cursor-pointer rounded-lg",
                           isSelected 
                             ? "border-primary bg-primary/5" 
                             : "bg-card border-border"
                         )}
                       >
                         <div className={cn(
-                          "size-5 rounded-full border flex items-center justify-center transition-colors shrink-0",
+                          "size-4 rounded-full border flex items-center justify-center transition-colors shrink-0",
                           isSelected ? "bg-primary border-primary text-white" : "border-muted-foreground/30"
                         )}>
                           {isSelected && <Check className="size-3 stroke-3" />}
                         </div>
-                        <Label className="flex-1 cursor-pointer text-base leading-none">
+                        <Label className="flex-1 cursor-pointer text-sm leading-none">
                           {feature.name}
                         </Label>
                       </div>
@@ -322,7 +322,7 @@ export function AddServiceForm() {
               <div className="flex flex-col gap-5">
                 <div className="flex flex-col gap-3">
                   <Label>Service Location</Label>
-                  <div className="flex items-center space-x-2 p-3 border">
+                  <div className="flex items-center space-x-2 p-3 border rounded-lg">
                     <Checkbox 
                       id="acrossCity" 
                       checked={isAcrossCity}
@@ -354,7 +354,7 @@ export function AddServiceForm() {
               <div className="flex flex-col gap-5">
                 <div className="flex flex-col gap-2">
                   <Label>Portfolio Images</Label>
-                  <div className="border-2 border-dashed p-6 flex flex-col items-center justify-center gap-2 text-muted-foreground hover:bg-accent cursor-pointer transition-colors">
+                  <div className="border-2 border-dashed rounded-lg p-6 flex flex-col items-center justify-center gap-2 text-muted-foreground hover:bg-accent cursor-pointer transition-colors">
                     <Upload className="size-6" />
                     <span className="text-xs font-medium">Click to upload (Max 10)</span>
                   </div>
