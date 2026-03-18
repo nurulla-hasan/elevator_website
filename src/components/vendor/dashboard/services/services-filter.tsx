@@ -1,5 +1,7 @@
 "use client";
 
+import { Plus } from "lucide-react";
+import Link from "next/link";
 import { SearchInput } from "@/components/ui/custom/search-input";
 import {
   Select,
@@ -9,6 +11,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Suspense } from "react";
+import { Button } from "@/components/ui/button";
 
 export default function ServicesFilter() {
   return (
@@ -37,11 +40,18 @@ export default function ServicesFilter() {
             <SelectItem value="pending">Pending</SelectItem>
           </SelectContent>
         </Select>
+
       </div>
-      
+
       <Suspense fallback={<div>Loading...</div>}>
         <SearchInput placeholder="Search services..." />
       </Suspense>
+      <Link href="/vendor/dashboard/services/add">
+        <Button>
+          <Plus />
+          Add Service
+        </Button>
+      </Link>
     </div>
   );
 }
