@@ -14,7 +14,13 @@ export const EVENT_TYPES = [
   "Exhibition",
 ];
 
-export const PRICE_TYPES = ["Fixed", "Starting From", "Per Hour", "Per Event"];
+export const PRICE_TYPES = [
+  "Fixed",
+  "Starting From",
+  "Per Hour",
+  "Per Head",
+  "Per Event",
+];
 
 export const SERVICE_CATEGORIES = [
   "Photography",
@@ -28,9 +34,26 @@ export const SERVICE_CATEGORIES = [
 ];
 
 export const SUBCATEGORIES_BY_CATEGORY: Record<string, string[]> = {
-  Photography: ["Wedding Photography", "Event Photography", "Portrait", "Product", "Cinematic"],
-  Videography: ["Wedding Film", "Event Coverage", "Reel/Shorts", "Corporate Video"],
-  Venue: ["Community Center", "Resort", "Convention Hall", "Rooftop", "Outdoor"],
+  Photography: [
+    "Wedding Photography",
+    "Event Photography",
+    "Portrait",
+    "Product",
+    "Cinematic",
+  ],
+  Videography: [
+    "Wedding Film",
+    "Event Coverage",
+    "Reel/Shorts",
+    "Corporate Video",
+  ],
+  Venue: [
+    "Community Center",
+    "Resort",
+    "Convention Hall",
+    "Rooftop",
+    "Outdoor",
+  ],
   Catering: ["Kacchi", "Chinese", "BBQ", "Dessert", "Snacks"],
   Decoration: ["Stage", "Holud", "Wedding", "Reception", "Lighting"],
   "Makeup Artist": ["Bridal", "Party", "Groom", "Hair Styling"],
