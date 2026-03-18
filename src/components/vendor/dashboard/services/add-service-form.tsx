@@ -1,15 +1,16 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { 
-  Save, 
+  AlertCircle, 
   RotateCcw, 
-  Plus, 
-  X, 
-  Sparkles, 
-  Check, 
-  AlertCircle,
-  Search
+  Save, 
+  X,
+  Check,
+  Upload,
+  Calendar as CalendarIcon,
+  MapPin,
+  Info
 } from "lucide-react";
 import { 
   Card, 
@@ -23,7 +24,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
 import { 
   Select, 
   SelectContent, 
@@ -31,512 +31,369 @@ import {
   SelectTrigger, 
   SelectValue 
 } from "@/components/ui/select";
+import { Badge } from "@/components/ui/badge";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 
-// ============================================
-// Mock Data - Replace with API calls later
-// ============================================
-
-const CATEGORIES = [
-  { id: "1", name: "Photography", slug: "photography" },
-  { id: "2", name: "Catering", slug: "catering" },
-  { id: "3", name: "Decoration", slug: "decoration" },
-  { id: "4", name: "Venue", slug: "venue" },
-  { id: "5", name: "Makeup Artist", slug: "makeup" },
+// Mock Data
+const EVENT_TYPES = [
+  "Wedding", "Reception", "Birthday", "Corporate", "Engagement", "Holud", "Seminar", "Exhibition"
 ];
 
-const SUBCATEGORIES: Record<string, Array<{ id: string; name: string; slug: string }>> = {
-  photography: [
-    { id: "1", name: "Wedding Photography", slug: "wedding-photography" },
-    { id: "2", name: "Portrait Photography", slug: "portrait-photography" },
-    { id: "3", name: "Event Photography", slug: "event-photography" },
-  ],
-  catering: [
-    { id: "4", name: "Wedding Catering", slug: "wedding-catering" },
-    { id: "5", name: "Corporate Catering", slug: "corporate-catering" },
-    { id: "6", name: "Birthday Party Catering", slug: "birthday-catering" },
-  ],
-  decoration: [
-    { id: "7", name: "Wedding Decoration", slug: "wedding-decoration" },
-    { id: "8", name: "Birthday Decoration", slug: "birthday-decoration" },
-  ],
-  venue: [
-    { id: "9", name: "Wedding Venue", slug: "wedding-venue" },
-    { id: "10", name: "Corporate Event Venue", slug: "corporate-venue" },
-  ],
-  makeup: [
-    { id: "11", name: "Bridal Makeup", slug: "bridal-makeup" },
-    { id: "12", name: "Party Makeup", slug: "party-makeup" },
-  ],
-};
-
-// Standard features based on subcategory
-const STANDARD_FEATURES: Record<string, Array<{ id: string; name: string }>> = {
-  "wedding-photography": [
-    { id: "1", name: "Candid Photography" },
-    { id: "2", name: "Traditional Photography" },
-    { id: "3", name: "Pre-wedding Shoot" },
-    { id: "4", name: "Drone Shots" },
-    { id: "5", name: "Album Included" },
-    { id: "6", name: "Video Editing" },
-    { id: "7", name: "Same Day Edit" },
-    { id: "8", name: "Raw Files Provided" },
-  ],
-  "portrait-photography": [
-    { id: "9", name: "Studio Setup" },
-    { id: "10", name: "Outdoor Shoot" },
-    { id: "11", name: "Props Included" },
-    { id: "12", name: "Retouching" },
-    { id: "13", name: "Digital Copies" },
-    { id: "14", name: "Printed Photos" },
-  ],
-  "event-photography": [
-    { id: "15", name: "Full Event Coverage" },
-    { id: "16", name: "Highlights Video" },
-    { id: "17", name: "On-site Printing" },
-    { id: "18", name: "Photo Booth" },
-    { id: "19", name: "Instant Sharing" },
-  ],
-  "wedding-catering": [
-    { id: "20", name: "Live Cooking Counter" },
-    { id: "21", name: "Buffet Setup" },
-    { id: "22", name: "Dessert Station" },
-    { id: "23", name: "Welcome Drinks" },
-    { id: "24", name: "Custom Menu" },
-    { id: "25", name: "Waiter Service" },
-  ],
-  "corporate-catering": [
-    { id: "26", name: "Breakfast Options" },
-    { id: "27", name: "Lunch Packages" },
-    { id: "28", name: "Tea/Coffee Service" },
-    { id: "29", name: "Snacks & Refreshments" },
-  ],
-  // Add more subcategories as needed...
-};
-
-const POPULAR_FEATURES = [
-  { text: "Free bridal makeup trial", usedBy: 45 },
-  { text: "Free mehendi for bride", usedBy: 32 },
-  { text: "Free engagement shoot", usedBy: 28 },
-  { text: "Same day highlight video", usedBy: 25 },
-  { text: "360° photo booth", usedBy: 20 },
+const PRICE_TYPES = [
+  "Fixed", "Starting From", "Per Hour", "Per Event"
 ];
+
+const SERVICE_CATEGORIES = [
+  "Photography", "Videography", "Venue", "Catering", "Decoration", "Makeup Artist", "Music & DJ", "Event Planner"
+];
+
+const FEATURES_BY_CATEGORY: Record<string, Array<{ id: string; name: string; placeholder: string }>> = {
+  "Photography": [
+    { id: "p1", name: "Camera Equipment", placeholder: "e.g. Sony A7IV, 24-70mm Lens" },
+    { id: "p2", name: "Post Processing", placeholder: "e.g. Color correction, Retouching" },
+    { id: "p3", name: "Delivery Time", placeholder: "e.g. 7-10 working days" },
+    { id: "p4", name: "Online Gallery", placeholder: "e.g. Google Drive, Pixieset link" },
+    { id: "p5", name: "Backup Support", placeholder: "e.g. 2nd photographer, backup gear" },
+  ],
+  "Catering": [
+    { id: "c1", name: "Menu Options", placeholder: "e.g. Kacchi, Roast, Salad, Dessert" },
+    { id: "c2", name: "Service Staff", placeholder: "e.g. 10 waiters, 2 supervisors" },
+    { id: "c3", name: "Cutlery & Crockery", placeholder: "e.g. Ceramic plates, Glassware" },
+    { id: "c4", name: "Live Counter", placeholder: "e.g. Live Pasta or BBQ station" },
+  ],
+  "Venue": [
+    { id: "v1", name: "Capacity", placeholder: "e.g. Up to 500 guests" },
+    { id: "v2", name: "Air Conditioning", placeholder: "e.g. Central AC or non-AC" },
+    { id: "v3", name: "Parking Space", placeholder: "e.g. Space for 50 cars" },
+    { id: "v4", name: "Generator Backup", placeholder: "e.g. Full load generator" },
+  ],
+  "Videography": [
+    { id: "vg1", name: "Video Resolution", placeholder: "e.g. 4K 60fps, 10-bit color" },
+    { id: "vg2", name: "Editing Style", placeholder: "e.g. Cinematic highlights, full documentary" },
+    { id: "vg3", name: "Audio Recording", placeholder: "e.g. External mic, Zoom recorder" },
+  ],
+  "Decoration": [
+    { id: "d1", name: "Theme Style", placeholder: "e.g. Floral, Rustic, Minimalist" },
+    { id: "d2", name: "Lighting", placeholder: "e.g. Fairy lights, Chandeliers" },
+    { id: "d3", name: "Stage Setup", placeholder: "e.g. Custom wooden stage" },
+  ],
+  "Makeup Artist": [
+    { id: "m1", name: "Products Used", placeholder: "e.g. MAC, Estee Lauder, Huda Beauty" },
+    { id: "m2", name: "Trial Session", placeholder: "e.g. Available on request" },
+    { id: "m3", name: "Home Service", placeholder: "e.g. Available across Dhaka" },
+  ],
+  "Music & DJ": [
+    { id: "mu1", name: "Sound System", placeholder: "e.g. JBL, Bose setup" },
+    { id: "mu2", name: "Music Genre", placeholder: "e.g. EDM, Bollywood, Retro" },
+    { id: "mu3", name: "Special Effects", placeholder: "e.g. Fog machine, Laser lights" },
+  ],
+  "Event Planner": [
+    { id: "ep1", name: "Management Scope", placeholder: "e.g. Full event management or consultation" },
+    { id: "ep2", name: "Vendor Coordination", placeholder: "e.g. Handling all vendors" },
+  ]
+};
 
 export function AddServiceForm() {
-  // State Management
-  const [serviceName, setServiceName] = useState("");
-  const [categoryId, setCategoryId] = useState("");
-  const [subcategoryId, setSubcategoryId] = useState("");
+  // Global State
+  const [serviceTitle, setServiceTitle] = useState("");
+  const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
-  const [selectedStandard, setSelectedStandard] = useState<string[]>([]);
-  const [customFeatures, setCustomFeatures] = useState<string[]>([]);
-  const [customInput, setCustomInput] = useState("");
-  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [selectedEventTypes, setSelectedEventTypes] = useState<string[]>([]);
+  const [priceType, setPriceType] = useState("");
+  const [price, setPrice] = useState("");
+  const [isAcrossCity, setIsAcrossCity] = useState(false);
+  const [area, setArea] = useState("");
+  const [policies, setPolicies] = useState("");
+  const [availableDates, setAvailableDates] = useState<Date[] | undefined>([]);
   
-  const suggestionsRef = useRef<HTMLDivElement>(null);
+  // Integrated Features State (Array of IDs)
+  const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
 
-  // Close suggestions on blur with delay
+  // Get dynamic features based on category
+  const coreFeatures = category ? FEATURES_BY_CATEGORY[category] || [] : [];
+
+  // Reset features when category changes
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (suggestionsRef.current && !suggestionsRef.current.contains(event.target as Node)) {
-        setTimeout(() => setShowSuggestions(false), 200);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setSelectedFeatures([]);
+  }, [category]);
 
-  // Get selected category object
-  const selectedCategory = CATEGORIES.find(c => c.id === categoryId);
-  
-  // Get subcategories for selected category
-  const availableSubcategories = selectedCategory 
-    ? SUBCATEGORIES[selectedCategory.slug] || [] 
-    : [];
-
-  // Get selected subcategory object
-  const selectedSubcategory = availableSubcategories.find(s => s.id === subcategoryId);
-
-  // Get standard features for selected subcategory
-  const availableStandardFeatures = selectedSubcategory
-    ? STANDARD_FEATURES[selectedSubcategory.slug] || []
-    : [];
-
-  // Handle category change
-  const handleCategoryChange = (newCategoryId: string) => {
-    setCategoryId(newCategoryId);
-    // Reset subcategory and features when category changes
-    setSubcategoryId("");
-    setSelectedStandard([]);
+  const toggleEventType = (type: string) => {
+    setSelectedEventTypes(prev => 
+      prev.includes(type) ? prev.filter(t => t !== type) : [...prev, type]
+    );
   };
 
-  // Handle subcategory change
-  const handleSubcategoryChange = (newSubcategoryId: string) => {
-    setSubcategoryId(newSubcategoryId);
-    // Reset selected features when subcategory changes
-    setSelectedStandard([]);
-  };
-
-  // Functions
-  const toggleStandardFeature = (id: string) => {
-    setSelectedStandard(prev => 
+  const toggleFeature = (id: string) => {
+    setSelectedFeatures(prev => 
       prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]
     );
   };
 
-  const addCustomFeature = (feature: string) => {
-    const trimmed = feature.trim();
-    if (trimmed && !customFeatures.includes(trimmed)) {
-      setCustomFeatures(prev => [...prev, trimmed]);
-      setCustomInput("");
-      setShowSuggestions(false);
-    }
-  };
-
-  const removeCustomFeature = (index: number) => {
-    setCustomFeatures(prev => prev.filter((_, i) => i !== index));
-  };
-
   const handleReset = () => {
-    setServiceName("");
-    setCategoryId("");
-    setSubcategoryId("");
+    setServiceTitle("");
+    setCategory("");
     setDescription("");
-    setMinPrice("");
-    setMaxPrice("");
-    setSelectedStandard([]);
-    setCustomFeatures([]);
-    setCustomInput("");
+    setSelectedEventTypes([]);
+    setPriceType("");
+    setPrice("");
+    setIsAcrossCity(false);
+    setArea("");
+    setPolicies("");
+    setAvailableDates([]);
+    setSelectedFeatures([]);
   };
 
   const handleSubmit = () => {
     const formData = {
-      categoryId,
-      subcategoryId,
-      serviceName,
+      serviceTitle,
+      category,
       description,
-      priceRange: { min: minPrice, max: maxPrice },
-      standardFeatures: selectedStandard,
-      customFeatures
+      selectedEventTypes,
+      priceDetails: { type: priceType, amount: price },
+      location: { isAcrossCity, area },
+      policies,
+      availability: availableDates,
+      features: selectedFeatures
     };
-    console.log("Form Data:", formData);
-    alert("Service created successfully! Check console for data.");
+    console.log("Final Form Data:", formData);
+    alert("Service listing created successfully!");
   };
 
-  // Validation
-  const isFormValid = 
-    serviceName.trim() !== "" && 
-    categoryId !== "" && 
-    subcategoryId !== "" &&
-    minPrice !== "" && 
-    selectedStandard.length >= 3;
-
-  // Filter suggestions
-  const filteredSuggestions = POPULAR_FEATURES.filter(item => 
-    item.text.toLowerCase().includes(customInput.toLowerCase()) && 
-    !customFeatures.includes(item.text)
-  );
+  const isFormValid = serviceTitle && category && priceType && price && selectedEventTypes.length > 0;
 
   return (
-    <Card>
+    <Card className="max-w-4xl mx-auto">
       <CardHeader>
-        <CardTitle>Create New Service</CardTitle>
-        <CardDescription>Add your service details and features</CardDescription>
+        <CardTitle>List Your Service</CardTitle>
+        <CardDescription>Complete the global fields and specific features for your service.</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="flex flex-col gap-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Left Column: Details */}
-            <div className="flex flex-col gap-6">
-              <div className="flex flex-col gap-4">
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-                  Basic Information
-                </h3>
-                <div className="flex flex-col gap-4">
-                  {/* Category & Subcategory */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="flex flex-col gap-2">
-                      <Label htmlFor="category">
-                        Category <span className="text-destructive">*</span>
-                      </Label>
-                      <Select value={categoryId} onValueChange={handleCategoryChange}>
-                        <SelectTrigger id="category">
-                          <SelectValue placeholder="Select Category" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {CATEGORIES.map((cat) => (
-                            <SelectItem key={cat.id} value={cat.id}>
-                              {cat.name}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    
-                    <div className="flex flex-col gap-2">
-                      <Label htmlFor="subcategory">
-                        Service Type <span className="text-destructive">*</span>
-                      </Label>
-                      <Select 
-                        value={subcategoryId} 
-                        onValueChange={handleSubcategoryChange}
-                        disabled={!categoryId}
-                      >
-                        <SelectTrigger id="subcategory">
-                          <SelectValue placeholder={
-                            categoryId ? "Select Type" : "Select category first"
-                          } />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {availableSubcategories.map((sub) => (
-                            <SelectItem key={sub.id} value={sub.id}>
-                              {sub.name}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-
-                  {/* Service Name */}
-                  <div className="flex flex-col gap-2">
-                    <Label htmlFor="serviceName">
-                      Service Name <span className="text-destructive">*</span>
-                    </Label>
-                    <Input 
-                      id="serviceName" 
-                      placeholder="e.g. Premium Wedding Package" 
-                      value={serviceName}
-                      onChange={(e) => setServiceName(e.target.value)}
-                    />
-                  </div>
-
-                  {/* Description */}
-                  <div className="flex flex-col gap-2">
-                    <Label htmlFor="description">Description</Label>
-                    <Textarea 
-                      id="description" 
-                      placeholder="Briefly describe your service..." 
-                      className="min-h-30"
-                      value={description}
-                      onChange={(e) => setDescription(e.target.value)}
-                      rows={4}
-                    />
-                  </div>
-
-                  {/* Price Range */}
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="flex flex-col gap-2">
-                      <Label htmlFor="minPrice">
-                        Min Price (৳) <span className="text-destructive">*</span>
-                      </Label>
-                      <Input 
-                        id="minPrice" 
-                        type="number" 
-                        placeholder="50000" 
-                        value={minPrice}
-                        onChange={(e) => setMinPrice(e.target.value)}
-                      />
-                    </div>
-                    <div className="flex flex-col gap-2">
-                      <Label htmlFor="maxPrice">Max Price (৳)</Label>
-                      <Input 
-                        id="maxPrice" 
-                        type="number" 
-                        placeholder="200000" 
-                        value={maxPrice}
-                        onChange={(e) => setMaxPrice(e.target.value)}
-                      />
-                    </div>
-                  </div>
-                </div>
+        <div className="flex flex-col gap-10">
+          {/* Section 1: Service Overview */}
+          <div className="flex flex-col gap-6">
+            <div className="flex items-center gap-2 pb-2 border-b">
+              <Info className="size-5 text-primary" />
+              <h3 className="text-lg">Service Overview</h3>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="flex flex-col gap-2">
+                <Label htmlFor="serviceTitle">Service Title <span className="text-destructive">*</span></Label>
+                <Input 
+                  id="serviceTitle" 
+                  placeholder="e.g. Professional Wedding Photography" 
+                  value={serviceTitle}
+                  onChange={(e) => setServiceTitle(e.target.value)}
+                />
               </div>
-
-              <Separator />
-
-              {/* Custom Features */}
-              <div className="flex flex-col gap-4">
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-                  Custom Features
-                </h3>
-                <div className="flex flex-col gap-4">
-                  <div className="relative" ref={suggestionsRef}>
-                    <div className="relative">
-                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-                      <Input 
-                        placeholder="Type to search or add..." 
-                        className="pl-9"
-                        value={customInput}
-                        onChange={(e) => {
-                          setCustomInput(e.target.value);
-                          setShowSuggestions(true);
-                        }}
-                        onFocus={() => customInput && setShowSuggestions(true)}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter" && customInput) {
-                            e.preventDefault();
-                            addCustomFeature(customInput);
-                          }
-                        }}
-                      />
-                    </div>
-
-                    {showSuggestions && (customInput || filteredSuggestions.length > 0) && (
-                      <div className="absolute z-10 w-full mt-1 bg-popover border rounded-md shadow-md max-h-60 overflow-auto">
-                        <div className="p-1 flex flex-col gap-1">
-                          {filteredSuggestions.length > 0 && (
-                            <>
-                              <div className="px-2 py-1 text-[10px] font-bold text-muted-foreground uppercase">
-                                Popular
-                              </div>
-                              {filteredSuggestions.map((item, idx) => (
-                                <button
-                                  key={idx}
-                                  className="w-full flex items-center justify-between px-2 py-2 text-sm rounded-sm hover:bg-accent text-left"
-                                  onClick={() => addCustomFeature(item.text)}
-                                >
-                                  <span>{item.text}</span>
-                                  <span className="text-[10px] text-muted-foreground">
-                                    Used by {item.usedBy}
-                                  </span>
-                                </button>
-                              ))}
-                            </>
-                          )}
-                          {customInput && !filteredSuggestions.some(s => s.text.toLowerCase() === customInput.toLowerCase()) && (
-                            <button
-                              className="w-full flex items-center gap-2 px-2 py-2 text-sm rounded-sm hover:bg-accent text-primary font-medium"
-                              onClick={() => addCustomFeature(customInput)}
-                            >
-                              <Plus className="size-4" />
-                              Add &quot;{customInput}&quot;
-                            </button>
-                          )}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="flex flex-wrap gap-2">
-                    {customFeatures.map((feature, index) => (
-                      <div 
-                        key={index}
-                        className="flex items-center gap-2 bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-xs font-medium"
-                      >
-                        <Sparkles className="size-3" />
-                        <span>{feature}</span>
-                        <button 
-                          onClick={() => removeCustomFeature(index)}
-                          className="hover:text-destructive"
-                        >
-                          <X className="size-3" />
-                        </button>
-                      </div>
+              <div className="flex flex-col gap-2">
+                <Label htmlFor="category">Category <span className="text-destructive">*</span></Label>
+                <Select value={category} onValueChange={setCategory}>
+                  <SelectTrigger id="category">
+                    <SelectValue placeholder="Select Category" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {SERVICE_CATEGORIES.map(cat => (
+                      <SelectItem key={cat} value={cat}>{cat}</SelectItem>
                     ))}
-                  </div>
-                </div>
+                  </SelectContent>
+                </Select>
               </div>
             </div>
 
-            {/* Right Column: Standard Features */}
-            <div className="flex flex-col gap-6">
-              <div className="flex flex-col gap-4">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-                    Standard Features
-                  </h3>
-                  {subcategoryId && (
-                    <div className="text-xs font-medium">
-                      {selectedStandard.length < 3 ? (
-                        <span className="text-destructive">
-                          {3 - selectedStandard.length} more needed
-                        </span>
-                      ) : (
-                        <span className="text-primary flex items-center gap-1">
-                          <Check className="size-3" /> Minimum met
-                        </span>
-                      )}
-                    </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="flex flex-col gap-2">
+                <Label htmlFor="priceType">Price Type <span className="text-destructive">*</span></Label>
+                <Select value={priceType} onValueChange={setPriceType}>
+                  <SelectTrigger id="priceType">
+                    <SelectValue placeholder="Select Price Type" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {PRICE_TYPES.map(type => (
+                      <SelectItem key={type} value={type}>{type}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="flex flex-col gap-2">
+                <Label htmlFor="price">Base Price (৳) <span className="text-destructive">*</span></Label>
+                <Input 
+                  id="price" 
+                  type="number" 
+                  placeholder="0.00" 
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <Label>Suitable for Event Types <span className="text-destructive">*</span></Label>
+              <div className="flex flex-wrap gap-2">
+                {EVENT_TYPES.map(type => (
+                  <Badge 
+                    key={type}
+                    variant={selectedEventTypes.includes(type) ? "default" : "secondary"}
+                    className="cursor-pointer px-4 py-1.5 transition-all"
+                    onClick={() => toggleEventType(type)}
+                  >
+                    {type}
+                    {selectedEventTypes.includes(type) && <X className="size-3 ml-2" />}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <Label htmlFor="description">About the Service <span className="text-destructive">*</span></Label>
+              <Textarea 
+                id="description" 
+                placeholder="Briefly describe what you offer..." 
+                className="min-h-24"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </div>
+          </div>
+
+          {/* Section 2: Core Features */}
+          <div className="flex flex-col gap-6">
+            <div className="flex items-center gap-2 pb-2 border-b">
+              <Save className="size-5 text-primary" />
+              <h3 className="text-lg">Core Features</h3>
+            </div>
+            
+            <div className="flex flex-col gap-4">
+              {!category ? (
+                <div className="p-8 border border-dashed text-center bg-muted/50">
+                  <p className="text-sm text-muted-foreground">Select a category above to see features.</p>
+                </div>
+              ) : coreFeatures.length === 0 ? (
+                <div className="p-8 border border-dashed text-center bg-muted/50">
+                  <p className="text-sm text-muted-foreground">No specific features for this category.</p>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {coreFeatures.map((feature) => {
+                    const isSelected = selectedFeatures.includes(feature.id);
+                    return (
+                      <div 
+                        key={feature.id}
+                        onClick={() => toggleFeature(feature.id)}
+                        className={cn(
+                          "flex items-center gap-3 p-4 border transition-all cursor-pointer",
+                          isSelected 
+                            ? "border-primary bg-primary/5" 
+                            : "bg-card border-border"
+                        )}
+                      >
+                        <div className={cn(
+                          "size-5 rounded-full border flex items-center justify-center transition-colors shrink-0",
+                          isSelected ? "bg-primary border-primary text-white" : "border-muted-foreground/30"
+                        )}>
+                          {isSelected && <Check className="size-3 stroke-3" />}
+                        </div>
+                        <Label className="flex-1 cursor-pointer text-base leading-none">
+                          {feature.name}
+                        </Label>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Section 3: Logistics & Media */}
+          <div className="flex flex-col gap-6">
+            <div className="flex items-center gap-2 pb-2 border-b">
+              <MapPin className="size-5 text-primary" />
+              <h3 className="text-lg">Logistics & Media</h3>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="flex flex-col gap-5">
+                <div className="flex flex-col gap-3">
+                  <Label>Service Location</Label>
+                  <div className="flex items-center space-x-2 p-3 border">
+                    <Checkbox 
+                      id="acrossCity" 
+                      checked={isAcrossCity}
+                      onCheckedChange={(checked) => setIsAcrossCity(checked as boolean)}
+                    />
+                    <Label htmlFor="acrossCity" className="cursor-pointer">Available across entire city</Label>
+                  </div>
+                  {!isAcrossCity && (
+                    <Input id="area" placeholder="Specific area (e.g. Dhanmondi)" value={area} onChange={(e) => setArea(e.target.value)} />
                   )}
                 </div>
-                
-                {!subcategoryId ? (
-                  <div className="flex items-center justify-center h-64 border border-dashed rounded-lg bg-muted/50">
-                    <p className="text-sm text-muted-foreground text-center px-4">
-                      Please select a category and service type first
-                    </p>
-                  </div>
-                ) : availableStandardFeatures.length === 0 ? (
-                  <div className="flex items-center justify-center h-64 border border-dashed rounded-lg bg-muted/50">
-                    <p className="text-sm text-muted-foreground text-center px-4">
-                      No standard features available for this service type
-                    </p>
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {availableStandardFeatures.map((feature) => {
-                      const isChecked = selectedStandard.includes(feature.id);
-                      return (
-                        <div 
-                          key={feature.id}
-                          className={cn(
-                            "flex items-center gap-3 p-3 border rounded-md transition-colors cursor-pointer hover:bg-accent",
-                            isChecked && "border-primary bg-primary/5"
-                          )}
-                          onClick={() => toggleStandardFeature(feature.id)}
-                        >
-                          <Checkbox 
-                            id={`feature-${feature.id}`} 
-                            checked={isChecked}
-                            onCheckedChange={() => toggleStandardFeature(feature.id)}
-                          />
-                          <Label 
-                            htmlFor={`feature-${feature.id}`}
-                            className="flex-1 cursor-pointer text-sm font-medium"
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            {feature.name}
-                          </Label>
-                        </div>
-                      );
-                    })}
-                  </div>
-                )}
+
+                <div className="flex flex-col gap-3">
+                  <Label>Availability & Dates</Label>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Button variant="outline" className="justify-start text-left font-normal">
+                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        {availableDates && availableDates.length > 0 ? `${availableDates.length} dates selected` : <span>Select dates</span>}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar mode="multiple" selected={availableDates} onSelect={setAvailableDates} initialFocus />
+                    </PopoverContent>
+                  </Popover>
+                </div>
               </div>
 
-              <div className="mt-auto pt-6 border-t flex flex-col gap-4">
-                {!isFormValid && (
-                  <div className="flex items-center gap-2 text-xs text-destructive font-medium bg-destructive/10 p-3 rounded-md border border-destructive/20">
-                    <AlertCircle className="size-4 shrink-0" />
-                    <p>
-                      Required: Category, Service Type, Name, Min Price, and 3+ features.
-                    </p>
+              <div className="flex flex-col gap-5">
+                <div className="flex flex-col gap-2">
+                  <Label>Portfolio Images</Label>
+                  <div className="border-2 border-dashed p-6 flex flex-col items-center justify-center gap-2 text-muted-foreground hover:bg-accent cursor-pointer transition-colors">
+                    <Upload className="size-6" />
+                    <span className="text-xs font-medium">Click to upload (Max 10)</span>
                   </div>
-                )}
+                </div>
                 
-                <div className="flex gap-4">
-                  <Button 
-                    variant="outline" 
-                    className="flex-1"
-                    onClick={handleReset}
-                  >
-                    <RotateCcw className="size-4" />
-                    Reset
-                  </Button>
-                  <Button 
-                    className="flex-1"
-                    disabled={!isFormValid}
-                    onClick={handleSubmit}
-                  >
-                    <Save className="size-4" />
-                    Create Service
-                  </Button>
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="policies">Policies & Terms</Label>
+                  <Textarea 
+                    id="policies" 
+                    placeholder="Cancellation rules, terms..." 
+                    className="min-h-24"
+                    value={policies}
+                    onChange={(e) => setPolicies(e.target.value)}
+                  />
                 </div>
               </div>
             </div>
           </div>
+
+          {/* Action Buttons */}
+          <div className="flex flex-col gap-4 pt-6 border-t">
+            {!isFormValid && (
+              <div className="flex items-center gap-2 text-xs text-destructive font-medium bg-destructive/10 p-3 rounded-md border border-destructive/20">
+                <AlertCircle className="size-4 shrink-0" />
+                <p>Please fill required fields: Title, Category, Description, Event Types, Price Type, and Price.</p>
+              </div>
+            )}
+            <div className="flex gap-4">
+              <Button variant="outline" className="flex-1" onClick={handleReset}>
+                <RotateCcw className="size-4 mr-2" />
+                Reset Form
+              </Button>
+              <Button className="flex-1" disabled={!isFormValid} onClick={handleSubmit}>
+                <Save className="size-4 mr-2" />
+                Publish Service
+              </Button>
+            </div>
+          </div>
+
         </div>
       </CardContent>
     </Card>
