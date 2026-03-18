@@ -8,7 +8,7 @@ import { Form } from "@/components/ui/form";
 import { serviceFormSchema, type ServiceFormValues } from "@/schemas/service.schema";
 import {
   EVENT_TYPES,
-  FEATURES_BY_CATEGORY,
+  FEATURES_BY_SUBCATEGORY,
   PRICE_TYPES,
   SERVICE_CATEGORIES,
   SUBCATEGORIES_BY_CATEGORY,
@@ -63,6 +63,11 @@ export function AddServiceForm() {
     }
   }, [category, form, subcategory]);
 
+  useEffect(() => {
+    form.setValue("features", []);
+    form.setValue("customFeatures", []);
+  }, [form, subcategory]);
+
   const toggleFeature = (id: string) => {
     const updated = selectedFeatures.includes(id)
       ? selectedFeatures.filter((item) => item !== id)
@@ -94,7 +99,7 @@ export function AddServiceForm() {
     );
   };
 
-  const coreFeatures = category ? FEATURES_BY_CATEGORY[category] || [] : [];
+  const coreFeatures = subcategory ? FEATURES_BY_SUBCATEGORY[subcategory] || [] : [];
   const subcategories = category ? SUBCATEGORIES_BY_CATEGORY[category] || [] : [];
 
   const onSubmit = (values: ServiceFormValues) => {
@@ -122,6 +127,7 @@ export function AddServiceForm() {
             />
             <AddServiceCoreFeaturesSection
               category={category}
+              subcategory={subcategory}
               coreFeatures={coreFeatures}
               selectedFeatures={selectedFeatures}
               customFeatures={customFeatures}

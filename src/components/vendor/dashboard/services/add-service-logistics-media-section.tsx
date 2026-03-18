@@ -42,7 +42,7 @@ export function AddServiceLogisticsMediaSection({
               control={form.control}
               name="isAcrossCity"
               render={({ field }) => (
-                <FormItem className="flex items-center space-x-2 space-y-0 border p-3">
+                <FormItem className="flex items-center space-x-2 space-y-0 border p-2 rounded-md">
                   <FormControl>
                     <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                   </FormControl>
@@ -105,7 +105,7 @@ export function AddServiceLogisticsMediaSection({
         <div className="space-y-5">
           <div className="space-y-2">
             <FormLabel>Portfolio Images</FormLabel>
-            <div className="flex cursor-pointer flex-col items-center justify-center gap-2 border-2 border-dashed p-6 text-muted-foreground hover:bg-accent">
+            <div className="flex cursor-pointer flex-col items-center justify-center gap-2 border-2 rounded-md border-dashed p-6 text-muted-foreground hover:bg-accent">
               <Upload className="size-6" />
               <span className="text-xs">Click to upload (Max 10)</span>
             </div>
