@@ -16,13 +16,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { SuccessToast } from "@/lib/utils";
 
 const profileSchema = z.object({
@@ -50,7 +43,6 @@ export function VendorProfileForm() {
     resolver: zodResolver(profileSchema),
     defaultValues: {
       businessName: "Elegant Moments Photography",
-      category: "photography",
       email: "info@elegantmoments.com",
       phone: "+1 (555) 123-4567",
       website: "www.elegantmoments.com",
@@ -96,7 +88,7 @@ export function VendorProfileForm() {
                 )}
               />
 
-              <FormField
+              {/* <FormField
                 control={form.control}
                 name="category"
                 render={({ field }) => (
@@ -118,14 +110,14 @@ export function VendorProfileForm() {
                     <FormMessage />
                   </FormItem>
                 )}
-              />
+              /> */}
 
               <FormField
                 control={form.control}
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email *</FormLabel>
+                    <FormLabel>Email</FormLabel>
                     <div className="relative">
                       <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                       <FormControl>
@@ -142,7 +134,7 @@ export function VendorProfileForm() {
                 name="phone"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Phone *</FormLabel>
+                    <FormLabel>Phone</FormLabel>
                     <div className="relative">
                       <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                       <FormControl>
@@ -153,8 +145,6 @@ export function VendorProfileForm() {
                   </FormItem>
                 )}
               />
-            </div>
-
             <FormField
               control={form.control}
               name="website"
@@ -171,6 +161,8 @@ export function VendorProfileForm() {
                 </FormItem>
               )}
             />
+            </div>
+
 
             <FormField
               control={form.control}

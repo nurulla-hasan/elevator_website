@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import CategoryCard from "../main-route/category/category-card";
+import { ArrowRight } from "lucide-react";
 
 const events = [
   {
@@ -76,11 +77,16 @@ export default function EventTypes() {
 
   return (
     <section>
-      <div className="mb-4 md:mb-6">
+      <div className="flex justify-between items-center mb-4 md:mb-6">
         <PageHeader
-          title="Find Vendors by Event Type"
-          description="Plan your specific wedding events with the right professionals"
+          title="PLAN BY EVENT"
+          description="Explore vendors tailored for each wedding function"
         />
+        <Link href="/vendors?category=featured" className="hidden md:block">
+          <Button variant="link" className="hover:text-primary">
+            Explore Vendors <ArrowRight />
+          </Button>
+        </Link>
       </div>
 
       <div>
