@@ -48,7 +48,7 @@ export default function BudgetVendors() {
       <div className="mb-4 md:mb-6">
         <PageHeader 
           title="Find Vendors by Budget" 
-          description="Plan your wedding within your financial comfort zone"
+          description="Plan your wedding without overspending"
         />
       </div>
 

@@ -19,12 +19,11 @@ export default function NewsletterFeedback() {
           </div>
 
           <div className="space-y-4">
-            <h2 className="text-2xl md:text-4xl font-semibold text-primary">
-              Stay in the loop with <br className="hidden md:block" />
-              <span className="text-foreground">wedding trends</span>
+            <h2 className="text-2xl md:text-4xl font-bold text-primary">
+              Get Wedding Tips & Ideas in your Inbox
             </h2>
             <p className="text-muted-foreground text-base md:text-lg max-w-lg mx-auto">
-              Get exclusive vendor offers, planning tips, and inspiration delivered directly to your inbox every week.
+              Stay updated with the latest trends, vendor tips, and exclusive offers
             </p>
           </div>
           
@@ -36,7 +35,7 @@ export default function NewsletterFeedback() {
               <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input 
                 type="email" 
-                placeholder="Your email address" 
+                placeholder="Enter your email address" 
                 className="pl-10"
               />
             </div>

@@ -13,8 +13,8 @@ export default function VenuePreview() {
     <section>
       <div className="mb-4 md:mb-6">
         <PageHeader 
-          title="Find Your Perfect Venue" 
-          description="Explore our curated list of top-rated venues with an interactive map."
+          title="Find Wedding Venues Near You" 
+          description="Search by location, budget, and guest count"
         >
         </PageHeader>
       </div>

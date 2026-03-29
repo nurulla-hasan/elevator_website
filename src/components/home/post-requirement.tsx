@@ -15,12 +15,10 @@ export default function PostRequirement() {
         {/* Text Content */}
         <div className="space-y-4 md:max-w-2xl text-white">
           <h2 className="text-xl md:text-4xl font-semibold">
-            Let Vendors Come to You
+            Let the Vendors Come to You
           </h2>
           <p className="text-white/80 text-sm md:text-lg leading-relaxed">
-            Post your wedding requirements and receive competitive quotes from
-            verified vendors. Our reverse marketplace makes vendor hunting
-            effortless!
+            Post your wedding requirements with budget and receive multiple quotes from available trusted vendors within hours.
           </p>
         </div>
 
@@ -32,10 +30,13 @@ export default function PostRequirement() {
               className="group transition-all duration-200"
               size="lg"
             >
-              Post Your Requirement
+              Post My Requirement
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" />
             </Button>
           </Link>
+          <p className="text-white/80 text-xs md:text-sm font-medium mt-3">
+            Save time and compare prices instantly.
+          </p>
         </div>
       </div>
     </section>

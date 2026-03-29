@@ -11,28 +11,33 @@ export default function RecentlyAddedVendors() {
   return (
     <section>
       <div className="max-w-6xl mx-auto">
-        <div className="mb-8">
-          <PageHeader 
-            title="Recently Added Vendors" 
-            description="Explore our newest professional wedding vendors"
+        <div className="flex justify-between items-center mb-4 md:mb-6">
+          <PageHeader
+            title="Recently Added Vendors"
+            description="Discover the newest wedding service providers in Karachi"
           />
+          <Link href="/vendors" className="hidden md:block">
+            <Button variant="link">
+              View All <ArrowRight />
+            </Button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {mockVendors.map((vendor) => (
-            <VendorCard 
-              key={vendor.id} 
-              vendor={vendor} 
-              variant="horizontal" 
+            <VendorCard
+              key={vendor.id}
+              vendor={vendor}
+              variant="horizontal"
               className="hover:shadow-md transition-shadow duration-300"
             />
           ))}
         </div>
 
-        <div className="mt-10 flex justify-center">
+        <div className="mt-10 flex justify-center md:hidden">
           <Link href="/vendors">
-            <Button variant="outline">
-              View All Vendors
+            <Button>
+              View All
               <ArrowRight />
             </Button>
           </Link>

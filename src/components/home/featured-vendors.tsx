@@ -41,7 +41,7 @@ export default function FeaturedVendors() {
           description="Top-rated professionals for your special day"
         />
         <Link href="/vendors?category=featured" className="hidden md:block">
-          <Button variant="link" className="hover:text-primary">
+          <Button variant="link">
             View All <ArrowRight />
           </Button>
         </Link>

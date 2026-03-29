@@ -44,14 +44,31 @@ export default function InspirationSection() {
     <section className="w-full">
       <div className="flex justify-between items-center mb-4 md:mb-6">
         <PageHeader
-          title="Inspiration and Ideas"
-          description="Explore unique wedding ideas and connect with the vendors who bring them to life."
+          title="Wedding Ideas & Inspiration"
+          description="Explore trends, themes, and real wedding setups to inspire your big day"
         />
         <Link href="/inspiration" className="hidden md:block">
-          <Button variant="link" className="hover:text-primary">
-            View All <ArrowRight />
+          <Button variant="link">
+            Explore Ideas <ArrowRight />
           </Button>
         </Link>
+      </div>
+
+      <div className="flex flex-wrap gap-2 mb-6 overflow-x-auto pb-2 scrollbar-hide">
+        {["Mehndi Decor Ideas", "Bridal Looks", "Stage Decoration", "Real Weddings", "Wedding Themes"].map((category) => (
+          <Link
+            key={category}
+            href={`/inspiration?categories=${encodeURIComponent(category)}`}
+          >
+            <Button
+              variant="outline"
+              size="sm"
+              className="rounded-full hover:bg-primary hover:text-primary-foreground transition-all duration-300 whitespace-nowrap"
+            >
+              {category}
+            </Button>
+          </Link>
+        ))}
       </div>
 
       <div className="relative">

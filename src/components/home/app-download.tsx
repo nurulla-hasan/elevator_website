@@ -1,4 +1,4 @@
-import { Smartphone, QrCode, CheckCircle2 } from "lucide-react";
+import { QrCode, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -17,24 +17,24 @@ export default function AppDownload() {
           </div>
 
           <div className="space-y-3">
-            <h2 className="text-2xl font-semibold text-white md:text-4xl lg:leading-[1.1]">
-              Your dream wedding, <br />
-              <span className="opacity-80 text-xl md:text-3xl">one tap away.</span>
+            <h2 className="text-2xl font-bold text-white md:text-5xl lg:leading-[1.1]">
+              Your Dream Wedding, <br />
+              <span className="text-white/80">One Tap Away</span>
             </h2>
-            <p className="max-w-md text-sm md:text-base leading-relaxed text-white/80">
-              Manage vendors, track your budget, and collaborate with your partner—all from the palm of your hand.
+            <p className="max-w-md text-base md:text-lg leading-relaxed text-white/90">
+              Plan, compare, and book vendors anytime, anywhere with the WePlan app
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:max-w-sm">
+          <div className="grid grid-cols-1 gap-y-3 gap-x-6 sm:grid-cols-2 lg:max-w-md">
             {[
-              "Real-time vendor chat",
-              "Smart budget tracker",
-              "Guest list management",
-              "Instant booking alerts"
+              "Browse vendors",
+              "Get instant quotes",
+              "Chat with vendors",
+              "Track your bookings"
             ].map((feature) => (
-              <div key={feature} className="flex items-center gap-2 text-[13px] text-white/90">
-                <CheckCircle2 className="h-3.5 w-3.5 text-white" />
+              <div key={feature} className="flex items-center gap-3 text-[14px] md:text-base text-white font-medium">
+                <CheckCircle2 className="h-4 w-4 md:h-5 md:w-5 text-white fill-white/10" />
                 {feature}
               </div>
             ))}
@@ -75,70 +75,75 @@ export default function AppDownload() {
         </div>
 
         {/* Mockup Side */}
-        <div className="relative mt-12 flex-1 lg:mt-0 lg:flex lg:justify-center hidden">
-          <div className="relative h-100 w-52.5 md:h-120 md:w-60">
+        <div className="relative mt-12 flex-1 lg:mt-0 lg:flex lg:justify-center hidden md:flex">
+          <div className="relative h-100 w-52.5 md:h-125 md:w-62.5">
             {/* Main Phone Mockup */}
-            <div className="absolute inset-0 rounded-[2.5rem] border-[6px] border-white/10 bg-white/5 shadow-2xl overflow-hidden backdrop-blur-sm ring-1 ring-white/20">
-              {/* Screen Content */}
-              <div className="h-full w-full bg-linear-to-b from-white/10 to-white/5 p-4">
-                <div className="space-y-4 pt-6">
-                  <div className="flex items-center justify-between">
-                    <div className="h-3 w-16 rounded-full bg-white/20" />
-                    <div className="h-3 w-3 rounded-full bg-white/20" />
-                  </div>
-                  <div className="space-y-1.5">
-                    <div className="h-1.5 w-24 rounded-full bg-white/10" />
-                    <div className="h-1.5 w-16 rounded-full bg-white/10" />
+            <div className="absolute inset-0 rounded-[3rem] border-8 border-white/20 bg-slate-950 shadow-2xl overflow-hidden ring-1 ring-white/30">
+              {/* Screen Content - Mocking Vendor Listing/Chat/Venue */}
+              <div className="h-full w-full bg-white p-4 pt-10 space-y-4">
+                {/* Header Mockup */}
+                <div className="flex items-center justify-between border-b pb-3">
+                  <div className="h-2.5 w-20 rounded-full bg-slate-100" />
+                  <div className="h-6 w-6 rounded-full bg-slate-100" />
+                </div>
+                
+                {/* Listing Screen Mockup */}
+                <div className="space-y-3">
+                  <div className="h-32 rounded-2xl bg-slate-50 border border-slate-100 overflow-hidden relative">
+                    <div className="absolute bottom-3 left-3 space-y-1">
+                      <div className="h-2 w-24 rounded-full bg-slate-200" />
+                      <div className="h-1.5 w-16 rounded-full bg-slate-100" />
+                    </div>
                   </div>
                   <div className="grid grid-cols-2 gap-2">
-                    <div className="h-16 rounded-xl bg-white/20 flex flex-col items-center justify-center gap-1.5 border border-white/10 animate-pulse">
-                       <div className="h-4 w-4 rounded-full bg-white/20" />
-                       <div className="h-1 w-6 rounded-full bg-white/20" />
-                    </div>
-                    <div className="h-16 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center justify-center gap-1.5">
-                       <div className="h-4 w-4 rounded-full bg-white/20" />
-                       <div className="h-1 w-6 rounded-full bg-white/20" />
-                    </div>
-                    <div className="h-24 col-span-2 rounded-xl bg-white/5 border border-white/10 p-3 space-y-2">
-                       <div className="h-1.5 w-1/3 rounded-full bg-white/20" />
-                       <div className="space-y-1">
-                         <div className="h-1 w-full rounded-full bg-white/10" />
-                         <div className="h-1 w-full rounded-full bg-white/10" />
-                         <div className="h-1 w-2/3 rounded-full bg-white/10" />
-                       </div>
-                    </div>
+                    <div className="h-20 rounded-xl bg-slate-50 border border-slate-100" />
+                    <div className="h-20 rounded-xl bg-slate-50 border border-slate-100" />
+                  </div>
+                </div>
+
+                {/* Chat Bubble Mockup */}
+                <div className="pt-2 space-y-2">
+                  <div className="flex justify-end">
+                    <div className="h-8 w-2/3 rounded-2xl rounded-tr-none bg-primary/10 border border-primary/5" />
+                  </div>
+                  <div className="flex justify-start">
+                    <div className="h-8 w-1/2 rounded-2xl rounded-tl-none bg-slate-100 border border-slate-200" />
                   </div>
                 </div>
               </div>
-              {/* Notch */}
-              <div className="absolute top-0 left-1/2 h-4 w-24 -translate-x-1/2 rounded-b-xl bg-white/10" />
+              
+              {/* Dynamic Island / Notch */}
+              <div className="absolute top-0 left-1/2 h-6 w-28 -translate-x-1/2 rounded-b-2xl bg-slate-950 flex items-center justify-center gap-1.5">
+                <div className="h-1 w-1 rounded-full bg-white/20" />
+                <div className="h-1.5 w-8 rounded-full bg-white/10" />
+              </div>
             </div>
             
-            {/* Floating Card 1 */}
-            <div className="absolute -left-8 top-16 hidden animate-bounce md:block md:animate-[bounce_4s_infinite]">
-              <div className="rounded-xl border border-white/20 bg-white/90 p-3 shadow-2xl backdrop-blur-xl">
-                <div className="flex items-center gap-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-600">
-                    <CheckCircle2 className="h-4 w-4" />
+            {/* Floating Card 1 - Venue Finder */}
+            <div className="absolute -left-12 top-20 animate-[bounce_4s_infinite]">
+              <div className="rounded-2xl border border-white/20 bg-white/95 p-4 shadow-2xl backdrop-blur-xl">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <QrCode className="h-5 w-5" />
                   </div>
                   <div>
-                    <p className="text-[10px] font-bold text-slate-900 leading-tight">Booking Confirmed!</p>
-                    <p className="text-[8px] text-slate-500">Karachi Ballroom</p>
+                    <p className="text-xs font-bold text-slate-900 leading-tight">Venue Finder</p>
+                    <p className="text-[10px] text-slate-500">Nearby: Gulshan 2</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Floating Card 2 */}
-            <div className="absolute -right-10 bottom-24 hidden animate-bounce md:block md:animate-[bounce_5s_infinite]">
-              <div className="rounded-xl border border-white/20 bg-white/90 p-3 shadow-2xl backdrop-blur-xl">
-                <div className="flex items-center gap-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
-                    <Smartphone className="h-4 w-4" />
+            {/* Floating Card 2 - Instant Quote */}
+            <div className="absolute -right-12 bottom-32 animate-[bounce_5s_infinite]">
+              <div className="rounded-2xl border border-white/20 bg-white/95 p-4 shadow-2xl backdrop-blur-xl">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600">
+                    <CheckCircle2 className="h-5 w-5" />
                   </div>
                   <div>
-                    <p className="text-[10px] font-bold text-slate-900 leading-tight">Budget Updated</p>
-                    <p className="text-[8px] text-slate-500">Left: PKR 50k</p>
+                    <p className="text-xs font-bold text-slate-900 leading-tight">Instant Quote</p>
+                    <p className="text-[10px] text-slate-500">৳ 25,000 Received</p>
                   </div>
                 </div>
               </div>

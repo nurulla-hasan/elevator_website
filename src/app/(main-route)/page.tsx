@@ -13,6 +13,7 @@ import WePlanEventAdvisor from "@/components/home/we-plan-event-advisor";
 import HomeStats from "@/components/home/home-stats";
 import AppDownload from "@/components/home/app-download";
 import NewsletterFeedback from "@/components/home/newsletter-feedback";
+import WhyChoose from "@/components/home/why-choose";
 import PageLayout from "@/components/ui/custom/page-layout";
 
 export default function HomePage() {
@@ -81,6 +82,12 @@ export default function HomePage() {
           </PageLayout>
         </div>
 
+        <div className="bg-card py-10 md:py-16">
+          <PageLayout paddingSize="zero">
+            <WhyChoose />
+          </PageLayout>
+        </div>
+
         <div className="py-10 md:py-16">
           <PageLayout paddingSize="zero">
             <HomeStats />
@@ -99,7 +106,7 @@ export default function HomePage() {
           </PageLayout>
         </div>
 
-        <div className="px-5 py-10 md:py-16">
+        <div className="bg-card py-10 md:py-16">
           <VendorCTA />
         </div>
       </main>
