@@ -6,16 +6,19 @@ import { Button } from "@/components/ui/button";
 import { Edit, Trash2, Eye } from "lucide-react";
 import Image from "next/image";
 
+export type ServiceStatus = "active" | "draft" | "deleted";
+
 export type Service = {
   id: string;
   name: string;
   category: string;
+  subcategory: string;
   location: string;
   rating: number;
   reviews: number;
   price: string;
   image: string;
-  verified: boolean;
+  status: ServiceStatus;
   description: string;
 };
 
@@ -25,7 +28,7 @@ export const serviceColumns: ColumnDef<Service>[] = [
     header: "Service Details",
     cell: ({ row }) => (
       <div className="flex items-center gap-3">
-        <div className="relative h-10 w-10 overflow-hidden rounded-lg">
+        <div className="relative h-10 w-10 overflow-hidden rounded-lg border">
           <Image
             src={row.original.image}
             alt={row.original.name}
@@ -35,6 +38,7 @@ export const serviceColumns: ColumnDef<Service>[] = [
         </div>
         <div className="flex flex-col">
           <span className="font-medium text-foreground">{row.original.name}</span>
+          <span className="text-[10px] text-muted-foreground uppercase tracking-wider">{row.original.id}</span>
         </div>
       </div>
     ),
@@ -43,20 +47,18 @@ export const serviceColumns: ColumnDef<Service>[] = [
     accessorKey: "category",
     header: "Category",
     cell: ({ row }) => (
-      <Badge variant="secondary">
-        {row.getValue("category")}
-      </Badge>
+      <div className="flex flex-col gap-1">
+        <Badge variant="secondary" className="w-fit font-normal text-[11px]">
+          {row.original.category}
+        </Badge>
+        <span className="text-[10px] text-muted-foreground pl-1">{row.original.subcategory}</span>
+      </div>
     ),
-  },
-  {
-    accessorKey: "location",
-    header: "Location",
-    cell: ({ row }) => <span className="text-sm">{row.getValue("location")}</span>,
   },
   {
     accessorKey: "price",
     header: "Starting Price",
-    cell: ({ row }) => <span className="font-medium text-primary">{row.getValue("price")}</span>,
+    cell: ({ row }) => <span className="font-semibold text-primary">{row.getValue("price")}</span>,
   },
   {
     accessorKey: "rating",
@@ -64,18 +66,30 @@ export const serviceColumns: ColumnDef<Service>[] = [
     cell: ({ row }) => (
       <div className="flex items-center gap-1">
         <span className="text-sm font-medium">{row.original.rating}</span>
-        <span className="text-xs text-muted-foreground">({row.original.reviews} reviews)</span>
+        <span className="text-[11px] text-muted-foreground">({row.original.reviews})</span>
       </div>
     ),
   },
   {
-    accessorKey: "verified",
+    accessorKey: "status",
     header: "Status",
-    cell: ({ row }) => (
-      <Badge variant={row.original.verified ? "accepted" : "progress"}>
-        {row.original.verified ? "Verified" : "Pending"}
-      </Badge>
-    ),
+    cell: ({ row }) => {
+      const status = row.original.status;
+      return (
+        <Badge 
+          variant={
+            status === "active" 
+              ? "success" 
+              : status === "draft" 
+                ? "warning" 
+                : "rejected"
+          }
+          className="capitalize min-w-17.5 justify-center"
+        >
+          {status === "active" ? "Active" : status}
+        </Badge>
+      );
+    },
   },
   {
     id: "actions",

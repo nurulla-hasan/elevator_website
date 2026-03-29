@@ -19,7 +19,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import { Info, X } from "lucide-react";
+import { X } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 type AddServiceOverviewSectionProps = {
   form: UseFormReturn<ServiceFormValues>;
@@ -41,35 +42,33 @@ export function AddServiceOverviewSection({
   onToggleEventType,
 }: AddServiceOverviewSectionProps) {
   return (
-    <div className="space-y-6">
-      <div className="flex items-center gap-2 border-b pb-2">
-        <Info className="size-5 text-primary" />
-        <h3 className="text-lg">Service Overview</h3>
-      </div>
+    <div className="space-y-8">
+      {/* Service Title - Full Width Row */}
+      <FormField
+        control={form.control}
+        name="serviceTitle"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>
+              Service Title
+            </FormLabel>
+            <FormControl>
+              <Input placeholder="e.g. Professional Wedding Photography" {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
 
+      {/* Category & Subcategory - Single Row */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        <FormField
-          control={form.control}
-          name="serviceTitle"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>
-                Service Title <span className="text-destructive">*</span>
-              </FormLabel>
-              <FormControl>
-                <Input placeholder="e.g. Professional Wedding Photography" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
         <FormField
           control={form.control}
           name="category"
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                Category <span className="text-destructive">*</span>
+                Category
               </FormLabel>
               <Select onValueChange={field.onChange} value={field.value}>
                 <FormControl>
@@ -89,16 +88,13 @@ export function AddServiceOverviewSection({
             </FormItem>
           )}
         />
-      </div>
-
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <FormField
           control={form.control}
           name="subcategory"
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                Subcategory <span className="text-destructive">*</span>
+                Subcategory
               </FormLabel>
               <Select onValueChange={field.onChange} value={field.value} disabled={subcategories.length === 0}>
                 <FormControl>
@@ -118,13 +114,17 @@ export function AddServiceOverviewSection({
             </FormItem>
           )}
         />
+      </div>
+
+      {/* Price Type & Price - Single Row */}
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <FormField
           control={form.control}
           name="priceType"
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                Price Type <span className="text-destructive">*</span>
+                Price Type
               </FormLabel>
               <Select onValueChange={field.onChange} value={field.value}>
                 <FormControl>
@@ -150,7 +150,7 @@ export function AddServiceOverviewSection({
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                Base Price (৳) <span className="text-destructive">*</span>
+                Enter Price (৳)
               </FormLabel>
               <FormControl>
                 <Input type="number" placeholder="0.00" {...field} />
@@ -167,17 +167,20 @@ export function AddServiceOverviewSection({
         render={() => (
           <FormItem>
             <FormLabel>
-              Suitable for Event Types <span className="text-destructive">*</span>
+              Suitable for Event Types
             </FormLabel>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 pt-1">
               {eventTypes.map((eventType) => {
                 const selected = selectedEventTypes.includes(eventType);
 
                 return (
                   <Badge
                     key={eventType}
-                    variant={selected ? "default" : "secondary"}
-                    className="cursor-pointer px-4 py-1.5"
+                    variant={selected ? "default" : "outline"}
+                    className={cn(
+                      "cursor-pointer px-4 py-2 text-sm transition-all",
+                      selected ? "bg-primary text-primary-foreground border-primary" : "hover:border-primary/50"
+                    )}
                     onClick={() => onToggleEventType(eventType)}
                   >
                     {eventType}
@@ -197,10 +200,14 @@ export function AddServiceOverviewSection({
         render={({ field }) => (
           <FormItem>
             <FormLabel>
-              About the Service <span className="text-destructive">*</span>
+              About the Service
             </FormLabel>
             <FormControl>
-              <Textarea placeholder="Briefly describe what you offer..." className="min-h-24" {...field} />
+              <Textarea 
+                placeholder="Briefly describe what you offer, your experience, and service quality..." 
+                className="min-h-32 resize-none" 
+                {...field} 
+              />
             </FormControl>
             <FormMessage />
           </FormItem>

@@ -17,12 +17,13 @@ import { AddServiceOverviewSection } from "./add-service-overview-section";
 import { AddServiceCoreFeaturesSection } from "./add-service-core-features-section";
 import { AddServiceLogisticsMediaSection } from "./add-service-logistics-media-section";
 import { AddServiceFormActions } from "./add-service-form-actions";
+import { Separator } from "@/components/ui/separator";
 
 export function AddServiceForm() {
   const [newCustomFeature, setNewCustomFeature] = useState("");
 
   const form = useForm<ServiceFormValues>({
-    resolver: zodResolver(serviceFormSchema),
+    resolver: zodResolver(serviceFormSchema), 
     defaultValues: {
       serviceTitle: "",
       category: "",
@@ -115,7 +116,7 @@ export function AddServiceForm() {
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <AddServiceOverviewSection
               form={form}
               serviceCategories={SERVICE_CATEGORIES}
@@ -125,6 +126,9 @@ export function AddServiceForm() {
               selectedEventTypes={eventTypes}
               onToggleEventType={toggleEventType}
             />
+
+            <Separator />
+
             <AddServiceCoreFeaturesSection
               category={category}
               subcategory={subcategory}
@@ -137,7 +141,11 @@ export function AddServiceForm() {
               onAddCustomFeature={addCustomFeature}
               onRemoveCustomFeature={removeCustomFeature}
             />
+
+            <Separator />
+
             <AddServiceLogisticsMediaSection form={form} isAcrossCity={isAcrossCity} />
+
             <AddServiceFormActions onReset={() => form.reset()} />
           </form>
         </Form>
