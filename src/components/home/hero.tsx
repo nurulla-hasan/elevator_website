@@ -17,6 +17,7 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { categories } from "@/data/categories.data";
+import Link from "next/link";
 
 export default function Hero() {
   const [isServicesOpen, setIsServicesOpen] = React.useState(false);
@@ -27,6 +28,13 @@ export default function Hero() {
   const [charIndex, setCharIndex] = React.useState(0);
   const [isDeleting, setIsDeleting] = React.useState(false);
   const [typedText, setTypedText] = React.useState("Search venues…");
+  const vendorsHref = React.useMemo(() => {
+    const params = new URLSearchParams();
+    if (selectedService) params.set("category", selectedService);
+    if (selectedLocation) params.set("location", selectedLocation);
+    const qs = params.toString();
+    return qs ? `/vendors?${qs}` : "/vendors";
+  }, [selectedService, selectedLocation]);
 
   React.useEffect(() => {
     const current = typedWords[typedIndex];
@@ -199,11 +207,13 @@ export default function Hero() {
         </div>
 
         <div className="mt-4 sm:mt-6 flex items-center gap-3">
-          <Button className="h-10 sm:h-12">
-            Explore Vendors
+          <Button asChild className="h-10 sm:h-12">
+            <Link href={vendorsHref}>Explore Vendors</Link>
           </Button>
           <Button variant="outline" className="h-10 sm:h-12 border-white/60 text-white hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-md">
-            Post Your Requirement
+            <Link href="/post-request">
+              Post Your Requirement
+            </Link>
           </Button>
         </div>
       </div>
