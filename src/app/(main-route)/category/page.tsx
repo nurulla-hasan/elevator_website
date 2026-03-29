@@ -45,8 +45,8 @@ export default async function CategoryPage({
 
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 ">
           <PageHeader
-            title="Wedding Categories"
-            description="Find the perfect vendors and services for every aspect of your big day."
+            title="Browse by Category"
+            description="Find the perfect vendors for every part of your wedding"
           />
           <Suspense fallback={<div>Loading...</div>}>
             <SearchInput placeholder="Search categories..." />
