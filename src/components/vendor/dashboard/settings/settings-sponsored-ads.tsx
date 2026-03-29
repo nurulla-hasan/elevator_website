@@ -22,8 +22,8 @@ export function SettingsSponsoredAds() {
   return (
     <div className="space-y-6">
       {/* Hero Banner Section */}
-      <Card className="bg-primary text-primary-foreground border-none overflow-hidden relative shadow-none">
-        <CardContent className="p-8 space-y-6 relative z-10">
+      <Card className="bg-primary text-primary-foreground">
+        <CardContent className="space-y-6">
           <div className="space-y-2">
             <h2 className="text-3xl font-medium">Boost Your Visibility</h2>
             <p className="text-primary-foreground/90 text-lg font-normal">

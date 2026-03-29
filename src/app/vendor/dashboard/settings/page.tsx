@@ -3,15 +3,11 @@ import DashboardPageLayout from "@/components/ui/custom/dashboard-page-layout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Globe,
-  DollarSign,
-  Tag,
   Camera,
   Calendar,
   TrendingUp,
 } from "lucide-react";
 import { SettingsBusinessInfoForm } from "@/components/vendor/dashboard/settings/settings-business-info-form";
-import { SettingsPricingPackagesForm } from "@/components/vendor/dashboard/settings/settings-pricing-packages-form";
-import { SettingsServicesForm } from "@/components/vendor/dashboard/settings/settings-services-form";
 import { SettingsPortfolioForm } from "@/components/vendor/dashboard/settings/settings-portfolio-form";
 import { SettingsSponsoredAds } from "@/components/vendor/dashboard/settings/settings-sponsored-ads";
 import { SettingsAvailability } from "@/components/vendor/dashboard/settings/settings-availability";
@@ -26,18 +22,18 @@ const SETTINGS_TABS = [
     icon: Globe,
     component: SettingsBusinessInfoForm,
   },
-  {
-    value: "pricing",
-    label: "Pricing & Packages",
-    icon: DollarSign,
-    component: SettingsPricingPackagesForm,
-  },
-  {
-    value: "services",
-    label: "Services",
-    icon: Tag,
-    component: SettingsServicesForm,
-  },
+  // {
+  //   value: "pricing",
+  //   label: "Pricing & Packages",
+  //   icon: DollarSign,
+  //   component: SettingsPricingPackagesForm,
+  // },
+  // {
+  //   value: "services",
+  //   label: "Services",
+  //   icon: Tag,
+  //   component: SettingsServicesForm,
+  // },
   {
     value: "portfolio",
     label: "Portfolio",
