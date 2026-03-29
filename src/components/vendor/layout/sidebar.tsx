@@ -86,7 +86,7 @@ const Sidebar = ({
 
   const [isBusinessOpen, setIsBusinessOpen] = useState<boolean>(isBusinessPath || true);
   const [isInsightsOpen, setIsInsightsOpen] = useState<boolean>(isInsightsPath || true);
-  const [isAccountOpen, setIsAccountOpen] = useState<boolean>(isAccountPath || true);
+  const [isAccountOpen, setIsAccountOpen] = useState<boolean>(isAccountPath);
 
   // Auto-expand sections when navigating to them, without using useEffect to avoid cascading renders
   const [prevPathname, setPrevPathname] = useState(pathname);

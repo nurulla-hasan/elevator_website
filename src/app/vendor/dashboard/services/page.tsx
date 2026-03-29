@@ -65,7 +65,7 @@ export default function ServicesPage() {
         />
         <ServicesFilter />
       </div>
-
+ 
       <div className="space-y-6">
         <DataTable columns={serviceColumns} data={MOCK_SERVICES} meta={meta} />
       </div>

@@ -35,9 +35,17 @@ export const serviceColumns: ColumnDef<Service>[] = [
         </div>
         <div className="flex flex-col">
           <span className="font-medium text-foreground">{row.original.name}</span>
-          <span className="text-xs text-muted-foreground">{row.original.category}</span>
         </div>
       </div>
+    ),
+  },
+  {
+    accessorKey: "category",
+    header: "Category",
+    cell: ({ row }) => (
+      <Badge variant="secondary">
+        {row.getValue("category")}
+      </Badge>
     ),
   },
   {
