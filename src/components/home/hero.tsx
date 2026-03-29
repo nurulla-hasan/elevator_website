@@ -22,6 +22,28 @@ export default function Hero() {
   const [isServicesOpen, setIsServicesOpen] = React.useState(false);
   const [selectedService, setSelectedService] = React.useState("");
   const [selectedLocation, setSelectedLocation] = React.useState("");
+  const typedWords = React.useMemo(() => ["venues", "caterers", "photographers"], []);
+  const [typedIndex, setTypedIndex] = React.useState(0);
+  const [charIndex, setCharIndex] = React.useState(0);
+  const [isDeleting, setIsDeleting] = React.useState(false);
+  const [typedText, setTypedText] = React.useState("Search venues…");
+
+  React.useEffect(() => {
+    const current = typedWords[typedIndex];
+    const typingSpeed = isDeleting ? 40 : 80;
+    const timer = setTimeout(() => {
+      const nextCharIndex = isDeleting ? charIndex - 1 : charIndex + 1;
+      setTypedText(`Search ${current.slice(0, Math.max(0, nextCharIndex))}…`);
+      setCharIndex(nextCharIndex);
+      if (!isDeleting && nextCharIndex === current.length) {
+        setTimeout(() => setIsDeleting(true), 900);
+      } else if (isDeleting && nextCharIndex === 0) {
+        setIsDeleting(false);
+        setTypedIndex((typedIndex + 1) % typedWords.length);
+      }
+    }, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [charIndex, isDeleting, typedIndex, typedWords]);
 
   return (
     <section className="relative w-full h-[calc(100vh-64px)] lg:h-[calc(100vh-80px)] overflow-hidden">
@@ -31,9 +53,9 @@ export default function Hero() {
         style={{
           backgroundImage: `url('/home/hero2.jpg')`,
         }}
-      />
+      /> 
       {/* Pinkish Gradient Overlay for Client Requirement */}
-      <div className="absolute inset-0 bg-linear-to-t from-black/40 to-primary z-10" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/10 to-primary z-10" />
       
       {/* Subtle Pink Glows */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[150px] z-0 animate-pulse" />
@@ -53,8 +75,7 @@ export default function Hero() {
         </h1>
         
         <p className="mb-8 sm:mb-10 max-w-2xl text-sm sm:text-base font-medium text-white/95 md:text-lg md:px-2 leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500 drop-shadow-md">
-          Connect with the finest wedding vendors and venues. From intimate ceremonies 
-          to grand celebrations, we help you find the best professionals for your big day.
+          Discover trusted wedding vendors, explore beautiful ideas, and plan your big day effortlessly — all in one place.
         </p>
 
         {/* Search Bar */}
@@ -72,7 +93,7 @@ export default function Hero() {
                       !selectedService && "text-muted-foreground"
                     )}
                   >
-                    <span className="truncate">{selectedService || "Venues, Photographers..."}</span>
+                    <span className="truncate">{selectedService || typedText}</span>
                     <ChevronDownIcon className="ml-auto h-3 w-3 opacity-50" />
                   </Button>
                 </PopoverTrigger>
@@ -175,9 +196,14 @@ export default function Hero() {
               />
             </div>
           </div>
+        </div>
 
-          <Button className="h-10 sm:h-12 rounded-xl">
-            Explore Now
+        <div className="mt-4 sm:mt-6 flex items-center gap-3">
+          <Button className="h-10 sm:h-12">
+            Explore Vendors
+          </Button>
+          <Button variant="outline" className="h-10 sm:h-12 border-white/60 text-white hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-md">
+            Post Your Requirement
           </Button>
         </div>
       </div>
