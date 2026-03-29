@@ -10,22 +10,23 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const bannerImages = [
   {
-    url: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2069&auto=format&fit=crop",
-    // title: "Luxury Event Venues",
-    // description: "Discover the most stunning locations for your dream wedding and special events.",
+    url: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop",
+    title: "Make Your Dream Wedding a Reality",
+    description: "From stunning venues to expert vendors — everything you need, all in one place.",
+    buttonText: "Start Planning",
+    buttonLink: "/plan",
   },
   {
-    url: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop",
-    // title: "Dream Wedding Decorations",
-    // description: "Transform your celebration with our expert floral and theme decorators.",
+    url: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2069&auto=format&fit=crop",
+
   },
   {
     url: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2070&auto=format&fit=crop",
-    // title: "Professional Photography",
-    // description: "Capture every precious moment with the best wedding photographers in the city.",
   },
 ];
 
@@ -66,7 +67,7 @@ export default function Banner() {
         <CarouselContent>
           {bannerImages.map((image, index) => (
             <CarouselItem key={index}>
-              <div className="relative aspect-21/9 w-full overflow-hidden md:aspect-4/1 rounded-2xl">
+              <div className="relative aspect-4/3 w-full overflow-hidden sm:aspect-21/9 md:aspect-4/1 rounded-2xl">
                 <Image
                   src={image.url}
                   alt={"Banner Image"}
@@ -75,18 +76,38 @@ export default function Banner() {
                   className="object-cover transition-transform duration-500 hover:scale-105"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
                 />
-                {/* Overlay for better text and indicator visibility */}
-                {/* <div className="absolute inset-0 bg-black/40 bg-linear-to-r from-black/60 to-transparent" /> */}
-                
+                {/* Dark Romantic Overlay */}
+                {/* <div className="absolute inset-0 bg-black/50 bg-linear-to-t from-black/40 via-black/20 to-black/10" /> */}
+
                 {/* Content */}
-                {/* <div className="absolute inset-0 flex flex-col justify-center items-center px-8 md:px-16 lg:px-24 space-y-2 md:space-y-4 text-white z-10">
-                  <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold tracking-tight animate-in fade-in slide-in-from-left-8 duration-700">
-                    {image.title}
-                  </h2>
-                  <p className="text-sm text-center md:text-lg lg:text-xl max-w-lg text-white/90 leading-relaxed animate-in fade-in slide-in-from-left-10 duration-1000 delay-200">
-                    {image.description}
-                  </p>
-                </div> */}
+                {(image.title || image.description) && (
+                  <div className="absolute inset-0 flex flex-col justify-center items-center px-6 py-10 md:px-16 lg:px-24 space-y-3 md:space-y-6 text-white z-10 text-center">
+                    {image.title && (
+                      <h2 className="text-xl md:text-4xl lg:text-5xl font-semibold tracking-tight animate-in fade-in slide-in-from-bottom-8 duration-700">
+                        {image.title}
+                      </h2>
+                    )}
+                    {image.description && (
+                      <p className="text-xs md:text-lg lg:text-xl max-w-2xl text-white/90 leading-relaxed animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-200">
+                        {image.description}
+                      </p>
+                    )}
+                    {image.buttonText && (
+                      <div className="pt-2 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-500">
+                        <Button asChild size="sm" className="md:hidden rounded-full px-6">
+                          <Link href={image.buttonLink || "#"}>
+                            {image.buttonText}
+                          </Link>
+                        </Button>
+                        <Button asChild size="lg" className="hidden md:flex rounded-full px-8">
+                          <Link href={image.buttonLink || "#"}>
+                            {image.buttonText}
+                          </Link>
+                        </Button>
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             </CarouselItem>
           ))}
