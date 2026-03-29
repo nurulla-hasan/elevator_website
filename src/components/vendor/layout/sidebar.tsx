@@ -20,7 +20,9 @@ import {
   BarChart3,
   TrendingUp,
   User,
-  // BadgePercent,
+  MessageSquare,
+  FileText,
+  CheckCircle,
   LucideIcon,
 } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -28,6 +30,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
@@ -48,6 +51,9 @@ const MAIN_NAV_ITEMS: NavItemType[] = [
 
 const BUSINESS_SUB_ITEMS: NavItemType[] = [
   { name: "Leads", icon: Mail, href: "/vendor/dashboard/leads" },
+  { name: "Inquiries", icon: MessageSquare, href: "/vendor/dashboard/inquiries" },
+  { name: "Quotations", icon: FileText, href: "/vendor/dashboard/quotations" },
+  { name: "Won Deals", icon: CheckCircle, href: "/vendor/dashboard/won-deals" },
   { name: "My Packages", icon: Package, href: "/vendor/dashboard/packages" },
   { name: "My Services", icon: LayoutGrid, href: "/vendor/dashboard/services" },
   { name: "All Jobs", icon: Briefcase, href: "/vendor/dashboard/jobs" },
@@ -73,8 +79,8 @@ const Sidebar = ({
   setIsSidebarOpen: (open: boolean) => void;
 }) => {
   const pathname = usePathname();
-  
-  const isBusinessPath = ["leads", "packages", "services", "jobs", "bookings"].some(p => pathname.includes(`/vendor/dashboard/${p}`));
+
+  const isBusinessPath = ["leads", "inquiries", "quotations", "won-deals", "packages", "services", "jobs", "bookings"].some(p => pathname.includes(`/vendor/dashboard/${p}`));
   const isInsightsPath = ["reviews", "analytics", "boost"].some(p => pathname.includes(`/vendor/dashboard/${p}`));
   const isAccountPath = ["billing", "profile", "settings"].some(p => pathname.includes(`/vendor/dashboard/${p}`));
 
@@ -102,7 +108,7 @@ const Sidebar = ({
 
   const NavItem = ({ item, isSubItem = false }: NavItemProps) => {
     const isActive = pathname === item.href;
-    
+
     return (
       <Link
         href={item.href}
@@ -145,101 +151,105 @@ const Sidebar = ({
       </div>
 
       {/* Main Navigation */}
-      <ScrollArea className="flex-1">
-        <nav className="space-y-2 p-4">
-          {MAIN_NAV_ITEMS.map((item) => (
-            <NavItem key={item.href} item={item} />
-          ))}
+      <ScrollArea className="h-[calc(100vh-150px)]">
+        <nav className="p-4 space-y-4">
+          <div>
+            {MAIN_NAV_ITEMS.map((item) => (
+              <NavItem key={item.href} item={item} />
+            ))}
+          </div>
 
           {/* Business group */}
-          <Collapsible
-            open={isBusinessOpen}
-            onOpenChange={setIsBusinessOpen}
-          >
-            <CollapsibleTrigger
-              className={cn(
-                "w-full mb-2 flex items-center justify-between p-2 rounded-sm text-base font-medium cursor-pointer transition-colors duration-200",
-                isBusinessPath
-                  ? "bg-primary/10 text-primary"
-                  : "hover:bg-accent hover:text-accent-foreground"
-              )}
+            <Collapsible
+              open={isBusinessOpen}
+              onOpenChange={setIsBusinessOpen}
             >
-              <div className="flex items-center text-sm px-2">
-                <Briefcase className="mr-2 h-4 w-4" />
-                Business
-              </div>
-              <ChevronDown
+              <CollapsibleTrigger
                 className={cn(
-                  "h-4 w-4 transition-transform duration-300",
-                  isBusinessOpen && "-rotate-180"
+                  "w-full mb-2 flex items-center justify-between p-2 rounded-sm text-base font-medium cursor-pointer transition-colors duration-200",
+                  isBusinessPath
+                    ? "bg-primary/10 text-primary"
+                    : "hover:bg-accent hover:text-accent-foreground"
                 )}
-              />
-            </CollapsibleTrigger>
-            <CollapsibleContent className="space-y-2">
-              {BUSINESS_SUB_ITEMS.map((item) => (
-                <NavItem key={item.href} item={item} isSubItem />
-              ))}
-            </CollapsibleContent>
-          </Collapsible>
+              >
+                <div className="flex items-center text-sm px-2">
+                  <Briefcase className="mr-2 h-4 w-4" />
+                  Business
+                </div>
+                <ChevronDown
+                  className={cn(
+                    "h-4 w-4 transition-transform duration-300",
+                    isBusinessOpen && "-rotate-180"
+                  )}
+                />
+              </CollapsibleTrigger>
+              <CollapsibleContent className="space-y-2">
+                {BUSINESS_SUB_ITEMS.map((item) => (
+                  <NavItem key={item.href} item={item} isSubItem />
+                ))}
+              </CollapsibleContent>
+            </Collapsible>
+          <Separator />
 
           {/* Insights group */}
-          <Collapsible
-            open={isInsightsOpen}
-            onOpenChange={setIsInsightsOpen}
-          >
-            <CollapsibleTrigger
-              className={cn(
-                "w-full mb-2 flex items-center justify-between p-2 rounded-sm text-base font-medium cursor-pointer transition-colors duration-200",
-                isInsightsPath
-                  ? "bg-primary/10 text-primary"
-                  : "hover:bg-accent hover:text-accent-foreground"
-              )}
+            <Collapsible
+              open={isInsightsOpen}
+              onOpenChange={setIsInsightsOpen}
             >
-              <div className="flex items-center text-sm px-2">
-                <BarChart3 className="mr-2 h-4 w-4" />
-                Insights
-              </div>
-              <ChevronDown
+              <CollapsibleTrigger
                 className={cn(
-                  "h-4 w-4 transition-transform duration-300",
-                  isInsightsOpen && "-rotate-180"
+                  "w-full mb-2 flex items-center justify-between p-2 rounded-sm text-base font-medium cursor-pointer transition-colors duration-200",
+                  isInsightsPath
+                    ? "bg-primary/10 text-primary"
+                    : "hover:bg-accent hover:text-accent-foreground"
                 )}
-              />
-            </CollapsibleTrigger>
-            <CollapsibleContent className="space-y-2">
-              {INSIGHTS_SUB_ITEMS.map((item) => (
-                <NavItem key={item.href} item={item} isSubItem />
-              ))}
-            </CollapsibleContent>
-          </Collapsible>
+              >
+                <div className="flex items-center text-sm px-2">
+                  <BarChart3 className="mr-2 h-4 w-4" />
+                  Insights
+                </div>
+                <ChevronDown
+                  className={cn(
+                    "h-4 w-4 transition-transform duration-300",
+                    isInsightsOpen && "-rotate-180"
+                  )}
+                />
+              </CollapsibleTrigger>
+              <CollapsibleContent className="space-y-2">
+                {INSIGHTS_SUB_ITEMS.map((item) => (
+                  <NavItem key={item.href} item={item} isSubItem />
+                ))}
+              </CollapsibleContent>
+            </Collapsible>
+          <Separator />
 
           {/* Account group */}
-          <Collapsible open={isAccountOpen} onOpenChange={setIsAccountOpen}>
-            <CollapsibleTrigger
-              className={cn(
-                "w-full mb-2 flex items-center justify-between p-2 rounded-sm text-base font-medium cursor-pointer transition-colors duration-200",
-                isAccountPath
-                  ? "bg-primary/10 text-primary"
-                  : "hover:bg-accent hover:text-accent-foreground"
-              )}
-            >
-              <div className="flex items-center text-sm px-2">
-                <User className="mr-2 h-4 w-4" />
-                Account
-              </div>
-              <ChevronDown
+            <Collapsible open={isAccountOpen} onOpenChange={setIsAccountOpen}>
+              <CollapsibleTrigger
                 className={cn(
-                  "h-4 w-4 transition-transform duration-300",
-                  isAccountOpen && "-rotate-180"
+                  "w-full mb-2 flex items-center justify-between p-2 rounded-sm text-base font-medium cursor-pointer transition-colors duration-200",
+                  isAccountPath
+                    ? "bg-primary/10 text-primary"
+                    : "hover:bg-accent hover:text-accent-foreground"
                 )}
-              />
-            </CollapsibleTrigger>
-            <CollapsibleContent className="space-y-2">
-              {ACCOUNT_SUB_ITEMS.map((item) => (
-                <NavItem key={item.href} item={item} isSubItem />
-              ))}
-            </CollapsibleContent>
-          </Collapsible>
+              >
+                <div className="flex items-center text-sm px-2">
+                  <User className="mr-2 h-4 w-4" />
+                  Account
+                </div>
+                <ChevronDown
+                  className={cn(
+                    "h-4 w-4 transition-transform duration-300",
+                    isAccountOpen && "-rotate-180"
+                  )}
+                />
+              </CollapsibleTrigger>
+              <CollapsibleContent className="space-y-2">
+                {ACCOUNT_SUB_ITEMS.map((item) => (
+                  <NavItem key={item.href} item={item} isSubItem />
+                ))}
+              </CollapsibleContent>
+            </Collapsible>
         </nav>
       </ScrollArea>
 

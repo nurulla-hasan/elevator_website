@@ -48,7 +48,15 @@ export function LeadCard({ lead }: LeadCardProps) {
               <h3 className="text-lg font-bold text-foreground">{lead.name}</h3>
               <div className="flex gap-1.5">
                 <Badge
-                  variant={lead.status === "New" ? "info" : "warning"}
+                  variant={
+                    lead.status === "New"
+                      ? "info"
+                      : lead.status === "Quoted"
+                        ? "warning"
+                        : lead.status === "Won"
+                          ? "accepted"
+                          : "rejected"
+                  }
                   className="rounded-md px-2 py-0"
                 >
                   {lead.status}
