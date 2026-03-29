@@ -20,11 +20,11 @@ const StatsCard = ({ label, value }: StatsCardProps) => {
 
 export default function DashboardStats() {
   const stats = [
-    { label: "Total Leads", value: "142" },
-    { label: "Total Quote", value: "17" },
-    { label: "Total Confirm", value: "21" },
-    { label: "Total Rating", value: "31" },
-    { label: "Total View", value: "142K" },
+    { label: "Leads", value: "142" },
+    { label: "Quote", value: "17" },
+    { label: "Confirm", value: "21" },
+    { label: "Rating", value: "31" },
+    { label: "View", value: "142K" },
   ];
 
   return (

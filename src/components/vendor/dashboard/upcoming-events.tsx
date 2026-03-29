@@ -1,5 +1,7 @@
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calendar, Clock, MapPin } from "lucide-react";
+import { ArrowRightIcon, Calendar, Clock, MapPin } from "lucide-react";
+import Link from "next/link";
 
 interface EventProps {
   title: string;
@@ -56,8 +58,14 @@ export default function UpcomingEvents() {
 
   return (
     <Card>
-      <CardHeader>
+      <CardHeader className="flex flex-row justify-between items-center">
         <CardTitle className="text-xl font-semibold text-primary">Upcoming Events</CardTitle>
+        <Button variant="link">
+          <Link href="/vendor/dashboard/events">
+            View All
+          </Link>
+          <ArrowRightIcon />
+        </Button>
       </CardHeader>
       <CardContent className="space-y-4">
         {events.map((event, index) => (
