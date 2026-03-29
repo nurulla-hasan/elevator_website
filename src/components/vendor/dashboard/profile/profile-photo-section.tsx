@@ -39,7 +39,7 @@ export function ProfilePhotoSection() {
         <div className="flex flex-col sm:flex-row items-center gap-8">
           {/* Avatar Container */}
           <div className="relative group">
-            <Avatar className="h-32 w-32 border-4 border-background shadow-xl transition-transform duration-300 group-hover:scale-[1.02]">
+            <Avatar className="h-30 w-30 border-4 border-background shadow-xl transition-transform duration-300 group-hover:scale-[1.02]">
               {image && <AvatarImage src={image} className="object-cover" />}
               <AvatarFallback className="bg-primary/5 text-primary">
                 <User className="h-12 w-12" />
